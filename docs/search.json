@@ -1409,196 +1409,196 @@
   {
     "objectID": "courses/r_basics/dataframes.html#indexing-data-frames",
     "href": "courses/r_basics/dataframes.html#indexing-data-frames",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Indexing Data Frames",
     "text": "Indexing Data Frames\n\nWhen we want to return a specific column, row, or value from a data frame, we can index them.\nThe syntax for indexing data frames is very similar to that of matrices.\nLet’s say we want to return the column of the data frame containing Major.\nWe can perform this operation using several techniques."
   },
   {
     "objectID": "courses/r_basics/dataframes.html#indexing-by-position",
     "href": "courses/r_basics/dataframes.html#indexing-by-position",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Indexing by Position",
     "text": "Indexing by Position\n\n recent_grads[,3]\n\n# A tibble: 10 × 1\n   Major                         \n   <chr>                         \n 1 PETROLEUM ENGINEERING         \n 2 MINING AND MINERAL ENGINEERING\n 3 METULLARGY ENGINEERING        \n 4 NAVAL                         \n 5 CHEMICAL ENGINEERING          \n 6 NUCLEAR                       \n 7 ACTUARIAL ENGINEERING         \n 8 ASTRONOMY                     \n 9 MECHANICAL ENGINEERING        \n10 ELECTRICAL ENGINEERING"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#indexing-by-names",
     "href": "courses/r_basics/dataframes.html#indexing-by-names",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Indexing by names",
     "text": "Indexing by names\n\n recent_grads[,'Major']\n\n# A tibble: 10 × 1\n   Major                         \n   <chr>                         \n 1 PETROLEUM ENGINEERING         \n 2 MINING AND MINERAL ENGINEERING\n 3 METULLARGY ENGINEERING        \n 4 NAVAL                         \n 5 CHEMICAL ENGINEERING          \n 6 NUCLEAR                       \n 7 ACTUARIAL ENGINEERING         \n 8 ASTRONOMY                     \n 9 MECHANICAL ENGINEERING        \n10 ELECTRICAL ENGINEERING"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#using-multiple-columns",
     "href": "courses/r_basics/dataframes.html#using-multiple-columns",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Using multiple columns",
     "text": "Using multiple columns\n\nrecent_grads[,c('Major','Men','Women')]\n\n# A tibble: 10 × 3\n   Major                            Men Women\n   <chr>                          <dbl> <dbl>\n 1 PETROLEUM ENGINEERING           2057   282\n 2 MINING AND MINERAL ENGINEERING   679    77\n 3 METULLARGY ENGINEERING           725   131\n 4 NAVAL                           1123   135\n 5 CHEMICAL ENGINEERING           21239 11021\n 6 NUCLEAR                         2200   373\n 7 ACTUARIAL ENGINEERING           2110  1667\n 8 ASTRONOMY                        832   960\n 9 MECHANICAL ENGINEERING         80320 10907\n10 ELECTRICAL ENGINEERING         65511 16016"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#indexing-using-symbol",
     "href": "courses/r_basics/dataframes.html#indexing-using-symbol",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Indexing using $ symbol",
     "text": "Indexing using $ symbol\n\nrecent_grads$Total\n\n [1]  2339   756   856  1258 32260  2573  3777  1792 91227 81527"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#indexing-rows",
     "href": "courses/r_basics/dataframes.html#indexing-rows",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Indexing Rows",
     "text": "Indexing Rows\n\nLet’s say that instead of a certain column, we want to extract a row of a data frame.\nTo return the fifth row of the data frame, we could write\n\n\n recent_grads[5,]\n\n# A tibble: 1 × 18\n   Rank Major_…¹ Major Total   Men Women Major…² Sampl…³ Emplo…⁴ Full_…⁵ Part_…⁶\n  <dbl>    <dbl> <chr> <dbl> <dbl> <dbl> <chr>     <dbl>   <dbl>   <dbl>   <dbl>\n1     5     2405 CHEM… 32260 21239 11021 Engine…     289   25694   23170    5180\n# … with 7 more variables: Full_time_year_round <dbl>, Unemployed <dbl>,\n#   Unemployment_rate <dbl>, Median <dbl>, College_jobs <dbl>,\n#   Non_college_jobs <dbl>, Low_wage_jobs <dbl>, and abbreviated variable names\n#   ¹​Major_code, ²​Major_category, ³​Sample_size, ⁴​Employed, ⁵​Full_time,\n#   ⁶​Part_time"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#extracting-a-subset-of-values",
     "href": "courses/r_basics/dataframes.html#extracting-a-subset-of-values",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Extracting a subset of values",
     "text": "Extracting a subset of values\n\nAs with matrices, we can specify multiple elements to extract from a data frame.\nLet’s extract the first ten rows of the Major and Major_category column\n\n\nrecent_grads[c(1:10),c('Major','Major_category')]\n\n# A tibble: 10 × 2\n   Major                          Major_category  \n   <chr>                          <chr>           \n 1 PETROLEUM ENGINEERING          Engineering     \n 2 MINING AND MINERAL ENGINEERING Engineering     \n 3 METULLARGY ENGINEERING         Engineering     \n 4 NAVAL                          Engineering     \n 5 CHEMICAL ENGINEERING           Engineering     \n 6 NUCLEAR                        Engineering     \n 7 ACTUARIAL ENGINEERING          Business        \n 8 ASTRONOMY                      Physical Science\n 9 MECHANICAL ENGINEERING         Engineering     \n10 ELECTRICAL ENGINEERING         Engineering"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#extracting-rows-and-saving-into-a-dataframe",
     "href": "courses/r_basics/dataframes.html#extracting-rows-and-saving-into-a-dataframe",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Extracting Rows and Saving into a dataframe",
     "text": "Extracting Rows and Saving into a dataframe\n\nExtract the first, third, and fifth rows of the Unemployment_rate column and save the output in a variable named unemployment_subset.\n\n\nunemployement_subset <- recent_grads$Unemployment_rate[c(1,3,5)]\nunemployement_subset\n\n[1] 0.01838052 0.02409638 0.06109771"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#selecting-columns",
     "href": "courses/r_basics/dataframes.html#selecting-columns",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Selecting Columns",
     "text": "Selecting Columns\n\nOur goal is choosing a college major\nCriteria for choosing a college major\n1.You’re interested in the physical and life sciences.\n2.You’d like a decent salary. Recent graduates must have a median salary above 40,000 USD.\n3.You’d like to avoid male-dominated majors. More than 40 percent of graduates must be women.\nWe will use the variables in the recent_grads dataframe to make the decesion"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#using-dplyr-package-in-manipulating-data-frames",
     "href": "courses/r_basics/dataframes.html#using-dplyr-package-in-manipulating-data-frames",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Using dplyr package in manipulating Data Frames",
     "text": "Using dplyr package in manipulating Data Frames\n\nUse the dplyr function select() to create a new data frame with only columns containing the variables we want to keep for our analysis.\nUsing the select() function, we’ll specify the data frame we want to work with and the columns we want to select\n\n\nlibrary(dplyr)\nrecent_grads_select <- recent_grads %>%\n  select(Major, Total, Men, Women, Major_category)"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#output",
     "href": "courses/r_basics/dataframes.html#output",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Output",
     "text": "Output\n\nhead(recent_grads_select,5)\n\n# A tibble: 5 × 5\n  Major                          Total   Men Women Major_category\n  <chr>                          <dbl> <dbl> <dbl> <chr>         \n1 PETROLEUM ENGINEERING           2339  2057   282 Engineering   \n2 MINING AND MINERAL ENGINEERING   756   679    77 Engineering   \n3 METULLARGY ENGINEERING           856   725   131 Engineering   \n4 NAVAL                           1258  1123   135 Engineering   \n5 CHEMICAL ENGINEERING           32260 21239 11021 Engineering"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#the-pipe-operator",
     "href": "courses/r_basics/dataframes.html#the-pipe-operator",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "The Pipe Operator",
     "text": "The Pipe Operator\n\nNotice the %>% symbol: This is called the “the pipe operator”\nIts purpose is to help you write code that’s easier to write, read, and understand.\nThe pipe lets you write code that chains series of operations together; in the case of the code above\nWe could read the code as, “take the recent_grads data frame and select the Major, Total, Men, Women, and Major_category columns.”"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#selecting-the-right-columns",
     "href": "courses/r_basics/dataframes.html#selecting-the-right-columns",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Selecting the Right Columns",
     "text": "Selecting the Right Columns\n\nCreate a new data frame, recent_grads_select, that contains only the following variables from recent_grads:\n\nMajor 2. Major_category 3.Total 4.Men 5.Women 6.Median 7.Unemployment_rate\n\n\n\nrecent_grads_select <- recent_grads %>%\n  select(Major,Major_category,Men,Women,Total,Median,Unemployment_rate)\n\n#recent_grads_select"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#creating-new-variables",
     "href": "courses/r_basics/dataframes.html#creating-new-variables",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Creating New Variables",
-    "text": "Creating New Variables\nThe mutate() function\n\nWe can use the mutate function to create a new column based on information contained in existing columns.\nThe mutate function lets us specify the creation of a new column, as well as how the values contained in that new column are calculated:\nFor example adding men percent in the dataset\n\n\n# data_frame_2 <- data_frame_1 %>%\n#   mutate(Men_percent = (Men/Total)*100)\n\n\nWithin the mutate() function, we’ll specify a name for our new column and then use = to indicate how you want the values that fill it to be calculated."
+    "text": "Creating New Variables\n\nThe mutate() function\n\nWe can use the mutate function to create a new column based on information contained in existing columns.\nThe mutate function lets us specify the creation of a new column, as well as how the values contained in that new column are calculated:\nFor example adding men percent in the dataset\n\n\n# data_frame_2 <- data_frame_1 %>%\n#   mutate(Men_percent = (Men/Total)*100)\n\n\nWithin the mutate() function, we’ll specify a name for our new column and then use = to indicate how you want the values that fill it to be calculated."
   },
   {
     "objectID": "courses/r_basics/dataframes.html#calculating-women-percent-and-using-mutate",
     "href": "courses/r_basics/dataframes.html#calculating-women-percent-and-using-mutate",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Calculating women percent and using mutate()",
     "text": "Calculating women percent and using mutate()\n\nrecent_grads_select <- recent_grads_select %>%\n  mutate(Women_percent = round((Women/Total)*100,2))\n\nrecent_grads_select$Women_percent\n\n [1] 12.06 10.19 15.30 10.73 34.16 14.50 44.14 53.57 11.96 19.65"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#filtering-by-single-criteria",
     "href": "courses/r_basics/dataframes.html#filtering-by-single-criteria",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Filtering by Single Criteria",
     "text": "Filtering by Single Criteria\n\nGetting closer towards data that meets our criteria\nRemoving data that does not meet our criteria Women_percent >= 40%\nTo remove majors with percentages of women graduates below 40 percent, we’ll use another dplyr function: filter()\nWe can use filter() to specify conditions that values of a variable must meet"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#general-filter-code",
     "href": "courses/r_basics/dataframes.html#general-filter-code",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "General filter code",
     "text": "General filter code\n\n# data_frame_2 <- data_frame_1 %>%\n#   filter(Men_percent < 70)\n\n# data_frame_2 <- data_frame_1 %>%\n#   filter(Major_category == \"Physical Science\")"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#practice-exercise",
     "href": "courses/r_basics/dataframes.html#practice-exercise",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Practice Exercise",
     "text": "Practice Exercise\n\nFilter the recent_grads_select data frame to create a new data frame called recent_grads_money that contains only data on majors where recent graduates’ median (the Median variable) salary is greater than 70,000 USD."
   },
   {
     "objectID": "courses/r_basics/dataframes.html#solution",
     "href": "courses/r_basics/dataframes.html#solution",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Solution",
     "text": "Solution\n\nrecent_grads_money <- recent_grads %>%\n  filter(Median > 70000)\nrecent_grads_money[15:18]\n\n# A tibble: 2 × 4\n  Median College_jobs Non_college_jobs Low_wage_jobs\n   <dbl>        <dbl>            <dbl>         <dbl>\n1  75000          350              257            50\n2  73000          456              176             0"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#filtering-by-multiple-conditions-meeting-at-least-one-criterion",
     "href": "courses/r_basics/dataframes.html#filtering-by-multiple-conditions-meeting-at-least-one-criterion",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Filtering by Multiple Conditions: Meeting At Least One Criterion",
     "text": "Filtering by Multiple Conditions: Meeting At Least One Criterion\n\nWhat if we wanted to create a new data frame containing college majors that met either of the following criteria:\n\nMajors in the Engineering catagory (Major_category == \"Engineering\")\nMajors with over 1,000 total graduates (Total > 1000)\n\n“Majors that are either in the engineering category or have over 1,000 graduates”\nArchieved by the or operator |"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#example-1",
     "href": "courses/r_basics/dataframes.html#example-1",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Example 1",
     "text": "Example 1\n\nDescribe what this code does\n\n\nrecent_grads_engineering1000 <- recent_grads %>%\n  filter(Major_category == \"Engineering\" | Total > 1000)\nrecent_grads_engineering1000[1:5,c(\"Major_category\",\"Total\")]\n\n# A tibble: 5 × 2\n  Major_category Total\n  <chr>          <dbl>\n1 Engineering     2339\n2 Engineering      756\n3 Engineering      856\n4 Engineering     1258\n5 Engineering    32260"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#example-2",
     "href": "courses/r_basics/dataframes.html#example-2",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Example 2",
     "text": "Example 2\n\nDescribe what the code below does\n\n\nrecent_grads_science <- recent_grads_select %>%\n  filter(Major_category == \"Engineering\" | Major_category == \"Physical Science\")\nrecent_grads_science[1:4, c(\"Major_category\",\"Total\")]\n\n# A tibble: 4 × 2\n  Major_category Total\n  <chr>          <dbl>\n1 Engineering     2339\n2 Engineering      756\n3 Engineering      856\n4 Engineering     1258"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#filtering-with-and",
     "href": "courses/r_basics/dataframes.html#filtering-with-and",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Filtering with AND &",
     "text": "Filtering with AND &\n\nBoth Criteria must be met\nTo use filter() to create a new data frame containing only engineering college majors with more than 1,000 total graduates, we’d write:\n\n\nrecent_grads_engineers1000 <- recent_grads %>%\n  filter(Major_category == \"Engineering\" & Total > 1000)\n\nrecent_grads_engineers1000[c(\"Major_category\",\"Total\")]\n\n# A tibble: 6 × 2\n  Major_category Total\n  <chr>          <dbl>\n1 Engineering     2339\n2 Engineering     1258\n3 Engineering    32260\n4 Engineering     2573\n5 Engineering    91227\n6 Engineering    81527"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#winding-up",
     "href": "courses/r_basics/dataframes.html#winding-up",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Winding Up",
     "text": "Winding Up\n\nLet’s create a new data frame containing only college majors that meet all three of our criteria for college majors.\nTo accomplish this, we’ll use filter() and the & operator to filter rows in the recent_grads_science data frame to retain only majors that have women as greater than 40 percent of total graduates and median salaries above 40,000 USD."
   },
   {
     "objectID": "courses/r_basics/dataframes.html#code-and-output",
     "href": "courses/r_basics/dataframes.html#code-and-output",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Code and Output",
     "text": "Code and Output\n\npotential_majors <- recent_grads_science %>%\n  filter(Women_percent > 40 & Median > 40000)\n\npotential_majors_selected <- recent_grads_science %>%\n  filter(Women_percent > 40 & Median > 40000) %>%\n  select(Major,Total,Major_category)\n\nprint(potential_majors_selected)\n\n# A tibble: 1 × 3\n  Major     Total Major_category  \n  <chr>     <dbl> <chr>           \n1 ASTRONOMY  1792 Physical Science"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#arranging-data-frames-by-variables",
     "href": "courses/r_basics/dataframes.html#arranging-data-frames-by-variables",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Arranging Data Frames by Variables",
     "text": "Arranging Data Frames by Variables\n\nTo arrange our data frame rows by TOTAL, we’ll use another function in the dplyr package: `arrange()`.\nThe arrange() function lets you specify a variable we want to use to re-order the rows of your data frame. Let’s say we want to arrange data_frame_1 by Total:\n\n\n# data_frame_2 <- data_frame_1 %>% \n#   arrange(Total)\n\n\nBy default, arrange() orders the rows of a data frame by the specified variable in ascending order, from lowest to highest.\nFor descending order use desc()\n\n\n# data_frame_2 <- data_frame_1 %>% \n#  arrange(desc(Total))"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#using-multiple-variables-to-arrange",
     "href": "courses/r_basics/dataframes.html#using-multiple-variables-to-arrange",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Using multiple variables to arrange",
     "text": "Using multiple variables to arrange\n\nWe can arrange data frames by multiple numeric variables as well. If we specify multiple variables,\nR will reorder rows of the data frame by each variable in order, moving from left to right.\nTo arrange data_frame_1 in order of ascending Total and descending Men_percent, we could write:\n\n\n# data_frame_2 <- data_frame_1 %>% \n#  arrange(Total, desc(Men_percent))"
   },
   {
     "objectID": "courses/r_basics/dataframes.html#final-task",
     "href": "courses/r_basics/dataframes.html#final-task",
-    "title": "Working with Lists",
+    "title": "Working with Dataframes",
     "section": "Final Task",
     "text": "Final Task\n\nCreate a new data frame, my_majors, containing the data in the potential_majors data frame arranged in order of increasing Unemployment_rate and decreasing Median (in that order).\n\n\n my_majors <- potential_majors %>% \n   arrange(Unemployment_rate, desc(Median))\nmy_majors[,1:6]\n\n# A tibble: 1 × 6\n  Major     Major_category     Men Women Total Median\n  <chr>     <chr>            <dbl> <dbl> <dbl>  <dbl>\n1 ASTRONOMY Physical Science   832   960  1792  62000"
   },
@@ -3239,5 +3239,236 @@
     "title": "Investigating COVID-19 Trends",
     "section": "Questions Addressed",
     "text": "Questions Addressed\n\nWhich countries have had the highest number of deaths due to COVID-19?\nWhich countries have had the highest number of positive cases against the number of tests?\nWhich countries have made the best effort in terms of the number of COVID-19 tests conducted related to their population?\nWhich countries were ultimately the most and least affected related to their population?\n\n\nCreate a questions list having the above questions.\n\n\n\nCode\nquestion_list <- list(\"Which countries have had the highest number of deaths due to COVID-19?\",\n\"Which countries have had the highest number of positive cases against the number of tests?\",\n\"Which countries have made the best effort in terms of the number of COVID-19 tests conducted related to their population?\",\n\"Which countries were ultimately the most and least affected related to their population?\")\n\n\nCreate a list that contains our answers with the following association:\n\n\"Death\" = death_top_3,\n\"Positive tested cases\" = positive_tested_top_3,\n\"The best effort in test related to the population\" = best_effort_tested_cased_top_3,\n\"The most affected country related to its population\" = most_affected_country,\n\"The least affected country related to its population\" = least_affected_country\nStore the result in answer_list\n\nDisplay this list.\n\n\nCode\nanswer_list <- list(\"Death\" = death_top_3,\n\"Positive tested cases\" = positive_tested_top3,\n\"The best effort in test related to the population\" = best_effort_tested_cased_top_3,\n\"The most affected country related to its population\" = most_affected_country,\n\"The least affected country related to its population\" = least_affected_country)\n\nanswer_list\n\n\n$Death\n[1] \"Belgium\"        \"United Kingdom\" \"Italy\"         \n\n$`Positive tested cases`\n United States         Turkey United Kingdom \n    0.10861819     0.08071172     0.11326062 \n\n$`The best effort in test related to the population`\n[1] \"Russia\"        \"Italy\"         \"United States\"\n\n$`The most affected country related to its population`\n[1] \"Italy\"\n\n$`The least affected country related to its population`\n[1] \"Poland\""
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html",
+    "href": "courses/r_basics/dataframes.html",
+    "title": "Working with Dataframes",
+    "section": "",
+    "text": "The most common data structures involved in data analysis.\nLike lists, data frames can contain multiple data types.\nUnlike lists all elements of a data frame are vectors of equal length.\nThe read_csv() from readr package is used to import csv data\nstr() is used to display the internal structure of an R object\n\n\nlibrary(readr)\nrecent_grads <- read_csv(\"datasets/recent_grads.csv\")\n#str(recent_grads)"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#lists",
+    "href": "courses/r_basics/lists.html#lists",
+    "title": "Working with Lists",
+    "section": "Lists",
+    "text": "Lists\n\nLists can contain multiple types of objects.\nThe objects may consist of different data structures, including single data elements, vectors, and matrices."
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#using-lists",
+    "href": "courses/r_basics/lists.html#using-lists",
+    "title": "Working with Lists",
+    "section": "Using Lists",
+    "text": "Using Lists\n\nWhy would we want to create lists of objects in R?\nStoring objects in lists allows us to make use of some very powerful R features.\nAllows performing the same operation on each object in your list hence avoiding repetitively typing the same function.\nLists store information that is used to compose complex structures like plots. e.g ggplot objects"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#creating-lists",
+    "href": "courses/r_basics/lists.html#creating-lists",
+    "title": "Working with Lists",
+    "section": "Creating lists",
+    "text": "Creating lists\n\nLists are created by using a simple function list()\n\n\nuni_clubs <- list('ballroom dancing','rugby','bird watching','pottery')\nuni_clubs\n\n[[1]]\n[1] \"ballroom dancing\"\n\n[[2]]\n[1] \"rugby\"\n\n[[3]]\n[1] \"bird watching\"\n\n[[4]]\n[1] \"pottery\""
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#entering-data-into-a-list-12",
+    "href": "courses/r_basics/lists.html#entering-data-into-a-list-12",
+    "title": "Working with Lists",
+    "section": "Entering Data into a List 1/2",
+    "text": "Entering Data into a List 1/2\n\nData for chess club as an example\nThe data is entered into a vector as shown :\n\n\nclub_title <- c('chess club')\n\nclub_description <- c('Meets two nights a week for members to play chess. Snacks are provided.')\n\nclub_dues <- c(50,20,15)\n\nmeeting_days <- c('Monday','Wednesday')\n\nmeeting_times <- c('6:00pm','8:00 pm')\nclub_meetings <- rbind(meeting_days, meeting_times)"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#entering-data-into-a-list-22",
+    "href": "courses/r_basics/lists.html#entering-data-into-a-list-22",
+    "title": "Working with Lists",
+    "section": "Entering Data into a List 2/2",
+    "text": "Entering Data into a List 2/2\n\nchess_club <- list(club_title,club_description,club_dues,club_meetings)\nchess_club\n\n[[1]]\n[1] \"chess club\"\n\n[[2]]\n[1] \"Meets two nights a week for members to play chess. Snacks are provided.\"\n\n[[3]]\n[1] 50 20 15\n\n[[4]]\n              [,1]     [,2]       \nmeeting_days  \"Monday\" \"Wednesday\"\nmeeting_times \"6:00pm\" \"8:00 pm\""
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#object-naming-in-list",
+    "href": "courses/r_basics/lists.html#object-naming-in-list",
+    "title": "Working with Lists",
+    "section": "Object Naming in List",
+    "text": "Object Naming in List\n\nTo specify names for list objects within the list() function, you can use =.\nFor example, let’s create a list containing data you’ve gathered about the rugby club:\n\n\nrugby_club <- list (club_title=c('Rugby Club'),\n                    club_description=c('Plays matches against clubs from local universities'),\n                    club_dues=c(100,50))\nrugby_club\n\n$club_title\n[1] \"Rugby Club\"\n\n$club_description\n[1] \"Plays matches against clubs from local universities\"\n\n$club_dues\n[1] 100  50"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#assigning-names-to-lists-12",
+    "href": "courses/r_basics/lists.html#assigning-names-to-lists-12",
+    "title": "Working with Lists",
+    "section": "Assigning Names to Lists 1/2",
+    "text": "Assigning Names to Lists 1/2\n\nAssigning names to list objects is similar to assigning names to vector elements:\nWe’ll use the names() accessor function.\n\n\nballroom_dancing <- list (c('Ballroom Dancing Club'),\n                          c('Practices waltz, salsa, and tango dancing for competitions with local university dance teams')\n,c(150))\n\nnames(ballroom_dancing) <- c('club_title','club_description','club_dues')"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#output",
+    "href": "courses/r_basics/lists.html#output",
+    "title": "Working with Lists",
+    "section": "Output",
+    "text": "Output\n\nballroom_dancing\n\n$club_title\n[1] \"Ballroom Dancing Club\"\n\n$club_description\n[1] \"Practices waltz, salsa, and tango dancing for competitions with local university dance teams\"\n\n$club_dues\n[1] 150"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#assigning-names-to-lists-22",
+    "href": "courses/r_basics/lists.html#assigning-names-to-lists-22",
+    "title": "Working with Lists",
+    "section": "Assigning Names to Lists 2/2",
+    "text": "Assigning Names to Lists 2/2\n\nLike vectors, if you call the names() function in a list without assigned names, the function will return NULL.\nLet’s assign names to objects of the chess_club list that we created earlier.\nWe have created a vector, chess_club_names, of names for the objects of the chess_club list.\nUse the names() function to assign the names as attributes to elements of the chess_club list."
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#code",
+    "href": "courses/r_basics/lists.html#code",
+    "title": "Working with Lists",
+    "section": "Code",
+    "text": "Code\n\nchess_club_names <- c('club_title','club_description',\n                      'club_dues','club_meetings')\nnames(chess_club) <- chess_club_names\nchess_club\n\n$club_title\n[1] \"chess club\"\n\n$club_description\n[1] \"Meets two nights a week for members to play chess. Snacks are provided.\"\n\n$club_dues\n[1] 50 20 15\n\n$club_meetings\n              [,1]     [,2]       \nmeeting_days  \"Monday\" \"Wednesday\"\nmeeting_times \"6:00pm\" \"8:00 pm\""
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#indexing-a-list-15",
+    "href": "courses/r_basics/lists.html#indexing-a-list-15",
+    "title": "Working with Lists",
+    "section": "Indexing a List 1/5",
+    "text": "Indexing a List 1/5\n\nuse two different indexing operations on lists:\n\n\nSingle brackets to return a list of selected elements ([])\nDouble brackets to return a single element ([[]])\n\n\nExample : Extracting the second element in Rugby Club\n\n\nrugby_club[2]\n\n$club_description\n[1] \"Plays matches against clubs from local universities\"\n\ntypeof(rugby_club[2])\n\n[1] \"list\""
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#indexing-a-list-25",
+    "href": "courses/r_basics/lists.html#indexing-a-list-25",
+    "title": "Working with Lists",
+    "section": "Indexing a list 2/5",
+    "text": "Indexing a list 2/5\n\nLet’s try performing this operation using double brackets:\n\n\nrugby_club[[2]]\n\n[1] \"Plays matches against clubs from local universities\"\n\ntypeof(rugby_club[[2]])\n\n[1] \"character\""
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#indexing-a-list-35",
+    "href": "courses/r_basics/lists.html#indexing-a-list-35",
+    "title": "Working with Lists",
+    "section": "Indexing a list 3/5",
+    "text": "Indexing a list 3/5\n\nLike in vectors multiple elements can be extracted using c()\nLet’s use single brackets to extract the first and third objects in the rugby_club list:\n\n\nrugby_club[c(1,3)]\n\n$club_title\n[1] \"Rugby Club\"\n\n$club_dues\n[1] 100  50"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#indexing-a-list-45",
+    "href": "courses/r_basics/lists.html#indexing-a-list-45",
+    "title": "Working with Lists",
+    "section": "Indexing a list 4/5",
+    "text": "Indexing a list 4/5\n\nWhat happens if we use double brackets to index rugby_club?\nNow, the output consists of the first element in the third object of the list:\n\n\nrugby_club[[c(3,1)]]\n\n[1] 100"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#indexing-a-list-55---using-names",
+    "href": "courses/r_basics/lists.html#indexing-a-list-55---using-names",
+    "title": "Working with Lists",
+    "section": "Indexing a list 5/5 - Using names",
+    "text": "Indexing a list 5/5 - Using names\n\nWhen objects in a list have names associated with them, you can use them for indexing.\n\n\nrugby_club$club_description\n\n[1] \"Plays matches against clubs from local universities\"\n\nrugby_club$club_dues[1]\n\n[1] 100\n\nrugby_club[[3]]\n\n[1] 100  50"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#practice-indexing",
+    "href": "courses/r_basics/lists.html#practice-indexing",
+    "title": "Working with Lists",
+    "section": "Practice Indexing",
+    "text": "Practice Indexing\n\nWrite code to give the second element in chess club\n\n\nchess_club[[c(3,2)]]\n\n[1] 20"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#modifying-list-elements-13",
+    "href": "courses/r_basics/lists.html#modifying-list-elements-13",
+    "title": "Working with Lists",
+    "section": "Modifying List Elements 1/3",
+    "text": "Modifying List Elements 1/3\n\nAddition to extracting elements, we can also index lists to change specific list components.\nFor example, let’s say you spoke with a new friend who is a member of the rugby club.\nShe tells you that the club dues paid by members at the start of the fall and spring semesters have increased by 10 USD each.\nAs a result, you’d like to change the values of club_dues you have stored in your rugby_club list.\nTo replace the old values with new values\n\n\nrugby_club$club_dues <- c(110,60,70,90)"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#output-1",
+    "href": "courses/r_basics/lists.html#output-1",
+    "title": "Working with Lists",
+    "section": "Output",
+    "text": "Output\n\nrugby_club\n\n$club_title\n[1] \"Rugby Club\"\n\n$club_description\n[1] \"Plays matches against clubs from local universities\"\n\n$club_dues\n[1] 110  60  70  90"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#replacing-values",
+    "href": "courses/r_basics/lists.html#replacing-values",
+    "title": "Working with Lists",
+    "section": "Replacing Values",
+    "text": "Replacing Values\n\nrugby_club[[c(3,1)]] <- 80\nrugby_club\n\n$club_title\n[1] \"Rugby Club\"\n\n$club_description\n[1] \"Plays matches against clubs from local universities\"\n\n$club_dues\n[1] 80 60 70 90"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#modifying-list-elements-23",
+    "href": "courses/r_basics/lists.html#modifying-list-elements-23",
+    "title": "Working with Lists",
+    "section": "Modifying List Elements 2/3",
+    "text": "Modifying List Elements 2/3\n\nLet’s modify the chess_club list to reflect new information your research has turned up.\nCurrently, chess club members pay dues during the fall semester (50 USD), spring semester (20 USD)\nDuring summer (15 USD) if they are staying on campus. Since few students stay on campus and snack costs are low, the club captain is reducing summer club dues to 5 USD."
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#code-and-output",
+    "href": "courses/r_basics/lists.html#code-and-output",
+    "title": "Working with Lists",
+    "section": "Code and Output",
+    "text": "Code and Output\n\nchess_club[[c(3,3)]] <- 5\nchess_club\n\n$club_title\n[1] \"chess club\"\n\n$club_description\n[1] \"Meets two nights a week for members to play chess. Snacks are provided.\"\n\n$club_dues\n[1] 50 20  5\n\n$club_meetings\n              [,1]     [,2]       \nmeeting_days  \"Monday\" \"Wednesday\"\nmeeting_times \"6:00pm\" \"8:00 pm\""
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#adding-elements-to-lists",
+    "href": "courses/r_basics/lists.html#adding-elements-to-lists",
+    "title": "Working with Lists",
+    "section": "Adding Elements to Lists",
+    "text": "Adding Elements to Lists\nPreparing the object to be added\n\nAdding members of different years to the matrix\n\n\nfall <- c(8,12,13,2)\nspring <- c(6,11,14,3)\n\nmember_year_rugby <- rbind(spring, fall)\n\n\ncolnames(member_year_rugby) <-c('first_yr','second_yr',\n                                 'third_yr','fourth_yr')\nmember_year_rugby\n\n       first_yr second_yr third_yr fourth_yr\nspring        6        11       14         3\nfall          8        12       13         2\n\nmean(member_year_rugby[,'first_yr'])\n\n[1] 7"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#adding-elements-to-lists-1",
+    "href": "courses/r_basics/lists.html#adding-elements-to-lists-1",
+    "title": "Working with Lists",
+    "section": "Adding Elements to Lists",
+    "text": "Adding Elements to Lists\nAdding the Object\n\nLet’s add member_years_chess as a fourth object of the list.\nTo add an element to a list, we can specify the position we want the new element to occupy using double brackets:\n\n\nrugby_club[[\"Member Year\"]] <- member_year_rugby"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#output-2",
+    "href": "courses/r_basics/lists.html#output-2",
+    "title": "Working with Lists",
+    "section": "Output",
+    "text": "Output\n\nrugby_club\n\n$club_title\n[1] \"Rugby Club\"\n\n$club_description\n[1] \"Plays matches against clubs from local universities\"\n\n$club_dues\n[1] 80 60 70 90\n\n$`Member Year`\n       first_yr second_yr third_yr fourth_yr\nspring        6        11       14         3\nfall          8        12       13         2"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#adding-elements-to-lists-2",
+    "href": "courses/r_basics/lists.html#adding-elements-to-lists-2",
+    "title": "Working with Lists",
+    "section": "Adding Elements to Lists",
+    "text": "Adding Elements to Lists\n\nWe’ve researched chess club membership and found the following numbers of first-year members that joined during the spring and fall semesters last year:\nFall Semester: 12 Spring Semester: 15\nLet’s add this information to to our chess_club list.\n\n\nfirst_years <- c(12,15)\nnames(first_years) <- c('spring','fall')\nfirst_years\n\nspring   fall \n    12     15 \n\nchess_club[[\"first_years\"]] <- first_years"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#output-3",
+    "href": "courses/r_basics/lists.html#output-3",
+    "title": "Working with Lists",
+    "section": "Output",
+    "text": "Output\n\nchess_club\n\n$club_title\n[1] \"chess club\"\n\n$club_description\n[1] \"Meets two nights a week for members to play chess. Snacks are provided.\"\n\n$club_dues\n[1] 50 20  5\n\n$club_meetings\n              [,1]     [,2]       \nmeeting_days  \"Monday\" \"Wednesday\"\nmeeting_times \"6:00pm\" \"8:00 pm\"  \n\n$first_years\nspring   fall \n    12     15"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#combining-lists-12",
+    "href": "courses/r_basics/lists.html#combining-lists-12",
+    "title": "Working with Lists",
+    "section": "Combining Lists 1/2",
+    "text": "Combining Lists 1/2\n\nSyntax for combining multiple lists is similar to that for combining vectors.\nTo combine the rugby_club and ballroom_dancing lists into a new list called uni_club_data,\nwe can use the c() function:\n\n\nuni_club_data <- c(rugby_club,ballroom_dancing)\nuni_club_data\n\n$club_title\n[1] \"Rugby Club\"\n\n$club_description\n[1] \"Plays matches against clubs from local universities\"\n\n$club_dues\n[1] 80 60 70 90\n\n$`Member Year`\n       first_yr second_yr third_yr fourth_yr\nspring        6        11       14         3\nfall          8        12       13         2\n\n$club_title\n[1] \"Ballroom Dancing Club\"\n\n$club_description\n[1] \"Practices waltz, salsa, and tango dancing for competitions with local university dance teams\"\n\n$club_dues\n[1] 150"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#combining-lists-22",
+    "href": "courses/r_basics/lists.html#combining-lists-22",
+    "title": "Working with Lists",
+    "section": "Combining Lists 2/2",
+    "text": "Combining Lists 2/2\n\nCombining lists using c() attaches lists to one another, end-to-end, to create a single list.We can use it to combine as many lists as we need to\nThe uni_club_data list is confusing because some of the elements, like club_description, have the same name.\nWe need a way to combine lists that preserves the organization of each list.\nRecall that lists can contain any type of data object, including other lists.\nInstead of combining elements of the three lists into a single list as you did using c(), you can use list() to create a new list of lists.\nLet’s create a list of lists, uni_club_list, to illustrate how this works.\n\n\nuni_club_list <- list(rugby_club =rugby_club,\n                      ballroom_dancing = ballroom_dancing)"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#output-4",
+    "href": "courses/r_basics/lists.html#output-4",
+    "title": "Working with Lists",
+    "section": "Output",
+    "text": "Output\n\nuni_club_list\n\n$rugby_club\n$rugby_club$club_title\n[1] \"Rugby Club\"\n\n$rugby_club$club_description\n[1] \"Plays matches against clubs from local universities\"\n\n$rugby_club$club_dues\n[1] 80 60 70 90\n\n$rugby_club$`Member Year`\n       first_yr second_yr third_yr fourth_yr\nspring        6        11       14         3\nfall          8        12       13         2\n\n\n$ballroom_dancing\n$ballroom_dancing$club_title\n[1] \"Ballroom Dancing Club\"\n\n$ballroom_dancing$club_description\n[1] \"Practices waltz, salsa, and tango dancing for competitions with local university dance teams\"\n\n$ballroom_dancing$club_dues\n[1] 150"
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#final-assignment",
+    "href": "courses/r_basics/lists.html#final-assignment",
+    "title": "Working with Lists",
+    "section": "Final Assignment",
+    "text": "Final Assignment\n\nCreate a new list, uni_clubs, that contains the following lists:\n\nrugby_club\nballroom_dancing\nchess_club\n\nInstead of combining the list objects into a single list, create a list of lists by using the list() function.\nWrite your code so that each list within uni_clubs is named. Keep the original list names."
+  },
+  {
+    "objectID": "courses/r_basics/lists.html#code-1",
+    "href": "courses/r_basics/lists.html#code-1",
+    "title": "Working with Lists",
+    "section": "Code",
+    "text": "Code\n\nuni_clubs <-list( rugby_club =rugby_club, \n                  ballroom_dancing = ballroom_dancing, \n                  chess_club = chess_club)"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#introduction-to-data-visualization",
+    "href": "courses/r_basics/line_graphs.html#introduction-to-data-visualization",
+    "title": "Creating Line Graphs",
+    "section": "Introduction to Data Visualization",
+    "text": "Introduction to Data Visualization\n\nIn the next couple of discussions we will examine data visualization in details\nWe will be working to identify patterns in our datasets\nThree important key issues :\n\n\nExplore the principles of data visualization.\nLearn to write R code to visualize trends in data in different ways.\nBuild intuition around when different types of visualizations will help you understand your data."
   }
 ]
