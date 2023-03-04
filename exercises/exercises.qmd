@@ -1,5 +1,5 @@
 ---
-title: "Statistical Learning"
+title: "Exercises"
 ---
 
 Coming soon..............

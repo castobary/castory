@@ -58,5 +58,8 @@
   },
   "projects.qmd": {
     "projects.html": "ae4adc9f"
+  },
+  "blog/blog.qmd": {
+    "blog.html": "5a63aa16"
   }
 }

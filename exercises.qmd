@@ -1,5 +1,0 @@
----
-title: "Exercises"
----
-
-This is an exercises section

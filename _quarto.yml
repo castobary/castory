@@ -28,6 +28,10 @@ website:
          - exercises/basic_exercises.qmd
          - exercises/advanced_exercises.qmd
          - exercises/modelling_exercises.qmd
+
+     - section: "Blog"
+       contents:
+         - blog/blog.qmd
   
  page-footer: 
    left: "Copyright 2023, Castory Munishi" 

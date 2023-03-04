@@ -1,5 +1,5 @@
 ---
-title: "Statistical Learning"
+title: "Blog Posts"
 ---
 
 Coming soon..............

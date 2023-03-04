@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Castory Munishi",
     "section": "",
-    "text": "I’m a MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My research will develop essential health packages for patients with Non Communicable Diseases in Tanzania. In parallel I’m working to build an online pharmaceutical supply chain called Pharmlinks which has been recently bought by i+ plus solution. I am also working as a data analyst in four intensive health care projects in Tanzania. In the past I have worked in over 40 impactful projects. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries. This is my personal website and blong where you will find information about me and the works that i have been doing. There are also learning materials and tutorials where i’m sharing what i have been learning for others to learn as well. You are welcome and enjoy the lessons.\nOn this site I keep a list of r courses, study projects, and my CV, as well as a technical blog.\n\n\n\n\n\n\n\nAssessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan. Sangeda, RZ, Kibona, J, and Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/\nDrug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania. Efraim, J, Munishi, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. https://doi.org/10.12688/F1000RESEARCH.110079.1\n\n\n\nHuruApp | Information on Substance Use Rehabilitation and Recovery | 2021\n\n\n\n\n\nUniversitetet i Bergen\nBergen, Norway\nMPhil. in Global Health | August 2022 - Present (Expected 2024)\nMuhimbili University of Health and Allied Sciences\nDar es Salaam, Tanzania\nBachelor of Pharmacy | October 2016 - September 2020"
+    "text": "I’m an MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My masters research thesis is focused on Insurance data analysis and costing studies for NCD’s Tanzania. I am also working as a data analyst in four intensive health care projects in Tanzania. I also work with AppliedEpi Organization contributing to teaching R to public health practioners and scientists worldwide. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries.\nOn this site I keep a list of r courses, study projects, and my CV, as well as a technical blog."
   },
   {
     "objectID": "courses/r_basics/map_function.html",
@@ -228,14 +228,14 @@
     "href": "courses/sir_modelling.html",
     "title": "SIR Modelling",
     "section": "",
-    "text": "SIR Modelling"
+    "text": "Coming soon…………..\nWorking hard to develop this section"
   },
   {
     "objectID": "courses/statistical_learning.html",
     "href": "courses/statistical_learning.html",
     "title": "Statistical Learning",
     "section": "",
-    "text": "Statistical Learning"
+    "text": "Coming soon…………..\nWorking hard to develop this section"
   },
   {
     "objectID": "courses.html",
@@ -249,21 +249,21 @@
     "href": "exercises/advanced_exercises.html",
     "title": "Advanced Exercises",
     "section": "",
-    "text": "About this site"
+    "text": "Coming soon…………..\nWorking hard to develop this section"
   },
   {
     "objectID": "exercises/basic_exercises.html",
     "href": "exercises/basic_exercises.html",
     "title": "Basics Exercises",
     "section": "",
-    "text": "About this site"
+    "text": "Coming soon…………..\nWorking hard to develop this section"
   },
   {
     "objectID": "exercises/modelling_exercises.html",
     "href": "exercises/modelling_exercises.html",
     "title": "Modelling Exercises",
     "section": "",
-    "text": "About this site"
+    "text": "Coming soon…………..\nWorking hard to develop this section"
   },
   {
     "objectID": "exercises.html",
@@ -277,7 +277,7 @@
     "href": "projects/case_studies.html",
     "title": "Case Studies",
     "section": "",
-    "text": "Case Studies on Health Research"
+    "text": "Coming soon…………..\nWorking hard to develop this section"
   },
   {
     "objectID": "projects/data_quest/book_reviews/book_reviews.html",
@@ -508,7 +508,7 @@
     "href": "projects/epi_projects.html",
     "title": "Epidemiology Projects",
     "section": "",
-    "text": "Epidemiology sample projects"
+    "text": "Coming soon…………..\nWorking hard to develop this section"
   },
   {
     "objectID": "projects.html",
@@ -529,13 +529,41 @@
     "href": "index.html#selected-projects",
     "title": "Castory Munishi",
     "section": "Selected Projects",
-    "text": "Selected Projects\n\nPublications\nAssessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan. Sangeda, RZ, Kibona, J, and Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/\nDrug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania. Efraim, J, Munishi, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. https://doi.org/10.12688/F1000RESEARCH.110079.1\n\n\nApps\nHuruApp | Information on Substance Use Rehabilitation and Recovery | 2021\n:::"
+    "text": "Selected Projects\n\nPublications\nAssessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan. Sangeda, RZ, Kibona, J, and Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/\nDrug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania. Efraim, J, Munishi, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. https://doi.org/10.12688/F1000RESEARCH.110079.1\n\n\nApps\nHuruApp | Information on Substance Use Rehabilitation and Recovery | 2021"
   },
   {
     "objectID": "index.html#education",
     "href": "index.html#education",
     "title": "Castory Munishi",
     "section": "Education",
-    "text": "Education\nUniversitetet i Bergen\nBergen, Norway\nMPhil. in Global Health | August 2022 - Present (Expected 2024)\nMuhimbili University of Health and Allied Sciences\nDar es Salaam, Tanzania\nBachelor of Pharmacy | October 2016 - September 2020 ::: {.g-col-4}"
+    "text": "Education\nUniversitetet i Bergen\nBergen, Norway\nMPhil. in Global Health | August 2022 - Present (Expected 2024)\nMuhimbili University of Health and Allied Sciences\nDar es Salaam, Tanzania\nBachelor of Pharmacy | October 2016 - September 2020"
+  },
+  {
+    "objectID": "index.html#bio",
+    "href": "index.html#bio",
+    "title": "",
+    "section": "Bio",
+    "text": "Bio\nI’m an MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My masters research thesis is focused on Insurance data analysis and costing studies for NCD’s Tanzania. In parallel I’m working to build an online pharmaceutical supply chain called Pharmlinks. I am also working as a data analyst in four intensive health care projects in Tanzania. In the past I have worked in over 40 impactful projects. I also work with AppliedEpi Organization contributing to teaching R to public health practioners and scientists worldwide. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries. This is my personal website and blong where you will find information about me and the works that i have been doing. There are also learning materials and tutorials where i’m sharing what i have been learning for others to learn as well. You are welcome and enjoy the lessons. Feel free to contact me.\nOn this site I keep a list of r courses, study projects, and my CV, as well as a technical blog."
+  },
+  {
+    "objectID": "index.html#areas-of-interest-consultancy",
+    "href": "index.html#areas-of-interest-consultancy",
+    "title": "Castory Munishi",
+    "section": "Areas of Interest & Consultancy",
+    "text": "Areas of Interest & Consultancy\n\nHealth Data Science | Modelling\nGlobal Health | Digital Health\nHealth Economics | Priority Setting\nPharmacy Practice | Supply Chain"
+  },
+  {
+    "objectID": "index.html#selected-manuscripts",
+    "href": "index.html#selected-manuscripts",
+    "title": "Castory Munishi",
+    "section": "Selected Manuscripts",
+    "text": "Selected Manuscripts\n\nPublications\nAssessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan. Sangeda, RZ, Kibona, J, and Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/\nDrug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania. Efraim, J, Munishi, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. https://doi.org/10.12688/F1000RESEARCH.110079.1\n\n\nApps\nHuruApp | Information on Substance Use Rehabilitation and Recovery | 2021"
+  },
+  {
+    "objectID": "blog/blog.html",
+    "href": "blog/blog.html",
+    "title": "Blog Posts",
+    "section": "",
+    "text": "Coming soon…………..\nWorking hard to develop this section"
   }
 ]
