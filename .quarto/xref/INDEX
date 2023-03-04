@@ -133,5 +133,8 @@
   },
   "projects/case_studies/us_health_disparities/us_health_disparities_p.qmd": {
     "us_health_disparities_p.html": "56222182"
+  },
+  "projects/epi_projects/covid_trends/covid_trends.qmd": {
+    "covid_trends.html": "c219af04"
   }
 }

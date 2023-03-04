@@ -54,12 +54,13 @@ Bachelor of Pharmacy | October 2016 - September 2020
 
 ## Selected Manuscripts
 
-#### Publications
+### Apps
+
+**[HuruApp](https://www.huruapp.org)** | Information on Substance Use Rehabilitation and Recovery | 2021  
+
+### Publications
 
 **Assessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan.** Sangeda, RZ, Kibona, J, and Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/](doi:10.3389/fpubh.2020.00454)
 
 **Drug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania.** Efraim, J, Munishi, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. [https://doi.org/10.12688/F1000RESEARCH.110079.1](https://doi.org/10.12688/F1000RESEARCH.110079.1)
 
-#### Apps
-
-**[HuruApp](https://www.huruapp.org)** | Information on Substance Use Rehabilitation and Recovery | 2021  

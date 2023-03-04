@@ -2,6 +2,6 @@
 title: "Epidemiology Projects"
 ---
 
-Coming soon..............
+Sample of Epidemiology Data Analysis
 
-Working hard to develop this section
+[1. Analysis COVID-19 Trends](epi_projects/covid_trends/covid_trends.qmd)

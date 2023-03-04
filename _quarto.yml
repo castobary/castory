@@ -26,12 +26,6 @@ website:
          - projects/data_quest.qmd
          - projects/epi_projects.qmd
 
-     - section: "Exercises"
-       contents:
-         - exercises/basic_exercises.qmd
-         - exercises/advanced_exercises.qmd
-         - exercises/modelling_exercises.qmd
-
      - section: "Blog"
        contents:
          - blog/blog.qmd
