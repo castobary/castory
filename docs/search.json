@@ -1285,7 +1285,7 @@
     "href": "courses/r_basics/vectors.html#practice-3",
     "title": "Working with Vectors",
     "section": "Practice 3",
-    "text": "Practice 3\nUse the class_names vector to assign names to elements of the final_scores vector.\n\nAnswer\n\nclass_names <- c(\"math\", \"chemistry\", \"writing\", \"art\",\n                  \"history\", \"music\", \"physical_education\")\n\nnames(final_scores) <- class_names"
+    "text": "Practice 3\nUse the class_names vector to assign names to elements of the final_scores vector.\nAnswer\n\nclass_names <- c(\"math\", \"chemistry\", \"writing\", \"art\",\n                  \"history\", \"music\", \"physical_education\")\n\nnames(final_scores) <- class_names"
   },
   {
     "objectID": "courses/r_basics/vectors.html#indexing-vectors-by-names",
@@ -1306,7 +1306,7 @@
     "href": "courses/r_basics/vectors.html#comparing-values-and-logical-data-types",
     "title": "Working with Vectors",
     "section": "4. Comparing Values And Logical Data Types",
-    "text": "4. Comparing Values And Logical Data Types\nwe can write code using comparison operators to compare values based on specific conditions, such as “greater than,” “less than,” or “equal to.”\n\nPractice 5\nWrite an expression using a comparison operator to answer the question:\n\nIs the average of liberal arts(writing and history) final grades greater than the average of fine arts(art and music) final grades?"
+    "text": "4. Comparing Values And Logical Data Types\nwe can write code using comparison operators to compare values based on specific conditions, such as “greater than,” “less than,” or “equal to.”\nPractice 5\nWrite an expression using a comparison operator to answer the question:\n\nIs the average of liberal arts(writing and history) final grades greater than the average of fine arts(art and music) final grades?"
   },
   {
     "objectID": "courses/r_basics/vectors.html#comparing-single-values-against-vectors",
