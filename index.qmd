@@ -19,8 +19,6 @@ about:
       url: "https://github.com/castobary"
     - text: Email
       url: "mailto:castobary@gmail.com"
-    - text: Blog
-      url: "blog/blog.qmd"
     - text: CV
       url: "cv.pdf"
 comments: false
@@ -50,9 +48,9 @@ Bachelor of Pharmacy | October 2016 - September 2020
 ## Areas of Interest & Consultancy
 
 1. Health Data Science | Modelling
-2. Global Health | Digital Health
-3. Health Economics | Priority Setting
-4. Pharmacy Practice | Supply Chain
+2. Global Health       | Digital Health
+3. Health Economics    | Priority Setting
+4. Pharmacy Practice   | Supply Chain
 
 ## Selected Manuscripts
 
