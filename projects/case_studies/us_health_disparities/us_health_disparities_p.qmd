@@ -1,0 +1,392 @@
+---
+title: "US Health Disparities by Race"
+author: "Castory Munishi"
+format: html
+editor: visual
+---
+
+## Background
+
+Starting in 1997, the federal government mandated the separation of the "Asian or Pacific Islander" race category into two separate categories:
+
+(1) Asian -- "A person having origins in any of the original peoples of the Far East, Southeast Asia, or the Indian subcontinent including, for example, Cambodia, China, India Japan, Korea, Malaysia, Pakistan, the Philippine Islands, Thailand, and Vietnam."<sup>1</sup>
+
+(2) Native Hawaiian or Other Pacific Islander -- "A person having origins in any of the original peoples of Hawaii, Guam, Samoa, or other Pacific Islands. The term"Native Hawaiian" does not include individuals who are native to the State of Hawaii by virtue of being born there." <sup>1</sup>
+
+According to 2010 census data, only 0.4% of the U.S. population identifies as Native Hawaiian or Pacific Islander (NHPI) or NHPI in combination with another race. <sup>2</sup> Due to its small size, researchers conducting federal surveys have struggled to obtain sufficient sample sizes to estimate health statistics for the NHPI population. In 2010, the National Institute on Minority Health and Health Disparities was established to prioritize research on health disparities among specific populations. NHPI individuals have been designated as one of the NIH's health disparity populations. <sup>3</sup>
+
+In 2014, the National Center for Health Statistics conducted the first federal study of NHPI civilians residing in the U.S. with the development of the Native Hawaiian and Pacific Islander National Health Interview Survey (NHPI NHIS). <sup>4</sup> The survey was modelled after the National Health Interview Survey, which has been administered to the general U.S. population regularly for the past 50 years.
+
+For this project you will use subset of the publicly-available data from the 2014 NHPI NHIS survey to explore potential risk factors for psychological distress, as measured by the Kessler (K-6) Screening Scale for Psychological Distress. <sup>5</sup>
+
+The aims of the project are:
+
+1.  To determine the prevalence of severe psychological distress among participants in the 2014 NHPI NHIS survey.
+
+2.  To examine the association between various potential risk factors and psychological distress level among participants in the 2014 NHPI NHIS survey.
+
+References
+
+(1) Executive Office of the President, Office of Management and Budget, Office of Information and Regulatory Affairs, Revisions to the Standards for the Classification of Federal Data on Race and Ethnicity,1997, Washington, DC,OMB Publications Office. (https://www.federalregister.gov/documents/1997/10/30/97-28653/revisions-to-the-standards-for-the-classification-of-federal-data-on-race-and-ethnicity)
+
+(2) Galinsky AM, Zelaya CE, Simile C, Barnes PM. Health conditions and behaviors of Native Hawaiian and Pacific Islander persons in the United States, 2014. National Center for Health Statistics. Vital Health Stat 3(40). 2017.
+
+(3) https://www.nimhd.nih.gov/about/overview/
+
+(4) https://www.cdc.gov/nchs/nhis/nhpi.html
+
+(5) Kessler, R. C., Barker, P. R, Colpe, L. J., Epstein, J. F., Gfroerer, J. C., Hiripi, E., Howes, M.J., Normand, S.L., Manderscheid, R. W., Walters, E. E., Zaslavsky, A. M. (2003). Screening for serious mental illness in the general population. Arch Gen Psychiatry, 60(2), 184-9.
+
+## Data Dictionary
+
+A description of the variables in the dataset `nhpi2014.csv` is given in the data dictionary below
+
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| **Variable Name**                                          | **Description**                                           | **Coding**                              |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ID                                                         | Participant ID                                            | \--                                     |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| AGE_P                                                      | Participant age                                           | 18-74 = 18-74 years                     |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 75 = 75+years                           |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+|                                                            |                                                           |                                         |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| FEMALE_SEX                                                 | Participant sex                                           | 1=Female, 0=Male                        |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| MAR_STAT                                                   | Marital status                                            | 1=Married                               |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 2=Widowed                               |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 3=Divorced or separated                 |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 4=Never married                         |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 5=Living with a partner                 |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 9=Unknown                               |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| EMPLOYED                                                   | Current employment status                                 | 1=Currently employed                    |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 0=Not currently employed                |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| BMI                                                        | Body mass index (kg/m^2^)                                 | 16.3 -- 49.6 kg/m^2^                    |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 9999= Don't know                        |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| CURRSMOK                                                   | Current smoker                                            | 1=Yes, 0=No, 9=Don't know               |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ALCOHOL                                                    | Alcohol drinking                                          | 0=Current non-drinker                   |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 1=Current light drinker                 |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 2=Current moderate drinker              |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 3=Current heavy drinker                 |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 9=Don't know                            |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ACTIVE                                                     | Physical activity level                                   | 1=Moderate/high physical activity level |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 0=Low physical activity level           |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| DIAB                                                       | Diabetes                                                  | 1=Yes, 0=No, 9=Don't know               |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| HTN                                                        | Hypertension                                              | 1=Yes, 0=No, 9=Don't know               |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ASTHMA                                                     | Asthma                                                    | 1=Yes, 0=No                             |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| JOINTPAIN                                                  | Chronic joint pain/stiffness in past 30 days.             | 1=Yes, 0=No                             |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| *Kessler Screening Scale for Psychological Distress (K-6)* | During the past 30 days, about how often did you feel.... | 1=All the time                          |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 2=Most of the time                      |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 3=Some of the time                      |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 4=A little of the time                  |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 5=None of the time                      |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 7=Refused                               |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 8=Not ascertained                       |
+|                                                            |                                                           |                                         |
+|                                                            |                                                           | 9=Don't know                            |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ASISAD                                                     | ... so sad that nothing cheers you up?                    |                                         |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ASINERV                                                    | ... nervous?                                              |                                         |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ASIRSTLS                                                   | ... restless or fidgety?                                  |                                         |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ASIHOPLS                                                   | ... hopeless?                                             |                                         |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ASIEFFRT                                                   | ... that everything is an effort?                         |                                         |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+| ASIWTHLS                                                   | ... worthless?                                            |                                         |
++------------------------------------------------------------+-----------------------------------------------------------+-----------------------------------------+
+
+## Task 1: Data Cleaning
+
+1.  Read the dataset `nhpi2014.csv` into R as a data frame called `nhpi.`
+
+2.  Within nhpi make the following changes:
+
+    a.  For all variables, recode any values of "Refused", "Don't know", "Unknown" and "Not ascertained" to missing (NA).
+
+<!-- -->
+
+b.  Using the coding in the table below, create the following new variables: AGECAT, BMICAT, MARRIED, ASISAD2, ASINERV2, ASIRSTLS2, ASIHOPLS2, ASIEFFRT2, ASIWTHLS2, DISTRESS_SCORE, DISTRESS_SEVERE, and DISTRESS_LEVEL.
+
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| **Old Variable**                                              | **New Variable** | **Coding for New Variable**                                                                                                                                                                                          |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| AGE_P                                                         | AGECAT           | 1=18-44 years                                                                                                                                                                                                        |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 2=45-64 years                                                                                                                                                                                                        |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 3=65+ years                                                                                                                                                                                                          |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| BMI                                                           | BMICAT           | 1= Underweight (\<18.5 kg/m^2^)                                                                                                                                                                                      |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 2= Normal weight (18.5-24.9 kg/m^2^)                                                                                                                                                                                 |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 3= Overweight (25.0-29.9 kg/m^2^)                                                                                                                                                                                    |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 4= Obese (≥30 kg/m^2^)                                                                                                                                                                                               |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | NA= Unknown BMI                                                                                                                                                                                                      |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| MAR_STAT                                                      | MARRIED          | 0=Never married                                                                                                                                                                                                      |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 1=Widowed, divorced, or separated                                                                                                                                                                                    |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 2=Married or living with a partner                                                                                                                                                                                   |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | NA= Unknown marital status                                                                                                                                                                                           |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ASISAD                                                        | ASISAD2          | 4=All the time                                                                                                                                                                                                       |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 3=Most of the time                                                                                                                                                                                                   |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 2=Some of the time                                                                                                                                                                                                   |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 1=A little of the time                                                                                                                                                                                               |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 0=None of the time                                                                                                                                                                                                   |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | (Values of 7, 8, and 9 should be set to missing, NA)                                                                                                                                                                 |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ASINERV                                                       | ASINERV2         |                                                                                                                                                                                                                      |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ASIRSTLS                                                      | ASIRSTLS2        |                                                                                                                                                                                                                      |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ASIHOPLS                                                      | ASIHOPLS2        |                                                                                                                                                                                                                      |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ASIEFFRT                                                      | ASIEFFRT2        |                                                                                                                                                                                                                      |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ASIWTHLS                                                      | ASIWTHLS2        |                                                                                                                                                                                                                      |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ASISAD2, ASINERV2, ASIRSTLS2, ASIHOPLS2, ASIEFFRT2, ASIWTHLS2 | DISTRESS_SCORE   | Equals the sum of the 6 components of the K-6 scale (ASISAD2, ASINERV2, ASIRSTLS2, ASIHOPLS2, ASIEFFRT2, and ASIWTHLS2). If a person is missing any of these variables, DISTRESS_SCORE should be set to missing, NA. |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| DISTRESS_SCORE                                                | DISTRESS_SEVERE  | 1= Severe psychological distress (DISTRESS_SCORE of ≥13)                                                                                                                                                             |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 0= No severe psychological distress (DISTRESS_SCORE is \<13)                                                                                                                                                         |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | If a person is missing DISTRESS_SCORE then DISTRESS_SEVERE should be set to missing, NA.                                                                                                                             |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| DISTRESS_SCORE                                                | DISTRESS_LEVEL   | 0= No distress (DISTRESS_SCORE of 0)                                                                                                                                                                                 |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 1= Low distress (DISTRESS_SCORE of 1-5)                                                                                                                                                                              |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 2= Moderate distress (DISTRESS_SCORE of 6-10)                                                                                                                                                                        |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | 3= High distress (DISTRESS_SCORE of 11-24)                                                                                                                                                                           |
+|                                                               |                  |                                                                                                                                                                                                                      |
+|                                                               |                  | If a person is missing DISTRESS_SCORE then DISTRESS_LEVEL should be set to missing, NA.                                                                                                                              |
++---------------------------------------------------------------+------------------+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+c.  Exclude participants who have missing values for any of the following variables: DISTRESS_SCORE, MARRIED, EMPLOYED, BMI_CAT, CURRSMOK, ALCOHOL, ACTIVE, HTN, DIAB, ASTHMA, or JOINTPAIN.
+
+## Task 2: Statistical Analysis
+
+### Descriptive Statistics
+
+Fill in the table below with the appropriate summary statistics (frequencies and percentages) and p-values and add a title.
+
+Table 1. xxx
+
++------------------------------------------+------------------------+----------------------------------+-------------+
+|                                          | **Total Participants** | **Psychological Distress Level** | **P-value** |
+|                                          |                        |                                  |             |
+|                                          | **(N=xxx)**            |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+|                                          |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| **None**                                 | **Low**                | **Moderate**                     | **High**    |
+|                                          |                        |                                  |             |
+| **(N=xxx)**                              | **(N=xxx)**            | **(N=xxx)**                      | **(N=xxx)** |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Age group                                |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     18-44 years                          |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     45-64 years                          |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     ≥65 years                            |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Female sex                               |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Currently employed                       |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Marital status                           |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Married/living with partner          |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Widowed, separated, or divorced      |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Never married                        |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Current smoker                           |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Moderate or high physical activity level |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Alcohol use                              |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     None                                 |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Light drinker                        |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Moderate drinker                     |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Heavy drinker                        |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| BMI category                             |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Underweight (\<18.5 kg/m^2^)         |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Normal weight (18.5-24.9 kg/m^2^)    |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Overweight (25.0-29.9 kg/m^2^)       |                        |                                  |             |
+|                                          |                        |                                  |             |
+|     Obese (≥30 kg/m^2^)                  |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Diabetes (yes)                           |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Hypertension (yes)                       |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Joint pain (yes)                         |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+| Asthma (yes)                             |                        |                                  |             |
++------------------------------------------+------------------------+----------------------------------+-------------+
+
+1.  Based on your results in Table 1, which risk factors showed a statistically significant association with psychological distress level?
+
+2.  You are interested in further exploring the association between marital status and psychological distress level.
+
+<!-- -->
+
+a.  Is there an association between marital status (MARRIED) and psychological distress level (DISTRESS_LEVEL)? Report the name of the test, the null and alternative hypotheses, test statistic, degrees of freedom, p-value, and your conclusion.
+
+b.  Is there an association between marital status (MARRIED) and severe psychological distress (DISTRESS_SEVERE)? Report the name of the test, the null and alternative hypotheses, test statistic, degrees of freedom, p-value, and your conclusion. Calculate and interpret the appropriate measures of effect (+95% confidence intervals), using "never married" as the reference group.
+
+<!-- -->
+
+### Inferential Statistics
+
+3.  Generate a multiple linear regression model to determine which risk factors are associate with the psychological distress score. Report the results in the table below.
+
+Table 2. \[INSERT TITLE HERE\].
+
++---------------------------------------+--------------------+---------------+
+| **Exposure**                          | **Slope (95% CI)** | **P-value**   |
++---------------------------------------+--------------------+---------------+
+| Age (years)                           | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Female sex                            | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Marital status                        |                    |               |
++---------------------------------------+--------------------+---------------+
+|     Never married                     | REFERENCE          | \-\--         |
++---------------------------------------+--------------------+---------------+
+|     Widowed, separated, or divorced   | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+|     Married/living with partner       | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Low household income                  | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Education                             |                    |               |
++---------------------------------------+--------------------+---------------+
+|                                       |                    |               |
++---------------------------------------+--------------------+---------------+
+|     \<High school graduate            | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+|     High school graduate              | REFERENCE          | \-\--         |
++---------------------------------------+--------------------+---------------+
+|     College graduate or higher        | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Born outside of U.S.                  | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Body mass index (kg/m^2^)             | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Self-reported health status\*         | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Current smoker                        | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Moderate/high physical activity level | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+| Heavy alcohol use                     | ???                | ???           |
++---------------------------------------+--------------------+---------------+
+
+Based on your results in Table 2, which risk factors showed a statistically significant association with psychological distress score?
+
+4.  Generate a multiple logistic regression model to determine which risk factors are associate with the psychological distress severe. Report the results in the table below.
+
+Table 3. \[INSERT TITLE HERE\].
+
++---------------------------------------+--------------------+-------------+
+|                                       |                    |             |
++=======================================+====================+=============+
+| **Exposure**                          | **Odds             | **P-value** |
+|                                       | Ratio (95% CI)**   |             |
++---------------------------------------+--------------------+-------------+
+| Age (years)                           | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+| Female sex                            | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+|     Never married                     | REFERENCE          | \-\--       |
++---------------------------------------+--------------------+-------------+
+|     Widowed, separated, or            | ???                | ???         |
+| divorced                              |                    |             |
++---------------------------------------+--------------------+-------------+
+|     Married/living with               | ???                | ???         |
+| partner                               |                    |             |
++---------------------------------------+--------------------+-------------+
+| Low household income                  | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+| Education                             |                    |             |
++---------------------------------------+--------------------+-------------+
+|                                       |                    |             |
++---------------------------------------+--------------------+-------------+
+|     \<High school graduate            | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+|     College graduate or               | ???                | ???         |
+| higher                                |                    |             |
++---------------------------------------+--------------------+-------------+
+| Born outside of U.S.                  | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+| Body mass index (kg/m^2^)             | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+| Self-reported health status\*         | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+| Current smoker                        | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+| Moderate/high physical activity level | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+| Heavy alcohol use                     | ???                | ???         |
++---------------------------------------+--------------------+-------------+
+
+Based on your results in Table 3, which risk factors showed a statistically significant association with severe psychological distress?
+
+After completing the tasks above compare your results with

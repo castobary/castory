@@ -2,6 +2,6 @@
 title: "Case Studies"
 ---
 
-Coming soon..............
+Statistical Analysis Case Studies
 
-Working hard to develop this section
+[1. US Health Disparities by Race](case_studies/us_health_disparities/us_health_disparities_p.qmd)

@@ -2,6 +2,10 @@
 title: "Projects"
 ---
 
-Coming soon..............
+This section contains a sample of projects to work out testing your data analysis skills using data from different fields and different sources.
 
-Working hard to develop this section
+[Case Studies](case_studies.qmd)
+
+[Dataquest Projects](data_quest.qmd)
+
+[Epidemiology Projects](epi_projects.qmd)
