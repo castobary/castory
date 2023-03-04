@@ -133,6 +133,8 @@ A plot showing forest fires by month
 
 ```{r}
 #| echo: true
+#| warning: false
+#| message: false
 ggplot(ds) +
   aes(x=month) +
   geom_bar() +
@@ -161,6 +163,8 @@ A plot showing forest fires by day of the week
 
 ```{r}
 #| echo: true
+#| warning: false
+#| message: false
 ggplot(ds) +
   aes(x=day) +
   geom_bar() +
@@ -187,6 +191,8 @@ Plotting Other Variables Against Month
 
 ```{r}
 #| echo: true
+#| warning: false
+#| message: false
 forest_fires_long <- ds %>% 
   pivot_longer(
     cols = c("FFMC", "DMC", "DC", 
@@ -213,6 +219,8 @@ Plotting Other Variables Against Day
 
 ```{r}
 #| echo: true
+#| warning: false
+#| message: false
 
 forest_fires_long %>% 
   ggplot(aes(x = day, y = value)) +
@@ -240,6 +248,8 @@ Looking at the data immediately though, there is no variable that describes just
 
 ```{r}
 #| echo: true
+#| warning: false
+#| message: false
 
 forest_fires_long %>% 
   ggplot(aes(x = value, y = area)) +
@@ -257,6 +267,9 @@ forest_fires_long %>%
 It seems that there are two rows where `area` that still hurt the scale of the visualization. Let's make a similar visualization that excludes these observations so that we can better see how each variable relates to `area`.
 
 ```{r}
+#| echo: true
+#| warning: false
+#| message: false
 forest_fires_long %>% 
   filter(area < 300) %>% 
   ggplot(aes(x = value, y = area)) +
