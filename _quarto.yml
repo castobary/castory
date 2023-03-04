@@ -6,6 +6,7 @@ website:
  page-navigation: true
  sidebar:
    style: "docked"
+   background: light
    search: true
    contents:
      - section: "Home"
@@ -48,6 +49,8 @@ format:
     css: styles.css
     toc: true
 
+execute:
+  freeze: auto
 
 
 

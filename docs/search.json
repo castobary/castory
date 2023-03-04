@@ -4,7 +4,7 @@
     "href": "index.html",
     "title": "Castory Munishi",
     "section": "",
-    "text": "I’m an MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My masters research thesis is focused on Insurance data analysis and costing studies for NCD’s Tanzania. I am also working as a data analyst in four intensive health care projects in Tanzania. I also work with AppliedEpi Organization contributing to teaching R to public health practioners and scientists worldwide. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries.\nOn this site I keep a list of r courses, study projects, and my CV, as well as a technical blog."
+    "text": "I’m an MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My masters research thesis is focused on Insurance data analysis and costing studies for NCD’s Tanzania. I am also working as a data analyst in four intensive health care projects in Tanzania. I also work with AppliedEpi Organization contributing to teaching R to public health practioners and scientists worldwide. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries.\nOn this site I keep a list of r courses, study projects, my CV, and articles on technology and health in the blog section."
   },
   {
     "objectID": "courses/r_basics/map_function.html",
@@ -2307,7 +2307,7 @@
     "href": "courses/r_basics/matrices.html#example-naming-havard_stan-matrix",
     "title": "Working with Matrices",
     "section": "Example : Naming havard_stan matrix",
-    "text": "Example : Naming havard_stan matrix\n\nharv_stan <- rbind(harvard, stanford)\n\ncolnames(harv_stan) <- c(\"world_rank\",\"quality_of_education\",\n                         \"influence\",\"broad_impact\",\"patents\")\nprint(harv_stan)\n\n         world_rank quality_of_education influence broad_impact patents\nharvard           1                    1         1            1       3\nstanford          2                    9         3            4      10\n\n\n\nPractice 2\n\nName the columns of uni_matrix using the categories vector."
+    "text": "Example : Naming havard_stan matrix\n\nharv_stan <- rbind(harvard, stanford)\n\ncolnames(harv_stan) <- c(\"world_rank\",\"quality_of_education\",\n                         \"influence\",\"broad_impact\",\"patents\")\nprint(harv_stan)\n\n         world_rank quality_of_education influence broad_impact patents\nharvard           1                    1         1            1       3\nstanford          2                    9         3            4      10\n\n\nPractice 2\n\nName the columns of uni_matrix using the categories vector."
   },
   {
     "objectID": "courses/r_basics/matrices.html#finding-matrix-dimensions",
@@ -3092,5 +3092,12 @@
     "title": "Working with Vectors",
     "section": "",
     "text": "In the last mission the grades for each subject were found and stored in variables as follows;\n\nmath <- 88 \nchemistry <- 87.66667\nwriting <-  86\nart <- 91.33333\nhistory <- 84\nmusic <- 91\nphysical_education <- 89.33333\n\nfinal_scores <- c(math, chemistry, writing, art,\n                  history, music, physical_education)\n\nWe can index vectors to select a subset of the elements they contain. Within a vector, every element has a position. R is a 1-indexed programming language, which means that the first element in a vector is assigned a position of one."
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#matrices-two-dimensional-data-structures",
+    "href": "courses/r_basics/matrices.html#matrices-two-dimensional-data-structures",
+    "title": "Working with Matrices",
+    "section": "1. Matrices : Two Dimensional Data Structures",
+    "text": "1. Matrices : Two Dimensional Data Structures\nLet’s say you’ve been accepted a number of top universities. To decide which to attend, you want to find a way to score them using data on education quality, influence, cost, and other factors.\nWe will use matrices to perform this analysis\nWhile vectors are one-dimensional, matrices are two-dimensional and consist of rows and columns in a rectangular layout.\nMatrices hold data of one type (such as numeric or logical).\nA matrix can contain as many rows and columns as needed"
   }
 ]
