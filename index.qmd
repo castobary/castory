@@ -2,6 +2,10 @@
 title: "Castory Munishi"
 image: www/avatar.JPG
 
+format:
+  html:
+    page-layout: full
+
 about:
   template: jolla
   links:
@@ -22,7 +26,8 @@ about:
 comments: false
 ---
 
-:::{.column-page}
+:::{.grid}
+::: {.g-col-8}
 ## Bio
 
 I’m a MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My research will develop essential health packages for patients with Non Communicable Diseases in Tanzania. In parallel I'm working to build an online pharmaceutical supply chain called Pharmlinks which has been recently bought by i+ plus solution. I am also working as a data analyst in four intensive health care projects in Tanzania. In  the past I have worked in over 40 impactful projects. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries. This is my personal website and blong where you will find information about me and the works that i have been doing. There are also learning materials and tutorials where i'm sharing what i have been learning for others to learn as well. You are welcome and enjoy the lessons.
@@ -32,17 +37,6 @@ and [my CV](www/cv.pdf), as well as a [technical blog](blog.html).
 
 <p></p>
 
-## Education
-
-**Universitetet i Bergen**  
-Bergen, Norway
-
-MPhil. in Global Health | August 2022 - Present (Expected 2024)  
-
-**Muhimbili University of Health and Allied Sciences**  
-Dar es Salaam, Tanzania
-
-Bachelor of Pharmacy | October 2016 - September 2020
 
 ## Selected Projects
 
@@ -56,6 +50,20 @@ Bachelor of Pharmacy | October 2016 - September 2020
 #### Apps
 
 **[HuruApp](https://www.huruapp.org)** | Information on Substance Use Rehabilitation and Recovery | 2021  
+:::
 
+::: {.g-col-4}
+## Education
+
+**Universitetet i Bergen**  
+Bergen, Norway
+
+MPhil. in Global Health | August 2022 - Present (Expected 2024)  
+
+**Muhimbili University of Health and Allied Sciences**  
+Dar es Salaam, Tanzania
+
+Bachelor of Pharmacy | October 2016 - September 2020
+:::
 
 :::
