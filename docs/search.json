@@ -221,7 +221,7 @@
     "href": "courses/r_basics.html",
     "title": "R Basics",
     "section": "",
-    "text": "This page contains a compilation of Advanced R Modules.\nKey Modules\nModule 01: Introduction to Programming in R"
+    "text": "This page contains a compilation of Advanced R Modules.\nKey Modules\nModule 01: Introduction to Programming in R Module 02: Vectors Module 03: Matrices"
   },
   {
     "objectID": "courses/sir_modelling.html",
@@ -1237,5 +1237,166 @@
     "title": "R Advanced",
     "section": "",
     "text": "This page contains a compilation of Advanced R Modules.\nExtras\n01. Map Functions"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#indexing-vectors-by-position",
+    "href": "courses/r_basics/vectors.html#indexing-vectors-by-position",
+    "title": "Working with Vectors",
+    "section": "1. Indexing Vectors By Position",
+    "text": "1. Indexing Vectors By Position\nIn the last mission the grades for each subject were found and stored in variables as follows;\n\nmath <- 88 \nchemistry <- 87.66667\nwriting <-  86\nart <- 91.33333\nhistory <- 84\nmusic <- 91\nphysical_education <- 89.33333\n\nfinal_scores <- c(math, chemistry, writing, art,\n                  history, music, physical_education)\n\nWe can index vectors to select a subset of the elements they contain. Within a vector, every element has a position. R is a 1-indexed programming language, which means that the first element in a vector is assigned a position of one."
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#examples",
+    "href": "courses/r_basics/vectors.html#examples",
+    "title": "Working with Vectors",
+    "section": "Examples",
+    "text": "Examples\nWe can extract values from the vector by specifying their position in brackets ([])\n\nfinal_scores[3]\n\n[1] 86\n\n\nExtract multiple values of a vector by specifying more than one position , use (:).Selecting first to fourth elements\n\nfinal_scores[1:4]\n\n[1] 88.00000 87.66667 86.00000 91.33333\n\n\nSelecting multiple vectors that are not next to each other\n\nfinal_scores[c(1,3,7)]\n\n[1] 88.00000 86.00000 89.33333"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#practice-1",
+    "href": "courses/r_basics/vectors.html#practice-1",
+    "title": "Working with Vectors",
+    "section": "Practice 1",
+    "text": "Practice 1\n\nWrite code to create a new vector, stem_grades, containing only the math and chemistry final grades.\nCreate a new vector, non_stem_grades, containing the final grades in the other classes.\nCalculate the mean of each vector and save their values in avg_stem_grades and avg_non_stem_grades.\nWhich grades are higher"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#practice-2",
+    "href": "courses/r_basics/vectors.html#practice-2",
+    "title": "Working with Vectors",
+    "section": "Practice 2",
+    "text": "Practice 2\nCreate a vector of character data called class_names containing your classes in the following order:\n\nmath\nchemistry\nwriting\nart\nhistory\nmusic\nphysical_education"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#naming-the-elements-of-a-vector",
+    "href": "courses/r_basics/vectors.html#naming-the-elements-of-a-vector",
+    "title": "Working with Vectors",
+    "section": "2. Naming the elements of a Vector",
+    "text": "2. Naming the elements of a Vector\nWe now have two vectors:\n\nfinal_scores, containing your class grades (numeric data).\nclass_names, containing the class names (character data).\n\nIn R, vectors may have attributes assigned to them. Attributes provide information, such as names, about the values stored in the vector. To assign names to vector elements, we can use the names() function."
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#naming-at-work",
+    "href": "courses/r_basics/vectors.html#naming-at-work",
+    "title": "Working with Vectors",
+    "section": "Naming at work",
+    "text": "Naming at work\nThe code below shows how you would name a vector containing two subjects:\n\nmath_chemistry <- c(88, 87.66667)\nclass_names <- c(\"math\", \"chemistry\")\nnames(math_chemistry) <- class_names"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#practice-3",
+    "href": "courses/r_basics/vectors.html#practice-3",
+    "title": "Working with Vectors",
+    "section": "Practice 3",
+    "text": "Practice 3\nUse the class_names vector to assign names to elements of the final_scores vector.\nAnswer\n\nclass_names <- c(\"math\", \"chemistry\", \"writing\", \"art\",\n                  \"history\", \"music\", \"physical_education\")\n\nnames(final_scores) <- class_names"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#indexing-vectors-by-names",
+    "href": "courses/r_basics/vectors.html#indexing-vectors-by-names",
+    "title": "Working with Vectors",
+    "section": "3. Indexing Vectors By Names",
+    "text": "3. Indexing Vectors By Names\nIf we want to return the score in chemistry class, we can index math_chemistry by the class name chemistry:\n\nmath_chemistry[\"chemistry\"]\n\nchemistry \n 87.66667 \n\n\nAs with indexing by position, we can index by name to return multiple elements using c():\n\nmath_chemistry[c(\"math\",\"chemistry\")]\n\n     math chemistry \n 88.00000  87.66667"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#practice-4",
+    "href": "courses/r_basics/vectors.html#practice-4",
+    "title": "Working with Vectors",
+    "section": "Practice 4",
+    "text": "Practice 4\n\nIndex the final_scores vector by name to create two new vectors:\n\n\nliberal_arts: Containing your writing and history final grades.\nfine_arts: Containing your art and music final grades.\n\n\nCalculate the average of each new vector."
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#comparing-values-and-logical-data-types",
+    "href": "courses/r_basics/vectors.html#comparing-values-and-logical-data-types",
+    "title": "Working with Vectors",
+    "section": "4. Comparing Values And Logical Data Types",
+    "text": "4. Comparing Values And Logical Data Types\nwe can write code using comparison operators to compare values based on specific conditions, such as “greater than,” “less than,” or “equal to.”\nPractice 5\nWrite an expression using a comparison operator to answer the question:\n\nIs the average of liberal arts(writing and history) final grades greater than the average of fine arts(art and music) final grades?"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#comparing-single-values-against-vectors",
+    "href": "courses/r_basics/vectors.html#comparing-single-values-against-vectors",
+    "title": "Working with Vectors",
+    "section": "5. Comparing Single Values Against Vectors",
+    "text": "5. Comparing Single Values Against Vectors\nConsider Answering the question: “Is the final math grade higher than the grade in my other classes?”\n\nfinal_scores[\"math\"] > final_scores\n\n              math          chemistry            writing                art \n             FALSE               TRUE               TRUE              FALSE \n           history              music physical_education \n              TRUE              FALSE              FALSE \n\n\nWhen comparing the math grade (a vector containing a single value) to a vector containing all grades, R replicates the shorter vector until it is the same length as the longer vector. Then it performs the operation."
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#storing-logical-data",
+    "href": "courses/r_basics/vectors.html#storing-logical-data",
+    "title": "Working with Vectors",
+    "section": "Storing Logical Data",
+    "text": "Storing Logical Data\nLike numeric and character data, logical data can be stored in vectors. If we want to store the results of comparing the math grade with the other grades as a variable called math_comparison, we can write:\n\nmath_comparison <- final_scores[\"math\"] > final_scores\ntypeof(math_comparison)\n\n[1] \"logical\""
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#practice-6",
+    "href": "courses/r_basics/vectors.html#practice-6",
+    "title": "Working with Vectors",
+    "section": "Practice 6",
+    "text": "Practice 6\n\nUse the mean() function to calculate the grade point average from final_scores. Store this in a variable named gpa.\nCompare final_scores to gpa to see whether the grade in each class is higher than the gpa. Store the logical output in a vector named above_average."
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#logical-indexing",
+    "href": "courses/r_basics/vectors.html#logical-indexing",
+    "title": "Working with Vectors",
+    "section": "6. Logical Indexing",
+    "text": "6. Logical Indexing\nLogical indexing will compare each value in a target vector against the corresponding value in a logical vector.\n\nIf the corresponding value is TRUE, the resulting vector will contain that value.\nIf the corresponding value is FALSE, the resulting vector will not contain that value.\n\nEarlier in this mission, we compared the math grade with grades in other classes to see if it was higher. Let’s store the result of this comparison in a vector of logical values:\n\nlogical_vector <- final_scores[\"math\"] > final_scores\n\nWe can now index final_scores using logical_vector. This will allow us to create a new vector containing only class grades that are lower than the math grade:\n\nfinal_scores[logical_vector]\n\nchemistry   writing   history \n 87.66667  86.00000  84.00000"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#practice-7",
+    "href": "courses/r_basics/vectors.html#practice-7",
+    "title": "Working with Vectors",
+    "section": "Practice 7",
+    "text": "Practice 7\nBy indexing above_average into final_scores, create a new vector named best_grades that contains only class grades that are higher than your GPA.\n\ngpa <- mean(final_scores)\nabove_average <- (gpa < final_scores)\nbest_grades <- final_scores[above_average]"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#performing-vector-arithmetic",
+    "href": "courses/r_basics/vectors.html#performing-vector-arithmetic",
+    "title": "Working with Vectors",
+    "section": "7. Performing Vector Arithmetic",
+    "text": "7. Performing Vector Arithmetic\nYour friend, Johnny, who has the same classes as you this year, emailed you all his average exam, homework, and project grades in the following format:\n\nTests: 76, 89, 78, 88, 79, 93, 89\nHomework: 85, 90, 88, 79, 88, 95, 74\nProjects: 77, 93, 87, 90, 77, 82, 80\n\nOrder : math, chemistry, writing, art, history, music, physical_education"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#vector-arithmetic---ii",
+    "href": "courses/r_basics/vectors.html#vector-arithmetic---ii",
+    "title": "Working with Vectors",
+    "section": "Vector Arithmetic - II",
+    "text": "Vector Arithmetic - II\nYou start by creating three vectors, one for each assignment category, to work with:\n\ntests <- c(76, 89, 78, 88, 79, 93, 89)\nhomework <- c(85, 90, 88, 79, 88, 95, 74)\nprojects <- c(77, 93, 87, 90, 77, 82,80)\n\nTask : Calculate Average score for each subject and store as vector\nAdding\n\nsum <- tests + homework"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#practice-8",
+    "href": "courses/r_basics/vectors.html#practice-8",
+    "title": "Working with Vectors",
+    "section": "Practice 8",
+    "text": "Practice 8\n\nCalculate Johnny’s average scores for each class by adding the tests, homework, and projects vectors and dividing by 3.\nStore the resulting vector in a variable named johnny_scores.\nUse the mean() function to calculate Johnny’s grade point average from johnny_scores."
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#vector-recycling",
+    "href": "courses/r_basics/vectors.html#vector-recycling",
+    "title": "Working with Vectors",
+    "section": "8. Vector Recycling",
+    "text": "8. Vector Recycling\nWhenever there’s a mismatch in the length of two vectors that you’re comparing, the shorter vector is recycled (or repeated) until it matches the length of the longer one.\nTo illustrate how R’s recycling behavior works when we perform operations on vectors of different lengths, let’s shorten your homework vector to only two values:\n\ntests <- c(76, 89, 78, 88, 79, 93, 89)\nhomework <- c(85, 90)\n\nsum <- tests + homework"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#practice-9",
+    "href": "courses/r_basics/vectors.html#practice-9",
+    "title": "Working with Vectors",
+    "section": "Practice 9",
+    "text": "Practice 9\nHere are Kate’s test, homework and project grades:\n\nTests: 76, 89, 78\nHomework: 85, 90, 88, 79, 88, 95, 74\nProjects: 77, 93, 87, 90, 77, 82, 80\n\nCalculate the sum of Kate’s test, homework, and project grades and store the resulting vector as a variable named recycling. Note the resulting warning message."
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#appending-elements-to-a-vector",
+    "href": "courses/r_basics/vectors.html#appending-elements-to-a-vector",
+    "title": "Working with Vectors",
+    "section": "9. Appending Elements to A vector",
+    "text": "9. Appending Elements to A vector\nTo add additional elements to a vector, you can use c() to create a new vector consisting of the existing vector plus the new elements you want to add to it:\n\ntests <- c(tests, 99, 67)"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#practice-10",
+    "href": "courses/r_basics/vectors.html#practice-10",
+    "title": "Working with Vectors",
+    "section": "Practice 10",
+    "text": "Practice 10\n\nAdd the rest of Kate’s test grades (88, 79, 93, 89) to the tests vector. Save the new vector containing all Kate’s grades as tests, which will overwrite the incomplete tests variable.\nUse vector arithmetic to calculate Kate’s final average grade for each class from the tests, homework, and projects vectors. Save the resulting vector as kate_grades.\nAssign class names to the elements of kate_grades.\nCalculate Kate’s gpa from kate_grades using the mean() function and save the result as a variable named kate_gpa.\nUse comparison operators and logical indexing to create a new vector, kate_low_grades, containing final grades for classes in which Kate earned a grade lower than kate_gpa."
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html#vectors---closing",
+    "href": "courses/r_basics/vectors.html#vectors---closing",
+    "title": "Working with Vectors",
+    "section": "10. Vectors - Closing",
+    "text": "10. Vectors - Closing\n\nx <- 1:10\ny <- -3*x + 5\nplot(x, y, type = \"b\", pch = 17, \n     col = \"blue\", xlab = \"x\", ylab = \"y\")"
   }
 ]

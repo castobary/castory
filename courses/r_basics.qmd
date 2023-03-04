@@ -8,5 +8,6 @@ Key Modules
 
 [Module 01: Introduction to Programming in R](r_basics/Introduction.qmd)
 [Module 02: Vectors](r_basics/vectors.qmd)
+[Module 03: Matrices](r_basics/matrices.qmd)
 
 

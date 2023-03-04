@@ -85,5 +85,11 @@
   },
   "courses/r_advanced.qmd": {
     "r_advanced.html": "018ccfdb"
+  },
+  "courses/r_basics/vectors.qmd": {
+    "vectors.html": "138fd27b"
+  },
+  "courses/r_basics/10 String Manipulation.Rmd": {
+    "10 String Manipulation.html": "de3f62f0"
   }
 }
