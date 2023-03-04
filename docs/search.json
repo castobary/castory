@@ -2230,14 +2230,14 @@
     "href": "courses/r_basics/hist_box.html#anatomy-of-boxplot-23",
     "title": "Histogram , Bar and Box Plots",
     "section": "Anatomy of Boxplot 2/3",
-    "text": "Anatomy of Boxplot 2/3\n\nThe Five Number Summary\n\nThe largest value(Max): Represented by the top of the black line extending from the top of the box. These lines are also known as “whiskers”.\nThe third quartile (Q3): Represented by the top of the box. Seventy-five percent of the values are smaller than the third quartile.\n\n3.The median: Represented by the thick black line. The median is the value that falls in the middle of the data.\n4.The first quartile (Q1): Represented by the bottom of the box. Twenty-five percent of the values are smaller than the first quartile.\n5.The smallest value(Min): Represented by the bottom of the black line extending from the bottom of the box."
+    "text": "Anatomy of Boxplot 2/3\nThe Five Number Summary\n\nThe largest value(Max): Represented by the top of the black line extending from the top of the box. These lines are also known as “whiskers”.\nThe third quartile (Q3): Represented by the top of the box. Seventy-five percent of the values are smaller than the third quartile.\n\n3.The median: Represented by the thick black line. The median is the value that falls in the middle of the data.\n4.The first quartile (Q1): Represented by the bottom of the box. Twenty-five percent of the values are smaller than the first quartile.\n5.The smallest value(Min): Represented by the bottom of the black line extending from the bottom of the box."
   },
   {
     "objectID": "courses/r_basics/hist_box.html#anatomy-of-boxplot-33",
     "href": "courses/r_basics/hist_box.html#anatomy-of-boxplot-33",
     "title": "Histogram , Bar and Box Plots",
     "section": "Anatomy of Boxplot 3/3",
-    "text": "Anatomy of Boxplot 3/3\n\nIntequartile Range\n\nThe white box, bounded by Q3 and Q1, is referred to as the Interquartile Range or IQR.\nThe IQR encompasses 50 percent of the data, and is calculated by subtracting Q1 from Q3."
+    "text": "Anatomy of Boxplot 3/3\nIntequartile Range\n\nThe white box, bounded by Q3 and Q1, is referred to as the Interquartile Range or IQR.\nThe IQR encompasses 50 percent of the data, and is calculated by subtracting Q1 from Q3."
   },
   {
     "objectID": "courses/r_basics/hist_box.html#anatomy-of-boxplot-44---outliers",
@@ -2475,7 +2475,7 @@
     "href": "courses/r_basics/vectorized_functions.html#calculating-using-a-non-vectorized-method-for-loop",
     "title": "Working with Vectorized Functions",
     "section": "Calculating using a non vectorized method (for loop)",
-    "text": "Calculating using a non vectorized method (for loop)\n\n\n   user  system elapsed \n   0.05    0.00    0.08 \n\n\n[1] 500000500000"
+    "text": "Calculating using a non vectorized method (for loop)\n\n\n   user  system elapsed \n   0.00    0.00    0.03 \n\n\n[1] 500000500000"
   },
   {
     "objectID": "courses/r_basics/vectorized_functions.html#performing-the-calculating-using-a-function-vectorized-method",
@@ -3099,5 +3099,47 @@
     "title": "Working with Matrices",
     "section": "1. Matrices : Two Dimensional Data Structures",
     "text": "1. Matrices : Two Dimensional Data Structures\nLet’s say you’ve been accepted a number of top universities. To decide which to attend, you want to find a way to score them using data on education quality, influence, cost, and other factors.\nWe will use matrices to perform this analysis\nWhile vectors are one-dimensional, matrices are two-dimensional and consist of rows and columns in a rectangular layout.\nMatrices hold data of one type (such as numeric or logical).\nA matrix can contain as many rows and columns as needed"
+  },
+  {
+    "objectID": "courses/r_basics/functionals.html#r-markdown",
+    "href": "courses/r_basics/functionals.html#r-markdown",
+    "title": "Working with Functionals",
+    "section": "R Markdown",
+    "text": "R Markdown\nThis is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#introduction-to-control-structures",
+    "href": "courses/r_basics/control_structures.html#introduction-to-control-structures",
+    "title": "Control Structures",
+    "section": "Introduction to Control Structures",
+    "text": "Introduction to Control Structures\nIntroduction to the data\n\npacman::p_load(readr)\nscores <- read_csv(\"datasets/scores.csv\")\nkable(scores[1:4,c(\"home_country\",\"home_goals\",\"away_country\",\n             \"away_goals\",\"win_country\")])\n\n\n\n \n  \n    home_country \n    home_goals \n    away_country \n    away_goals \n    win_country \n  \n \n\n  \n    Brazil \n    3 \n    Croatia \n    1 \n    Brazil \n  \n  \n    Mexico \n    1 \n    Cameroon \n    0 \n    Mexico \n  \n  \n    Spain \n    1 \n    Netherlands \n    5 \n    Netherlands \n  \n  \n    Chile \n    3 \n    Australia \n    1 \n    Chile \n  \n\n\n\n\n\n\nOur goal is to add a new variable to the data frame that provides information about whether the home team won each match."
+  },
+  {
+    "objectID": "courses/r_basics/custom_functions.html#r-markdown",
+    "href": "courses/r_basics/custom_functions.html#r-markdown",
+    "title": "Writing Custom Functions",
+    "section": "R Markdown",
+    "text": "R Markdown\nThis is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#background-12",
+    "href": "courses/r_basics/hist_box.html#background-12",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Background 1/2",
+    "text": "Background 1/2\n\nWhen Hollywood releases new movies, Metacritic, Fandango, Rotten Tomatoes, and IMDB use different systems to calculate ratings based on the reviews by movie critics and consumers.\nWhich of these sites should you consult when deciding whether to see a movie?\nUnderstanding how the different sites’ movie reviews compare to one another is a good start\nFandango has been suspected of releasing inflated ratings to increase ticket sales.\nAfter they found that some films that garnered poor ratings elsewhere were rated highly on Fandango, analysts from FiveThirtyEight investigated and published an article about bias in movie ratings."
+  },
+  {
+    "objectID": "courses/r_basics/string_manipulation.html#r-markdown",
+    "href": "courses/r_basics/string_manipulation.html#r-markdown",
+    "title": "String Manipulation",
+    "section": "R Markdown",
+    "text": "R Markdown\nThis is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document."
+  },
+  {
+    "objectID": "courses/r_basics/vectorized_functions.html#r-functions-as-alternatives-to-loops",
+    "href": "courses/r_basics/vectorized_functions.html#r-functions-as-alternatives-to-loops",
+    "title": "Working with Vectorized Functions",
+    "section": "R Functions As Alternatives To Loops",
+    "text": "R Functions As Alternatives To Loops\n\nIn R, many built-in functions contain for-loops.\nThis makes it possible to call a function instead of directly using a for-loop\nFunctions take an input, perform an operation, and return an output.\nMany R functions are vectorized, meaning you can use them to operate on all elements of a vector quickly"
   }
 ]
