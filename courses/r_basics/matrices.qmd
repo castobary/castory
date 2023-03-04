@@ -1,0 +1,342 @@
+---
+title: "Working with Matrices"
+author: "Castory Munishi"
+date: 03/04/2023
+execute: 
+  echo: true
+  warning: false
+format: revealjs
+editor: visual
+---
+
+
+## 1. Matrices : Two Dimensional Data Structures
+
+Let's say you've been accepted a number of top universities. To decide which to attend, you want to find a way to score them using data on education quality, influence, cost, and other factors.
+
+We will use matrices to perform this analysis
+
+While vectors are one-dimensional, matrices are two-dimensional and consist of rows and columns in a rectangular layout.
+
+Matrices hold data of one type (such as numeric or logical).
+
+A matrix can contain as many rows and columns as needed
+
+## 2. Combining Vectors to Matrices
+
+Below are vectors containing rankings for each university
+
+```{r code2}
+harvard <- c(1,1,1,1,3)
+stanford <- c(2,9,3,4,10)
+MIT <- c(3,3,2,2,1)
+cambridge <- c(4,2,6,13,48)
+oxford <- c(5,7,12,9,15)
+columbia <- c(6,13,13,12,4)
+```
+
+To combine vectors into a matrix, we can use the function `rbind()`
+
+```{r code3}
+harv_stan <- rbind(harvard, stanford)
+```
+
+
+## Practice 1
+
+We have vectors containing ranking data for each university. Create a matrix, named uni_matrix, from these vectors using the `rbind()` function:
+
++ harvard
++ stanford
++ MIT
++ cambridge
++ oxford
++ columbia
+
+```{r codec}
+uni_matrix <- rbind(harvard,stanford,MIT,cambridge,oxford,columbia)
+```
+
+## 3. Naming Matrix Rows and Columns
+
++ When we use the `rbind()` function to create a matrix from vectors with name attributes, the vector names are retained as row name attributes. 
+
++ However, our columns don't have any name attributes associated with them.
+
++ Adding names to rows or columns of a matrix is similar to naming elements of a vector.
+
++ Attributes are not stored as data structures, you can not perform operations on them
+
++ Since matrices have both rows and columns, there are separate functions for adding name attributes to each:
+
+      - Rows: `rownames()`
+      - Columns: `colnames()`
+      
+## Example : Naming havard_stan matrix
+
+```{r code4}
+harv_stan <- rbind(harvard, stanford)
+
+colnames(harv_stan) <- c("world_rank","quality_of_education",
+                         "influence","broad_impact","patents")
+print(harv_stan)
+```
+
+### Practice 2
+
++ Name the columns of uni_matrix using the categories vector.
+
+## 4. Finding Matrix Dimensions
+
+- In deciding which university to go, you need to know the tution fees
+
+- The following vector contains tuition fees for the universities
+
+```{r code5}
+tuition <- c(43280, 45000, 45016, 49350, 28450, 55161)
+```
+
+we need to add the tuition vector to uni_matrix as a column. First, we should make sure that the new vector is of the right dimensions before combining it with our matrix. 
+
+## Dimensions
+
++ The number of rows and columns in a matrix
++ the function `dim()` returns dimensions
+
+```{r code6}
+dim(harv_stan)
+```
+
+If we want to add the vector harv_stan_tuition as a new column to the harv_stan matrix, we'll want the length of harv_stan_tuition to equal the number of rows in harv_stan
+
+```{r code7}
+# dim(harv_stan)[1] == length(harv_stan_tuition)
+```
+
+## Practice 3
+
+Write an expression to return TRUE if the number of rows in uni_matrix is equal to the length of tuition.
+
+```{r code8}
+tuition <- c(43280,45000,45016,49350,28450,55161)
+dim(uni_matrix)[1] == length(tuition)
+```
+
+
+## Adding Columns to Matrices
+
++ Now that we have confirmed that the tuition vector is the same length as the number of rows in uni_matrix, we can add it to the matrix as a column.
+
++ Earlier in this mission, we used the `rbind()` function to combine the university rankings vectors into a single matrix.
+
++ The `rbind()` functions combines vectors or matrices by row.
+
++ To add a vector to a matrix as a column or to join two matrices together by column, we'll use the `cbind()` function. The `cbind()` function combines vectors or matrices by column.
+
++ Example : Adding tution column
+
+```{r code10}
+#cbind(harv_stan, harv_stan_tuition)
+```
+
+
+## Practice 4
+
++ Add the tuition vector as a new column to uni_matrix.
++ Save the new matrix containing rankings and tuition for each university as complete_matrix.
+
+
+```{r code11}
+tuition <- c(43280, 45000, 45016, 49350, 28450, 55161)
+complete_matrix <- cbind(uni_matrix, tuition)
+```
+
+
+## Indexing Matrices By Element
+
++ Matrices can be indeced either :
+  
+    + Index to select specific values
+    + Index to select rows or columns
+    
++ Example: To index harv_stan to extract Stanford's patent ranking, we can index by `row (2)` and `column (5)` positions:
+
+```{r code12}
+harv_stan[2, 5]
+```
+
++ Notice that, as with the output of the `dim()` function, row always comes before column for indexing operations.
+
++ Indexing can also be done using names instead of positions
+
+```{r code13}
+harv_stan["stanford", "patents"]
+```
+
+
+## Indexing Multiple Elements
+
++ Let's index to select broad_impact and patents for Harvard and Stanford - The two columns are next to each other:
+
+```{r code14}
+harv_stan[2, 4:5]
+```
+
++ We can also index matrices to extract elements that aren't next to each other. 
++ Let's say we're interested in extracting world_rank and influence for Harvard and Stanford:
+
+```{r code15}
+harv_stan[c(1,2), c(1,3)]
+```
+
++ A similar operation can be done using column names
+
+
+## Practice 5
+
++ Index by name attributes to extract the following values from complete_matrix:
+
+      + Oxford's influence rank . Store the output as oxford_influence
+      + Cambridge's and Stanford's patents rank. Store the output as cam_stan_patents
+      
+      
+```{r code16}
+complete_matrix <- cbind(uni_matrix, tuition)
+#oxford_influence <- complete_matrix["oxford", "influence"]
+#cam_stan_patents <- complete_matrix[c("cambridge", "stanford"), "patents"]
+```
+
+## Subsetting Matrices by Rows and Columns
+
++ An entire row or column can be extracted of which can be a single or multiple extraction
+
++ For example, let's index harv_stan to extract all the rankings for Harvard:
+
+```{r code17}
+harv_stan["harvard",]
+```
+
++ If we want to select the quality of education rankings for each university in our matrix,
+
+```{r code18}
+harv_stan[,"quality_of_education"]
+```
+
+## Indexing Multiple rows and columns
+
++ To select quality_of_education, influence, and broad_impact rankings for all universities, we would index by those columns:
+
+```{r code19}
+harv_stan[,c("quality_of_education", "influence", "broad_impact")]
+```
+
++ Note that, since we selected columns, c("quality_of_education", "influence", "broad_impact") comes after the comma. 
+
++ If we were indexing to select multiple rows, they would come before the comma.
+
+## Practice 6
+
++ Index complete_matrix to extract the following:
+ 
+    + Oxford's rankings. Store the output as oxford_rank
+    + Influence ranks for all universities. Store the output as influence
+    + All of Harvard's and MIT's rankings.Store the output as harv_mit_rank
+    + Influence and patents rankings for all universities.Store the output as influence_patents
+    
+```{r code20}
+#oxford_rank <- complete_matrix["oxford",]
+#influence <- complete_matrix[,"influence"]
+#harv_mit_rank <- complete_matrix[c("harvard", "MIT"),]
+#influence_patents <- complete_matrix[,c("influence", "patents")]
+```
+
+## Ranking Universities
+
+
++ Now that we've learned to combine vectors into matrices and to extract elements, let's return to our initial goal: Analyzing the university ranking data to decide on a university to attend.
+
++ To answer this question, let's develop a score for each university that is an aggregate of the rankings and tuition information available in complete_matrix. 
+
++ We'll rank the universities for each category we have data for: world_rank, quality_of_education, influence, broad_impact, patents, and tuition.
+
++ Then, we can calculate a score for each university from the sum of its rankings.
+
+```{r code21}
+complete_matrix
+```
+
+
+## Ranking II
+
++ We'll use the `rank() f`unction, along with an expression that indexes the matrix, to specify the category we want to rank the universities by.
+
++ The `rank()` function returns a vector of numeric values. For example, to rank universities by quality_of_education, we'd write:
+
+```{r code22}
+#rank(complete_matrix[,"quality_of_education"])
+```
+
+
+## Practice 7
+
++ Use rank() to rank the universities for each of the following categories:
+ 
+     + world_rank , quality_of_education , influence , broad_impact , patents, tuition
+
++ Save the ranking vectors generated for each category with the following names:
+ 
+    + world_rank_rank
+    + quality_of_education_rank
+    + influence_rank
+    + broad_impact_rank
+    + patents_rank
+    + tuition_rank
+    
+```{r code23}
+#world_rank_rank <- rank(complete_matrix[,"world_rank"])
+#quality_of_education_rank <- rank(complete_matrix[,"quality_of_education"])
+#influence_rank <- rank(complete_matrix[,"influence"])
+#broad_impact_rank <- rank(complete_matrix[,"broad_impact"])
+#patents_rank <- rank(complete_matrix[,"patents"])
+#tuition_rank <- rank(complete_matrix[,"tuition"])
+```
+
+## Scoring and Ranking Universities
+
++ Now that we've ranked the six universities by each category, let's combine the vectors containing the ranks into a single matrix (ranks_matrix) using `rbind()`:
+
+
+```{r code24}
+#ranks_matrix <- rbind(world_rank_rank, quality_of_education_rank, influence_rank, broad_impact_rank, patents_rank, tuition_rank)
+```
+
++ Note that because we used `rbind()`, we combined the vectors by rows. The new matrix contains the vectors for each category stacked one on top of the other. Each university's rankings are in a different column.
+
++ To calculate an aggregate score for each university, let's calculate the sum of its rankings in every category. We'll use indexing to specify the university column we want to calculate a score for using `sum()`.
+
++ For example, we'll calculate the sum of the rankings for Harvard:
+
+```{r code25}
+sum(ranks_matrix[,"harvard"])
+```
+
+
+## Practice 8
+
+Calculate the sums of each university's rankings in ranks_matrix:
+ 
+    + harvard
+    + stanford
+    + MIT
+    + cambridge
+    + oxford
+    + columbia
+    
+```{r code26}
+#sum(ranks_matrix[,"harvard"])
+#sum(ranks_matrix[,"stanford"])
+#sum(ranks_matrix[,"MIT"])
+#sum(ranks_matrix[,"cambridge"])
+#sum(ranks_matrix[,"oxford"])
+#sum(ranks_matrix[,"columbia"])
+```
