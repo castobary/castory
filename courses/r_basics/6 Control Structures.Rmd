@@ -1,0 +1,445 @@
+---
+title: "6 Control Structures"
+author: "Castory Munishi"
+date: "10/27/2020"
+output:
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+	echo = TRUE,
+	message = FALSE,
+	warning = FALSE
+)
+library(kableExtra)
+```
+
+## Introduction to Control Structures
+
+### Introduction to the data
+
+```{r code1, message=FALSE, warning=FALSE}
+library(readr)
+scores <- read_csv("data/scores.csv")
+kable(scores[1:4,c("home_country","home_goals","away_country",
+             "away_goals","win_country")])
+```
+
++ Our goal is to add a new variable to the data frame that provides information about whether the home team won each match.
+
+## Steps in The analysis
+
++ We will start by working with just two rows of the dataframe as practice and we will follow these steps:
+
+ 1. Analyze the data to determine whether the home team won each match.
+ 2. Create a vector containing either "home team won" or "home team did not win" for each row  based on the analysis.
+ 3. Add this vector to the data frame as a new column
+ 
+## Which team won?
+
++ Subset the first two rows of the df to a tibble named scores_two
+
+```{r code2}
+scores_two <- scores[1:2,]
+```
+
++ In the first row, the value in the home_goals column equals 3 and the value in away_goals column equals 1,  so we can determine that the home team won and the same can be done for the second row.
+
++ Create a string vector containing home team won and add it to scores_two, then subset the first five rows of scores
+
+## Code
+
+```{r code3}
+library(dplyr)
+home_team_won <- c("Home Team Won","Home Team Won")
+scores_two <- scores_two %>%
+  mutate(home_team_won = home_team_won )
+scores_five <- scores[1:5,c("home_country","home_goals","away_country",
+                            "away_goals","win_country")]
+kable(scores_five)
+```
+
+## Another Vector
+
++ Create a new vector called home_team_won that contains either "home team won" or "home team did not win" for each match in scores_five (in order).
+
+```{r code4}
+home_team_won <- c("home team won","home team won",
+                   "home team did not win",
+                   "home team won","home team won")
+```
+
+
+## Adding the new Vector
+
++ Use the `mutate()` function to add the home_team_won vector to the scores_five data frame. Name the column home_team_won.
+
+```{r code5}
+scores_five <- scores_five %>%
+  mutate(home_team_won = home_team_won)
+```
+
+
+## Selection : Writing Conditional Statements
+
++ Will return a given value if the condition is satisfied
+
++ For our case looking at whether the home team won or not is when home goals > away goals is true.
+
++ This is done by using **if statement**
+
++ Let's write an if statement to return "home team won" if home_goals > away_goals during the first match.
+
+```{r code6}
+if (scores$home_goals[1]>scores$away_goals[1]){
+   print("home team won")
+}
+```
+
+
+## if else statement
+
++ What about when the home team loses, though?
+
++ In the example given,  if the away team scored more goals than the home team, nothing would be returned.
+
++ To return "home team did not win" if the home team did not score more goals than the away team,  you can add a type of conditional statement called an else statement to your code.
+
+```{r code7}
+if (scores$home_goals[1]>scores$away_goals[1]){
+   print("home team won")
+}else{
+   print("home team did not win")
+}
+```
+
+## Task
+
++  Write an if-else statement to return:
+ 
+  1."home team won" if the number of goals scored by the home team is greater   than the number of goals scored by the away team
+  2. "home team did not win" if the condition specified above is not met
+  
+## Solution
+
+```{r code8}
+if(scores$home_goals[3]>scores$away_goals[3]){
+   print("home team won")
+}else{
+   print('home team did not win')
+}
+```
+
+
+## Repetition : For-Loops
+
++  The previous method of writing code is repititive
+
++  Generally, in programming, **it's best to minimize repetition in your code as much as possible**. 
+
++  If you find yourself copying and pasting blocks of code several times, it's time to seek a better solution.
+
+           **Use for loops**
+
+## Example
+
++ Let's write a for-loop to print every number in a sequence of numbers from one to 5.
+
+```{r code9}
+for( i in 1:5){
+  print(i)
+}
+```
+
++ The index variable i represents an element of a sequence. You can read the code above as, 
+ "For every element in the sequence of the numbers one to 5, print the element".
+ 
+## Using Variable Names
+
++ You can use any variable name you want instead of i for the index
+
++ Should consider using a name that describes what the variable actually represents to make complex code more readable.
+
++ Next, let's write a for-loop to print the date of the first five matches in in the World Cup scores data frame:
+
+```{r code10}
+for( d in scores$match_date[1:5]){
+    print(d)
+}
+```
+
+
+## Task 
+
++ Write a for-loop to print each element in the column home_country of the scores data frame.
+
+## Solution
+
+```{r code11}
+# for ( h in scores$home_country){
+#  print(h)
+# }
+```
+
+## Looping Over raws of a data frame
+
++ When you write a for-loop, the elements you specify can be values, vectors, lists, or other data structures.
+
++ Since you are working with a data frame (scores), let's write a for-loop to execute an operation on elements that are rows of the data frame
+
++ When you write a for-loop, the elements you specify can be values, vectors, lists, or other data structures.
+
+## Our For Loop
+
++ The for-loop will calculate the total number of goals (away_goals + home_goals) for each match
+
++ In the scores data frame, each match has its own row. Since you want to perform the addition operation for each row of the data frame,
+
++  the first part of the for-loop will consist of defining i as an element of the sequence of numbers from one to the number of rows in  the data frame. 
+
++ Here's how you'll specify the sequence: `for ( i in 1:nrow(scores))`
+
++ "for each element in the sequence one to 64"
+
++ In programming, it's good practice to refer to data objects instead of including numbers in your code. 
+
+## The Loop
+
+```{r code12, echo=TRUE}
+# for ( i in 1:nrow(scores)){
+#  print(scores$home_goals[i] + scores$away_goals[i])
+#}
+```
+
+## Task 
+
+Write a for-loop to subtract away_goals from home_goals for each match in scores. 
+
+## Solution
+
+```{r code13}
+# for (i in 1:nrow(scores)){
+#  print(scores$home_goals[i] - scores$away_goals[i])
+# }
+```
+
+
+## Nested Control Structures 1/2
+
++ Control structures are powerful tools, and can do even more when combined together. 
+
++  For example, the actions repeated by a for-loop don't need to be sequential code — they could be conditional statements.
++ This pattern of executing one or more control structures inside another one is called **nesting**.
+
++ Objective : Originally, we wanted to create a new variable that provides information about whether the home team won or lost each match.
+
+
+## Code
+
+```{r code14}
+for (i in 1:nrow(scores)){
+  if(scores$home_goals[i] > scores$away_goals[i]){
+    print("home team won")
+  }else{
+    print('home team did not win')
+  }
+}
+```
+
+
+## Nested Control Structures 2/2
+
++ Nested control structures are very powerful, but can be tricky to get used to and can make finding errors in your code harder. 
+
++  The workflow in the previous examples is a good way to avoid problems when writing nested control structures: 
+
++ Start by writing the inner operation and make sure it works correctly, and then wrap the outer operation around it.
+
++ Next, you'll learn to store the output of a loop in a variable. Let's write a for-loop that outputs logical data, TRUE and FALSE, that would make a useful variable.
+
+
+## Task
+
++ Write a for-loop that, for each row in the scores data frame, prints TRUE if home_goals is greater than away_goals and FALSE if not
+
+```{r code15}
+for ( i in 1:nrow(scores)){
+  if(scores$home_goals[i] > scores$away_goals[i]){
+    print(TRUE)
+  }else{
+    print(FALSE)
+  }
+}
+```
+
+
+## Storing For-loop Output in Objects
+
++ We have just been printing the output of a for loop you'll want to use the output of a for-loop instead of just printing it.
+
++ calculating total scores
+
+```{r code16}
+for ( i in 1:nrow(scores)){
+   print(scores$home_goals[i] + scores$away_goals[i])
+}
+```
+
+## You need a empty vector
+
++ To modify the for-loop to store the total goals scored in each match in a vector instead of printing it, you'll need to first create an empty vector to add values to:
+
++ Then, you'll write the for-loop to include the following code to add new elements to the vector:
+
+```{r code17}
+total_goals <- c()
+# total_goals <- c(total_goals,"new element")
+```
+
+## New elements
+
++ The new elements you'll add to the vector are the sums of home_goals and total_goals for each match.
+ 
+```{r code}
+for ( i in 1:nrow(scores)){
+  total_goals <- c(total_goals,scores$home_goals[i] + scores$away_goals[i])
+}
+total_goals[1:5]
+length(total_goals)
+```
+
+
+## Winning
+Let's create a new, empty vector, home_team_won, to store the logical output of the for-loop
+
+`r home_team_won <- c()` #single line code
+
++ In place of the print() functions in the for-loop, you can include code to store output in home_team_won:
+
+ `home_team_won <- c(home_team_won, TRUE)`
+ `home_team_won <- c(home_team_won, FALSE)`
+ 
+
+## Task 
+
++ Write a for-loop that, for each row in the scores data frame,  outputs TRUE if home_goals is greater than away_goals and FALSE if not.
+
++ Store the output in a vector called home_team_won.
+
+## Solution
+
+```{r code19}
+for ( i in 1:nrow(scores)){
+  if(scores$home_goals[i] > scores$away_goals[i]){
+    home_team_won <- c(home_team_won,TRUE)
+  }else{
+    home_team_won <- c(home_team_won,FALSE)
+  }
+}
+home_team_won[1:5]
+```
+
+## Adding to the dataset
+
++ You've now created a new variable, home_team_won, that provides information about whether the home team won each match in the data set.
+
++ You can use this new information to begin exploring whether teams playing in the 2014 World Cup experienced a home advanage.
+
+```{r code20}
+scores <- scores %>%
+  mutate (home_team_won = home_team_won)
+```
+
+## Handling more than two cases
+
++ It would be more informative to have a variable containing three outcomes for the home team:
+
+    1. Won   home_goals > away_goals
+    
+    2. Lost  home_goals < away_goals
+    
+    3. Tied  home_goals = away_goals
+
++  Instead of writing code to specify two possible outcomes, in this case, you'll need to specify three. __else if__
+
+## Else if
+
+```{r code21}
+if (scores$home_goals[1] > scores$away_goals[1]){
+  print("win")
+}else if(scores$home_goals[1] < scores$away_goals[1]){
+  print('lose')
+}else if(scores$home_goals[1] < scores$away_goals[1]){
+  print("tied")
+}
+```
+
+## Default Action
+
++ You can chain together as many else if statements in your code as needed.
+
++ In the scores data set, there are only three possible match outcomes.
+#
++ However, if you needed to specify a default action to perform if none of the prior conditions are met,you can include an else statement in your code.
+
+
+```{r code22}
+if (scores$home_goals[1] > scores$away_goals[1]){
+  print("win")
+}else if(scores$home_goals[1] < scores$away_goals[1]){
+  print('lose')
+}else if(scores$home_goals[1] < scores$away_goals[1]){
+  print("tied")
+}else{
+  print("no action")
+}
+```
+
+
+## Example : Third Match
+
++ What does this code do?
+
+```{r code23}
+if (scores$home_goals[3] > scores$away_goals[3]){
+  print("win")
+}else if(scores$home_goals[3] < scores$away_goals[3]){
+  print('lose')
+}else if(scores$home_goals[3] == scores$away_goals[3]){
+  print("tied")
+}
+```
+
+## More than Two Cases : Writing a for loop
+
+1. Create a new vector, home_team_result, that contains "win", "lose", or "tie" for the home team for each match in scores.
+
+2. Overwrite the scores data frame with a new scores data frame containing the home_team_result variable. 
+
+
+## The code
+
+```{r code24}
+home_team_result <- c()
+for(i in 1:nrow(scores)){
+  if(scores$home_goals[i] > scores$away_goals[i]){
+    home_team_result <- c(home_team_result,"win")
+  }else if(scores$home_goals[i] < scores$away_goals[i]){
+   home_team_result <- c(home_team_result,"lose")
+  }else if(scores$home_goals[i] == scores$away_goals[i]){
+   home_team_result <- c(home_team_result,"tied")
+  }
+}
+scores <- scores %>%
+  mutate( home_team_result = home_team_result)
+```
+
+
+## Remarks 
+
++ If-else statements and for-loops are programming tools common to practically all programming languages
+
++ It's important to understand how they work and when to use them.
+
++ R is characterized by some special features superior to for-loops  when it comes to repeating the same operation on multiple elements

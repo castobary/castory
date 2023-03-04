@@ -1,0 +1,98 @@
+---
+title: "Working with Vectorized Functions"
+author: "Castory Munishi"
+date: "10/28/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+options(prompt = ">R")
+library(kableExtra)
+```
+
+## R Functions As Alternatives To Loops
+
++ In R, many built-in functions contain for-loops. 
+
++ This makes it possible to call a function instead of directly using a for-loop
+
++ Functions take an input, perform an operation, and return an output.
+
++ Many R functions are vectorized, meaning you can use them to operate on all elements of a vector quickly
+
+```{r code1, message=FALSE, warning=FALSE}
+library(readr)
+library(dplyr)
+scores <- read_csv("data/scores.csv")
+```
+
+## How does vectorization makes code faster
+
++ If you apply a function to each element of the vector repeatedly,  R has to interpret the input of the function and pass it to the compiled code for each element
+
++ If you apply the function to the entire vector, R only needs to interpret the input and pass it to the compiled code once.
+
++  Therefore, the vectorized solution is faster, and the code is usually easier to understand.
+
+##  Comparison of vectorized and non vectorized method
+
++ Let's calculate the sum of all the numbers from zero to 100,000,000 using non-vectorized and vectorized methods and compare the amount of time it takes the R interpreter to run the code for each.
+
++ We will measure the running time of the code using the function `system.time()`, which outputs the time elapsed (in seconds) while the function is executed.
+
+## Calculating using a non vectorized method (for loop)
+
+```{r code2}
+system.time({
+  sum_nums <- 0
+  for ( i in 1:1000000){
+    sum_nums <- sum_nums + i
+  }
+})
+sum_nums
+```
+
+
+## Performing the calculating using a function (vectorized method)
+
+```{r code3}
+system.time({
+  sum_numbs <- sum(1:1000000)
+})
+
+sum_numbs
+```
+
++ Using the `sum()` function is substantially faster than using the for-loop.
+
+## A vectorized function for if-else statement
+
++ The __`if_else()`__ function is part of the dplyr package and requires the following input:
+    
+    1.A vector or multiple vectors
+    
+    2.A condition
+    
+    3.An action to perform if the condition is true
+    
+    4.An action to perform if the condition is false
+    
+## Code and it replacement
+
+```{r code4}
+# for (i in 1:nrow(scores)) {  
+#   if (scores$home_goals[i] > scores$away_goals[i]) {
+#     print("home team won")
+#   } else {
+#     print("home team did not win") 
+#   }
+# }
+```
+
++ Vectorized uses __`if_else()`__
+
+```{r code5}
+if_else(scores$home_goals > scores$away_goals,
+        "home team won","home team did not win")
+```

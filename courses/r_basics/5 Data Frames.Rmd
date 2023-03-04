@@ -1,0 +1,316 @@
+---
+title: "5 Data Frames"
+author: "Castory Munishi"
+date: "10/27/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Data Frames
+
++ The most common data structures involved in data analysis.
+
++ Like lists, data frames can contain multiple data types. 
+
++ Unlike lists all elements of a data frame are vectors of equal length.
+
++ The `read_csv()` from readr package is used to import csv data
+
++ `str()` is used to display the internal structure of an R object
+
+```{r code1, message=FALSE, warning=FALSE, paged.print=TRUE}
+library(readr)
+recent_grads <- read_csv("data/recent_grads.csv")
+#str(recent_grads)
+```
+
+## Indexing Data Frames
+
++ When we want to return a specific column, row, or value from a data frame, we can index them. 
+ 
++ The syntax for indexing data frames is very similar to that of matrices.
+ 
++  Let's say we want to return the column of the data frame containing Major.
+
++  We can perform this operation using several techniques.
+
+## Indexing by Position
+
+
+```{r code2}
+ recent_grads[,3]
+```
+
+
+## Indexing by names
+
+```{r code3}
+ recent_grads[,'Major']
+```
+
+
+## Using multiple columns
+
+```{r code4}
+recent_grads[,c('Major','Men','Women')]
+```
+
+## Indexing using `$` symbol
+
+```{r code5}
+recent_grads$Total
+```
+
+
+## Indexing Rows
+
++ Let's say that instead of a certain column, we want to extract a row of a data frame.
+
++ To return the fifth row of the data frame, we could write 
+
+```{r code6}
+ recent_grads[5,]
+```
+
+## Extracting a subset of values
+
++ As with matrices, we can specify multiple elements to extract from a data frame.
++  Let's extract the first ten rows of the Major and Major_category column 
+
+```{r code7}
+recent_grads[c(1:10),c('Major','Major_category')]
+```
+
+## Extracting Rows and Saving into a dataframe
+
++ Extract the first, third, and fifth rows of the Unemployment_rate column and save the output in a variable named unemployment_subset.
+
+```{r code8}
+unemployement_subset <- recent_grads$Unemployment_rate[c(1,3,5)]
+unemployement_subset
+```
+
+## Selecting Columns
+
++ Our goal is choosing a college major
+
++ Criteria for choosing a college major
+   
+   1.You're interested in the physical and life sciences.
+   
+   2.You'd like a decent salary. Recent graduates must have a median salary above 40,000 USD.
+   
+   3.You'd like to avoid male-dominated majors. More than 40 percent of graduates must be women.
+ 
++ We will use the variables in the recent_grads dataframe to make the decesion
+
+## Using `dplyr` package in manipulating Data Frames
+
++ Use the dplyr function `select()` to create a new data frame with only columns containing the variables we want to keep for our analysis.
+
++ Using the `select()` function, we'll specify the data frame we want to work with and the columns we want to select
+
+```{r code9, message=FALSE, warning=FALSE}
+library(dplyr)
+recent_grads_select <- recent_grads %>%
+  select(Major, Total, Men, Women, Major_category)
+```
+
+## Output
+
+```{r code10}
+head(recent_grads_select,5)
+```
+
+## The Pipe Operator
+
++ Notice the `%>%` symbol: This is called the "the pipe operator" 
+
++ Its purpose is to help you write code that's easier to write, read, and understand. 
+
++ The pipe lets you write code that chains series of operations together; in the case of the code above
+
++ We could read the code as, "take the recent_grads data frame and select the Major, Total, Men, Women,  and Major_category columns."
+
+## Selecting the Right Columns
+
++ Create a new data frame, recent_grads_select, that contains only the following variables from recent_grads:
+
++  1. Major 2. Major_category 3.Total 4.Men 5.Women 6.Median 7.Unemployment_rate
+
+```{r code11}
+recent_grads_select <- recent_grads %>%
+  select(Major,Major_category,Men,Women,Total,Median,Unemployment_rate)
+
+#recent_grads_select
+```
+
+## Creating New Variables
+
+### The `mutate()` function
+
++ We can use the mutate function to create a new column based on information contained in existing columns.
+
++ The mutate function lets us specify the creation of a new column, as well as how the values contained in that new column are calculated:
+
++  For example adding men percent in the dataset 
+```{r code12}
+# data_frame_2 <- data_frame_1 %>%
+#   mutate(Men_percent = (Men/Total)*100)
+```
+
++ # Within the `mutate()` function, we'll specify a name for our new column and then use `=` to indicate how you want the values that fill it to be calculated.
+
+## Calculating women percent and using `mutate()`
+
+
+```{r code13}
+recent_grads_select <- recent_grads_select %>%
+  mutate(Women_percent = round((Women/Total)*100,2))
+
+recent_grads_select$Women_percent
+```
+
+
+## Filtering by Single Criteria
+
++ Getting closer towards data that meets our criteria
+
++ Removing data that does not meet our criteria Women_percent >= 40%
+
++ To remove majors with percentages of women graduates below 40 percent, we'll use another dplyr function: `filter()`
+
++  We can use `filter()` to specify conditions that values of a variable must meet
+
+## General filter code
+
+```{r code14}
+# data_frame_2 <- data_frame_1 %>%
+#   filter(Men_percent < 70)
+
+# data_frame_2 <- data_frame_1 %>%
+#   filter(Major_category == "Physical Science")
+```
+
+## Practice Exercise
+
++ Filter the recent_grads_select data frame to create a new data frame called recent_grads_money that contains only data on majors where recent graduates' median (the Median variable) salary is greater than 70,000 USD.
+
+## Solution
+
+```{r code15}
+recent_grads_money <- recent_grads %>%
+  filter(Median > 70000)
+recent_grads_money[15:18]
+```
+
+
+## Filtering by Multiple Conditions: Meeting At Least One Criterion
+
++ What if we wanted to create a new data frame containing college majors that met either of the following criteria:
+  
+   + Majors in the Engineering catagory `(Major_category == "Engineering")`
+   + Majors with over 1,000 total graduates `(Total > 1000)`
+   
++ "Majors that are either in the engineering category or have over 1,000 graduates"
+
++ Archieved by the or operator |
+
+
+## Example 1
+
++ Describe what this code does
+```{r code16}
+recent_grads_engineering1000 <- recent_grads %>%
+  filter(Major_category == "Engineering" | Total > 1000)
+recent_grads_engineering1000[1:5,c("Major_category","Total")]
+```
+
+## Example 2
+
++ Describe what the code below does
+
+```{r code17}
+recent_grads_science <- recent_grads_select %>%
+  filter(Major_category == "Engineering" | Major_category == "Physical Science")
+recent_grads_science[1:4, c("Major_category","Total")]
+```
+
+## Filtering with AND `&` 
+
++ Both Criteria must be met
+
++ To use `filter()` to create a new data frame containing only engineering college majors with more than 1,000 total graduates, we'd write:
+
+```{r code18}
+recent_grads_engineers1000 <- recent_grads %>%
+  filter(Major_category == "Engineering" & Total > 1000)
+
+recent_grads_engineers1000[c("Major_category","Total")]
+```
+
+## Winding Up
+
++ Let's create a new data frame containing only college majors that meet all three of our criteria for college majors.
+
++ To accomplish this, we'll use `filter()` and the & operator to filter rows in the recent_grads_science data frame to retain only majors that have women as greater than 40 percent of total graduates and median salaries above 40,000 USD.
+
+
+## Code and Output
+
+```{r code19}
+potential_majors <- recent_grads_science %>%
+  filter(Women_percent > 40 & Median > 40000)
+
+potential_majors_selected <- recent_grads_science %>%
+  filter(Women_percent > 40 & Median > 40000) %>%
+  select(Major,Total,Major_category)
+
+print(potential_majors_selected)
+```
+
+## Arranging Data Frames by Variables
+
++ To arrange our data frame rows by TOTAL, we'll use another function in the dplyr package: ``
+`arrange()`.
+
++ The `arrange()` function lets you specify a variable we want to use to re-order the rows of your data frame. Let's say we want to arrange data_frame_1 by Total:
+
+```{r code20}
+# data_frame_2 <- data_frame_1 %>% 
+#   arrange(Total)
+```
+
++ By default, `arrange()` orders the rows of a data frame by the specified variable in ascending order, from lowest to highest.
+
++ For descending order use desc()
+
+```{r code21}
+# data_frame_2 <- data_frame_1 %>% 
+#  arrange(desc(Total))
+```
+
+## Using multiple variables to arrange
+
++  We can arrange data frames by multiple numeric variables as well. If we specify multiple variables, 
++ R will reorder rows of the data frame by each variable in order, moving from left to right.
+
++ To arrange data_frame_1 in order of ascending Total and descending Men_percent, we could write:
+
+```{r code22}
+# data_frame_2 <- data_frame_1 %>% 
+#  arrange(Total, desc(Men_percent))
+```
+
+## Final Task
+
++ Create a new data frame, my_majors, containing the data in the potential_majors data frame arranged  in order of increasing Unemployment_rate and decreasing Median (in that order).
+
+```{r code23}
+ my_majors <- potential_majors %>% 
+   arrange(Unemployment_rate, desc(Median))
+my_majors[,1:6]
+```

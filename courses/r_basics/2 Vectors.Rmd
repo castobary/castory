@@ -1,0 +1,276 @@
+---
+title: "Working With Vectors"
+output:
+  ioslides_presentation: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## 1. Indexing Vectors By Position
+
+In the last mission the grades for each subject were found and stored in variables as follows;
+
+```{r code2, echo =TRUE}
+math <- 88 
+chemistry <- 87.66667
+writing <-  86
+art <- 91.33333
+history <- 84
+music <- 91
+physical_education <- 89.33333
+
+final_scores <- c(math, chemistry, writing, art,
+                  history, music, physical_education)
+```
+
+We can index vectors to select a subset of the elements they contain. Within a vector, every element has a position. R is a 1-indexed programming language, which means that the first element in a vector is assigned a position of one.
+
+
+## Examples 
+
+We can extract values from the vector by specifying their position in brackets ([])
+```{r code3, echo=TRUE}
+final_scores[3]
+```
+
+Extract multiple values of a vector by specifying more than one position , use (:).Selecting first to fourth elements
+
+```{r code4, echo=TRUE}
+final_scores[1:4]
+```
+
+Selecting multiple vectors that are not next to each other
+
+```{r code5, echo=TRUE}
+final_scores[c(1,3,7)]
+```
+
+## Practice 1
+
++ Write code to create a new vector, stem_grades, containing only the math and chemistry final grades.
++ Create a new vector, non_stem_grades, containing the final grades in the other classes.
++ Calculate the mean of each vector and save their values in avg_stem_grades and avg_non_stem_grades.
++ Which grades are higher
+
+## Practice 2
+
+Create a vector of character data called class_names containing your classes in the following order:
+
++ math
++ chemistry
++ writing
++ art
++ history
++ music
++ physical_education
+
+
+## 2. Naming the elements of a Vector
+
+We now have two vectors:
+
++ final_scores, containing your class grades (numeric data).
++ class_names, containing the class names (character data).
+
+In R, vectors may have attributes assigned to them. Attributes provide information, such as names, about the values stored in the vector. To assign names to vector elements, we can use the `names()` function.
+
+
+## Naming at work
+
+
+The code below shows how you would name a vector containing two subjects:
+
+```{r code6, echo=TRUE}
+math_chemistry <- c(88, 87.66667)
+class_names <- c("math", "chemistry")
+names(math_chemistry) <- class_names
+```
+
+## Practice 3
+
+Use the class_names vector to assign names to elements of the final_scores vector.
+
+### Answer
+```{r coden, echo=TRUE}
+class_names <- c("math", "chemistry", "writing", "art",
+                  "history", "music", "physical_education")
+
+names(final_scores) <- class_names
+```
+
+## 3. Indexing Vectors By Names
+
+If we want to return the score in chemistry class, we can index math_chemistry by the class name chemistry:
+
+```{r code7, echo=TRUE}
+math_chemistry["chemistry"]
+```
+
+As with indexing by position, we can index by name to return multiple elements using `c()`:
+
+```{r code8, echo=TRUE}
+math_chemistry[c("math","chemistry")]
+```
+
+## Practice 4
+
+1. Index the final_scores vector by name to create two new vectors:
+
++ liberal_arts: Containing your writing and history final grades.
++ fine_arts: Containing your art and music final grades.
+
+2. Calculate the average of each new vector.
+
+## 4. Comparing Values And Logical Data Types
+
+we can write code using comparison operators to compare values based on specific conditions, such as "greater than," "less than," or "equal to."
+
+### Practice 5
+
+Write an expression using a comparison operator to answer the question:
+
++ Is the average of liberal arts(writing and history) final grades greater than the average of fine arts(art and music) final grades?
+
+
+## 5. Comparing Single Values Against Vectors
+
+Consider Answering the question:
+"Is the final math grade higher than the grade in my other classes?"
+
+```{r code9, echo=TRUE}
+final_scores["math"] > final_scores
+```
+
+When comparing the math grade (a vector containing a single value) to a vector containing all grades, R replicates the shorter vector until it is the same length as the longer vector. Then it performs the operation.
+
+## Storing Logical Data
+
+Like numeric and character data, logical data can be stored in vectors. If we want to store the results of comparing the math grade with the other grades as a variable called math_comparison, we can write:
+
+```{r code11, echo=TRUE}
+math_comparison <- final_scores["math"] > final_scores
+typeof(math_comparison)
+```
+
+## Practice 6
+
+1. Use the `mean()` function to calculate the grade point average from final_scores. Store this in a variable named gpa.
+2. Compare final_scores to gpa to see whether the grade in each class is higher than the gpa.
+Store the logical output in a vector named above_average.
+
+
+## 6. Logical Indexing
+
+Logical indexing will compare each value in a target vector against the corresponding value in a logical vector.
+
++ If the corresponding value is TRUE, the resulting vector will contain that value.
++ If the corresponding value is FALSE, the resulting vector will not contain that value.
+
+Earlier in this mission, we compared the math grade with grades in other classes to see if it was higher. Let's store the result of this comparison in a vector of logical values:
+
+```{r code12, echo=TRUE}
+logical_vector <- final_scores["math"] > final_scores
+```
+We can now index final_scores using logical_vector. This will allow us to create a new vector containing only class grades that are lower than the math grade:
+
+```{r code13, echo=TRUE}
+final_scores[logical_vector]
+```
+
+## Practice 7
+
+By indexing above_average into final_scores, create a new vector named best_grades that contains only class grades that are higher than your GPA.
+
+```{r code14, echo=TRUE}
+gpa <- mean(final_scores)
+above_average <- (gpa < final_scores)
+best_grades <- final_scores[above_average]
+```
+
+## 7. Performing Vector Arithmetic
+
+Your friend, Johnny, who has the same classes as you this year, emailed you all his average exam, homework, and project grades in the following format:
+
++ Tests: 76, 89, 78, 88, 79, 93, 89
++ Homework: 85, 90, 88, 79, 88, 95, 74
++ Projects: 77, 93, 87, 90, 77, 82, 80
+
+Order : math, chemistry, writing, art, history, music, physical_education
+
+## Vector Arithmetic - II
+
+You start by creating three vectors, one for each assignment category, to work with:
+
+```{r code15, echo=TRUE}
+tests <- c(76, 89, 78, 88, 79, 93, 89)
+homework <- c(85, 90, 88, 79, 88, 95, 74)
+projects <- c(77, 93, 87, 90, 77, 82,80)
+```
+
+Task : Calculate Average score for each subject and store as vector
+
+Adding
+
+```{r code16, echo=TRUE}
+sum <- tests + homework
+```
+
+
+## Practice 8
+
+1. Calculate Johnny's average scores for each class by adding the tests, homework, and projects vectors and dividing by 3.
+2. Store the resulting vector in a variable named johnny_scores.
+3. Use the `mean()` function to calculate Johnny's grade point average from johnny_scores.
+
+
+## 8. Vector Recycling
+
+Whenever there's a mismatch in the length of two vectors that you're comparing, the shorter vector is recycled (or repeated) until it matches the length of the longer one.
+
+To illustrate how R's recycling behavior works when we perform operations on vectors of different lengths, let's shorten your homework vector to only two values:
+
+```{r code17, echo=TRUE}
+tests <- c(76, 89, 78, 88, 79, 93, 89)
+homework <- c(85, 90)
+
+sum <- tests + homework
+```
+
+## Practice 9
+
+Here are Kate's test, homework and project grades:
+
++ Tests: 76, 89, 78
++ Homework: 85, 90, 88, 79, 88, 95, 74
++ Projects: 77, 93, 87, 90, 77, 82, 80
+
+Calculate the sum of Kate's test, homework, and project grades and store the resulting vector as a variable named recycling. Note the resulting warning message.
+
+
+## 9. Appending Elements to A vector
+
+To add additional elements to a vector, you can use `c()` to create a new vector consisting of the existing vector plus the new elements you want to add to it:
+
+```{r code18, echo=TRUE}
+tests <- c(tests, 99, 67)
+```
+
+## Practice 10
+
+1. Add the rest of Kate's test grades (88, 79, 93, 89) to the tests vector. Save the new vector containing all Kate's grades as tests, which will overwrite the incomplete tests variable.
+2. Use vector arithmetic to calculate Kate's final average grade for each class from the tests, homework, and projects vectors. Save the resulting vector as kate_grades.
+3. Assign class names to the elements of kate_grades.
+4. Calculate Kate's gpa from kate_grades using the `mean()` function and save the result as a variable named kate_gpa.
+5. Use comparison operators and logical indexing to create a new vector, kate_low_grades, containing final grades for classes in which Kate earned a grade lower than kate_gpa.
+
+## 10. Vectors - Closing
+
+
+```{r code19, echo=TRUE}
+x <- 1:10
+y <- -3*x + 5
+plot(x, y, type = "b", pch = 17, 
+     col = "blue", xlab = "x", ylab = "y")
+```
