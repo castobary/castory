@@ -1,0 +1,62 @@
+{
+  "index.qmd": {
+    "index.html": "c236449d"
+  },
+  "courses/r_basics/map_function.qmd": {
+    "map_function.html": "319a0190"
+  },
+  "courses/r_basics/random_sampling.qmd": {
+    "random_sampling.html": "4bcee511"
+  },
+  "courses/r_basics/strati_sampling.qmd": {
+    "strati_sampling.html": "95befcb8"
+  },
+  "courses/r_basics.qmd": {
+    "r_basics.html": "2efa4be6"
+  },
+  "courses/sir_modelling.qmd": {
+    "sir_modelling.html": "dbd242ba"
+  },
+  "courses/statistical_learning.qmd": {
+    "statistical_learning.html": "7748c7b6"
+  },
+  "courses.qmd": {
+    "courses.html": "25e49175"
+  },
+  "exercises/advanced_exercises.qmd": {
+    "advanced_exercises.html": "ef340cd4"
+  },
+  "exercises/basic_exercises.qmd": {
+    "basic_exercises.html": "52eb80ea"
+  },
+  "exercises/modelling_exercises.qmd": {
+    "modelling_exercises.html": "4ad1eca8"
+  },
+  "exercises.qmd": {
+    "exercises.html": "6430e98f"
+  },
+  "projects/case_studies.qmd": {
+    "case_studies.html": "a6eba2e4"
+  },
+  "projects/data_quest/book_reviews/book_reviews.qmd": {
+    "book_reviews.html": "3fa3931b"
+  },
+  "projects/data_quest/book_sales/book_sales.qmd": {
+    "book_sales.html": "771c049d"
+  },
+  "projects/data_quest/covid_trends/covid_trends.qmd": {
+    "covid_trends.html": "020ec47d"
+  },
+  "projects/data_quest/forest_fires/forest_fires.qmd": {
+    "forest_fires.html": "190efac5"
+  },
+  "projects/data_quest.qmd": {
+    "data_quest.html": "81c2e176"
+  },
+  "projects/epi_projects.qmd": {
+    "epi_projects.html": "3b779892"
+  },
+  "projects.qmd": {
+    "projects.html": "ae4adc9f"
+  }
+}
