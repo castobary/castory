@@ -9,5 +9,8 @@ Key Modules
 [Module 01: Introduction to Programming in R](r_basics/Introduction.qmd)
 [Module 02: Vectors](r_basics/vectors.qmd)
 [Module 03: Matrices](r_basics/matrices.qmd)
+[Module 04: Lists](r_basics/lists.qmd)
+[Module 05: Dataframes](r_basics/dataframes.qmd)
+[Module 06: Control Structures](r_basics/control_structures.qmd)
 
 

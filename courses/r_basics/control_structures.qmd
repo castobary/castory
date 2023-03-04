@@ -1,18 +1,17 @@
 ---
-title: "6 Control Structures"
+title: "Control Structures"
 author: "Castory Munishi"
-date: "10/27/2020"
-output:
-  ioslides_presentation: default
+date: 10/27/2020
+execute: 
+  echo: true
+  warning: false
+format: revealjs
+editor: visual
 ---
 
+
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(
-	echo = TRUE,
-	message = FALSE,
-	warning = FALSE
-)
-library(kableExtra)
+pacman::p_load(kableExtra)
 ```
 
 ## Introduction to Control Structures
@@ -20,8 +19,8 @@ library(kableExtra)
 ### Introduction to the data
 
 ```{r code1, message=FALSE, warning=FALSE}
-library(readr)
-scores <- read_csv("data/scores.csv")
+pacman::p_load(readr)
+scores <- read_csv("datasets/scores.csv")
 kable(scores[1:4,c("home_country","home_goals","away_country",
              "away_goals","win_country")])
 ```

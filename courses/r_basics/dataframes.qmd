@@ -1,13 +1,13 @@
 ---
-title: "5 Data Frames"
+title: "Working with Lists"
 author: "Castory Munishi"
-date: "10/27/2020"
-output: ioslides_presentation
+date: 10/27/2020
+execute: 
+  echo: true
+  warning: false
+format: revealjs
+editor: visual
 ---
-
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## Data Frames
 

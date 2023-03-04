@@ -91,5 +91,11 @@
   },
   "courses/r_basics/10 String Manipulation.Rmd": {
     "10 String Manipulation.html": "de3f62f0"
+  },
+  "courses/r_basics/11 Creating Line Graphs.Rmd": {
+    "11 Creating Line Graphs.html": "3fad77a3"
+  },
+  "courses/r_basics/12 Multiple Line Graphs.rmd": {
+    "12 Multiple Line Graphs.html": "bfe985af"
   }
 }

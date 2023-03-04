@@ -1,0 +1,1008 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Castory Munishi">
+<meta name="dcterms.date" content="2020-10-28">
+
+<title>Multiple Line Graphs</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Multiple Line Graphs</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Home</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Castory Munishi</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Courses</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/r_basics.html" class="sidebar-item-text sidebar-link">R Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/r_advanced.html" class="sidebar-item-text sidebar-link">R Advanced</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/sir_modelling.html" class="sidebar-item-text sidebar-link">SIR Modelling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/statistical_learning.html" class="sidebar-item-text sidebar-link">Statistical Learning</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Projects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/case_studies.html" class="sidebar-item-text sidebar-link">Case Studies</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/data_quest.html" class="sidebar-item-text sidebar-link">Data Quest Projects</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/epi_projects.html" class="sidebar-item-text sidebar-link">Epidemiology Projects</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exercises</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercises/basic_exercises.html" class="sidebar-item-text sidebar-link">Basics Exercises</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercises/advanced_exercises.html" class="sidebar-item-text sidebar-link">Advanced Exercises</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercises/modelling_exercises.html" class="sidebar-item-text sidebar-link">Modelling Exercises</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Blog</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../blog/blog.html" class="sidebar-item-text sidebar-link">Blog Posts</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#creating-multiple-line-graphs" id="toc-creating-multiple-line-graphs" class="nav-link active" data-scroll-target="#creating-multiple-line-graphs">Creating Multiple Line Graphs</a>
+  <ul class="collapse">
+  <li><a href="#visualizing-data-for-multiple-populations" id="toc-visualizing-data-for-multiple-populations" class="nav-link" data-scroll-target="#visualizing-data-for-multiple-populations">Visualizing Data for Multiple Populations</a></li>
+  </ul></li>
+  <li><a href="#manipulating-data-for-visualization" id="toc-manipulating-data-for-visualization" class="nav-link" data-scroll-target="#manipulating-data-for-visualization">Manipulating Data for Visualization</a></li>
+  <li><a href="#task" id="toc-task" class="nav-link" data-scroll-target="#task">Task</a></li>
+  <li><a href="#solution" id="toc-solution" class="nav-link" data-scroll-target="#solution">Solution</a></li>
+  <li><a href="#graphing-life-expectancies-for-men-and-women-multiple-panels" id="toc-graphing-life-expectancies-for-men-and-women-multiple-panels" class="nav-link" data-scroll-target="#graphing-life-expectancies-for-men-and-women-multiple-panels">Graphing Life Expectancies for Men and Women: Multiple Panels</a></li>
+  <li><a href="#plot-display" id="toc-plot-display" class="nav-link" data-scroll-target="#plot-display">Plot Display</a></li>
+  <li><a href="#explanations" id="toc-explanations" class="nav-link" data-scroll-target="#explanations">Explanations</a></li>
+  <li><a href="#code-facetting" id="toc-code-facetting" class="nav-link" data-scroll-target="#code-facetting">Code : Facetting</a></li>
+  <li><a href="#plot-display-1" id="toc-plot-display-1" class="nav-link" data-scroll-target="#plot-display-1">Plot Display</a></li>
+  <li><a href="#explanations-1" id="toc-explanations-1" class="nav-link" data-scroll-target="#explanations-1">Explanations</a></li>
+  <li><a href="#nrow-and-ncol-in-facetting" id="toc-nrow-and-ncol-in-facetting" class="nav-link" data-scroll-target="#nrow-and-ncol-in-facetting">nrow and ncol in facetting</a></li>
+  <li><a href="#task-1" id="toc-task-1" class="nav-link" data-scroll-target="#task-1">Task</a></li>
+  <li><a href="#solution-1" id="toc-solution-1" class="nav-link" data-scroll-target="#solution-1">Solution</a></li>
+  <li><a href="#plot-display-2" id="toc-plot-display-2" class="nav-link" data-scroll-target="#plot-display-2">Plot Display</a></li>
+  <li><a href="#graphing-life-expectancies-of-men-and-women-on-the-same-axes" id="toc-graphing-life-expectancies-of-men-and-women-on-the-same-axes" class="nav-link" data-scroll-target="#graphing-life-expectancies-of-men-and-women-on-the-same-axes">Graphing Life expectancies of Men and Women on the Same Axes</a></li>
+  <li><a href="#plotting-on-the-same-axes" id="toc-plotting-on-the-same-axes" class="nav-link" data-scroll-target="#plotting-on-the-same-axes">Plotting on The Same Axes</a></li>
+  <li><a href="#the-code" id="toc-the-code" class="nav-link" data-scroll-target="#the-code">The Code</a></li>
+  <li><a href="#plot-display-3" id="toc-plot-display-3" class="nav-link" data-scroll-target="#plot-display-3">Plot Display</a></li>
+  <li><a href="#using-color-to-differentiate" id="toc-using-color-to-differentiate" class="nav-link" data-scroll-target="#using-color-to-differentiate">Using color to differentiate</a></li>
+  <li><a href="#task-2" id="toc-task-2" class="nav-link" data-scroll-target="#task-2">Task</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output">Output</a></li>
+  <li><a href="#explanations-2" id="toc-explanations-2" class="nav-link" data-scroll-target="#explanations-2">Explanations</a></li>
+  <li><a href="#graphing-subset-of-data" id="toc-graphing-subset-of-data" class="nav-link" data-scroll-target="#graphing-subset-of-data">Graphing Subset of Data</a></li>
+  <li><a href="#output-1" id="toc-output-1" class="nav-link" data-scroll-target="#output-1">Output</a></li>
+  <li><a href="#using-limits" id="toc-using-limits" class="nav-link" data-scroll-target="#using-limits">Using limits</a></li>
+  <li><a href="#task-3" id="toc-task-3" class="nav-link" data-scroll-target="#task-3">Task</a></li>
+  <li><a href="#solution-2" id="toc-solution-2" class="nav-link" data-scroll-target="#solution-2">Solution</a></li>
+  <li><a href="#plot-display-4" id="toc-plot-display-4" class="nav-link" data-scroll-target="#plot-display-4">Plot Display</a></li>
+  <li><a href="#comments" id="toc-comments" class="nav-link" data-scroll-target="#comments">Comments</a></li>
+  <li><a href="#exploring-the-data-further" id="toc-exploring-the-data-further" class="nav-link" data-scroll-target="#exploring-the-data-further">Exploring the data further</a>
+  <ul class="collapse">
+  <li><a href="#the-differences-in-life-expectancy-between-white-and-black-americans" id="toc-the-differences-in-life-expectancy-between-white-and-black-americans" class="nav-link" data-scroll-target="#the-differences-in-life-expectancy-between-white-and-black-americans">The differences in life expectancy between white and black americans</a></li>
+  </ul></li>
+  <li><a href="#task-4" id="toc-task-4" class="nav-link" data-scroll-target="#task-4">Task</a></li>
+  <li><a href="#solution-3" id="toc-solution-3" class="nav-link" data-scroll-target="#solution-3">Solution</a></li>
+  <li><a href="#creating-the-plot" id="toc-creating-the-plot" class="nav-link" data-scroll-target="#creating-the-plot">Creating The Plot</a></li>
+  <li><a href="#display-plot" id="toc-display-plot" class="nav-link" data-scroll-target="#display-plot">Display Plot</a></li>
+  <li><a href="#custom-colors" id="toc-custom-colors" class="nav-link" data-scroll-target="#custom-colors">Custom colors</a></li>
+  <li><a href="#display-plot-1" id="toc-display-plot-1" class="nav-link" data-scroll-target="#display-plot-1">Display plot</a></li>
+  <li><a href="#custom-lines" id="toc-custom-lines" class="nav-link" data-scroll-target="#custom-lines">Custom Lines</a></li>
+  <li><a href="#display-plot-2" id="toc-display-plot-2" class="nav-link" data-scroll-target="#display-plot-2">Display Plot</a></li>
+  <li><a href="#task-5" id="toc-task-5" class="nav-link" data-scroll-target="#task-5">Task</a></li>
+  <li><a href="#display-plot-3" id="toc-display-plot-3" class="nav-link" data-scroll-target="#display-plot-3">Display Plot</a></li>
+  <li><a href="#stories-from-the-plot" id="toc-stories-from-the-plot" class="nav-link" data-scroll-target="#stories-from-the-plot">Stories from the plot</a></li>
+  <li><a href="#another-way-to-present---fascets" id="toc-another-way-to-present---fascets" class="nav-link" data-scroll-target="#another-way-to-present---fascets">Another way to Present - Fascets</a></li>
+  <li><a href="#display-plot-4" id="toc-display-plot-4" class="nav-link" data-scroll-target="#display-plot-4">Display Plot</a></li>
+  <li><a href="#final-challenge" id="toc-final-challenge" class="nav-link" data-scroll-target="#final-challenge">Final Challenge</a></li>
+  <li><a href="#solution-4" id="toc-solution-4" class="nav-link" data-scroll-target="#solution-4">Solution</a></li>
+  <li><a href="#plot-display-5" id="toc-plot-display-5" class="nav-link" data-scroll-target="#plot-display-5">Plot Display</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Multiple Line Graphs</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Castory Munishi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 28, 2020</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="creating-multiple-line-graphs" class="level2">
+<h2 class="anchored" data-anchor-id="creating-multiple-line-graphs">Creating Multiple Line Graphs</h2>
+<section id="visualizing-data-for-multiple-populations" class="level3">
+<h3 class="anchored" data-anchor-id="visualizing-data-for-multiple-populations">Visualizing Data for Multiple Populations</h3>
+<ul>
+<li><p>In the previous discussion, we have look on the general trend of life expectancy changes</p></li>
+<li><p>Now, we want to look into details on the life expectancy changes</p></li>
+<li><p>This will help to answer questions like whether there are differences in life expectancy between men and women or for Americans of different races.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>life_expec <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"datasets/life_expec.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="manipulating-data-for-visualization" class="level2">
+<h2 class="anchored" data-anchor-id="manipulating-data-for-visualization">Manipulating Data for Visualization</h2>
+<ul>
+<li><p>Due to a combination of biological and social factors, the life expectancy for men is often somewhat lower than it is for women.</p></li>
+<li><p>Let’s use the life_expec data to explore how life expectancies for men and women have changed over the past 100 years in the United States.</p></li>
+<li><p>As we explore differences in life expectancy by sex, you will need to select a subset of the life_expec data that contains observations for the populations of U.S. men and women.</p></li>
+</ul>
+</section>
+<section id="task" class="level2">
+<h2 class="anchored" data-anchor-id="task">Task</h2>
+<ul>
+<li>Create a new data frame, life_expec_sex, containing only rows for which the Sex variable has the value “Female” or “Male” and the Race variable has the value “All Races.”</li>
+</ul>
+</section>
+<section id="solution" class="level2">
+<h2 class="anchored" data-anchor-id="solution">Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> life_expec_sex <span class="ot">&lt;-</span> life_expec <span class="sc">%&gt;%</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>( Race <span class="sc">==</span> <span class="st">"All Races"</span> <span class="sc">&amp;</span> Sex <span class="sc">!=</span> <span class="st">"Both Sexes"</span> )</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(life_expec_sex,<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 5 × 5
+   Year Race      Sex    Avg_Life_Expec Age_Adj_Death_Rate
+  &lt;dbl&gt; &lt;chr&gt;     &lt;chr&gt;           &lt;dbl&gt;              &lt;dbl&gt;
+1  2015 All Races Female           NA                 624.
+2  2014 All Races Female           81.3               617.
+3  2013 All Races Female           81.2               624.
+4  2012 All Races Female           81.2               625.
+5  2011 All Races Female           81.1               632.</code></pre>
+</div>
+</div>
+</section>
+<section id="graphing-life-expectancies-for-men-and-women-multiple-panels" class="level2">
+<h2 class="anchored" data-anchor-id="graphing-life-expectancies-for-men-and-women-multiple-panels">Graphing Life Expectancies for Men and Women: Multiple Panels</h2>
+<ul>
+<li><p>The new life_expec_sex data frame you created contains life expectancy data for men and women.</p></li>
+<li><p>One way to compare the changes over time for the life expectancies of the two populations is to create a separate line graph for each.</p></li>
+<li><p>If you create a line graph of the data using code similar to what you wrote in the previous mission</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>plot1 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> life_expec_sex) <span class="sc">+</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec) <span class="sc">+</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-display" class="level2">
+<h2 class="anchored" data-anchor-id="plot-display">Plot Display</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>plot1</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code4-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="explanations" class="level2">
+<h2 class="anchored" data-anchor-id="explanations">Explanations</h2>
+<ul>
+<li><p>The graph generated has two observations for each year: One for men and one for women.</p></li>
+<li><p>All observations are connected by a line, making the line graph appear to depict year-to-year fluctuations in life expectancy instead of data for two separate populations:</p></li>
+<li><p>One way to improve the clarity of this line graph is to plot life expectancy data for men and women on different axes using multiple graph panels</p></li>
+<li><p>You can create line graphs on multiple, adjacent panels from the same data set by adding a new layer to your graph: <code>facet_wrap()</code>.</p></li>
+<li><p>The <code>facet_wrap()</code> function splits data into subplots based on values of a variable in your data set.</p></li>
+</ul>
+</section>
+<section id="code-facetting" class="level2">
+<h2 class="anchored" data-anchor-id="code-facetting">Code : Facetting</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>plot2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>( <span class="at">data =</span> life_expec_sex) <span class="sc">+</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec) <span class="sc">+</span> </span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>Sex)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-display-1" class="level2">
+<h2 class="anchored" data-anchor-id="plot-display-1">Plot Display</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>plot2</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code6-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="explanations-1" class="level2">
+<h2 class="anchored" data-anchor-id="explanations-1">Explanations</h2>
+<ul>
+<li><p>By default, adding a layer to your graph using <code>facet_wrap(~Variable)</code> creates two panels side by side, as shown in the graph previously.</p></li>
+<li><p>You can specify alternative arrangements of the panels using the arguments <code>ncol =</code> or <code>nrow =</code> within <code>facet_wrap()</code>.</p></li>
+<li><p>The ncol and nrow arguments allow you to specify the number of rows or columns of panels in your visualization. If you wrote the following code:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ggplot(data = life_expec_sex) +</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="co">#   aes(x = Year, y = Avg_Life_Expec) +</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="co">#   geom_line() +</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a><span class="co">#   facet_wrap(~Sex, ncol = 2)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="nrow-and-ncol-in-facetting" class="level2">
+<h2 class="anchored" data-anchor-id="nrow-and-ncol-in-facetting">nrow and ncol in facetting</h2>
+<ul>
+<li><p>The resulting graph would be identical to the one above, since the panels will be arranged in two columns.</p></li>
+<li><p>However, you could create a graph with panels stacked one on top of the other by specifying either ncol = 1 or nrow = 2.</p></li>
+</ul>
+</section>
+<section id="task-1" class="level2">
+<h2 class="anchored" data-anchor-id="task-1">Task</h2>
+<ul>
+<li><p>Let’s visualize U.S. women’s and men’s life expectancies on separate panels so you can compare how they have changed over time.</p>
+<ol type="1">
+<li>Use the life_expec_sex data frame to create line graphs of men’s and women’s life expectancies over time.</li>
+</ol></li>
+</ul>
+</section>
+<section id="solution-1" class="level2">
+<h2 class="anchored" data-anchor-id="solution-1">Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>plot3 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>( <span class="at">data =</span> life_expec_sex) <span class="sc">+</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>( <span class="at">x =</span> Year , <span class="at">y =</span> Avg_Life_Expec) <span class="sc">+</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()<span class="sc">+</span></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">facet_wrap</span>(<span class="sc">~</span>Sex, <span class="at">nrow =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-display-2" class="level2">
+<h2 class="anchored" data-anchor-id="plot-display-2">Plot Display</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>plot3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code9-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="graphing-life-expectancies-of-men-and-women-on-the-same-axes" class="level2">
+<h2 class="anchored" data-anchor-id="graphing-life-expectancies-of-men-and-women-on-the-same-axes">Graphing Life expectancies of Men and Women on the Same Axes</h2>
+<ul>
+<li><p>From previous plot , it’s clear that women’s and men’s life expectancies have followed some similar patterns over the past century.</p></li>
+<li><p>For example, both display a sharp dip around the time of the 1918 flu pandemic.</p></li>
+<li><p>It’s still difficult to understand whether there are differences in men’s and women’s life expectancies though.</p></li>
+<li><p>This visualization can be improved by plotting men’s and women’s life expectancy over time on the same axis instead of on two separate ones.</p></li>
+</ul>
+</section>
+<section id="plotting-on-the-same-axes" class="level2">
+<h2 class="anchored" data-anchor-id="plotting-on-the-same-axes">Plotting on The Same Axes</h2>
+<ul>
+<li><p>Instead of adding a layer to the graph to create two separate panels, you can specify that you want to plot multiple lines within the <code>aes()</code> layer</p></li>
+<li><p>So far we have only introduced the axis arguments that can be used to define x and y variables on a two-dimensionl graph, the <code>aes()</code> layer can also be used to map additional variables to your graph using aesthetic properties like color, shape, and size.</p></li>
+<li><p>For example, you can plot men’s and women’s life expectancies on the same set of axes and differentiate them by using different styles of lines:</p></li>
+</ul>
+</section>
+<section id="the-code" class="level2">
+<h2 class="anchored" data-anchor-id="the-code">The Code</h2>
+<ul>
+<li>To create a line graph with different values of the Sex variable shown using different styles of lines, you’d use the syntax lty = Sex. The argument lty stands for “line type”:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>plot4 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> life_expec_sex) <span class="sc">+</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec, <span class="at">lty =</span> Sex) <span class="sc">+</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-display-3" class="level2">
+<h2 class="anchored" data-anchor-id="plot-display-3">Plot Display</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>plot4</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code11-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="using-color-to-differentiate" class="level2">
+<h2 class="anchored" data-anchor-id="using-color-to-differentiate">Using color to differentiate</h2>
+<ul>
+<li><p>Color can also be used distinguish between males and females</p></li>
+<li><p>Done by setting a color value in col aesthetic</p></li>
+<li><p>As in the previous chart ggplotw will create an auto legend to show what each color represents</p></li>
+</ul>
+</section>
+<section id="task-2" class="level2">
+<h2 class="anchored" data-anchor-id="task-2">Task</h2>
+<ul>
+<li>Create a line graph with the change in men’s and women’s life expectancies over time represented by lines of different colors.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>plot5 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> life_expec_sex) <span class="sc">+</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>( <span class="at">x =</span> Year , <span class="at">y=</span> Avg_Life_Expec, <span class="at">color =</span> Sex) <span class="sc">+</span> </span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="output" class="level2">
+<h2 class="anchored" data-anchor-id="output">Output</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>plot5</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code13-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="explanations-2" class="level2">
+<h2 class="anchored" data-anchor-id="explanations-2">Explanations</h2>
+<ul>
+<li><p>Although life expectancies for U.S. men and women followed similar patterns over the past 100 years, in general, women have tended to live longer.</p></li>
+<li><p>Relatively recently, since about 1950, life expectancies for men and women have steadily and gradually increased.</p></li>
+<li><p>Before 1950, though, life expectancies appear to have fluctuated quite a bit from year to year. Why might this be?</p></li>
+</ul>
+</section>
+<section id="graphing-subset-of-data" class="level2">
+<h2 class="anchored" data-anchor-id="graphing-subset-of-data">Graphing Subset of Data</h2>
+<ul>
+<li><p>When you want to hone in on an interesting subset of your data for further investigation, one way to do so is to set scale limits.</p></li>
+<li><p>Changing the scale limits changes the range of your axes so you can display only a portion of your data.</p></li>
+<li><p>For example, let’s say you wanted to create a graph displaying only the 1918 dip in life expectancy due to influenza.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>plot6 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(life_expec_sex) <span class="sc">+</span> </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>         <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec, <span class="at">color =</span> Sex) <span class="sc">+</span></span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>         <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>         <span class="fu">xlim</span>(<span class="dv">1915</span>, <span class="dv">1920</span>) <span class="sc">+</span></span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>         <span class="fu">ylim</span>(<span class="dv">35</span>, <span class="dv">60</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="output-1" class="level2">
+<h2 class="anchored" data-anchor-id="output-1">Output</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>plot6</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code15-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="using-limits" class="level2">
+<h2 class="anchored" data-anchor-id="using-limits">Using limits</h2>
+<ul>
+<li><p>In the previous graph, the x-axis years range from 1915 to 1920, and the y-axis life expectancies range from 35 to 60 years old.</p></li>
+<li><p>We have zoomed in on this portion of the graph by changing the scale limits.</p></li>
+<li><p>By default, when you use <code>ggplot()</code> to greate a graph, all observations will be included.</p></li>
+<li><p>Adding <code>xlim()</code> and <code>ylim()</code> layers to the graph allows you to specify ranges to display only a subset of the data.</p></li>
+<li><p>Looking at the graph of life expectancies for the years 1915 to 1920 allows you to clearly visualize the devastating effect that the flu pandemic had on life expectancies.</p></li>
+</ul>
+</section>
+<section id="task-3" class="level2">
+<h2 class="anchored" data-anchor-id="task-3">Task</h2>
+<ul>
+<li><p>Earlier, we discussed the interesting differences in life expectancy fluctuations before and after 1950.</p></li>
+<li><p>Let’s create a graph focused on life expectancy data from before 1950.</p></li>
+<li><p>Add a new layer to the line graph of men’s and women’s life expectancies to hone in on the years between 1900 and 1950.</p></li>
+</ul>
+</section>
+<section id="solution-2" class="level2">
+<h2 class="anchored" data-anchor-id="solution-2">Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>plot7<span class="ot">&lt;-</span> <span class="fu">ggplot</span>( <span class="at">data =</span> life_expec_sex) <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>( <span class="at">x =</span> Year , <span class="at">y =</span> Avg_Life_Expec, <span class="at">color =</span> Sex ) <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">1900</span>, <span class="dv">1950</span>) <span class="sc">+</span> </span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="dv">35</span>, <span class="dv">80</span>) <span class="sc">+</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"Life Expectancies of US Males and Female 1900 - 1950"</span>,</span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Average Life Expectacy (Years)"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-display-4" class="level2">
+<h2 class="anchored" data-anchor-id="plot-display-4">Plot Display</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>plot7</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code17-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="comments" class="level2">
+<h2 class="anchored" data-anchor-id="comments">Comments</h2>
+<ul>
+<li><p>This visualization can allow you to take a closer look at the year-to-year variability in life expectancy during the first half of the twentieth century.</p></li>
+<li><p>What do you think could be some potential causes? Perhaps a greater impact of infectious diseases prior to medical advances such as vaccines for polio, measles, and influenza?</p></li>
+<li><p>This could be an interesting topic to study, and demonstrates some of the types of questions that arise when you visualize data graphically instead of looking at it in tabular form.</p></li>
+</ul>
+</section>
+<section id="exploring-the-data-further" class="level2">
+<h2 class="anchored" data-anchor-id="exploring-the-data-further">Exploring the data further</h2>
+<section id="the-differences-in-life-expectancy-between-white-and-black-americans" class="level3">
+<h3 class="anchored" data-anchor-id="the-differences-in-life-expectancy-between-white-and-black-americans">The differences in life expectancy between white and black americans</h3>
+<ul>
+<li><p>To do this, you will need to use a different subset of data from the life_expec data frame:</p>
+<pre><code>1. Values of Sex that are either "Male" or "Female"
+2.  Values of Race that are either "Black" or "White"</code></pre></li>
+<li><p>Put another way, you will want to exclude averaged data:</p>
+<ol type="1">
+<li>Values of Sex that are “Both Sexes”</li>
+<li>Values of Race that are “All Races”</li>
+</ol></li>
+</ul>
+</section>
+</section>
+<section id="task-4" class="level2">
+<h2 class="anchored" data-anchor-id="task-4">Task</h2>
+<ul>
+<li>Create a new data frame, life_expec_sex_race, that contains values of Sex that are either “Male” or “Female” and values of Race that are either “Black” or “White.”</li>
+</ul>
+</section>
+<section id="solution-3" class="level2">
+<h2 class="anchored" data-anchor-id="solution-3">Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>life_expec_sex_race <span class="ot">&lt;-</span> life_expec <span class="sc">%&gt;%</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>((Sex <span class="sc">==</span> <span class="st">"Female"</span> <span class="sc">|</span> Sex <span class="sc">==</span> <span class="st">"Male"</span>) <span class="sc">&amp;</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>           (Race <span class="sc">==</span> <span class="st">"Black"</span> <span class="sc">|</span> Race <span class="sc">==</span> <span class="st">"White"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Notice there are four observations for each year: Black women, black men, white women, and white men. This means you have four lines to plot.</p></li>
+<li><p>What is the best way to present line graphs of these data?</p></li>
+<li><p>One method is to plot four lines on a single set of axes.</p></li>
+</ul>
+</section>
+<section id="creating-the-plot" class="level2">
+<h2 class="anchored" data-anchor-id="creating-the-plot">Creating The Plot</h2>
+<ul>
+<li><p>To create a line graph with a line for each combination of Sex and Race variable values, you can specify multiple aesthetic parameters within the <code>aes()</code> layer</p></li>
+<li><p>For example, to create a graph in which lines representing life expectancies are</p>
+<ul>
+<li><p>Different colors for populations of different sexes</p></li>
+<li><p>Different line styles for populations of different race</p></li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>plot8 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(life_expec_sex_race) <span class="sc">+</span> </span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec, <span class="at">color =</span> Sex, <span class="at">lty =</span> Race) <span class="sc">+</span></span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="display-plot" class="level2">
+<h2 class="anchored" data-anchor-id="display-plot">Display Plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>plot8 <span class="sc">+</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code20-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="custom-colors" class="level2">
+<h2 class="anchored" data-anchor-id="custom-colors">Custom colors</h2>
+<ul>
+<li><p>As you’ve now seen is often the case with creating graphs with ggplot2, modifying line colors and types involves adding another layer to your graph.</p></li>
+<li><p>To change the two colors you used in the graph above to represent men and women, you’d add a layer called <code>scale_color_manual()</code>.</p></li>
+<li><p>Let’s change the colors representing men’s and women’s life expectancies to “magenta” and “orange”</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>plot10 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(life_expec_sex_race) <span class="sc">+</span> </span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>       <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec, <span class="at">color =</span> Sex, <span class="at">lty =</span> Race) <span class="sc">+</span></span>
+<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>       <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a>       <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"magenta"</span>, <span class="st">"orange"</span>)) <span class="sc">+</span> </span>
+<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a>       <span class="fu">theme_minimal</span>() </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="display-plot-1" class="level2">
+<h2 class="anchored" data-anchor-id="display-plot-1">Display plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>plot10</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code22-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="custom-lines" class="level2">
+<h2 class="anchored" data-anchor-id="custom-lines">Custom Lines</h2>
+<ul>
+<li>To change the line types representing black and white Americans’ life expectancies, you’ll need to add another layer: <code>scale_linetype_manual()</code>.</li>
+<li>To change the line types in the graph to “longdash” and “dotdash”, you would write</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>plot11 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(life_expec_sex_race) <span class="sc">+</span> </span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec, <span class="at">color =</span> Sex, <span class="at">lty =</span> Race) <span class="sc">+</span></span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"magenta"</span>, <span class="st">"orange"</span>)) <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"longdash"</span>, <span class="st">"dotdash"</span>)) <span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="display-plot-2" class="level2">
+<h2 class="anchored" data-anchor-id="display-plot-2">Display Plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>plot11</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code24-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="task-5" class="level2">
+<h2 class="anchored" data-anchor-id="task-5">Task</h2>
+<ol type="1">
+<li><p>Using the life_expec_sex_race data frame, create a line graph to investigate differences in how life expectancies of the following populations of Americans changed between 1900 and 2014: Black women, Black men, White women, White men</p></li>
+<li><p>Differentiate between the two sexes using the following colors: <code>values=c("darkgreen", "darkorchid"))</code></p></li>
+<li><p>Differentiate between the two races using the following line types: <code>values = c(1,4))</code></p></li>
+</ol>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>plot12 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(life_expec_sex_race) <span class="sc">+</span> </span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec, <span class="at">color =</span> Sex, <span class="at">lty =</span> Race) <span class="sc">+</span></span>
+<span id="cb27-3"><a href="#cb27-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
+<span id="cb27-4"><a href="#cb27-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_color_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="st">"darkgreen"</span>, <span class="st">"darkorchid"</span>)) <span class="sc">+</span></span>
+<span id="cb27-5"><a href="#cb27-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb27-6"><a href="#cb27-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="display-plot-3" class="level2">
+<h2 class="anchored" data-anchor-id="display-plot-3">Display Plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>plot12</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code26-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="stories-from-the-plot" class="level2">
+<h2 class="anchored" data-anchor-id="stories-from-the-plot">Stories from the plot</h2>
+<ul>
+<li><p>Breaking the data down further into populations of black and white Americans reveals that, within each population, the pattern of women living longer than men holds true.</p></li>
+<li><p>However, it’s clear from the graph that in general, white women live longer than black women, and white men live longer than black men.</p></li>
+<li><p>This pattern is likely due to socioeconomic inequality in the U.S., which negatively impacts the lives of black Americans.</p></li>
+<li><p>It is also interesting to note that while life expectancies for white women and men have generally not fluctuated much since about 1950</p></li>
+<li><p>Life expectancies for black women and men continue to fluctuate from year to year.</p></li>
+</ul>
+</section>
+<section id="another-way-to-present---fascets" class="level2">
+<h2 class="anchored" data-anchor-id="another-way-to-present---fascets">Another way to Present - Fascets</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>plot13 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(life_expec_sex_race) <span class="sc">+</span> </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec, <span class="at">color =</span> Sex) <span class="sc">+</span></span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Race, <span class="at">ncol =</span> <span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="display-plot-4" class="level2">
+<h2 class="anchored" data-anchor-id="display-plot-4">Display Plot</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>plot13</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code28-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+</section>
+<section id="final-challenge" class="level2">
+<h2 class="anchored" data-anchor-id="final-challenge">Final Challenge</h2>
+<ul>
+<li><p>Create a line graph to visualize changes in the life expectancies of the following U.S. populations between 1900 and 2014: Black women Black men White women White men</p></li>
+<li><p>Use the following line types: <code>values = c(1,4))</code></p></li>
+<li><p>Design your graph so that it has a white background.</p></li>
+<li><p>Give your graph the title: “United States Life Expectancy: 100 Years of Change.”</p></li>
+<li><p>Give the y-axis the title: “Average Life Expectancy (Years)</p></li>
+</ul>
+</section>
+<section id="solution-4" class="level2">
+<h2 class="anchored" data-anchor-id="solution-4">Solution</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>plot14 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> life_expec_sex_race) <span class="sc">+</span> </span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">aes</span>(<span class="at">x =</span> Year, <span class="at">y =</span> Avg_Life_Expec, <span class="at">lty =</span> Race) <span class="sc">+</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span> </span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_linetype_manual</span>(<span class="at">values =</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">4</span>)) <span class="sc">+</span></span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span>Sex, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span> </span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">title =</span> <span class="st">"United States Life Expectancy: 100 Years of Change"</span>, </span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>       <span class="at">y =</span> <span class="st">"Average Life Expectancy (Years)"</span>) <span class="sc">+</span></span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">panel.background =</span> <span class="fu">element_rect</span>(<span class="at">fill =</span> <span class="st">"white"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="plot-display-5" class="level2">
+<h2 class="anchored" data-anchor-id="plot-display-5">Plot Display</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>plot14</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<p><img src="12-Multiple-Line-Graphs_files/figure-html/code30-1.png" class="img-fluid" width="672"></p>
+</div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Castory Munishi</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

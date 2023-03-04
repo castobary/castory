@@ -36,7 +36,7 @@ knitr::opts_chunk$set(echo = TRUE)
 
 ```{r code1, message=FALSE, warning=FALSE}
 library(readr)
-life_expec <- read_csv("data/life_expec.csv")
+life_expec <- read_csv("datasets/life_expec.csv")
 #str(life_expec)
 ```
 

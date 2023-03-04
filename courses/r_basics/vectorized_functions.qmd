@@ -1,14 +1,22 @@
 ---
 title: "Working with Vectorized Functions"
 author: "Castory Munishi"
-date: "10/28/2020"
-output: ioslides_presentation
+date: 10/28/2020
+execute: 
+  echo: true
+  warning: false
+format: revealjs
+editor: visual
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 options(prompt = ">R")
-library(kableExtra)
+pacman::p_load(
+  kableExtra,
+  readr,
+  dplyr)
 ```
 
 ## R Functions As Alternatives To Loops
@@ -22,9 +30,7 @@ library(kableExtra)
 + Many R functions are vectorized, meaning you can use them to operate on all elements of a vector quickly
 
 ```{r code1, message=FALSE, warning=FALSE}
-library(readr)
-library(dplyr)
-scores <- read_csv("data/scores.csv")
+scores <- read_csv("datasets/scores.csv")
 ```
 
 ## How does vectorization makes code faster
