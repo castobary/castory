@@ -53,10 +53,9 @@ Bachelor of Pharmacy | October 2016 - September 2020
 **Drug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania.** Efraim, J, Munishi, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. [https://doi.org/10.12688/F1000RESEARCH.110079.1](https://doi.org/10.12688/F1000RESEARCH.110079.1)
 
 
-#### R Packages
+#### Apps
 
-**[unifir](https://github.com/mikemahoney218/unifir)** | A Unifying API for Working with Unity in R | 2022  
-**[terrainr](https://github.com/ropensci/terrainr)** | Retrieve Data from the USGS National Map and Transform it for 3D Landscape Visualizations | 2021  
-**[heddlr](https://github.com/mikemahoney218/heddlr)** | Functional Programming Concepts for R Markdown Documents | 2020
+**[HuruApp](https://www.huruapp.org)** | Information on Substance Use Rehabilitation and Recovery | 2021  
+
 
 :::
