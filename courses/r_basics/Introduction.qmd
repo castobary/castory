@@ -1,0 +1,742 @@
+---
+title: "Introduction to Programming in R"
+author: "Castory Munishi"
+format: revealjs
+editor: visual
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, warning= FALSE ,fig.width = 15)
+
+```
+
+## Table of Contents
+
++ Learning Data Science
++ Programming in R
++ R syntax rules
++ Exploring Data with R
++ Programming with Variables
++ Vectors : Storage for Multiple Values
++ Operators
+
+
+## 01 Learning Data Science
+
++ **Data science** is a "concept to unify statistics, data analysis, machine learning and their related methods" in order to "understand and analyze actual phenomena" with data.
+
++ **Data science:** It's one of the most exciting and fastest-growing fields out there.
+
++ **Data scientists** bring value to all kinds of businesses and organizations.
+
++ Data science languages includes R, Python, Matlab, Julia and their libraries
+
+
+## 02.01 Programming in R
+
+- R is a programming language and software environment for statistical analysis, graphics representation and reporting.
+
++ R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand.R made its first appearance in 1993.
+
+
+## 02.02 Features of R
+
++ R is a well-developed, simple and effective programming language which includes conditionals, loops, user defined recursive functions and input and output facilities.
+
++ R has an effective data handling and storage facility,
+
++ R provides a suite of operators for calculations on arrays, lists, vectors and matrices.
+
++ R provides a large, coherent and integrated collection of tools for data analysis.
+
++ R provides graphical facilities for data analysis and display either directly at the computer or printing at the papers.
+
+## 02.03 R Workflow and Packages
+
++ A workflow of data manipulation in R and required packages.
+
+!["The R Workflow"](tidyverse.jpg)
+
+
+## 03.01 R Syntax Rules
+
++ R follows the order of operations in mathematics. Syntax rules that govern the arrangement of symbols, words, and phrases. Sample code showing R performing simple mathematical calculations.
+```{r code1, echo = TRUE}
+145 + 5
+125 - 3
+167 * 8
+555/5
+
+(67 + 45)/9 * 45 + 28
+```
+
+## 03.02 Exercise
+
+Write code to instruct R to perform the following computations:
+
++ 224 + 667
++ 35 / 7
++ (22 * 5) + 3
+
+
+## 04.01 R Data Types
+
++ Variables are reserved memory locations to store values. 
++ Variables store information of various data types like character, wide character, integer, floating point, double floating point, Boolean etc.
++ Frequently used R objects:
+
+    + Vectors
+    + Lists
+    + Matrices
+    + Arrays
+    + Factors
+    + Data Frames
+    
+## 04.02.01 Data Types Looked Close
+
+### Logical
+
++ Example : TRUE, FALSE
+
+```{r code3, echo=TRUE}
+v <- TRUE 
+print(class(v))
+typeof(v)
+```
+
+### Numeric
+
+Numeric data may include integer data, or whole numbers (88), and double data, or decimals (87.666667).
+
++ Example : 12.3, 5, 999
+
+```{r code4, echo=TRUE}
+v <- 23.5
+print(class(v))
+```
+
+### Integer
+
++ Example : 2L, 34L, 0L
+
+```{r code5, echo=TRUE}
+v <- 2L
+print(class(v))
+```
+
+## 04.02.02 Data Types Looked Close
+
+### Complex
+
+Example: 3 + 2i
+
+```{r code6, echo=TRUE}
+v <- 2+5i
+print(class(v))
+```
+
+### Characters
+
+Example : 'a' , '"good", "TRUE", '23.4'
+
+```{r code7, echo=TRUE}
+v <- "TRUE"
+print(class(v))
+```
+
+### Raw
+
+Example : "Hello" is stored as 48 65 6c 6c 6f
+
+```{r code8,echo=TRUE}
+v <- charToRaw("Hello")
+print(class(v))
+```
+
+
+## 04.03 Vectors
+
+When you want to create vector with more than one element, you should use `c()` function which means to combine the elements into a vector.
+
+```{r code9, echo= TRUE}
+# Create a vector.
+apple <- c('red','green',"yellow")
+print(apple)
+
+# Get the class of the vector.
+print(class(apple))
+```
+
+
+## 04.04 Lists
+
+A list is an R-object which can contain many different types of elements inside it like vectors, functions and even another list inside it.
+
+```{r code10, echo=TRUE}
+# Create a list.
+list1 <- list(c(2,5,3),21.3,sin)
+
+# Print the list.
+print(list1)
+```
+
+## 04.05 Matrices
+
+A matrix is a two-dimensional rectangular data set. It can be created using a vector input to the matrix function.
+
+```{r code11, echo=TRUE}
+# Create a matrix.
+M = matrix( c('a','a','b','c','b','a'),
+            nrow = 2, ncol = 3, byrow = TRUE)
+print(M)
+```
+
+
+## 04.06 Arrays
+
+While matrices are confined to two dimensions, arrays can be of any number of dimensions. 
+The array function takes a dim attribute which creates the required number of dimension. 
+In the next example we create an array with two elements which are 3x3 matrices each.
+
+
+## Array Example
+```{r code12, echo=TRUE}
+# Create an array.
+a <- array(c('green','yellow'),dim = c(3,3,2))
+print(a)
+```
+
+## 04.07 Factors
+
++ Factors are the r-objects which are created using a vector. It stores the vector along with the distinct values of the elements in the vector as labels. 
++ The labels are always character irrespective of whether it is numeric or character or Boolean etc. in the input vector. They are useful in statistical modeling.
+
++ Factors are created using the `factor()` function. The nlevels functions gives the count of levels.
+
+## Factors Example
+
+```{r code13, echo=TRUE}
+# Create a vector.
+apple_colors <- c('green','green','yellow','red','red','red','green')
+
+# Create a factor object.
+factor_apple <- factor(apple_colors)
+
+# Print the factor.
+print(factor_apple)
+print(nlevels(factor_apple))
+```
+
+
+## 04.08 Dataframes
+
++ Data frames are tabular data objects. Unlike a matrix in data frame each column can contain different modes of data. 
++ The first column can be numeric while the second column can be character and third column can be logical. It is a list of vectors of equal length.
+
++ Data Frames are created using the `data.frame()` function.
+
+## Dataframe Example
+
+```{r code14, echo=TRUE}
+# Create the data frame.
+BMI <- 	data.frame(
+   gender = c("Male", "Male","Female"), 
+   height = c(152, 171.5, 165), 
+   weight = c(81,93, 78),
+   Age = c(42,38,26)
+)
+print(BMI)
+```
+
+## 05.01 Assign Values to Variables
+
+Creating variables requires two steps:
+
++ Create the variable name
++ Assign values to the variable name using the assignment operator `<-`
+
+## 05.02 Naming Variables
+
+When naming variables in R, there are some rules to follow:
+
++ Variable names consists of letters, numbers, a dot, or an underscore.
++ We can begin a variable name with a letter or a dot, but dots cannot be followed by a number.
++ We cannot begin a variable name with a number.
++ No special characters are allowed.
+
+## 05.03 Variable Names
+
+| Variable Name      | Validity | Reason                                                                    |
+|--------------------|----------|---------------------------------------------------------------------------|
+| var_name2.         | valid    | Has letters, numbers, dot and underscore                                  |
+| var_name%          | Invalid  | Has the character '%'. Only dot(.) and underscore allowed.                |
+| 2var_name          | invalid  | Starts with a number                                                      |
+| .var_name,var.name | var.name | Can start with a dot(.) but the dot(.)should not be followed by a number. |
+| .2var_name         | invalid  | The starting dot is followed by a number making it invalid.               |
+| _var_name          | invalid  | Starts with _ which is not valid                                          
+
+## 05.04 Variable Assignment
+
+The variables can be assigned values using leftward, rightward and equal to operator. The values of the variables can be printed using `print()` or `cat()` function. The `cat()` function combines multiple items into a continuous print output.
+
+
+```{r code15, echo=TRUE}
+# Assignment using equal operator.
+var.1 = c(0,1,2,3)           
+
+# Assignment using leftward operator.
+var.2 <- c("learn","R")   
+
+# Assignment using rightward operator.   
+c(TRUE,1) -> var.3           
+
+print(var.1)
+cat ("var.1 is ", var.1 ,"\n")
+cat ("var.2 is ", var.2 ,"\n")
+cat ("var.3 is ", var.3 ,"\n")
+```
+
+## Task
+
+Given The Table
+
+| Class              | Exams | Homework | Projects |
+|--------------------|-------|----------|----------|
+| Math               | 92    | 87       | 85       |
+| Chemistry          | 90    | 81       | 92       |
+| Writing            | 84    | 95       | 79       |
+| Art                | 95    | 86       | 93       |
+| History            | 77    | 85       | 90       |
+| Music              | 92    | 90       | 91       |
+| Physical Education | 85    | 88       | 95       |
+
+## Instructions
+
++ Refer to the table of class data to calculate your final grade in each of your classes:
+
+    + Chemistry
+    + Writing
+    + Art
+    + History
+    + Music
+    + Physical Education
+
++ Store the results of your analysis into variables and combine them to a variable final_scores
++ Using Variables Calculate gpa ( gpa = final_grades/7)
+ 
+## Goodness of Vectors
+
++ Use the `mean()` function to calculate your grade point average from the final_scores vector that we created earlier. Store the result of your calculation in the variable gpa.
+
++ Use the `max()` function to identify the highest final grade in the final_scores vector.
++ Use the `min()` function to identify the lowest final grade in the final_scores vector.
++ Use the `length()` function to calculate the total number of classes.
+
+## 06. Operators
+
+
+An operator is a symbol that tells the compiler to perform specific mathematical or logical manipulations. R language is rich in built-in operators and provides following types of operators.
+
+### Types of Operators
+We have the following types of operators in R programming −
+
++ Arithmetic Operators
++ Relational Operators
++ Logical Operators
++ Assignment Operators
++ Miscellaneous Operators
+
+## Arithmetic Operators 
+
+ `+` Adds two vectors
+
+```{r code16, echo=TRUE}
+v <- c( 2,5.5,6)
+t <- c(8, 3, 4)
+print(v+t)
+```
+
+ `-` Subtracts second vector from the first
+
+```{r code17, echo=TRUE}
+v <- c( 2,5.5,6)
+t <- c(8, 3, 4)
+print(v-t)
+```
+
+## Arithmetic Operators
+
+ `*` Multiplies both vectors
+
+```{r code18, echo=TRUE}
+v <- c( 2,5.5,6)
+t <- c(8, 3, 4)
+print(v*t)
+```
+
+ `/` Divide the first vector with the second
+
+```{r code19, echo=TRUE}
+v <- c( 2,5.5,6)
+t <- c(8, 3, 4)
+print(v/t)
+```
+
+## Arithmetic Operators
+
+ `%%` Give the remainder of the first vector with the second
+
+```{r code20, echo=TRUE}
+v <- c( 2,5.5,6)
+t <- c(8, 3, 4)
+print(v%%t)
+```
+
+ `%/%` The result of division of first vector with second (quotient)
+
+```{r code21, echo=TRUE}
+v <- c( 2,5.5,6)
+t <- c(8, 3, 4)
+print(v%/%t)
+```
+
+## Arithmetic Operators
+
+`^` The first vector raised to the exponent of second vector
+
+```{r code22, echo=TRUE}
+v <- c( 2,5.5,6)
+t <- c(8, 3, 4)
+print(v^t)
+```
+
+## Relational Operators
+
+Each element of the first vector is compared with the corresponding element of the second vector. The result of comparison is a Boolean value.
+
+### 1. Greater Than `(>)`
+
+Checks if each element of the first vector is greater than the corresponding element of the second vector.
+
+```{r code23, echo=TRUE}
+v <- c(2,5.5,6,9)
+t <- c(8,2.5,14,9)
+print(v>t)
+```
+
+## 2. Less than `(<)`
+
+Checks if each element of the first vector is less than the corresponding element of the second vector.
+
+```{r code24, echo=TRUE}
+v <- c(2,5.5,6,9)
+t <- c(8,2.5,14,9)
+print(v < t)
+```
+
+## 3. Equality `(==)`
+
+Checks if each element of the first vector is equal to the corresponding element of the second vector.
+
+```{r code25, echo=TRUE}
+v <- c(2,5.5,6,9)
+t <- c(8,2.5,14,9)
+print(v == t)
+```
+
+## 4. Less equal `(<=)`
+
+Checks if each element of the first vector is less than or equal to the corresponding element of the second vector.
+
+```{r code26, echo=TRUE}
+v <- c(2,5.5,6,9)
+t <- c(8,2.5,14,9)
+print(v<=t)
+```
+## 5. Greater Equal `(>=)`
+Checks if each element of the first vector is greater than or equal to the corresponding element of the second vector.
+
+```{r code27, echo=TRUE}
+v <- c(2,5.5,6,9)
+t <- c(8,2.5,14,9)
+print(v>=t)
+```
+
+## 6. Not Equal `(!=)`
+
+Checks if each element of the first vector is unequal to the corresponding element of the second vector.
+
+```{r code28, echo=TRUE}
+v <- c(2,5.5,6,9)
+t <- c(8,2.5,14,9)
+print(v!=t)
+```
+
+## Logical Operators
+
+It is applicable only to vectors of type logical, numeric or complex. All numbers greater than 1 are considered as logical value TRUE.
+
+Each element of the first vector is compared with the corresponding element of the second vector. The result of comparison is a Boolean value.
+
+
+## Element Wise Logical AND `(&)`
+
+It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if both the elements are TRUE.
+
+
+```{r code29, echo=TRUE}
+v <- c(3,1,TRUE,2+3i)
+t <- c(4,1,FALSE,2+3i)
+print(v&t)
+```
+
+
+
+## Element Wise Logical OR `(|)`
+
+It combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if one the elements is TRUE.
+
+```{r code30, echo=TRUE}
+v <- c(3,0,TRUE,2+2i)
+t <- c(4,0,FALSE,2+3i)
+print(v|t)
+```
+
+## Logical NOT `(!)`
+
+Takes each element of the vector and gives the opposite logical value.
+
+```{r code32, echo=TRUE}
+v <- c(3,0,TRUE,2+2i)
+print(!v)
+```
+
+The logical operator && and || considers only the first element of the vectors and give a vector of single element as output.
+
+## Logical AND `(&&)`
+
+Takes first element of both the vectors and gives the TRUE only if both are TRUE.
+
+```{r code33, echo=TRUE}
+v <- c(3,0,TRUE,2+2i)
+t <- c(1,3,TRUE,2+3i)
+print(v&&t)
+```
+
+## Logical OR `(||)`
+
+ Takes first element of both the vectors and gives the TRUE if one of them is TRUE
+ 
+```{r code34, echo=TRUE}
+v <- c(0,0,TRUE,2+2i)
+t <- c(0,3,TRUE,2+3i)
+print(v||t)
+```
+
+## Miscelleneous Operators
+
+These operators are used to for specific purpose and not general mathematical or logical computation.
+
+### Colon Operator `(:)`
+
+It creates the series of numbers in sequence for a vector.
+
+```{r code3x, echo=TRUE}
+v <- 2:8
+print(v) 
+```
+
+## %in%
+
+This operator is used to identify if an element belongs to a vector.
+
+```{r code35, echo=TRUE}
+v1 <- 8
+v2 <- 12
+t <- 1:10
+print(v1 %in% t) 
+print(v2 %in% t) 
+```
+
+## %*%
+
+This operator is used to multiply a matrix with its transpose
+
+```{r code36,echo=TRUE}
+M = matrix( c(2,6,5,1,10,4), nrow = 2,ncol = 3,byrow = TRUE)
+t = M %*% t(M)
+print(t)
+```
+
+
+## Decision Making
+
+Decision making structures require the programmer to specify one or more conditions to be evaluated or tested by the program, along with a statement or statements to be executed if the condition is determined to be true, and optionally, other statements to be executed if the condition is determined to be false.
+
+![](images/decision.png)
+
+
+## If statement
+
+An if statement consists of a Boolean expression followed by one or more statements.
+
+Flow Diagram
+
+![](images/if.png)
+
+## If statement : Example
+
+```{r code3y, echo=TRUE}
+x <- 30L
+if(is.integer(x)) {
+   print("X is an Integer")
+}
+```
+
+
+## If ... else statement
+
+An if statement can be followed by an optional else statement, which executes when the Boolean expression is false.
+
+Flow Diagram
+
+![](images/else.png)
+## Example:
+
+### if ... else statement
+
+```{r code4z, echo=TRUE}
+x <- c("what","is","truth")
+
+if("Truth" %in% x) {
+   print("Truth is found")
+} else {
+   print("Truth is not found")
+}
+```
+
+### The if...else if...else Statement
+
+```{r codexs, echo=TRUE}
+x <- c("what","is","truth")
+
+if("Truth" %in% x) {
+   print("Truth is found the first time")
+} else if ("truth" %in% x) {
+   print("truth is found the second time")
+} else {
+   print("No truth found")
+}
+```
+
+
+## Switch statement
+
+A switch statement allows a variable to be tested for equality against a list of values.
+
+Flow Diagram
+
+![](images/switch.png)
+
+## Example : Switch
+
+```{r codewe, echo=TRUE}
+x <- switch(
+   3,
+   "first",
+   "second",
+   "third",
+   "fourth"
+)
+print(x)
+
+```
+
+## Loops
+
+A loop statement allows us to execute a statement or group of statements multiple times and the following is the general form of a loop statement in most of the programming languages −
+
+![](images/loops.png)
+
+
+## Repeat Loop
+
+Executes a sequence of statements multiple times and abbreviates the code that manages the loop variable.
+Flow Diagram
+
+![](images/repeat.png)
+
+
+## Example : Repeat Loop
+
+```{r code37, echo=TRUE}
+v <- c("Hello","loop")
+cnt <- 2
+
+repeat {
+   print(v)
+   cnt <- cnt+1
+   
+   if(cnt > 5) {
+      break
+   }
+}
+```
+
+
+## while loop
+
+Repeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.
+
+Flow Diagram
+
+![](images/while.png)
+
+## Example : While Loop
+
+```{r code38, echo=TRUE}
+v <- c("Hello","while loop")
+cnt <- 2
+
+while (cnt < 7) {
+   print(v)
+   cnt = cnt + 1
+}
+```
+
+## for loop
+
+Like a while statement, except that it tests the condition at the end of the loop body.
+
+Flow Diagram
+
+![](images/for.png)
+
+
+## Loop control statements
+
+Loop control statements change execution from its normal sequence. When execution leaves a scope, all automatic objects that were created in that scope are destroyed.
+
+### break statement
+Terminates the loop statement and transfers execution to the statement immediately following the loop.
+
+### Next statement
+The next statement simulates the behavior of R switch.
+
+## Next Statement
+Flow Diagram
+
+![](images/next.png)
+
+## Next: Example
+
+```{r code39, echo=TRUE}
+v <- LETTERS[1:6]
+for ( i in v) {
+   
+   if (i == "D") {
+      next
+   }
+   print(i)
+}
+```

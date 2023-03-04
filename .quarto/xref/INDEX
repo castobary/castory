@@ -70,5 +70,20 @@
   },
   "projects/projects.qmd": {
     "projects.html": "1531d431"
+  },
+  "courses/r_basics/Introduction.qmd": {
+    "Introduction.html": "78e146b6"
+  },
+  "courses/r_advanced/map_function.qmd": {
+    "map_function.html": "b011464d"
+  },
+  "courses/r_advanced/random_sampling.qmd": {
+    "random_sampling.html": "70fbce67"
+  },
+  "courses/r_advanced/strati_sampling.qmd": {
+    "strati_sampling.html": "137fe058"
+  },
+  "courses/r_advanced.qmd": {
+    "r_advanced.html": "018ccfdb"
   }
 }

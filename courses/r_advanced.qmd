@@ -1,0 +1,11 @@
+---
+title: "R Advanced"
+---
+
+This page contains a compilation of Advanced R Modules.
+
+Advanced R Topics to take your skills to the next level
+
+[01. Map Functions](r_advanced/map_function.qmd)
+
+

@@ -2,6 +2,10 @@
 title: "R Basics"
 ---
 
-This page contains a compilation of R basic courses.
+This page contains a compilation of Advanced R Modules.
 
-[Map Functions](r_basics/map_function.qmd)
+Key Modules
+
+[Module 01: Introduction to Programming in R](r_basics/Introduction.qmd)
+
+

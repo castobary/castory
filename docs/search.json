@@ -221,7 +221,7 @@
     "href": "courses/r_basics.html",
     "title": "R Basics",
     "section": "",
-    "text": "This page contains a compilation of R basic courses.\nMap Functions"
+    "text": "This page contains a compilation of Advanced R Modules.\nKey Modules\nModule 01: Introduction to Programming in R"
   },
   {
     "objectID": "courses/sir_modelling.html",
@@ -586,5 +586,656 @@
     "title": "Projects",
     "section": "",
     "text": "Coming soon…………..\nWorking hard to develop this section"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#table-of-contents",
+    "href": "courses/r_basics/Introduction.html#table-of-contents",
+    "title": "Introduction to Programming in R",
+    "section": "Table of Contents",
+    "text": "Table of Contents\n\nLearning Data Science\nProgramming in R\nR syntax rules\nExploring Data with R\nProgramming with Variables\nVectors : Storage for Multiple Values\nOperators"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#learning-data-science",
+    "href": "courses/r_basics/Introduction.html#learning-data-science",
+    "title": "Introduction to Programming in R",
+    "section": "01 Learning Data Science",
+    "text": "01 Learning Data Science\n\nData science is a “concept to unify statistics, data analysis, machine learning and their related methods” in order to “understand and analyze actual phenomena” with data.\nData science: It’s one of the most exciting and fastest-growing fields out there.\nData scientists bring value to all kinds of businesses and organizations.\nData science languages includes R, Python, Matlab, Julia and their libraries"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#programming-in-r",
+    "href": "courses/r_basics/Introduction.html#programming-in-r",
+    "title": "Introduction to Programming in R",
+    "section": "02.01 Programming in R",
+    "text": "02.01 Programming in R\n\nR is a programming language and software environment for statistical analysis, graphics representation and reporting.\nR was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand.R made its first appearance in 1993."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#features-of-r",
+    "href": "courses/r_basics/Introduction.html#features-of-r",
+    "title": "Introduction to Programming in R",
+    "section": "02.02 Features of R",
+    "text": "02.02 Features of R\n\nR is a well-developed, simple and effective programming language which includes conditionals, loops, user defined recursive functions and input and output facilities.\nR has an effective data handling and storage facility,\nR provides a suite of operators for calculations on arrays, lists, vectors and matrices.\nR provides a large, coherent and integrated collection of tools for data analysis.\nR provides graphical facilities for data analysis and display either directly at the computer or printing at the papers."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#r-workflow-and-packages",
+    "href": "courses/r_basics/Introduction.html#r-workflow-and-packages",
+    "title": "Introduction to Programming in R",
+    "section": "02.03 R Workflow and Packages",
+    "text": "02.03 R Workflow and Packages\n\nA workflow of data manipulation in R and required packages.\n\n\n“The R Workflow”"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#r-syntax-rules",
+    "href": "courses/r_basics/Introduction.html#r-syntax-rules",
+    "title": "Introduction to Programming in R",
+    "section": "03.01 R Syntax Rules",
+    "text": "03.01 R Syntax Rules\n\nR follows the order of operations in mathematics. Syntax rules that govern the arrangement of symbols, words, and phrases. Sample code showing R performing simple mathematical calculations.\n\n\n145 + 5\n\n[1] 150\n\n125 - 3\n\n[1] 122\n\n167 * 8\n\n[1] 1336\n\n555/5\n\n[1] 111\n\n(67 + 45)/9 * 45 + 28\n\n[1] 588"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#exercise",
+    "href": "courses/r_basics/Introduction.html#exercise",
+    "title": "Introduction to Programming in R",
+    "section": "03.02 Exercise",
+    "text": "03.02 Exercise\nWrite code to instruct R to perform the following computations:\n\n224 + 667\n35 / 7\n(22 * 5) + 3"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#r-data-types",
+    "href": "courses/r_basics/Introduction.html#r-data-types",
+    "title": "Introduction to Programming in R",
+    "section": "04.01 R Data Types",
+    "text": "04.01 R Data Types\n\nVariables are reserved memory locations to store values.\nVariables store information of various data types like character, wide character, integer, floating point, double floating point, Boolean etc.\nFrequently used R objects:\n\nVectors\nLists\nMatrices\nArrays\nFactors\nData Frames"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#data-types-looked-close",
+    "href": "courses/r_basics/Introduction.html#data-types-looked-close",
+    "title": "Introduction to Programming in R",
+    "section": "04.02.01 Data Types Looked Close",
+    "text": "04.02.01 Data Types Looked Close\nLogical\n\nExample : TRUE, FALSE\n\n\nv <- TRUE \nprint(class(v))\n\n[1] \"logical\"\n\ntypeof(v)\n\n[1] \"logical\"\n\n\nNumeric\nNumeric data may include integer data, or whole numbers (88), and double data, or decimals (87.666667).\n\nExample : 12.3, 5, 999\n\n\nv <- 23.5\nprint(class(v))\n\n[1] \"numeric\"\n\n\nInteger\n\nExample : 2L, 34L, 0L\n\n\nv <- 2L\nprint(class(v))\n\n[1] \"integer\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#data-types-looked-close-1",
+    "href": "courses/r_basics/Introduction.html#data-types-looked-close-1",
+    "title": "Introduction to Programming in R",
+    "section": "04.02.02 Data Types Looked Close",
+    "text": "04.02.02 Data Types Looked Close\nComplex\nExample: 3 + 2i\n\nv <- 2+5i\nprint(class(v))\n\n[1] \"complex\"\n\n\nCharacters\nExample : ‘a’ , ‘“good”, “TRUE”, ’23.4’\n\nv <- \"TRUE\"\nprint(class(v))\n\n[1] \"character\"\n\n\nRaw\nExample : “Hello” is stored as 48 65 6c 6c 6f\n\nv <- charToRaw(\"Hello\")\nprint(class(v))\n\n[1] \"raw\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#vectors",
+    "href": "courses/r_basics/Introduction.html#vectors",
+    "title": "Introduction to Programming in R",
+    "section": "04.03 Vectors",
+    "text": "04.03 Vectors\nWhen you want to create vector with more than one element, you should use c() function which means to combine the elements into a vector.\n\n# Create a vector.\napple <- c('red','green',\"yellow\")\nprint(apple)\n\n[1] \"red\"    \"green\"  \"yellow\"\n\n# Get the class of the vector.\nprint(class(apple))\n\n[1] \"character\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#lists",
+    "href": "courses/r_basics/Introduction.html#lists",
+    "title": "Introduction to Programming in R",
+    "section": "04.04 Lists",
+    "text": "04.04 Lists\nA list is an R-object which can contain many different types of elements inside it like vectors, functions and even another list inside it.\n\n# Create a list.\nlist1 <- list(c(2,5,3),21.3,sin)\n\n# Print the list.\nprint(list1)\n\n[[1]]\n[1] 2 5 3\n\n[[2]]\n[1] 21.3\n\n[[3]]\nfunction (x)  .Primitive(\"sin\")"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#matrices",
+    "href": "courses/r_basics/Introduction.html#matrices",
+    "title": "Introduction to Programming in R",
+    "section": "04.05 Matrices",
+    "text": "04.05 Matrices\nA matrix is a two-dimensional rectangular data set. It can be created using a vector input to the matrix function.\n\n# Create a matrix.\nM = matrix( c('a','a','b','c','b','a'),\n            nrow = 2, ncol = 3, byrow = TRUE)\nprint(M)\n\n     [,1] [,2] [,3]\n[1,] \"a\"  \"a\"  \"b\" \n[2,] \"c\"  \"b\"  \"a\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#arrays",
+    "href": "courses/r_basics/Introduction.html#arrays",
+    "title": "Introduction to Programming in R",
+    "section": "04.06 Arrays",
+    "text": "04.06 Arrays\nWhile matrices are confined to two dimensions, arrays can be of any number of dimensions. The array function takes a dim attribute which creates the required number of dimension. In the next example we create an array with two elements which are 3x3 matrices each."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#array-example",
+    "href": "courses/r_basics/Introduction.html#array-example",
+    "title": "Introduction to Programming in R",
+    "section": "Array Example",
+    "text": "Array Example\n\n# Create an array.\na <- array(c('green','yellow'),dim = c(3,3,2))\nprint(a)\n\n, , 1\n\n     [,1]     [,2]     [,3]    \n[1,] \"green\"  \"yellow\" \"green\" \n[2,] \"yellow\" \"green\"  \"yellow\"\n[3,] \"green\"  \"yellow\" \"green\" \n\n, , 2\n\n     [,1]     [,2]     [,3]    \n[1,] \"yellow\" \"green\"  \"yellow\"\n[2,] \"green\"  \"yellow\" \"green\" \n[3,] \"yellow\" \"green\"  \"yellow\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#factors",
+    "href": "courses/r_basics/Introduction.html#factors",
+    "title": "Introduction to Programming in R",
+    "section": "04.07 Factors",
+    "text": "04.07 Factors\n\nFactors are the r-objects which are created using a vector. It stores the vector along with the distinct values of the elements in the vector as labels.\nThe labels are always character irrespective of whether it is numeric or character or Boolean etc. in the input vector. They are useful in statistical modeling.\nFactors are created using the factor() function. The nlevels functions gives the count of levels."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#factors-example",
+    "href": "courses/r_basics/Introduction.html#factors-example",
+    "title": "Introduction to Programming in R",
+    "section": "Factors Example",
+    "text": "Factors Example\n\n# Create a vector.\napple_colors <- c('green','green','yellow','red','red','red','green')\n\n# Create a factor object.\nfactor_apple <- factor(apple_colors)\n\n# Print the factor.\nprint(factor_apple)\n\n[1] green  green  yellow red    red    red    green \nLevels: green red yellow\n\nprint(nlevels(factor_apple))\n\n[1] 3"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#dataframes",
+    "href": "courses/r_basics/Introduction.html#dataframes",
+    "title": "Introduction to Programming in R",
+    "section": "04.08 Dataframes",
+    "text": "04.08 Dataframes\n\nData frames are tabular data objects. Unlike a matrix in data frame each column can contain different modes of data.\nThe first column can be numeric while the second column can be character and third column can be logical. It is a list of vectors of equal length.\nData Frames are created using the data.frame() function."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#dataframe-example",
+    "href": "courses/r_basics/Introduction.html#dataframe-example",
+    "title": "Introduction to Programming in R",
+    "section": "Dataframe Example",
+    "text": "Dataframe Example\n\n# Create the data frame.\nBMI <-  data.frame(\n   gender = c(\"Male\", \"Male\",\"Female\"), \n   height = c(152, 171.5, 165), \n   weight = c(81,93, 78),\n   Age = c(42,38,26)\n)\nprint(BMI)\n\n  gender height weight Age\n1   Male  152.0     81  42\n2   Male  171.5     93  38\n3 Female  165.0     78  26"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#assign-values-to-variables",
+    "href": "courses/r_basics/Introduction.html#assign-values-to-variables",
+    "title": "Introduction to Programming in R",
+    "section": "05.01 Assign Values to Variables",
+    "text": "05.01 Assign Values to Variables\nCreating variables requires two steps:\n\nCreate the variable name\nAssign values to the variable name using the assignment operator <-"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#naming-variables",
+    "href": "courses/r_basics/Introduction.html#naming-variables",
+    "title": "Introduction to Programming in R",
+    "section": "05.02 Naming Variables",
+    "text": "05.02 Naming Variables\nWhen naming variables in R, there are some rules to follow:\n\nVariable names consists of letters, numbers, a dot, or an underscore.\nWe can begin a variable name with a letter or a dot, but dots cannot be followed by a number.\nWe cannot begin a variable name with a number.\nNo special characters are allowed."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#variable-names",
+    "href": "courses/r_basics/Introduction.html#variable-names",
+    "title": "Introduction to Programming in R",
+    "section": "05.03 Variable Names",
+    "text": "05.03 Variable Names\n\n\n\n\n\n\n\n\nVariable Name\nValidity\nReason\n\n\n\n\nvar_name2.\nvalid\nHas letters, numbers, dot and underscore\n\n\nvar_name%\nInvalid\nHas the character ‘%’. Only dot(.) and underscore allowed.\n\n\n2var_name\ninvalid\nStarts with a number\n\n\n.var_name,var.name\nvar.name\nCan start with a dot(.) but the dot(.)should not be followed by a number.\n\n\n.2var_name\ninvalid\nThe starting dot is followed by a number making it invalid.\n\n\n_var_name\ninvalid\nStarts with _ which is not valid"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#variable-assignment",
+    "href": "courses/r_basics/Introduction.html#variable-assignment",
+    "title": "Introduction to Programming in R",
+    "section": "05.04 Variable Assignment",
+    "text": "05.04 Variable Assignment\nThe variables can be assigned values using leftward, rightward and equal to operator. The values of the variables can be printed using print() or cat() function. The cat() function combines multiple items into a continuous print output.\n\n# Assignment using equal operator.\nvar.1 = c(0,1,2,3)           \n\n# Assignment using leftward operator.\nvar.2 <- c(\"learn\",\"R\")   \n\n# Assignment using rightward operator.   \nc(TRUE,1) -> var.3           \n\nprint(var.1)\n\n[1] 0 1 2 3\n\ncat (\"var.1 is \", var.1 ,\"\\n\")\n\nvar.1 is  0 1 2 3 \n\ncat (\"var.2 is \", var.2 ,\"\\n\")\n\nvar.2 is  learn R \n\ncat (\"var.3 is \", var.3 ,\"\\n\")\n\nvar.3 is  1 1"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#task",
+    "href": "courses/r_basics/Introduction.html#task",
+    "title": "Introduction to Programming in R",
+    "section": "Task",
+    "text": "Task\nGiven The Table\n\n\n\nClass\nExams\nHomework\nProjects\n\n\n\n\nMath\n92\n87\n85\n\n\nChemistry\n90\n81\n92\n\n\nWriting\n84\n95\n79\n\n\nArt\n95\n86\n93\n\n\nHistory\n77\n85\n90\n\n\nMusic\n92\n90\n91\n\n\nPhysical Education\n85\n88\n95"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#instructions",
+    "href": "courses/r_basics/Introduction.html#instructions",
+    "title": "Introduction to Programming in R",
+    "section": "Instructions",
+    "text": "Instructions\n\nRefer to the table of class data to calculate your final grade in each of your classes:\n\nChemistry\nWriting\nArt\nHistory\nMusic\nPhysical Education\n\nStore the results of your analysis into variables and combine them to a variable final_scores\nUsing Variables Calculate gpa ( gpa = final_grades/7)"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#goodness-of-vectors",
+    "href": "courses/r_basics/Introduction.html#goodness-of-vectors",
+    "title": "Introduction to Programming in R",
+    "section": "Goodness of Vectors",
+    "text": "Goodness of Vectors\n\nUse the mean() function to calculate your grade point average from the final_scores vector that we created earlier. Store the result of your calculation in the variable gpa.\nUse the max() function to identify the highest final grade in the final_scores vector.\nUse the min() function to identify the lowest final grade in the final_scores vector.\nUse the length() function to calculate the total number of classes."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#operators",
+    "href": "courses/r_basics/Introduction.html#operators",
+    "title": "Introduction to Programming in R",
+    "section": "06. Operators",
+    "text": "06. Operators\nAn operator is a symbol that tells the compiler to perform specific mathematical or logical manipulations. R language is rich in built-in operators and provides following types of operators.\nTypes of Operators\nWe have the following types of operators in R programming −\n\nArithmetic Operators\nRelational Operators\nLogical Operators\nAssignment Operators\nMiscellaneous Operators"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#arithmetic-operators",
+    "href": "courses/r_basics/Introduction.html#arithmetic-operators",
+    "title": "Introduction to Programming in R",
+    "section": "Arithmetic Operators",
+    "text": "Arithmetic Operators\n+ Adds two vectors\n\nv <- c( 2,5.5,6)\nt <- c(8, 3, 4)\nprint(v+t)\n\n[1] 10.0  8.5 10.0\n\n\n- Subtracts second vector from the first\n\nv <- c( 2,5.5,6)\nt <- c(8, 3, 4)\nprint(v-t)\n\n[1] -6.0  2.5  2.0"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#arithmetic-operators-1",
+    "href": "courses/r_basics/Introduction.html#arithmetic-operators-1",
+    "title": "Introduction to Programming in R",
+    "section": "Arithmetic Operators",
+    "text": "Arithmetic Operators\n* Multiplies both vectors\n\nv <- c( 2,5.5,6)\nt <- c(8, 3, 4)\nprint(v*t)\n\n[1] 16.0 16.5 24.0\n\n\n/ Divide the first vector with the second\n\nv <- c( 2,5.5,6)\nt <- c(8, 3, 4)\nprint(v/t)\n\n[1] 0.250000 1.833333 1.500000"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#arithmetic-operators-2",
+    "href": "courses/r_basics/Introduction.html#arithmetic-operators-2",
+    "title": "Introduction to Programming in R",
+    "section": "Arithmetic Operators",
+    "text": "Arithmetic Operators\n%% Give the remainder of the first vector with the second\n\nv <- c( 2,5.5,6)\nt <- c(8, 3, 4)\nprint(v%%t)\n\n[1] 2.0 2.5 2.0\n\n\n%/% The result of division of first vector with second (quotient)\n\nv <- c( 2,5.5,6)\nt <- c(8, 3, 4)\nprint(v%/%t)\n\n[1] 0 1 1"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#arithmetic-operators-3",
+    "href": "courses/r_basics/Introduction.html#arithmetic-operators-3",
+    "title": "Introduction to Programming in R",
+    "section": "Arithmetic Operators",
+    "text": "Arithmetic Operators\n^ The first vector raised to the exponent of second vector\n\nv <- c( 2,5.5,6)\nt <- c(8, 3, 4)\nprint(v^t)\n\n[1]  256.000  166.375 1296.000"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#relational-operators",
+    "href": "courses/r_basics/Introduction.html#relational-operators",
+    "title": "Introduction to Programming in R",
+    "section": "Relational Operators",
+    "text": "Relational Operators\nEach element of the first vector is compared with the corresponding element of the second vector. The result of comparison is a Boolean value.\n1. Greater Than (>)\nChecks if each element of the first vector is greater than the corresponding element of the second vector.\n\nv <- c(2,5.5,6,9)\nt <- c(8,2.5,14,9)\nprint(v>t)\n\n[1] FALSE  TRUE FALSE FALSE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#less-than",
+    "href": "courses/r_basics/Introduction.html#less-than",
+    "title": "Introduction to Programming in R",
+    "section": "2. Less than (<)",
+    "text": "2. Less than (<)\nChecks if each element of the first vector is less than the corresponding element of the second vector.\n\nv <- c(2,5.5,6,9)\nt <- c(8,2.5,14,9)\nprint(v < t)\n\n[1]  TRUE FALSE  TRUE FALSE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#equality",
+    "href": "courses/r_basics/Introduction.html#equality",
+    "title": "Introduction to Programming in R",
+    "section": "3. Equality (==)",
+    "text": "3. Equality (==)\nChecks if each element of the first vector is equal to the corresponding element of the second vector.\n\nv <- c(2,5.5,6,9)\nt <- c(8,2.5,14,9)\nprint(v == t)\n\n[1] FALSE FALSE FALSE  TRUE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#less-equal",
+    "href": "courses/r_basics/Introduction.html#less-equal",
+    "title": "Introduction to Programming in R",
+    "section": "4. Less equal (<=)",
+    "text": "4. Less equal (<=)\nChecks if each element of the first vector is less than or equal to the corresponding element of the second vector.\n\nv <- c(2,5.5,6,9)\nt <- c(8,2.5,14,9)\nprint(v<=t)\n\n[1]  TRUE FALSE  TRUE  TRUE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#greater-equal",
+    "href": "courses/r_basics/Introduction.html#greater-equal",
+    "title": "Introduction to Programming in R",
+    "section": "5. Greater Equal (>=)",
+    "text": "5. Greater Equal (>=)\nChecks if each element of the first vector is greater than or equal to the corresponding element of the second vector.\n\nv <- c(2,5.5,6,9)\nt <- c(8,2.5,14,9)\nprint(v>=t)\n\n[1] FALSE  TRUE FALSE  TRUE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#not-equal",
+    "href": "courses/r_basics/Introduction.html#not-equal",
+    "title": "Introduction to Programming in R",
+    "section": "6. Not Equal (!=)",
+    "text": "6. Not Equal (!=)\nChecks if each element of the first vector is unequal to the corresponding element of the second vector.\n\nv <- c(2,5.5,6,9)\nt <- c(8,2.5,14,9)\nprint(v!=t)\n\n[1]  TRUE  TRUE  TRUE FALSE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#logical-operators",
+    "href": "courses/r_basics/Introduction.html#logical-operators",
+    "title": "Introduction to Programming in R",
+    "section": "Logical Operators",
+    "text": "Logical Operators\nIt is applicable only to vectors of type logical, numeric or complex. All numbers greater than 1 are considered as logical value TRUE.\nEach element of the first vector is compared with the corresponding element of the second vector. The result of comparison is a Boolean value."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#element-wise-logical-and",
+    "href": "courses/r_basics/Introduction.html#element-wise-logical-and",
+    "title": "Introduction to Programming in R",
+    "section": "Element Wise Logical AND (&)",
+    "text": "Element Wise Logical AND (&)\nIt combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if both the elements are TRUE.\n\nv <- c(3,1,TRUE,2+3i)\nt <- c(4,1,FALSE,2+3i)\nprint(v&t)\n\n[1]  TRUE  TRUE FALSE  TRUE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#element-wise-logical-or",
+    "href": "courses/r_basics/Introduction.html#element-wise-logical-or",
+    "title": "Introduction to Programming in R",
+    "section": "Element Wise Logical OR (|)",
+    "text": "Element Wise Logical OR (|)\nIt combines each element of the first vector with the corresponding element of the second vector and gives a output TRUE if one the elements is TRUE.\n\nv <- c(3,0,TRUE,2+2i)\nt <- c(4,0,FALSE,2+3i)\nprint(v|t)\n\n[1]  TRUE FALSE  TRUE  TRUE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#logical-not",
+    "href": "courses/r_basics/Introduction.html#logical-not",
+    "title": "Introduction to Programming in R",
+    "section": "Logical NOT (!)",
+    "text": "Logical NOT (!)\nTakes each element of the vector and gives the opposite logical value.\n\nv <- c(3,0,TRUE,2+2i)\nprint(!v)\n\n[1] FALSE  TRUE FALSE FALSE\n\n\nThe logical operator && and || considers only the first element of the vectors and give a vector of single element as output."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#logical-and",
+    "href": "courses/r_basics/Introduction.html#logical-and",
+    "title": "Introduction to Programming in R",
+    "section": "Logical AND (&&)",
+    "text": "Logical AND (&&)\nTakes first element of both the vectors and gives the TRUE only if both are TRUE.\n\nv <- c(3,0,TRUE,2+2i)\nt <- c(1,3,TRUE,2+3i)\nprint(v&&t)\n\n[1] TRUE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#logical-or",
+    "href": "courses/r_basics/Introduction.html#logical-or",
+    "title": "Introduction to Programming in R",
+    "section": "Logical OR (||)",
+    "text": "Logical OR (||)\nTakes first element of both the vectors and gives the TRUE if one of them is TRUE\n\nv <- c(0,0,TRUE,2+2i)\nt <- c(0,3,TRUE,2+3i)\nprint(v||t)\n\n[1] FALSE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#miscelleneous-operators",
+    "href": "courses/r_basics/Introduction.html#miscelleneous-operators",
+    "title": "Introduction to Programming in R",
+    "section": "Miscelleneous Operators",
+    "text": "Miscelleneous Operators\nThese operators are used to for specific purpose and not general mathematical or logical computation.\nColon Operator (:)\nIt creates the series of numbers in sequence for a vector.\n\nv <- 2:8\nprint(v) \n\n[1] 2 3 4 5 6 7 8"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#in",
+    "href": "courses/r_basics/Introduction.html#in",
+    "title": "Introduction to Programming in R",
+    "section": "%in%",
+    "text": "%in%\nThis operator is used to identify if an element belongs to a vector.\n\nv1 <- 8\nv2 <- 12\nt <- 1:10\nprint(v1 %in% t) \n\n[1] TRUE\n\nprint(v2 %in% t) \n\n[1] FALSE"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#section",
+    "href": "courses/r_basics/Introduction.html#section",
+    "title": "Introduction to Programming in R",
+    "section": "%*%",
+    "text": "%*%\nThis operator is used to multiply a matrix with its transpose\n\nM = matrix( c(2,6,5,1,10,4), nrow = 2,ncol = 3,byrow = TRUE)\nt = M %*% t(M)\nprint(t)\n\n     [,1] [,2]\n[1,]   65   82\n[2,]   82  117"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#decision-making",
+    "href": "courses/r_basics/Introduction.html#decision-making",
+    "title": "Introduction to Programming in R",
+    "section": "Decision Making",
+    "text": "Decision Making\nDecision making structures require the programmer to specify one or more conditions to be evaluated or tested by the program, along with a statement or statements to be executed if the condition is determined to be true, and optionally, other statements to be executed if the condition is determined to be false."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#if-statement",
+    "href": "courses/r_basics/Introduction.html#if-statement",
+    "title": "Introduction to Programming in R",
+    "section": "If statement",
+    "text": "If statement\nAn if statement consists of a Boolean expression followed by one or more statements.\nFlow Diagram"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#if-statement-example",
+    "href": "courses/r_basics/Introduction.html#if-statement-example",
+    "title": "Introduction to Programming in R",
+    "section": "If statement : Example",
+    "text": "If statement : Example\n\nx <- 30L\nif(is.integer(x)) {\n   print(\"X is an Integer\")\n}\n\n[1] \"X is an Integer\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#if-else-statement",
+    "href": "courses/r_basics/Introduction.html#if-else-statement",
+    "title": "Introduction to Programming in R",
+    "section": "If … else statement",
+    "text": "If … else statement\nAn if statement can be followed by an optional else statement, which executes when the Boolean expression is false.\nFlow Diagram\n ## Example:\nif … else statement\n\nx <- c(\"what\",\"is\",\"truth\")\n\nif(\"Truth\" %in% x) {\n   print(\"Truth is found\")\n} else {\n   print(\"Truth is not found\")\n}\n\n[1] \"Truth is not found\"\n\n\nThe if…else if…else Statement\n\nx <- c(\"what\",\"is\",\"truth\")\n\nif(\"Truth\" %in% x) {\n   print(\"Truth is found the first time\")\n} else if (\"truth\" %in% x) {\n   print(\"truth is found the second time\")\n} else {\n   print(\"No truth found\")\n}\n\n[1] \"truth is found the second time\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#switch-statement",
+    "href": "courses/r_basics/Introduction.html#switch-statement",
+    "title": "Introduction to Programming in R",
+    "section": "Switch statement",
+    "text": "Switch statement\nA switch statement allows a variable to be tested for equality against a list of values.\nFlow Diagram"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#example-switch",
+    "href": "courses/r_basics/Introduction.html#example-switch",
+    "title": "Introduction to Programming in R",
+    "section": "Example : Switch",
+    "text": "Example : Switch\n\nx <- switch(\n   3,\n   \"first\",\n   \"second\",\n   \"third\",\n   \"fourth\"\n)\nprint(x)\n\n[1] \"third\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#loops",
+    "href": "courses/r_basics/Introduction.html#loops",
+    "title": "Introduction to Programming in R",
+    "section": "Loops",
+    "text": "Loops\nA loop statement allows us to execute a statement or group of statements multiple times and the following is the general form of a loop statement in most of the programming languages −"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#repeat-loop",
+    "href": "courses/r_basics/Introduction.html#repeat-loop",
+    "title": "Introduction to Programming in R",
+    "section": "Repeat Loop",
+    "text": "Repeat Loop\nExecutes a sequence of statements multiple times and abbreviates the code that manages the loop variable. Flow Diagram"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#example-repeat-loop",
+    "href": "courses/r_basics/Introduction.html#example-repeat-loop",
+    "title": "Introduction to Programming in R",
+    "section": "Example : Repeat Loop",
+    "text": "Example : Repeat Loop\n\nv <- c(\"Hello\",\"loop\")\ncnt <- 2\n\nrepeat {\n   print(v)\n   cnt <- cnt+1\n   \n   if(cnt > 5) {\n      break\n   }\n}\n\n[1] \"Hello\" \"loop\" \n[1] \"Hello\" \"loop\" \n[1] \"Hello\" \"loop\" \n[1] \"Hello\" \"loop\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#while-loop",
+    "href": "courses/r_basics/Introduction.html#while-loop",
+    "title": "Introduction to Programming in R",
+    "section": "while loop",
+    "text": "while loop\nRepeats a statement or group of statements while a given condition is true. It tests the condition before executing the loop body.\nFlow Diagram"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#example-while-loop",
+    "href": "courses/r_basics/Introduction.html#example-while-loop",
+    "title": "Introduction to Programming in R",
+    "section": "Example : While Loop",
+    "text": "Example : While Loop\n\nv <- c(\"Hello\",\"while loop\")\ncnt <- 2\n\nwhile (cnt < 7) {\n   print(v)\n   cnt = cnt + 1\n}\n\n[1] \"Hello\"      \"while loop\"\n[1] \"Hello\"      \"while loop\"\n[1] \"Hello\"      \"while loop\"\n[1] \"Hello\"      \"while loop\"\n[1] \"Hello\"      \"while loop\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#for-loop",
+    "href": "courses/r_basics/Introduction.html#for-loop",
+    "title": "Introduction to Programming in R",
+    "section": "for loop",
+    "text": "for loop\nLike a while statement, except that it tests the condition at the end of the loop body.\nFlow Diagram"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#loop-control-statements",
+    "href": "courses/r_basics/Introduction.html#loop-control-statements",
+    "title": "Introduction to Programming in R",
+    "section": "Loop control statements",
+    "text": "Loop control statements\nLoop control statements change execution from its normal sequence. When execution leaves a scope, all automatic objects that were created in that scope are destroyed.\nbreak statement\nTerminates the loop statement and transfers execution to the statement immediately following the loop.\nNext statement\nThe next statement simulates the behavior of R switch."
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#next-statement-1",
+    "href": "courses/r_basics/Introduction.html#next-statement-1",
+    "title": "Introduction to Programming in R",
+    "section": "Next Statement",
+    "text": "Next Statement\nFlow Diagram"
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html#next-example",
+    "href": "courses/r_basics/Introduction.html#next-example",
+    "title": "Introduction to Programming in R",
+    "section": "Next: Example",
+    "text": "Next: Example\n\nv <- LETTERS[1:6]\nfor ( i in v) {\n   \n   if (i == \"D\") {\n      next\n   }\n   print(i)\n}\n\n[1] \"A\"\n[1] \"B\"\n[1] \"C\"\n[1] \"E\"\n[1] \"F\""
+  },
+  {
+    "objectID": "courses/r_basics/Introduction.html",
+    "href": "courses/r_basics/Introduction.html",
+    "title": "Introduction to Programming in R",
+    "section": "",
+    "text": "Learning Data Science\nProgramming in R\nR syntax rules\nExploring Data with R\nProgramming with Variables\nVectors : Storage for Multiple Values\nOperators"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html",
+    "href": "courses/r_advanced/map_function.html",
+    "title": "The Map Function",
+    "section": "",
+    "text": "Our dataset is a collection of test scores of four different students. Each student took five different tests for three subjects: writing, math and science. Over the course of this lesson, we’ll perform different analytical tasks that will require us to vectorize different functions."
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#importing-the-datasets",
+    "href": "courses/r_advanced/map_function.html#importing-the-datasets",
+    "title": "The Map Function",
+    "section": "Importing the datasets",
+    "text": "Importing the datasets\n\npacman::p_load(\n  readr,\n  dplyr,\n  magrittr,\n  stringr,\n  purrr\n)\n\nds <- read_csv(\"datasets/scores.csv\")\n\nhead(ds,3)\n\n# A tibble: 3 × 6\n  names   assignment_number writing_score math_score science_score math_extra_…¹\n  <chr>               <dbl> <chr>         <chr>      <chr>         <chr>        \n1 Michael                 1 56%           50%        79%           High         \n2 Michael                 2 84%           59%        72%           None         \n3 Michael                 3 64%           84%        78%           Low          \n# … with abbreviated variable name ¹​math_extra_credit"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#challenge-one",
+    "href": "courses/r_advanced/map_function.html#challenge-one",
+    "title": "The Map Function",
+    "section": "Challenge One",
+    "text": "Challenge One\n\nEach of the student scores are written as strings can’t be used in math\nNeed to convert them to numbers to be useful in calculations\nNeed to vectorize over multiple columns"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#next-step",
+    "href": "courses/r_advanced/map_function.html#next-step",
+    "title": "The Map Function",
+    "section": "Next Step",
+    "text": "Next Step\n\nCreate a function called format_score() that:\nTakes in a single string as an input.\nRemoves the % sign from the string.\nConverts the string into a number using the as.numeric() function. This useful function takes in a string and will convert it into a number if it resembles a number.\nOutputs that number (e.g. The string “74%” should be converted to the number 74.)\nPass percent_string into the format_score()function and assign the output to the variable converted_string"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#creating-a-custom-function",
+    "href": "courses/r_advanced/map_function.html#creating-a-custom-function",
+    "title": "The Map Function",
+    "section": "Creating a Custom Function",
+    "text": "Creating a Custom Function\n\nformat_score <- function(score){\n  fmt_string <- str_replace(score, \"%\", \"\")\n  num <- as.numeric(fmt_string)\n  \n  return(num)\n}\n\nmy_string <- \"74%\"\nformat_score(my_string)\n\n[1] 74"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#vectoring-a-function",
+    "href": "courses/r_advanced/map_function.html#vectoring-a-function",
+    "title": "The Map Function",
+    "section": "Vectoring a function",
+    "text": "Vectoring a function\n\nThe diagram illustrates vectorization of a function called add_one()"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#map-function",
+    "href": "courses/r_advanced/map_function.html#map-function",
+    "title": "The Map Function",
+    "section": "Map Function",
+    "text": "Map Function\n\nmap() is from purrr package\nIt’s used to vectorize functions\nIt takes two arguments\n\nA vector or a list\nThe function to be applied"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#example",
+    "href": "courses/r_advanced/map_function.html#example",
+    "title": "The Map Function",
+    "section": "Example",
+    "text": "Example\n\n# Input vector\ninputs <- 1:5\n\n# Function to vectorize\nadd_one <- function(value) {\n  return(value + 1)\n}\n\n\noutputs <- map(inputs, add_one)\ntypeof(outputs)\n\n[1] \"list\"\n\noutputs2 <- map_dbl(inputs, add_one)\ntypeof(outputs2)\n\n[1] \"double\"\n\n\n\nThe output of map() is a list\nIt can be modified unlist() function or using variants of it such as map_dbl()"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#task",
+    "href": "courses/r_advanced/map_function.html#task",
+    "title": "The Map Function",
+    "section": "Task",
+    "text": "Task\n\nGive the vector input_scores <- c(\"83%\", \"29%\", \"76%\")\nMap the function format_scores()\nAssign the result to output_scores\nTake the third element and assign it to third_element\n\n\ninput_scores <- c(\"83%\", \"29%\", \"76%\")\n\noutput_scores <- map(input_scores,format_score)\n\nthird_element <- output_scores[[3]]"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#creating-a-new-column-with-map",
+    "href": "courses/r_advanced/map_function.html#creating-a-new-column-with-map",
+    "title": "The Map Function",
+    "section": "Creating a New Column with map()",
+    "text": "Creating a New Column with map()\n\nuse the mutate() function to directly create the new columns with the map().\nWhat matters is that map() creates a list that has the same number of elements as the number of rows in the data.\nThis output list will be used as the new column in the data!"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#creating-a-new-writing-score-column",
+    "href": "courses/r_advanced/map_function.html#creating-a-new-writing-score-column",
+    "title": "The Map Function",
+    "section": "Creating a new writing score column",
+    "text": "Creating a new writing score column\n\nds %<>%\n  mutate(new_writing_score=map(writing_score,format_score)) %>%\n  mutate(new_science_score=map(science_score,format_score))"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#two-input-variation-of-map---map2",
+    "href": "courses/r_advanced/map_function.html#two-input-variation-of-map---map2",
+    "title": "The Map Function",
+    "section": "Two Input Variation of Map - map2()",
+    "text": "Two Input Variation of Map - map2()\n\nA relative of the map() function map2()\nCan work with two arguments"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#map2-example",
+    "href": "courses/r_advanced/map_function.html#map2-example",
+    "title": "The Map Function",
+    "section": "map2() Example",
+    "text": "map2() Example\n\ninput_first <- 1:5\ninput_second <- 6:10\n\nadd_two_values <- function(x,y){\n  return(x+y)\n}\n\noutputs <- map2(input_first,input_second,add_two_values)"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#using-map2",
+    "href": "courses/r_advanced/map_function.html#using-map2",
+    "title": "The Map Function",
+    "section": "Using map2()",
+    "text": "Using map2()\n\nIn the student_scores dataset, we have another column called math_extra_credit. This column is a string, and it represents the amount of extra credit a student earned on a particular math test. Depending on how much extra credit is earned (“None,” “Low,” or “High”), the student can increase their math score. We need to account for this when we calculate the math score."
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#task-1",
+    "href": "courses/r_advanced/map_function.html#task-1",
+    "title": "The Map Function",
+    "section": "Task",
+    "text": "Task\nCreate a new function called add_extra_credit(). It should take two inputs: the first one should be a number (representing a score) and the second one should be a string (representing an amount of extra credit)\n\nIf the string is “None”: Don’t add any extra points to the number input.\nIf the string is “Low”: Add 1 extra point to the number input\nIf the string is “High”: Add 5 extra points to the number input"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#solution",
+    "href": "courses/r_advanced/map_function.html#solution",
+    "title": "The Map Function",
+    "section": "Solution",
+    "text": "Solution\n\ninput_score <- 50\nadd_extra_credit <- function(score, note) {\n  if (note == \"None\") {\n      points_to_add <- 0\n  } else if (note == \"Low\") {\n      points_to_add <- 1\n  } else {\n      points_to_add <- 5\n  }\n    \n  return(score + points_to_add)\n}\nadd_extra_credit(input_score,\"None\")\n\n[1] 50\n\nadd_extra_credit(input_score,\"High\")\n\n[1] 55"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#task-2",
+    "href": "courses/r_advanced/map_function.html#task-2",
+    "title": "The Map Function",
+    "section": "Task",
+    "text": "Task\nUsing the add_extra_credit()Create a new column in the student_scores dataset called adjusted_math_score. This column should represent the math score that a student received on a test, accounting for the extra credit they got on the test.\n\nThe new_math_score column contains the math score in number format.\nThe math_extra_credit column contains the strings describing how much extra credit was earned.\nMake sure to use the unlist() function to convert the result from map2() into a vector."
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#solution-1",
+    "href": "courses/r_advanced/map_function.html#solution-1",
+    "title": "The Map Function",
+    "section": "Solution",
+    "text": "Solution\n\nds %<>%\n  mutate(math_score=map(math_score,format_score))%>%\n  mutate(adjusted_math_score=unlist(map2(math_score,math_extra_credit,add_extra_credit)))"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#working-with-lists",
+    "href": "courses/r_advanced/map_function.html#working-with-lists",
+    "title": "The Map Function",
+    "section": "Working with Lists",
+    "text": "Working with Lists\n\nmap() functions can work with lists\n\n\ninput_list <- list(\n  c(1,2),\n  c(3,4),\n  c(5,6),\n  c(7,8),\n  c(9,10)\n)\n\noutput <- map(input_list,sum)"
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#above-and-beyond",
+    "href": "courses/r_advanced/map_function.html#above-and-beyond",
+    "title": "The Map Function",
+    "section": "Above and Beyond",
+    "text": "Above and Beyond\n\nThe pmap() function\nA variant of map() function\nIt can take multiple arguments\np variable amount of inputs"
+  },
+  {
+    "objectID": "courses/r_advanced/random_sampling.html",
+    "href": "courses/r_advanced/random_sampling.html",
+    "title": "Simple Random Sampling",
+    "section": "",
+    "text": "pacman::p_load(\n  readr,\n  dplyr,\n  ggplot2\n)\n\nds <- read_csv(\"datasets/wnba.csv\")\n\n\nThe dataset description wnba dataset at kaggle"
+  },
+  {
+    "objectID": "courses/r_advanced/random_sampling.html#sampling-error",
+    "href": "courses/r_advanced/random_sampling.html#sampling-error",
+    "title": "Simple Random Sampling",
+    "section": "Sampling Error",
+    "text": "Sampling Error\n\nIn sampling we target to use samples to explain population parameters\nDifferent samples will give different estimates of population parameters\nThe difference between population parameters and sample estimates is known as sampling error\nStatistics - sample summaries\nParameters - population summaries\n\n$ sampling error = parameter - statistic$"
+  },
+  {
+    "objectID": "courses/r_advanced/strati_sampling.html",
+    "href": "courses/r_advanced/strati_sampling.html",
+    "title": "Stratified and Cluster Sampling",
+    "section": "",
+    "text": "SRS will not always result in a sample having all groups since its completely random\nSometimes we might want to analyze patterns for each possible group\nIn our example dataset we have five different positions.\nF: Foward, G: Guard, C: Center, G/F: Guard/Foward, F/C: Foward/Center"
+  },
+  {
+    "objectID": "courses/r_advanced/strati_sampling.html#srs-missing-a-category",
+    "href": "courses/r_advanced/strati_sampling.html#srs-missing-a-category",
+    "title": "Stratified and Cluster Sampling",
+    "section": "SRS Missing a category",
+    "text": "SRS Missing a category\n\nUsing SRS we might result in a situation like"
+  },
+  {
+    "objectID": "courses/r_advanced/strati_sampling.html#getting-group-representation",
+    "href": "courses/r_advanced/strati_sampling.html#getting-group-representation",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Getting Group Representation",
+    "text": "Getting Group Representation\n\nGroup representation can be obtained by stratified sampling\nThe dataset is organized into different groups\nThe randomly sample from each group\nEach individual stratified group known as a stratum\nMultiple groups known as strata"
+  },
+  {
+    "objectID": "courses/r_advanced/strati_sampling.html#sample_n-function",
+    "href": "courses/r_advanced/strati_sampling.html#sample_n-function",
+    "title": "Stratified and Cluster Sampling",
+    "section": "sample_n() function",
+    "text": "sample_n() function\n\nEnables sampling rows.\nTakes two arguments, the dataset and number of rows to be sampled\n\n\npacman::p_load(\n  readr,\n  dplyr,\n  ggplot2\n)\n\nds <- read_csv(\"datasets/wnba.csv\")\n\n# getting ten rows\nds_sampled <- sample_n(ds,size=10)"
+  },
+  {
+    "objectID": "courses/r_advanced/strati_sampling.html#task-1",
+    "href": "courses/r_advanced/strati_sampling.html#task-1",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Task 1",
+    "text": "Task 1\nCalculate the average age and the average number of games played from a random sample.\n\nDesignate set.seed(1) to make the results reproducible.\nSample 30 rows from the wnba dataframe. Save the results as thirty_samples.\nCalculate the average age of this sample group. Assign the results to mean_age.\nCalculate the average number of games played for this sample group. Assign the results to mean_games."
+  },
+  {
+    "objectID": "courses/r_advanced/strati_sampling.html#solution-1",
+    "href": "courses/r_advanced/strati_sampling.html#solution-1",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Solution 1",
+    "text": "Solution 1\n\nset.seed(1)\nds_30 <- sample_n(ds,size=30)\nmean_age <- mean(ds_30$Age, na.rm=T)\nmean_games <- mean(ds_30$Games_Played, na.rm = T)\n\n\nThe mean age is 27.3333333\nThe mean number of games 24.9"
+  },
+  {
+    "objectID": "courses/r_advanced/strati_sampling.html#creating-and-analyzing-strata-with-dplyr",
+    "href": "courses/r_advanced/strati_sampling.html#creating-and-analyzing-strata-with-dplyr",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Creating and Analyzing Strata with dplyr",
+    "text": "Creating and Analyzing Strata with dplyr\n\nWhen can use the group_by() function to create strata\nWe can then apply one or more functions for each strata"
+  },
+  {
+    "objectID": "courses/r_advanced/strati_sampling.html#getting-mean-by-stratum",
+    "href": "courses/r_advanced/strati_sampling.html#getting-mean-by-stratum",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Getting Mean by Stratum",
+    "text": "Getting Mean by Stratum\n\nset.seed(1)\nds %>% \n  # Split: stratify by player position\n  group_by(Pos) %>% \n  # Apply: sample 10 observations for each player position stratum\n  sample_n(10) %>%\n  # Apply & combine: calculate average points scored for each stratum, combine results\n  summarize(mean_pts = mean(PTS))\n\n# A tibble: 5 × 2\n  Pos   mean_pts\n  <chr>    <dbl>\n1 C         84.4\n2 F        162. \n3 F/C      250. \n4 G        229. \n5 G/F      184."
+  },
+  {
+    "objectID": "courses/r_advanced.html",
+    "href": "courses/r_advanced.html",
+    "title": "R Advanced",
+    "section": "",
+    "text": "This page contains a compilation of Advanced R Modules.\nExtras\n01. Map Functions"
   }
 ]
