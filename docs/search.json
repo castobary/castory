@@ -1,0 +1,527 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Castory Munishi",
+    "section": "",
+    "text": "I’m a MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My research will develop essential health packages for patients with Non Communicable Diseases in Tanzania. In parallel I’m working to build an online pharmaceutical supply chain called Pharmlinks which has been recently bought by i+ plus solution. I am also working as a data analyst in four intensive health care projects in Tanzania. In the past I have worked in over 40 impactful projects. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries. This is my personal website and blong where you will find information about me and the works that i have been doing. There are also learning materials and tutorials where i’m sharing what i have been learning for others to learn as well. You are welcome and enjoy the lessons.\nOn this site I keep a list of r courses, study projects, and my CV, as well as a technical blog.\n\n\n\n\n\nUniversitetet i Bergen\nBergen, Norway\nMPhil. in Global Health | August 2022 - Present (Expected 2024)\nMuhimbili University of Health and Allied Sciences\nDar es Salaam, Tanzania\nBachelor of Pharmacy | October 2016 - September 2020\n\n\n\n\n\nAssessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan. Sangeda, RZ, Kibona, J, and Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/\nDrug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania. Efraim, J, Munishi, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. https://doi.org/10.12688/F1000RESEARCH.110079.1\n\n\n\nunifir | A Unifying API for Working with Unity in R | 2022\nterrainr | Retrieve Data from the USGS National Map and Transform it for 3D Landscape Visualizations | 2021\nheddlr | Functional Programming Concepts for R Markdown Documents | 2020"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html",
+    "href": "courses/r_basics/map_function.html",
+    "title": "The Map Function",
+    "section": "",
+    "text": "Our dataset is a collection of test scores of four different students. Each student took five different tests for three subjects: writing, math and science. Over the course of this lesson, we’ll perform different analytical tasks that will require us to vectorize different functions."
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#importing-the-datasets",
+    "href": "courses/r_basics/map_function.html#importing-the-datasets",
+    "title": "The Map Function",
+    "section": "Importing the datasets",
+    "text": "Importing the datasets\n\npacman::p_load(\n  readr,\n  dplyr,\n  magrittr,\n  stringr,\n  purrr\n)\n\nds <- read_csv(\"datasets/scores.csv\")\n\nhead(ds,3)\n\n# A tibble: 3 × 6\n  names   assignment_number writing_score math_score science_score math_extra_…¹\n  <chr>               <dbl> <chr>         <chr>      <chr>         <chr>        \n1 Michael                 1 56%           50%        79%           High         \n2 Michael                 2 84%           59%        72%           None         \n3 Michael                 3 64%           84%        78%           Low          \n# … with abbreviated variable name ¹​math_extra_credit"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#challenge-one",
+    "href": "courses/r_basics/map_function.html#challenge-one",
+    "title": "The Map Function",
+    "section": "Challenge One",
+    "text": "Challenge One\n\nEach of the student scores are written as strings can’t be used in math\nNeed to convert them to numbers to be useful in calculations\nNeed to vectorize over multiple columns"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#next-step",
+    "href": "courses/r_basics/map_function.html#next-step",
+    "title": "The Map Function",
+    "section": "Next Step",
+    "text": "Next Step\n\nCreate a function called format_score() that:\nTakes in a single string as an input.\nRemoves the % sign from the string.\nConverts the string into a number using the as.numeric() function. This useful function takes in a string and will convert it into a number if it resembles a number.\nOutputs that number (e.g. The string “74%” should be converted to the number 74.)\nPass percent_string into the format_score()function and assign the output to the variable converted_string"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#creating-a-custom-function",
+    "href": "courses/r_basics/map_function.html#creating-a-custom-function",
+    "title": "The Map Function",
+    "section": "Creating a Custom Function",
+    "text": "Creating a Custom Function\n\nformat_score <- function(score){\n  fmt_string <- str_replace(score, \"%\", \"\")\n  num <- as.numeric(fmt_string)\n  \n  return(num)\n}\n\nmy_string <- \"74%\"\nformat_score(my_string)\n\n[1] 74"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#vectoring-a-function",
+    "href": "courses/r_basics/map_function.html#vectoring-a-function",
+    "title": "The Map Function",
+    "section": "Vectoring a function",
+    "text": "Vectoring a function\n\nThe diagram illustrates vectorization of a function called add_one()"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#map-function",
+    "href": "courses/r_basics/map_function.html#map-function",
+    "title": "The Map Function",
+    "section": "Map Function",
+    "text": "Map Function\n\nmap() is from purrr package\nIt’s used to vectorize functions\nIt takes two arguments\n\nA vector or a list\nThe function to be applied"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#example",
+    "href": "courses/r_basics/map_function.html#example",
+    "title": "The Map Function",
+    "section": "Example",
+    "text": "Example\n\n# Input vector\ninputs <- 1:5\n\n# Function to vectorize\nadd_one <- function(value) {\n  return(value + 1)\n}\n\n\noutputs <- map(inputs, add_one)\ntypeof(outputs)\n\n[1] \"list\"\n\noutputs2 <- map_dbl(inputs, add_one)\ntypeof(outputs2)\n\n[1] \"double\"\n\n\n\nThe output of map() is a list\nIt can be modified unlist() function or using variants of it such as map_dbl()"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#task",
+    "href": "courses/r_basics/map_function.html#task",
+    "title": "The Map Function",
+    "section": "Task",
+    "text": "Task\n\nGive the vector input_scores <- c(\"83%\", \"29%\", \"76%\")\nMap the function format_scores()\nAssign the result to output_scores\nTake the third element and assign it to third_element\n\n\ninput_scores <- c(\"83%\", \"29%\", \"76%\")\n\noutput_scores <- map(input_scores,format_score)\n\nthird_element <- output_scores[[3]]"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#creating-a-new-column-with-map",
+    "href": "courses/r_basics/map_function.html#creating-a-new-column-with-map",
+    "title": "The Map Function",
+    "section": "Creating a New Column with map()",
+    "text": "Creating a New Column with map()\n\nuse the mutate() function to directly create the new columns with the map().\nWhat matters is that map() creates a list that has the same number of elements as the number of rows in the data.\nThis output list will be used as the new column in the data!"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#creating-a-new-writing-score-column",
+    "href": "courses/r_basics/map_function.html#creating-a-new-writing-score-column",
+    "title": "The Map Function",
+    "section": "Creating a new writing score column",
+    "text": "Creating a new writing score column\n\nds %<>%\n  mutate(new_writing_score=map(writing_score,format_score)) %>%\n  mutate(new_science_score=map(science_score,format_score))"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#two-input-variation-of-map---map2",
+    "href": "courses/r_basics/map_function.html#two-input-variation-of-map---map2",
+    "title": "The Map Function",
+    "section": "Two Input Variation of Map - map2()",
+    "text": "Two Input Variation of Map - map2()\n\nA relative of the map() function map2()\nCan work with two arguments"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#map2-example",
+    "href": "courses/r_basics/map_function.html#map2-example",
+    "title": "The Map Function",
+    "section": "map2() Example",
+    "text": "map2() Example\n\ninput_first <- 1:5\ninput_second <- 6:10\n\nadd_two_values <- function(x,y){\n  return(x+y)\n}\n\noutputs <- map2(input_first,input_second,add_two_values)"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#using-map2",
+    "href": "courses/r_basics/map_function.html#using-map2",
+    "title": "The Map Function",
+    "section": "Using map2()",
+    "text": "Using map2()\n\nIn the student_scores dataset, we have another column called math_extra_credit. This column is a string, and it represents the amount of extra credit a student earned on a particular math test. Depending on how much extra credit is earned (“None,” “Low,” or “High”), the student can increase their math score. We need to account for this when we calculate the math score."
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#task-1",
+    "href": "courses/r_basics/map_function.html#task-1",
+    "title": "The Map Function",
+    "section": "Task",
+    "text": "Task\nCreate a new function called add_extra_credit(). It should take two inputs: the first one should be a number (representing a score) and the second one should be a string (representing an amount of extra credit)\n\nIf the string is “None”: Don’t add any extra points to the number input.\nIf the string is “Low”: Add 1 extra point to the number input\nIf the string is “High”: Add 5 extra points to the number input"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#solution",
+    "href": "courses/r_basics/map_function.html#solution",
+    "title": "The Map Function",
+    "section": "Solution",
+    "text": "Solution\n\ninput_score <- 50\nadd_extra_credit <- function(score, note) {\n  if (note == \"None\") {\n      points_to_add <- 0\n  } else if (note == \"Low\") {\n      points_to_add <- 1\n  } else {\n      points_to_add <- 5\n  }\n    \n  return(score + points_to_add)\n}\nadd_extra_credit(input_score,\"None\")\n\n[1] 50\n\nadd_extra_credit(input_score,\"High\")\n\n[1] 55"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#task-2",
+    "href": "courses/r_basics/map_function.html#task-2",
+    "title": "The Map Function",
+    "section": "Task",
+    "text": "Task\nUsing the add_extra_credit()Create a new column in the student_scores dataset called adjusted_math_score. This column should represent the math score that a student received on a test, accounting for the extra credit they got on the test.\n\nThe new_math_score column contains the math score in number format.\nThe math_extra_credit column contains the strings describing how much extra credit was earned.\nMake sure to use the unlist() function to convert the result from map2() into a vector."
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#solution-1",
+    "href": "courses/r_basics/map_function.html#solution-1",
+    "title": "The Map Function",
+    "section": "Solution",
+    "text": "Solution\n\nds %<>%\n  mutate(math_score=map(math_score,format_score))%>%\n  mutate(adjusted_math_score=unlist(map2(math_score,math_extra_credit,add_extra_credit)))"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#working-with-lists",
+    "href": "courses/r_basics/map_function.html#working-with-lists",
+    "title": "The Map Function",
+    "section": "Working with Lists",
+    "text": "Working with Lists\n\nmap() functions can work with lists\n\n\ninput_list <- list(\n  c(1,2),\n  c(3,4),\n  c(5,6),\n  c(7,8),\n  c(9,10)\n)\n\noutput <- map(input_list,sum)"
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#above-and-beyond",
+    "href": "courses/r_basics/map_function.html#above-and-beyond",
+    "title": "The Map Function",
+    "section": "Above and Beyond",
+    "text": "Above and Beyond\n\nThe pmap() function\nA variant of map() function\nIt can take multiple arguments\np variable amount of inputs"
+  },
+  {
+    "objectID": "courses/r_basics/random_sampling.html",
+    "href": "courses/r_basics/random_sampling.html",
+    "title": "Simple Random Sampling",
+    "section": "",
+    "text": "pacman::p_load(\n  readr,\n  dplyr,\n  ggplot2\n)\n\nds <- read_csv(\"datasets/wnba.csv\")\n\n\nThe dataset description wnba dataset at kaggle"
+  },
+  {
+    "objectID": "courses/r_basics/random_sampling.html#sampling-error",
+    "href": "courses/r_basics/random_sampling.html#sampling-error",
+    "title": "Simple Random Sampling",
+    "section": "Sampling Error",
+    "text": "Sampling Error\n\nIn sampling we target to use samples to explain population parameters\nDifferent samples will give different estimates of population parameters\nThe difference between population parameters and sample estimates is known as sampling error\nStatistics - sample summaries\nParameters - population summaries\n\n$ sampling error = parameter - statistic$"
+  },
+  {
+    "objectID": "courses/r_basics/strati_sampling.html",
+    "href": "courses/r_basics/strati_sampling.html",
+    "title": "Stratified and Cluster Sampling",
+    "section": "",
+    "text": "SRS will not always result in a sample having all groups since its completely random\nSometimes we might want to analyze patterns for each possible group\nIn our example dataset we have five different positions.\nF: Foward, G: Guard, C: Center, G/F: Guard/Foward, F/C: Foward/Center"
+  },
+  {
+    "objectID": "courses/r_basics/strati_sampling.html#srs-missing-a-category",
+    "href": "courses/r_basics/strati_sampling.html#srs-missing-a-category",
+    "title": "Stratified and Cluster Sampling",
+    "section": "SRS Missing a category",
+    "text": "SRS Missing a category\n\nUsing SRS we might result in a situation like"
+  },
+  {
+    "objectID": "courses/r_basics/strati_sampling.html#getting-group-representation",
+    "href": "courses/r_basics/strati_sampling.html#getting-group-representation",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Getting Group Representation",
+    "text": "Getting Group Representation\n\nGroup representation can be obtained by stratified sampling\nThe dataset is organized into different groups\nThe randomly sample from each group\nEach individual stratified group known as a stratum\nMultiple groups known as strata"
+  },
+  {
+    "objectID": "courses/r_basics/strati_sampling.html#sample_n-function",
+    "href": "courses/r_basics/strati_sampling.html#sample_n-function",
+    "title": "Stratified and Cluster Sampling",
+    "section": "sample_n() function",
+    "text": "sample_n() function\n\nEnables sampling rows.\nTakes two arguments, the dataset and number of rows to be sampled\n\n\npacman::p_load(\n  readr,\n  dplyr,\n  ggplot2\n)\n\nds <- read_csv(\"datasets/wnba.csv\")\n\n# getting ten rows\nds_sampled <- sample_n(ds,size=10)"
+  },
+  {
+    "objectID": "courses/r_basics/strati_sampling.html#task-1",
+    "href": "courses/r_basics/strati_sampling.html#task-1",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Task 1",
+    "text": "Task 1\nCalculate the average age and the average number of games played from a random sample.\n\nDesignate set.seed(1) to make the results reproducible.\nSample 30 rows from the wnba dataframe. Save the results as thirty_samples.\nCalculate the average age of this sample group. Assign the results to mean_age.\nCalculate the average number of games played for this sample group. Assign the results to mean_games."
+  },
+  {
+    "objectID": "courses/r_basics/strati_sampling.html#solution-1",
+    "href": "courses/r_basics/strati_sampling.html#solution-1",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Solution 1",
+    "text": "Solution 1\n\nset.seed(1)\nds_30 <- sample_n(ds,size=30)\nmean_age <- mean(ds_30$Age, na.rm=T)\nmean_games <- mean(ds_30$Games_Played, na.rm = T)\n\n\nThe mean age is 27.3333333\nThe mean number of games 24.9"
+  },
+  {
+    "objectID": "courses/r_basics/strati_sampling.html#creating-and-analyzing-strata-with-dplyr",
+    "href": "courses/r_basics/strati_sampling.html#creating-and-analyzing-strata-with-dplyr",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Creating and Analyzing Strata with dplyr",
+    "text": "Creating and Analyzing Strata with dplyr\n\nWhen can use the group_by() function to create strata\nWe can then apply one or more functions for each strata"
+  },
+  {
+    "objectID": "courses/r_basics/strati_sampling.html#getting-mean-by-stratum",
+    "href": "courses/r_basics/strati_sampling.html#getting-mean-by-stratum",
+    "title": "Stratified and Cluster Sampling",
+    "section": "Getting Mean by Stratum",
+    "text": "Getting Mean by Stratum\n\nset.seed(1)\nds %>% \n  # Split: stratify by player position\n  group_by(Pos) %>% \n  # Apply: sample 10 observations for each player position stratum\n  sample_n(10) %>%\n  # Apply & combine: calculate average points scored for each stratum, combine results\n  summarize(mean_pts = mean(PTS))\n\n# A tibble: 5 × 2\n  Pos   mean_pts\n  <chr>    <dbl>\n1 C         84.4\n2 F        162. \n3 F/C      250. \n4 G        229. \n5 G/F      184."
+  },
+  {
+    "objectID": "courses/r_basics.html",
+    "href": "courses/r_basics.html",
+    "title": "R Basics",
+    "section": "",
+    "text": "This page contains a compilation of R basic courses.\nMap Functions"
+  },
+  {
+    "objectID": "courses/sir_modelling.html",
+    "href": "courses/sir_modelling.html",
+    "title": "SIR Modelling",
+    "section": "",
+    "text": "SIR Modelling"
+  },
+  {
+    "objectID": "courses/statistical_learning.html",
+    "href": "courses/statistical_learning.html",
+    "title": "Statistical Learning",
+    "section": "",
+    "text": "Statistical Learning"
+  },
+  {
+    "objectID": "courses.html",
+    "href": "courses.html",
+    "title": "Courses",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "exercises/advanced_exercises.html",
+    "href": "exercises/advanced_exercises.html",
+    "title": "Advanced Exercises",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "exercises/basic_exercises.html",
+    "href": "exercises/basic_exercises.html",
+    "title": "Basics Exercises",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "exercises/modelling_exercises.html",
+    "href": "exercises/modelling_exercises.html",
+    "title": "Modelling Exercises",
+    "section": "",
+    "text": "About this site"
+  },
+  {
+    "objectID": "exercises.html",
+    "href": "exercises.html",
+    "title": "Exercises",
+    "section": "",
+    "text": "This is an exercises section"
+  },
+  {
+    "objectID": "projects/case_studies.html",
+    "href": "projects/case_studies.html",
+    "title": "Case Studies",
+    "section": "",
+    "text": "Case Studies on Health Research"
+  },
+  {
+    "objectID": "projects/data_quest/book_reviews/book_reviews.html",
+    "href": "projects/data_quest/book_reviews/book_reviews.html",
+    "title": "Analyzing Book Reviews",
+    "section": "",
+    "text": "You work for a company selling books about learning programming. Your company has produced multiple books, and each has received many reviews. Your company wants us to check out the sales data and see if we can extract any useful information from it. You wil analyze the book_reviews dataset to answer company’s important questions.\nObjective of the Analysis\nOur main goal is to figure out what book is the most profitable. How will we judge what the “most profitable” book is though? Our dataset represents customer purchases. One way to define “most profitable” might be to just choose the book that’s purchased the most. Another way to define it would be to see how much money each book generates overall."
+  },
+  {
+    "objectID": "projects/data_quest/book_reviews/book_reviews.html#task-one",
+    "href": "projects/data_quest/book_reviews/book_reviews.html#task-one",
+    "title": "Analyzing Book Reviews",
+    "section": "Task One",
+    "text": "Task One\n\nImport the dataset\nUse the dim() to find the number of rows and columns\nUse the colnames() to determine the names of the columns in the dataset and take a moment to reflect on what each represents\nUse a for loop to check column types using typeof() function\ncheck for unique values using the unique()\nTry yourself first, the press Click Me to see solution!\n\n\n\nClick Me!\n\n\nCode for importing the dataset and checking dimensions!\n\n\nCode\npacman::p_load(\n  readr,\n  dplyr,\n  magrittr\n)\n\nds <- read_csv(\"book_reviews.csv\")\n\ndim(ds)\n\n\n[1] 2000    4\n\n\nCode\ncolnames(ds)\n\n\n[1] \"book\"   \"review\" \"state\"  \"price\" \n\n\n\nPrinting data types using a for loop\n\n\n\nCode\n for (i in colnames(ds)) {\n   print(typeof(ds[[i]]))\n   \n }\n\n\n[1] \"character\"\n[1] \"character\"\n[1] \"character\"\n[1] \"double\"\n\n\n\nPrinting unique values for each data type\n\n\n\nCode\nfor (i in colnames(ds)) {\n  print(unique(ds[[i]]))\n}\n\n\n[1] \"R Made Easy\"                        \"R For Dummies\"                     \n[3] \"Secrets Of R For Advanced Students\" \"Top 10 Mistakes R Beginners Make\"  \n[5] \"Fundamentals of R For Beginners\"   \n[1] \"Excellent\" \"Fair\"      \"Poor\"      \"Great\"     NA          \"Good\"     \n[1] \"TX\"         \"NY\"         \"FL\"         \"Texas\"      \"California\"\n[6] \"Florida\"    \"CA\"         \"New York\"  \n[1] 19.99 15.99 50.00 29.99 39.99"
+  },
+  {
+    "objectID": "projects/data_quest/book_reviews/book_reviews.html#task-two",
+    "href": "projects/data_quest/book_reviews/book_reviews.html#task-two",
+    "title": "Analyzing Book Reviews",
+    "section": "Task Two",
+    "text": "Task Two\n\nCreate a new dataset by removing all rows with NA\nCheck the dimensions of the new cleaned dataset\n\n\n\nCode\nds <- ds %>%\n  filter(!is.na(review))\ndim(ds)\n\n\n[1] 1794    4"
+  },
+  {
+    "objectID": "projects/data_quest/book_reviews/book_reviews.html#task-three",
+    "href": "projects/data_quest/book_reviews/book_reviews.html#task-three",
+    "title": "Analyzing Book Reviews",
+    "section": "Task Three",
+    "text": "Task Three\n\nLabels in the state column are inconsistent “CA” and California\nMake all labels consistent using the mutate function\n\n\n\nCode\nds <- ds %>%\n  mutate(state_clean = case_when(state %in% \"CA\" ~ \"California\",\n                                  state %in% \"NY\" ~ \"New York\",\n                                  state %in% \"TX\" ~ \"Texas\",\n                                  state %in% \"FL\" ~ \"Florida\",\n                                  TRUE ~ state))\n\nds %>% pull(state_clean) %>% unique()\n\n\n[1] \"Texas\"      \"New York\"   \"Florida\"    \"California\""
+  },
+  {
+    "objectID": "projects/data_quest/book_reviews/book_reviews.html#task-four",
+    "href": "projects/data_quest/book_reviews/book_reviews.html#task-four",
+    "title": "Analyzing Book Reviews",
+    "section": "Task Four",
+    "text": "Task Four\n\nUsing the mutate() function create a new column in the dataset called review_num. It should take the original review column and convert it into a numerical form. The column should be coded as following:\n\n\nThe case_when() function might be useful here since we know how each of the reviews should be reclassified into numbers.\n\n“Poor” should receive a numerical score of 1\n“Fair” should receive a numerical score of 2\n“Good” should receive a numerical score of 3\n“Great” should receive a numerical score of 4\n“Excellent” should receive a numerical score of 5\n\n\n\nIt would also be helpful to have another column that helps us decide if a score is “high” or not.\n\n\nFor the sake of this exercise, let’s decide that a score of 4 or higher qualifies as a “high” score.\nCreate a new column in the dataset called is_high_review that denotes whether or not the review has a high score or not. In other words, it should be TRUE if review_num is 4 or higher, and FALSE otherwise.\n\n\n\nCode\nds %<>%\n  mutate(\n    review_num = case_when(review %in% \"Poor\" ~ 1,\n                           review %in% \"Fair\" ~ 2,\n                           review %in% \"Good\" ~ 3,\n                           review %in% \"Great\" ~ 4,\n                           review %in% \"Excellent\" ~ 5),\n    is_high_review = case_when(\n                          review_num >= 4 ~ TRUE,\n                          TRUE ~ FALSE\n    )\n  )"
+  },
+  {
+    "objectID": "projects/data_quest/book_reviews/book_reviews.html#task-five",
+    "href": "projects/data_quest/book_reviews/book_reviews.html#task-five",
+    "title": "Analyzing Book Reviews",
+    "section": "Task Five",
+    "text": "Task Five\n\nChoose a metric that we will define “most profitable” book.\n\n\nWhichever way we choose, we should write down a few notes to ourself to justify our decision and make it clear which method we chose.\nOne definition of profitable may use the price column, so we can see how much money a book generated. We may also prefer to count the number of books purchased since it could be interpreted as how popular the book is.\n\n\nFor each book, calculate the chosen metric that we chose to measure “most profitable” book from the data.\nInvestigate the results of our analysis and write out some notes about what books are the most profitable.\n\n\nSolution\n\nGetting the most profitable book will require to calculate the total number of books in each state\nThen multiply the total number of books in that state by the price for a give book\nThen adding the number total sales for each book\n\n\n\nCode\nsales <- ds %>%\n  group_by(state_clean,book) %>%\n  summarize(frequency=n(),\n            price=mean(price),\n            total_sale=frequency*price)\n\n\n\n\nCode\nmost_profitable <- sales %>%\n  group_by(book) %>%\n  summarize(total_sale=sum(total_sale)) %>%\n  arrange(desc(total_sale))\n\n\nmax_sale = max(most_profitable$total_sale)\n\nknitr::kable(most_profitable)\n\n\n\n\n\nbook\ntotal_sale\n\n\n\n\nSecrets Of R For Advanced Students\n18000.00\n\n\nFundamentals of R For Beginners\n14636.34\n\n\nTop 10 Mistakes R Beginners Make\n10646.45\n\n\nR Made Easy\n7036.48\n\n\nR For Dummies\n5772.39\n\n\n\n\n\n\nThe most profitable book isSecrets Of R For Advanced Students"
+  },
+  {
+    "objectID": "projects/data_quest/book_reviews/book_reviews.html#analysis-considerations",
+    "href": "projects/data_quest/book_reviews/book_reviews.html#analysis-considerations",
+    "title": "Analyzing Book Reviews",
+    "section": "Analysis Considerations",
+    "text": "Analysis Considerations\nKey Things To Consider in a Data Analysis Report\n\nIntroduction: What motivated our analysis? What kind of data do we have? What is the main question we’re trying to answer?\nFindings: What did we need to do to the data to do our analysis? What things are we calculating to answer our main question?\nConclusion: What is the answer to our main question? Was there anything that we feel limits our analysis? What should the reader do with our findings?"
+  },
+  {
+    "objectID": "projects/data_quest/book_sales/book_sales.html",
+    "href": "projects/data_quest/book_sales/book_sales.html",
+    "title": "Analyzing Book Sales",
+    "section": "",
+    "text": "Like in book reviews project, we are taking on the role of an analyst for a book company. The company has provided us more data on some of its 2019 book sales, and it wants us to extract some usable knowledge from it. It launched a new program encouraging customers to buy more books on July 1st, 2019, and it wants to know if this new program was successful at increasing sales and improving review quality. As the analyst, this will be your job to figure out for the guided project."
+  },
+  {
+    "objectID": "projects/data_quest/book_sales/book_sales.html#preliminary-checks",
+    "href": "projects/data_quest/book_sales/book_sales.html#preliminary-checks",
+    "title": "Analyzing Book Sales",
+    "section": "Preliminary checks",
+    "text": "Preliminary checks\n\nImporting the dataset\nChecking the dimensions\nReflecting on the column names\n\n\n\nCode\npacman::p_load(\n  readr,\n  dplyr,\n  stringr,\n  purrr,\n  magrittr,\n  lubridate\n)\n\nds <- read_csv(\"sales2019.csv\")\n\ndim(ds)\n\n\n[1] 5000    5\n\n\nCode\ncolnames(ds)\n\n\n[1] \"date\"                  \"user_submitted_review\" \"title\"                \n[4] \"total_purchased\"       \"customer_type\"        \n\n\n\nPrinting data types using a for loop\n\n\n\nCode\n for (i in colnames(ds)) {\n   print(typeof(ds[[i]]))\n   \n }\n\n\n[1] \"character\"\n[1] \"character\"\n[1] \"character\"\n[1] \"double\"\n[1] \"character\"\n\n\n\nCounting missing values\n\n\n\nCode\nds.na <- is.na(ds)\nsummary(ds.na)\n\n\n    date         user_submitted_review   title         total_purchased\n Mode :logical   Mode :logical         Mode :logical   Mode :logical  \n FALSE:5000      FALSE:4115            FALSE:5000      FALSE:4282     \n                 TRUE :885                             TRUE :718      \n customer_type  \n Mode :logical  \n FALSE:5000     \n                \n\n\nWe found that there were two columns missing data. The first is the user_submitted_review column, which contains the review left by the customer. The second is total_purchased, which represents how many books were purchased by the customer.\nFor this project, we’re going to handle these two columns differently. The reason for this is due to the fact that we care a lot more about the total_purchased column, because it contains the actual information on book sales. We want to determine if the company’s new program helped to improve sales. In order to keep as much information on sales as possible, we’re going to take a different approach to handling missing data."
+  },
+  {
+    "objectID": "projects/data_quest/book_sales/book_sales.html#task-one",
+    "href": "projects/data_quest/book_sales/book_sales.html#task-one",
+    "title": "Analyzing Book Sales",
+    "section": "Task One",
+    "text": "Task One\n\nRemove all rows in the dataset that have an NA value for the user_submitted_review column.\n\n\nUse a combination of the filter() function and the is.na() function to remove these rows\nRecord how many rows were removed, and make a note of this to yourself.\n\n\nUsing the remaining rows that have data, calculate the average number of books purchased on an order.\n\nYou can use the mean() function to calculate this value.\n\nFill all of the missing values in total_purchased with the average value you calculated in step 2. We can do this through the following:\n\n\nUse the mutate() function to create a new column based off of the total_purchased column.\nUse the if_else() function to detect if a row in total_purchased is NA or not.\nIf the row is NA, then the correponding row in the new column should be the average from 2)\nIf the row is not NA, then it should contain the same value as the corresponding row in total_purchased.\nThe end result will be a column that is like total_purchased, but all of the missing values will be filled in!"
+  },
+  {
+    "objectID": "projects/data_quest/book_sales/book_sales.html#solution",
+    "href": "projects/data_quest/book_sales/book_sales.html#solution",
+    "title": "Analyzing Book Sales",
+    "section": "Solution",
+    "text": "Solution\n\n\nCode\noriginal <- nrow(ds)\nds %<>%\n  filter(!is.na(user_submitted_review))\nnew <- nrow(ds)\n\n\nThe number of rows removed is 885\nThe average number of books purchased in an order is 3.9855606\nFilling the missing on total_purchased using the mean above\n\n\nCode\nds %<>%\n  mutate(total_purchased=if_else(is.na(total_purchased),3.99,total_purchased))"
+  },
+  {
+    "objectID": "projects/data_quest/book_sales/book_sales.html#task-two",
+    "href": "projects/data_quest/book_sales/book_sales.html#task-two",
+    "title": "Analyzing Book Sales",
+    "section": "Task Two",
+    "text": "Task Two\n\nExamine the unique sentences that are present in in user_submitted_review.\n\n\nLook at each of these reviews and see if you can detect specific words or phrases that help indicate if the review is positive or not.\nFor example, a word like “good” or “great” can help indicate that a review is positive. A phrase like “not recommended” can help indicate that a review is not positive.\n\n\nCreate a function that takes in a sentence (think: a value from user_submitted_review) and returns a value indicating if the review is positive or not.\n\n\nWe will leave it up to you to design your function, but it must perform this essential role.\nRecall that you can use the str_detect() function to check if a string contains a particular substring\nCombining the str_detect() function with a control flow function like case_when() would be a great way to approach this problem.\nCreate a new column in the dataset that indicates whether or not the review in a given row is positive or not.\n\nChecking unique values for user_submitted_review\n\n\nCode\nunique(ds$user_submitted_review)\n\n\n[1] \"it was okay\"                         \n[2] \"Awesome!\"                            \n[3] \"Hated it\"                            \n[4] \"Never read a better book\"            \n[5] \"OK\"                                  \n[6] \"The author's other books were better\"\n[7] \"A lot of material was not needed\"    \n[8] \"Would not recommend\"                 \n[9] \"I learned a lot\"                     \n\n\nGrading reviews to positive and negative\n\n\nCode\nds %<>%\n  mutate(\n    review_class= case_when(str_detect(user_submitted_review,\"it was okay\")~\"Positive\",\n                            str_detect(user_submitted_review,\"Awesome!\")~\"Positive\",\n                             str_detect(user_submitted_review,\"Hated it\")~\"Negative\",\n                            str_detect(user_submitted_review,\"Never read a better book\")~\"Positive\",\n                           str_detect(user_submitted_review,\"OK\")~\"Positive\",\n                           str_detect(user_submitted_review,\"The author's other books were better\")~\"Negative\",\n                            str_detect(user_submitted_review,\"A lot of material was not needed\")~\"Negative\",\n                            str_detect(user_submitted_review,\"Would not recommend\")~\"Negative\",\n                            str_detect(user_submitted_review,\"I learned a lot\")~\"Positive\",\n                            \n                            \n                            TRUE ~ user_submitted_review\n                            ))"
+  },
+  {
+    "objectID": "projects/data_quest/book_sales/book_sales.html#task-three",
+    "href": "projects/data_quest/book_sales/book_sales.html#task-three",
+    "title": "Analyzing Book Sales",
+    "section": "Task Three",
+    "text": "Task Three\n\nPerform the proper conversion of the date column, so that it actually represents a date and time.\nCreate a new grouping column using the mutate() function that will help distinguish between sales that happen before July 1, 2019 and sales that happen after this date.\nCreate a summary table that compares the number of books purchased before July 1, 2019 to after.\n\n\nAfter creating the table, judge whether or not the program was actually effective in terms of increasing the number of books sold.\n\n\n\nCode\nds %<>%\n  mutate(date=mdy(date)) %>%\n  mutate(bef_jul=if_else(date < as.Date(\"2019-07-01\"),\"Before July\",\"After July\"))\n\n\n\n\nCode\nsales <- ds %>%\n  group_by(bef_jul) %>%\n  summarise(count=n()) %>%\n  summarise(bef_jul,count,prop=count/sum(count)*100)\n\n\nWarning: Returning more (or less) than 1 row per `summarise()` group was deprecated in\ndplyr 1.1.0.\nℹ Please use `reframe()` instead.\nℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`\n  always returns an ungrouped data frame and adjust accordingly.\n\n\nCode\nknitr::kable(sales)\n\n\n\n\n\nbef_jul\ncount\nprop\n\n\n\n\nAfter July\n2065\n50.18226\n\n\nBefore July\n2050\n49.81774\n\n\n\n\n\nIn data analysis, it’s common to have several subgroups that you want to compare. In the last step, we just compared sales that were before and after July 1, 2019. It’s possible that individual customers responded better to the program and bought more books in response to the program. Or, it could have been businesses that bought more books. In order to explore this sub-analysis, we also need to divide the sales before and after July 1, 2019 into sales that were for individuals versus businesses."
+  },
+  {
+    "objectID": "projects/data_quest/book_sales/book_sales.html#task-four",
+    "href": "projects/data_quest/book_sales/book_sales.html#task-four",
+    "title": "Analyzing Book Sales",
+    "section": "Task Four",
+    "text": "Task Four\n\nPerform the same analysis that you did in the last step but add in the customer_type column to further subdivide the groups.\nExamine the results of the analysis and write about your observations. Does the program still seem to have an effect on increasing sales? Did it have a different effect for individuals versus businesses?\n\n\n\nCode\nsales <- ds %>%\n  group_by(customer_type,bef_jul) %>%\n  summarise(count=n()) %>%\n  summarise(customer_type,bef_jul,count,prop=count/sum(count)*100)\n\n\n`summarise()` has grouped output by 'customer_type'. You can override using the\n`.groups` argument.\n\n\nWarning: Returning more (or less) than 1 row per `summarise()` group was deprecated in\ndplyr 1.1.0.\nℹ Please use `reframe()` instead.\nℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`\n  always returns an ungrouped data frame and adjust accordingly.\n\n\n`summarise()` has grouped output by 'customer_type'. You can override using the\n`.groups` argument.\n\n\nCode\nknitr::kable(sales)\n\n\n\n\n\ncustomer_type\nbef_jul\ncount\nprop\n\n\n\n\nBusiness\nAfter July\n1451\n50.80532\n\n\nBusiness\nBefore July\n1405\n49.19468\n\n\nIndividual\nAfter July\n614\n48.76886\n\n\nIndividual\nBefore July\n645\n51.23114"
+  },
+  {
+    "objectID": "projects/data_quest/book_sales/book_sales.html#task-five",
+    "href": "projects/data_quest/book_sales/book_sales.html#task-five",
+    "title": "Analyzing Book Sales",
+    "section": "Task Five",
+    "text": "Task Five\n\nCreate another summary table that compares the number of positive reviews before and after July 1, 2019.\n\nDoes it seem that review sentiment improved after the program was created? Or did it get worse?\n\n\n\n\nCode\nreviews <- ds %>%\n  group_by(bef_jul,review_class) %>%\n  summarise(count=n()) %>%\n  summarise(bef_jul,review_class,count,prop=count/sum(count)*100)\n\n\n`summarise()` has grouped output by 'bef_jul'. You can override using the\n`.groups` argument.\n\n\nWarning: Returning more (or less) than 1 row per `summarise()` group was deprecated in\ndplyr 1.1.0.\nℹ Please use `reframe()` instead.\nℹ When switching from `summarise()` to `reframe()`, remember that `reframe()`\n  always returns an ungrouped data frame and adjust accordingly.\n\n\n`summarise()` has grouped output by 'bef_jul'. You can override using the\n`.groups` argument.\n\n\nCode\nknitr::kable(reviews)\n\n\n\n\n\nbef_jul\nreview_class\ncount\nprop\n\n\n\n\nAfter July\nNegative\n937\n45.37530\n\n\nAfter July\nPositive\n1128\n54.62470\n\n\nBefore July\nNegative\n916\n44.68293\n\n\nBefore July\nPositive\n1134\n55.31707"
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html",
+    "href": "projects/data_quest/covid_trends/covid_trends.html",
+    "title": "Investigating COVID-19 Trends",
+    "section": "",
+    "text": "A pneumonia of unknown cause detected in Wuhan, China was first internationally reported from China on 31 December 2019. Today we know this virus as Coronavirus. COVID-19 which stands for COronaVIrus Disease is the disease caused by this virus. Since then, the world has been engaged in the fight against this pandemic. Several measures have therefore been taken to “flatten the curve”. We have consequently experienced social distancing and many people have passed away as well.\nIn the solidarity to face this unprecedented global crisis, several organizations did not hesitate to share several datasets allowing the conduction of several kinds of analysis in order to understand this pandemic.\nOur analysis tries to provide an answer to this question: Which countries have had the highest number of positive cases against the number of tests?\n\n\nThe dataset of our study contains daily & cumulative number of COVID-19 tests conducted, number of positive, hospitalized, recovered & death cases reported by country. In details here are the columns in the dataset:\n\nDate: Date\nContinent_Name: Continent names\nTwo_Letter_Country_Code: Country codes\nCountry_Region: Country names\nProvince_State: States/province names; value is All States when state/provincial level data is not available\npositive: Cumulative number of positive cases reported.\nactive: Number of active cases on that day.\nhospitalized: Cumulative number of hospitalized cases reported.\nhospitalizedCurr: Number of actively hospitalized cases on that day.\nrecovered: Cumulative number of recovered cases reported.\ndeath: Cumulative number of deaths reported.\ntotal_tested: Cumulative number of tests conducted.\ndaily_tested: Number of tests conducted on the day; if daily data is unavailable, daily tested is averaged across number of days in between.\ndaily_positive: Number of positive cases reported on the day; if daily data is unavailable, daily positive is averaged across number of days in.\n\n\n\nCode\n# loading packages and loading the dataset\npacman::p_load(\n  tidyverse,\n  magrittr)\n\nds <- read_csv(\"covid19.csv\")"
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html#task-one",
+    "href": "projects/data_quest/covid_trends/covid_trends.html#task-one",
+    "title": "Investigating COVID-19 Trends",
+    "section": "Task One",
+    "text": "Task One\n\nDetermine the dimension of the dataframe, covid_df by using the function dim()\nDetermine the column names of covid_df using the colnames() function.\n\nStore the result in the variable named vector_cols.\nDisplay the content of this variable.\nWhat data structure the vector_cols variable represents?\n\nDisplay the first few rows of the covid_df dataset using the function head()\nDisplay the summary of the covid_df dataset using the function glimpse() from the tibble package.\n\nWhy is the glimpse() function useful when exploring a new dataset?\n\n\n\n\nCode\n# dataframe dimensions\ndim(ds)\n\n\n[1] 10903    14\n\n\nCode\n# column names\nvector_cols <- colnames(ds)\nvector_cols\n\n\n [1] \"Date\"                    \"Continent_Name\"         \n [3] \"Two_Letter_Country_Code\" \"Country_Region\"         \n [5] \"Province_State\"          \"positive\"               \n [7] \"hospitalized\"            \"recovered\"              \n [9] \"death\"                   \"total_tested\"           \n[11] \"active\"                  \"hospitalizedCurr\"       \n[13] \"daily_tested\"            \"daily_positive\"         \n\n\nDisplaying first ten six rows\n\n\nCode\nknitr::kable(head(ds,6))\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nDate\nContinent_Name\nTwo_Letter_Country_Code\nCountry_Region\nProvince_State\npositive\nhospitalized\nrecovered\ndeath\ntotal_tested\nactive\nhospitalizedCurr\ndaily_tested\ndaily_positive\n\n\n\n\n2020-01-20\nAsia\nKR\nSouth Korea\nAll States\n1\n0\n0\n0\n4\n0\n0\n0\n0\n\n\n2020-01-22\nNorth America\nUS\nUnited States\nAll States\n1\n0\n0\n0\n1\n0\n0\n0\n0\n\n\n2020-01-22\nNorth America\nUS\nUnited States\nWashington\n1\n0\n0\n0\n1\n0\n0\n0\n0\n\n\n2020-01-23\nNorth America\nUS\nUnited States\nAll States\n1\n0\n0\n0\n1\n0\n0\n0\n0\n\n\n2020-01-23\nNorth America\nUS\nUnited States\nWashington\n1\n0\n0\n0\n1\n0\n0\n0\n0\n\n\n2020-01-24\nAsia\nKR\nSouth Korea\nAll States\n2\n0\n0\n0\n27\n0\n0\n5\n0\n\n\n\n\n\nThe dataset structure\n\n\nCode\nglimpse(ds)\n\n\nRows: 10,903\nColumns: 14\n$ Date                    <date> 2020-01-20, 2020-01-22, 2020-01-22, 2020-01-2…\n$ Continent_Name          <chr> \"Asia\", \"North America\", \"North America\", \"Nor…\n$ Two_Letter_Country_Code <chr> \"KR\", \"US\", \"US\", \"US\", \"US\", \"KR\", \"US\", \"US\"…\n$ Country_Region          <chr> \"South Korea\", \"United States\", \"United States…\n$ Province_State          <chr> \"All States\", \"All States\", \"Washington\", \"All…\n$ positive                <dbl> 1, 1, 1, 1, 1, 2, 1, 1, 4, 0, 3, 0, 0, 0, 0, 1…\n$ hospitalized            <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ recovered               <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ death                   <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ total_tested            <dbl> 4, 1, 1, 1, 1, 27, 1, 1, 0, 0, 0, 0, 0, 0, 0, …\n$ active                  <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ hospitalizedCurr        <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ daily_tested            <dbl> 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n$ daily_positive          <dbl> 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…\n\n\nSince Province_state contains multiple levels of data, extract only the country-level data in order to not bias our analyses. To do so, we filter the data to keep only the data related to “All States”. “All States” represents the value of the column Province_State to specify that the COVID-19 data is only available at the country level. Feel free at the end of the project to come back to this step and do different kind of filtering, e.g., focus only on a country."
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html#task-two",
+    "href": "projects/data_quest/covid_trends/covid_trends.html#task-two",
+    "title": "Investigating COVID-19 Trends",
+    "section": "Task Two",
+    "text": "Task Two\n\nFilter the rows related to “All States” from the Province_State column and remove the Province_State column from covid_df dataframe.\n\nStore the result in df\n\nWhy can we remove the Province_State column without losing information from our dataset?\n\n\n\nCode\ndf <- ds %>%\n  filter(Province_State %in% \"All States\") %>%\n  select(-Province_State)\ndim(df)\n\n\n[1] 3781   13\n\n\nRevisiting the description of the dataset columns above (not on the days), we can notice that there are columns that provide daily information and others that provide cumulative information.\nWe should manage those cases (columns with cumulative and daily information) separately because we cannot work with both together. Actually, our analysis would be biased if we made the mistake of comparing a column containing cumulative data and another one containing only one-day data. This is another example of a situation that we want to know from the beginning of the project in order to better analyze our dataset."
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html#task-three",
+    "href": "projects/data_quest/covid_trends/covid_trends.html#task-three",
+    "title": "Investigating COVID-19 Trends",
+    "section": "Task Three",
+    "text": "Task Three\n\nSelect the following column, related to the daily measures, from the covid_df_all_states: Date, Country_Region, active, hospitalizedCurr, daily_tested, daily_positive.\n\nStore the result in covid_df_all_states_daily.\n\n\n\n\nCode\ncovid_df_all_states_daily <- df %>%\n  select(Date, Country_Region, active, hospitalizedCurr, daily_tested, daily_positive)\n\n\nOur goal here is to extract the top ten cases countries data. Acting like a data scientist, at this step, these are the questions we are asking ourselves.\n\nHow can we get the overall number of COVID-19 tested, positive, active and hospitalized cases by country since we currently have daily data?\nHow do we then extract the top ten?"
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html#task-four",
+    "href": "projects/data_quest/covid_trends/covid_trends.html#task-four",
+    "title": "Investigating COVID-19 Trends",
+    "section": "Task Four",
+    "text": "Task Four\n\nWrite code to summarize the covid_df_all_states_daily dataframe by computing the sum of the number of tested, positive, active and hospitalized cases grouped by the Country_Region column.\n\nUse the function group_by() to group rows by Country_Region column.\nCombine the function summarize() and the function sum() to compute the sum for each column.\n\nAssign the sum of daily_tested to the column name tested.\nAssign the sum of daily_positive to the column name positive.\nAssign the sum of active to the column name active.\nAssign the sum of hospitalizedCurr to the column name hospitalized.\nArrange the tested column in descending order using the function arrange().\n\n\nStore the result in the variable covid_df_all_states_daily_sum.\nDisplay this dataframe.\nExtract the top ten rows from the covid_df_all_states_daily_sum dataframe using the command head(covid_df_all_states_daily_sum, 10)\nStore the result in the variable named covid_top_10.\n\n\n\nCode\ncovid_df_all_states_daily_sum <- covid_df_all_states_daily %>%\n  group_by(Country_Region) %>%\n  summarise(tested=sum(daily_tested),\n            positive=sum(daily_positive),\n            active=sum(active),\n            hospitalized=sum(hospitalizedCurr)) %>%\n  arrange(desc(tested))\n\ncovid_top_10 <- head(covid_df_all_states_daily_sum, 10)\n\nknitr::kable(covid_top_10)\n\n\n\n\n\nCountry_Region\ntested\npositive\nactive\nhospitalized\n\n\n\n\nUnited States\n17282363\n1877179\n0\n0\n\n\nRussia\n10542266\n406368\n6924890\n0\n\n\nItaly\n4091291\n251710\n6202214\n1699003\n\n\nIndia\n3692851\n60959\n0\n0\n\n\nTurkey\n2031192\n163941\n2980960\n0\n\n\nCanada\n1654779\n90873\n56454\n0\n\n\nUnited Kingdom\n1473672\n166909\n0\n0\n\n\nAustralia\n1252900\n7200\n134586\n6655\n\n\nPeru\n976790\n59497\n0\n0\n\n\nPoland\n928256\n23987\n538203\n0"
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html#task-five",
+    "href": "projects/data_quest/covid_trends/covid_trends.html#task-five",
+    "title": "Investigating COVID-19 Trends",
+    "section": "Task Five",
+    "text": "Task Five\n\nCreate the following vectors from the covid_top_10 dataframe.\nCreate the countries vector that contains the Country_Region column values. We can use covid_top_10$Country_Region to extract this column from the covid_top_10 dataframe.\nCreate the tested_cases vector that contains the tested column values.\nCreate the positive_cases vector that contains the positive column values.\nCreate the active_cases vector that contains the active column values.\nCreate the hospitalized_cases vector that contains the hospitalized column values.\nWrite code to name the previous vectors: tested_cases, positive_cases, active_cases, and hospitalized_cases with the country names’ vector countries using the function names().\n\nIdentify the top three positive against tested cases.\n\nDivide the vector positive_cases by the vector tested_cases using the operator /.\nIdentify the top three ratio. You can do this operation manually by looking at the result of the division.\nStore the result as the named vector, positive_tested_top_3, where each country name is associated with its ratio.\n\n\n\nCode\ncountries <- covid_top_10 %>%\n  pull(Country_Region)\n\ntested_cases <- covid_top_10 %>%\n  pull(tested)\n\npositive_cases <- covid_top_10 %>%\n  pull(positive)\n\nactive_cases <- covid_top_10 %>%\n  pull(active)\n\nhospitalized_cases <- covid_top_10 %>%\n  pull(hospitalized)\n\n\nNaming the vectors\n\n\nCode\nnames(positive_cases) <- countries\nnames(tested_cases) <- countries\nnames(active_cases) <- countries\nnames(hospitalized_cases) <- countries\n\n# Example\n\npositive_cases\n\n\n United States         Russia          Italy          India         Turkey \n       1877179         406368         251710          60959         163941 \n        Canada United Kingdom      Australia           Peru         Poland \n         90873         166909           7200          59497          23987 \n\n\nIdentifying top three active\n\n\nCode\nratio <- positive_cases/tested_cases\n\nsummary(ratio)\n\n\n    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. \n0.005747 0.029017 0.057913 0.056658 0.075915 0.113261 \n\n\nCode\npositive_tested_top3 <- ratio [ratio > quantile(ratio,0.75)]\n\npositive_tested_top3\n\n\n United States         Turkey United Kingdom \n    0.10861819     0.08071172     0.11326062 \n\n\nCreating a matrix containing top three countries\n\n\nCode\ntop_3 <- c(\"United States\", \"Turkey\", \"United Kingdom\")\n\ncovid_mat <- covid_top_10 %>%\n   mutate(ratio = round(positive_cases/tested_cases,2)) %>%\n   filter(Country_Region %in% top_3) \n \nknitr::kable(covid_mat, caption = \"Top Three Countries with High Testing Rate\")\n\n\n\nTop Three Countries with High Testing Rate\n\n\nCountry_Region\ntested\npositive\nactive\nhospitalized\nratio\n\n\n\n\nUnited States\n17282363\n1877179\n0\n0\n0.11\n\n\nTurkey\n2031192\n163941\n2980960\n0\n0.08\n\n\nUnited Kingdom\n1473672\n166909\n0\n0\n0.11\n\n\n\n\n\nOur goal is to put all our answers and datasets together. Since a list can contain several types of objects, we are able to store all the data of our project together. This allows us to have a global view from a single variable and the ability to export our results for other uses.\nOn the previous steps we answered the following questions:\n\nWhich countries have had the highest number of deaths due to COVID-19?\nWhich countries have had the highest number of positive cases against the number of tests?\n\nOur answers are stored in the variables positive_tested_top_3.\nTo do so, we created several data structures such as:\n\nDataframes: covid_df, covid_df_all_states, covid_df_all_states_daily, and covid_top_10.\nMatrix: covid_mat.\nVectors: vector_cols and countries.\n\nLet’s create a list to store all our work in the same variable."
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html#task-six",
+    "href": "projects/data_quest/covid_trends/covid_trends.html#task-six",
+    "title": "Investigating COVID-19 Trends",
+    "section": "Task Six",
+    "text": "Task Six\nCreate a character variable named question that contains our question.\n\nquestion <- “Which countries have had the highest number of positive cases against the number of tests?”\n\nCreate a named vector that contains our answer with the following command:\n\nanswer <- c(“Positive tested cases” = positive_tested_top_3).\n\nCreate a list that contains the data structures mentioned above.\n\nCreate a list that contains the dataframes.\nCreate a list that contains the matrices.\nCreate a list that contains the vectors.\nCreate a named list that contains the three previous lists associated with the data structure names.\nStore the result in data_structure_list.\n\nCreate a list that contains the following lists: question, answer, and data_structure_list.\n\nStore the result in covid_analysis_list.\nDisplay the second element of this list.\n\n\n\nCode\nquestion <- \"Which countries have had the highest number of positive cases against the number of tests?\"\nanswer <- c(\"Positive tested cases\" = positive_tested_top3)\n\ndataframes <- list( df, covid_df_all_states_daily,covid_df_all_states_daily_sum,covid_top_10)\n\nmatrix <- list(covid_mat)\n\nvectors <- list(vector_cols,countries)\n\ndata_structure_list<- list(dataframes,matrix,vectors)\n\ncovid_analysis_list <- list(question, answer, data_structure_list)\n\ncovid_analysis_list[2]\n\n\n[[1]]\n Positive tested cases.United States         Positive tested cases.Turkey \n                          0.10861819                           0.08071172 \nPositive tested cases.United Kingdom \n                          0.11326062"
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html#task-seven",
+    "href": "projects/data_quest/covid_trends/covid_trends.html#task-seven",
+    "title": "Investigating COVID-19 Trends",
+    "section": "Task Seven",
+    "text": "Task Seven\nOur goal is to answer this question: Which countries have had the highest number of deaths due to COVID-19?.\nTo answer this question, we can use visualization, which allows exploring all the data at once in order to have a global view of the data that is needed to answer the question.\nWe will visualize the maximum number of deaths per country to identify the top three affected countries. We will use the dataset with the cumulative information, covid_df_all_states_cumulative\nSelect the following columns, related to the cumulative measures, from the covid_df_all_states dataframe: Date, Continent_Name, Two_Letter_Country_Code, positive, hospitalized, recovered, death, and total_tested.\nStore the result in covid_df_all_states_cumulative.\n\n\nCode\ncovid_df_all_states_cumulative <- df %>%\n  select(Date,Continent_Name,Two_Letter_Country_Code,positive, hospitalized,recovered, death, total_tested)\n\n\nWrite code to summarize the covid_df_all_states_cumulative dataframe by computing the maximum of the death column grouped by Continent_Name and Two_Letter_Country_Code columns.\n\nUse the function group_by() to group row by Continent_Name and Two_Letter_Country_Code columns.\nCombine the function summarize() and the function max() to compute the maximum for each group.\nFilter the maximum value greater than 0 (filter(max > 0)).\nStore the result in the variable covid_df_all_states_cumulative_max.\nDisplay this dataframe.\n\nUse the qplot() function of the ggplot2 package to visualize the maximum death for each country.\n\nThe x-axis parameter x receives the column named Two_Letter_Country_Code.\nThe y-axis parameter y receives the maximum death column computed in the previous question.\n\nThe color parameter receives the column named Continent_Name.\nThe data parameter data receives the dataframe covid_df_all_states_cumulative_max.\n\nBy examining the plot, identify the top three affected countries\nStore your findings as a character vector named death_top_3.\n\n\nCode\ncovid_df_all_states_cumulative_max <- covid_df_all_states_cumulative %>%\n  group_by(Continent_Name, Two_Letter_Country_Code) %>%\n  summarize(maximum=max(death)) %>%\n  filter(maximum > 0)\n\n\n`summarise()` has grouped output by 'Continent_Name'. You can override using\nthe `.groups` argument.\n\n\nCode\nqplot(x = Two_Letter_Country_Code,\n      y = maximum,\n      color = Continent_Name,\n      data = covid_df_all_states_cumulative_max) +\n  theme_classic()\n\n\nWarning: `qplot()` was deprecated in ggplot2 3.4.0.\n\n\n\n\n\nCode\ndeath_top_3 <- c(\"Belgium\",\"United Kingdom\",\"Italy\")"
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html#task-eight",
+    "href": "projects/data_quest/covid_trends/covid_trends.html#task-eight",
+    "title": "Investigating COVID-19 Trends",
+    "section": "Task Eight",
+    "text": "Task Eight\nCreate a matrix combining the ranking for every measurement in the matrix covid_top_10.\n\nCompute the ranking for the tested_cases column, using the function rank(), by indexing this column with its name “tested_cases”. Store the result in the vector tested_cases_rank.\nCompute the ranking for the positive_cases column, using the function rank(), by indexing this column with its name “positive_cases”. Store the result in the vector positive_cases_rank.\nCompute the ranking for the active_cases column, using the function rank(), by indexing this column with its name “active_cases”. Store the result in the vector active_cases_rank.\nCompute the ranking for the hospitalized_cases column, using the function rank(), by indexing this column with its name “hospitalized_cases”. Store the result in the vector hospitalized_cases_rank.\n\nUse the function rbind() to combine these rankings vectors. Store the result in the matrix covid_mat_rank.\n\n\nCode\npop <- c(331002651, 145934462, 60461826, 1380004385, 84339067, \n         37742154, 67886011, 25499884, 32971854, 37846611)\n\nco_top_10 <- covid_top_10 %>%\n  select(tested,positive,active,hospitalized) %>%\n  as.matrix() \n  \nco_top_10 <- (co_top_10 * 100)/pop \n\nco_top_10 <- as_tibble(co_top_10)\n\ntested_cases_rank <- co_top_10 %>%\n  pull(tested) %>%\n  rank()\n\npositive_cases_rank <- co_top_10 %>%\n  pull(positive) %>%\n  rank()\n\nactive_cases_rank <- co_top_10 %>%\n  pull(active) %>%\n  rank()\n\nhospitalized_cases_rank <- co_top_10 %>%\n  pull(hospitalized) %>%\n  rank()\n\ncovid_mat_rank <- rbind(tested_cases_rank,positive_cases_rank,\n                        active_cases_rank,hospitalized_cases_rank)\n\ncolnames(covid_mat_rank) <- countries\n\nknitr::kable(covid_mat_rank)\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nUnited States\nRussia\nItaly\nIndia\nTurkey\nCanada\nUnited Kingdom\nAustralia\nPeru\nPoland\n\n\n\n\ntested_cases_rank\n8.0\n10.0\n9\n1.0\n3.0\n6.0\n2.0\n7\n5.0\n4.0\n\n\npositive_cases_rank\n10.0\n8.0\n9\n1.0\n5.0\n6.0\n7.0\n2\n4.0\n3.0\n\n\nactive_cases_rank\n2.5\n9.0\n10\n2.5\n8.0\n5.0\n2.5\n6\n2.5\n7.0\n\n\nhospitalized_cases_rank\n4.5\n4.5\n10\n4.5\n4.5\n4.5\n4.5\n9\n4.5\n4.5\n\n\n\n\n\nOur goal is to answer these questions:\n\nWhich countries have made the best effort in terms of the number of tests conducted related to their population?\nWhich countries were ultimately the most and least affected related to their population\nCompute the aggregated rankings by summing the rows of the covid_mat_rank matrix.\n\nCompute the sum of the remaining rows using the colSums() function.\n\n\n\n\nCode\ncovid_mat_rank %<>%\n  colSums()\ncovid_mat_rank\n\n\n United States         Russia          Italy          India         Turkey \n          25.0           31.5           38.0            9.0           20.5 \n        Canada United Kingdom      Australia           Peru         Poland \n          21.5           16.0           24.0           16.0           18.5 \n\n\nCode\nbest_effort_tested_cased_top_3 <- c(\"Russia\",\"Italy\",\"United States\")\n  \nmost_affected_country <- c(\"Italy\")\n\nleast_affected_country <- c(\"Poland\")"
+  },
+  {
+    "objectID": "projects/data_quest/covid_trends/covid_trends.html#questions-addressed",
+    "href": "projects/data_quest/covid_trends/covid_trends.html#questions-addressed",
+    "title": "Investigating COVID-19 Trends",
+    "section": "Questions Addressed",
+    "text": "Questions Addressed\n\nWhich countries have had the highest number of deaths due to COVID-19?\nWhich countries have had the highest number of positive cases against the number of tests?\nWhich countries have made the best effort in terms of the number of COVID-19 tests conducted related to their population?\nWhich countries were ultimately the most and least affected related to their population?\n\n\nCreate a questions list having the above questions.\n\n\n\nCode\nquestion_list <- list(\"Which countries have had the highest number of deaths due to COVID-19?\",\n\"Which countries have had the highest number of positive cases against the number of tests?\",\n\"Which countries have made the best effort in terms of the number of COVID-19 tests conducted related to their population?\",\n\"Which countries were ultimately the most and least affected related to their population?\")\n\n\nCreate a list that contains our answers with the following association:\n\n\"Death\" = death_top_3,\n\"Positive tested cases\" = positive_tested_top_3,\n\"The best effort in test related to the population\" = best_effort_tested_cased_top_3,\n\"The most affected country related to its population\" = most_affected_country,\n\"The least affected country related to its population\" = least_affected_country\nStore the result in answer_list\n\nDisplay this list.\n\n\nCode\nanswer_list <- list(\"Death\" = death_top_3,\n\"Positive tested cases\" = positive_tested_top3,\n\"The best effort in test related to the population\" = best_effort_tested_cased_top_3,\n\"The most affected country related to its population\" = most_affected_country,\n\"The least affected country related to its population\" = least_affected_country)\n\nanswer_list\n\n\n$Death\n[1] \"Belgium\"        \"United Kingdom\" \"Italy\"         \n\n$`Positive tested cases`\n United States         Turkey United Kingdom \n    0.10861819     0.08071172     0.11326062 \n\n$`The best effort in test related to the population`\n[1] \"Russia\"        \"Italy\"         \"United States\"\n\n$`The most affected country related to its population`\n[1] \"Italy\"\n\n$`The least affected country related to its population`\n[1] \"Poland\""
+  },
+  {
+    "objectID": "projects/data_quest/forest_fires/forest_fires.html",
+    "href": "projects/data_quest/forest_fires/forest_fires.html",
+    "title": "Analyzing Forest Fires",
+    "section": "",
+    "text": "Forest fires can create ecological problems and endanger human lives and property. Understanding when they occur and what causes them is important for managing them.\n\n\n\nX: X-axis spatial coordinate within the Montesinho park map: 1 to 9\nY: Y-axis spatial coordinate within the Montesinho park map: 2 to 9\nmonth: Month of the year: ‘jan’ to ‘dec’\nday: Day of the week: ‘mon’ to ‘sun’\nFFMC: Fine Fuel Moisture Code index from the FWI system: 18.7 to 96.20\nDMC: Duff Moisture Code index from the FWI system: 1.1 to 291.3\nDC: Drought Code index from the FWI system: 7.9 to 860.6\nISI: Initial Spread Index from the FWI system: 0.0 to 56.10\ntemp: Temperature in Celsius degrees: 2.2 to 33.30\nRH: Relative humidity in percentage: 15.0 to 100\nwind: Wind speed in km/h: 0.40 to 9.40\nrain: Outside rain in mm/m2 : 0.0 to 6.4\narea: The burned area of the forest (in ha): 0.00 to 1090.84\n\n\nFWI stands for “fire weather index”, a method used by scientists to quantify risk factors for forest fires."
+  },
+  {
+    "objectID": "projects/data_quest/forest_fires/forest_fires.html#task-one",
+    "href": "projects/data_quest/forest_fires/forest_fires.html#task-one",
+    "title": "Analyzing Forest Fires",
+    "section": "Task One",
+    "text": "Task One\nTake a look at the data itself and familiarize yourself with it. Here are some guiding questions that you will want to answer as you look at the data: + What does a single row represent? + With what I know about fires, how might each of the variables related to fires themselves? This might involve looking up each variable quickly on a search engine and getting a better grasp of what it is.\n\n\nCode\n# loading packages and loading the dataset\npacman::p_load(\n  tidyverse,\n  magrittr,\n  extrafont)\n\n\nWarning: unable to access index for repository http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.2:\n  cannot open URL 'http://www.stats.ox.ac.uk/pub/RWin/bin/windows/contrib/4.2/PACKAGES'\n\n\npackage 'extrafontdb' successfully unpacked and MD5 sums checked\npackage 'Rttf2pt1' successfully unpacked and MD5 sums checked\npackage 'extrafont' successfully unpacked and MD5 sums checked\n\nThe downloaded binary packages are in\n    C:\\Users\\casto\\AppData\\Local\\Temp\\RtmpYZx0SJ\\downloaded_packages\n\n\nCode\nds <- read_csv(\"forestfires.csv\")\n\n\nA single day represents a day and the risk of having a fire on that day"
+  },
+  {
+    "objectID": "projects/data_quest/forest_fires/forest_fires.html#task-two",
+    "href": "projects/data_quest/forest_fires/forest_fires.html#task-two",
+    "title": "Analyzing Forest Fires",
+    "section": "Task Two",
+    "text": "Task Two\n\nConvert the month variable into a categorical variable, and make sure that the months in the data are ordered correctly.\nConvert the day variable into a categorical variable too. Different regions use different days of the week as the “starting” day, so choose the one that suits you. There’s no one correct answer for this one, the processing helps us organize the data in a more familiar way.\n\nInspection of month variable\n\n\nCode\nds %>% pull(month) %>% unique()\n\n\n [1] \"mar\" \"oct\" \"aug\" \"sep\" \"apr\" \"jun\" \"jul\" \"feb\" \"jan\" \"dec\" \"may\" \"nov\"\n\n\nReordering of the month\n\n\nCode\nds %<>% \n mutate(month = fct_relevel(month,\"jan\",\"feb\",\"mar\",\"apr\",\"may\",\"jun\",\n              \"jul\",\"aug\",\"sep\",\"oct\",\"nov\",\"dec\"))\n\n\nInspection day variable\n\n\nCode\nds %>% pull(day) %>% unique()\n\n\n[1] \"fri\" \"tue\" \"sat\" \"sun\" \"mon\" \"wed\" \"thu\"\n\n\nReordering day variable\n\n\nCode\nds %<>% \n  mutate(day=fct_relevel(day,\"mon\",\"tue\",\"wed\",\n                         \"thu\",\"fri\",\"sat\",\"sun\"))\n\n\n\nWhen it comes to understanding forest fires and what can be done to manage them, it is helpful to have an idea of when the fires are most likely to occur. For example, there is a notion of a fire season in the state of California in the United States between May and October, thanks to the summer heat.\n\nWe’ve seen two variables concerning time: month and day. These two columns allow us to ask:\n\nWhich months do forest fires happen the most?\nWhich days of the week do forest fires happen the most?"
+  },
+  {
+    "objectID": "projects/data_quest/forest_fires/forest_fires.html#task-3",
+    "href": "projects/data_quest/forest_fires/forest_fires.html#task-3",
+    "title": "Analyzing Forest Fires",
+    "section": "Task 3",
+    "text": "Task 3\n\nCreate a tibble that counts the number of forest fires by month.\n\nIn order to count rows, we have a few options on how to calculate this. We can use the nrow() function, or we can also use the n() function to count the number of rows within summarize().\n\nCreate a tibble that counts the number of forest fires by day of the week.\nUsing each of the tibbles that you created, create a visualization that allows us to answer the questions that we have put forth on this screen.\nUsing your visualizations, write some notes to yourself on when forest fires are most common. One good practice is to try to accompany a visualization with a bit of writing that describes its key focal points. Even though a visualization should always be able to stand alone, it’s helpful to a reader to understand immediately what the point of a graph is.\nMake sure to give your plot informative axes labels and an accurate title too! All of your plots should be able to describe themselves to an uninformed reader.\n\n\nForest Fires by Month\n\n\nCode\nfires_by_month <- ds %>%\n  group_by(month) %>%\n  summarize(frequency = n())\n\nknitr::kable(fires_by_month,\n             align=\"cc\",\n             caption=\"Forest Fires by Month\")\n\n\n\nForest Fires by Month\n\n\nmonth\nfrequency\n\n\n\n\njan\n2\n\n\nfeb\n20\n\n\nmar\n54\n\n\napr\n9\n\n\nmay\n2\n\n\njun\n17\n\n\njul\n32\n\n\naug\n184\n\n\nsep\n172\n\n\noct\n15\n\n\nnov\n1\n\n\ndec\n9\n\n\n\n\n\n\nMost forest fires occur in August as seen in table above and the figure below\n\nA plot showing forest fires by month\n\n\nCode\nggplot(ds) +\n  aes(x=month) +\n  geom_bar() +\n  theme_classic() +\n  theme(text=element_text(size=12,  family=\"Palatino\")) +\n  ylab(\"Frequency of Fires\") +\n  xlab(\"Month\")\n\n\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\nnot found in Windows font database\n\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\nnot found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\n\n\n\n\n\nForest Fires by Day of the Week\n\n\nCode\nfires_by_day <- ds %>%\n  group_by(day) %>%\n  summarize(frequency = n())\n\nknitr::kable(fires_by_day,\n             align=\"cc\",\n             caption=\"Forest Fires by Day\")\n\n\n\nForest Fires by Day\n\n\nday\nfrequency\n\n\n\n\nmon\n74\n\n\ntue\n64\n\n\nwed\n54\n\n\nthu\n61\n\n\nfri\n85\n\n\nsat\n84\n\n\nsun\n95\n\n\n\n\n\n\nMost forest fires occur on sunday. This is as seen on the table above and the figure below\n\nA plot showing forest fires by day of the week\n\n\nCode\nggplot(ds) +\n  aes(x=day) +\n  geom_bar() +\n  theme_classic() +\n  theme(text=element_text(size=12,  family=\"Palatino\")) +\n  ylab(\"Frequency of Fires\") +\n  xlab(\"Day\")\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\n\n\n\nFrom our graphs, we saw that August and September see more forest fires than other months. It also looks as though the weekend days (Friday, Saturday, and Sunday) have more forest fires than days in the middle of the week\nTo explore the temporal patterns of forest fire occurrence the bar charts reveal, we should look more closely at how the variables that relate to forest fires vary by month and by day of the week. We should see how each of the other variables in the dataset relates to month"
+  },
+  {
+    "objectID": "projects/data_quest/forest_fires/forest_fires.html#task-four",
+    "href": "projects/data_quest/forest_fires/forest_fires.html#task-four",
+    "title": "Analyzing Forest Fires",
+    "section": "Task Four",
+    "text": "Task Four\nInstructions:\n\nCreate a visualization(s) that help look at the relationship between each of the columns described above with month.\n\nif you want to, do these visualizations again with day to search for if there’s any relationships there. Our solutions will only look at month\nif you use facet_wrap() or facet_grid(), make sure you use scales = \"free_y\" to make sure each plot is on its own scale\n\nTake note of any variables that show values that stand out in August or September. Knowing what the variables represent, how do you think these relate to the forest fires themselves?\n\nPlotting Other Variables Against Month\n\n\nCode\nforest_fires_long <- ds %>% \n  pivot_longer(\n    cols = c(\"FFMC\", \"DMC\", \"DC\", \n             \"ISI\", \"temp\", \"RH\", \n             \"wind\", \"rain\"),\n    names_to = \"data_col\",\n    values_to = \"value\"\n  )\nforest_fires_long %>% \n  ggplot(aes(x = month, y = value)) +\n  geom_boxplot() +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle=90, hjust=1)) +\n  theme(text=element_text(size=12,  family=\"Palatino\")) +\n  facet_wrap(vars(data_col), scale = \"free_y\") +\n  labs(\n    title = \"Variable changes over month\",\n    x = \"Month\",\n    y = \"Variable value\"\n  )\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call(C_stringMetric, as.graphicsAnnot(x$label)): font family\nnot found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\n\n\n\nPlotting Other Variables Against Day\n\n\nCode\nforest_fires_long %>% \n  ggplot(aes(x = day, y = value)) +\n  geom_boxplot() +\n  theme_minimal() +\n  theme(axis.text.x = element_text(angle=90, hjust=1)) +\n  theme(text=element_text(size=12,  family=\"Palatino\")) +\n  facet_wrap(vars(data_col), scale = \"free_y\") +\n  labs(\n    title = \"Variable changes over month\",\n    x = \"Day\",\n    y = \"Variable value\"\n  )\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\nWarning in grid.Call.graphics(C_text, as.graphicsAnnot(x$label), x$x, x$y, :\nfont family not found in Windows font database\n\n\nWarning in grid.Call(C_textBounds, as.graphicsAnnot(x$label), x$x, x$y, : font\nfamily not found in Windows font database\n\n\n\n\n\nSo far, we’ve only looked at the relationship between the variables in the data and the frequency of forest fires. Fires can also range in intensity too, so it might be useful to know what factors influence this as well.\nLooking at the data immediately though, there is no variable that describes just “severity”. Many times in analysis, we’ll be interested in a variable, but simply won’t have the data for it. In these cases, we often have to look at proxies, or a kind of “representation” of severity. In this data set, the area variable contains data on the number of hectares of forest that burned during the forest fire. We’ll use this variable as an indicator of the severity of the fire. The idea behind using area as a proxy is that worse fires will result in a larger burned area. Of course, this won’t be true in all cases, but it is a reasonable assumption to make."
+  },
+  {
+    "objectID": "projects/data_quest/forest_fires/forest_fires.html#task-five",
+    "href": "projects/data_quest/forest_fires/forest_fires.html#task-five",
+    "title": "Analyzing Forest Fires",
+    "section": "Task Five",
+    "text": "Task Five\n\nCreate a visualization(s) that help look at the relationship between of the columns other X,Y,month and day with area.\n\nif you use facet_wrap() or facet_grid(), make sure you use scales = “free_x” to make sure each plot is on its own scale\n\nTake note of any variables that show values that stand out in terms of area. Knowing what the variables represent, how do you think these relate to the forest fires themselves?\n\n\n\nCode\nforest_fires_long %>% \n  ggplot(aes(x = value, y = area)) +\n  geom_point() +\n  theme(text=element_text(size=12,  family=\"Palatino\")) +\n  theme_minimal() +\n  facet_wrap(vars(data_col), scales = \"free_x\") +\n  labs(\n    title = \"Relationships between other variables and area burned\",\n    x = \"Value of column\",\n    y = \"Area burned (hectare)\"\n  )\n\n\n\n\n\nIt seems that there are two rows where area that still hurt the scale of the visualization. Let’s make a similar visualization that excludes these observations so that we can better see how each variable relates to area.\n\n\nCode\nforest_fires_long %>% \n  filter(area < 300) %>% \n  ggplot(aes(x = value, y = area)) +\n  geom_point() + \n  theme(text=element_text(size=12,  family=\"Palatino\")) +\n  theme_minimal() +\n  facet_wrap(vars(data_col), scales = \"free_x\") +\n  labs(\n    title = \"Relationships between other variables and area burned (area < 300)\",\n    x = \"Value of column\",\n    y = \"Area burned (hectare)\"\n  )"
+  },
+  {
+    "objectID": "projects/data_quest.html",
+    "href": "projects/data_quest.html",
+    "title": "Data Quest Projects",
+    "section": "",
+    "text": "Data Quest Projects\n1. Analysis of Forest Fires\n2. Analysis COVID-19 Trends\n3. Analysis of Programming Book Reviews\n4. Analysis of Programming Book Sales"
+  },
+  {
+    "objectID": "projects/epi_projects.html",
+    "href": "projects/epi_projects.html",
+    "title": "Epidemiology Projects",
+    "section": "",
+    "text": "Epidemiology sample projects"
+  },
+  {
+    "objectID": "projects.html",
+    "href": "projects.html",
+    "title": "Projects",
+    "section": "",
+    "text": "This is a Quarto website."
+  },
+  {
+    "objectID": "courses/r_basics/map_function.html#dataset-in-use",
+    "href": "courses/r_basics/map_function.html#dataset-in-use",
+    "title": "The Map Function",
+    "section": "Dataset in Use",
+    "text": "Dataset in Use\n\nOur dataset is a collection of test scores of four different students. Each student took five different tests for three subjects: writing, math and science. Over the course of this lesson, we’ll perform different analytical tasks that will require us to vectorize different functions."
+  }
+]
