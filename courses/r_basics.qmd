@@ -1,0 +1,7 @@
+---
+title: "R Basics"
+---
+
+This page contains a compilation of R basic courses.
+
+[Map Functions](r_basics/map_function.qmd)

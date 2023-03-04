@@ -1,0 +1,13 @@
+---
+title: "Data Quest Projects"
+---
+
+Data Quest Projects
+
+[1. Analysis of Forest Fires](data_quest/forest_fires/forest_fires.qmd)
+
+[2. Analysis COVID-19 Trends](data_quest/covid_trends/covid_trends.qmd)
+
+[3. Analysis of Programming Book Reviews](data_quest/book_reviews/book_reviews.qmd)
+
+[4. Analysis of Programming Book Sales](data_quest/book_sales/book_sales.qmd)

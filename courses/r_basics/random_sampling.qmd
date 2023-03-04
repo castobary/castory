@@ -1,0 +1,34 @@
+---
+title: "Simple Random Sampling"
+author: "Castory Munishi"
+date: 11/04/2022
+execute: 
+  echo: true
+  warning: false
+format: revealjs
+editor: visual
+---
+
+## Loading the dataset
+
+```{r}
+pacman::p_load(
+  readr,
+  dplyr,
+  ggplot2
+)
+
+ds <- read_csv("datasets/wnba.csv")
+```
+
+-   The dataset description [wnba dataset at kaggle](https://www.kaggle.com/datasets/jinxbe/wnba-player-stats-2017)
+
+## Sampling Error
+
+-   In sampling we target to use samples to explain population parameters
+-   Different samples will give different estimates of population parameters
+-   The difference between population parameters and sample estimates is known as *sampling error*
+-   Statistics - sample summaries
+-   Parameters - population summaries
+
+\$ sampling error = parameter - statistic\$

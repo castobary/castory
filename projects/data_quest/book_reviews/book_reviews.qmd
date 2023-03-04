@@ -1,0 +1,187 @@
+---
+title: "Analyzing Book Reviews"
+author: "Castory Munishi"
+format:
+  html:
+    theme: united
+    code-fold: true
+    code-tools: true
+date: 10/25/2022
+editor: visual
+toc: true
+---
+
+## Introduction
+
+You work for a company selling books about learning programming. Your company has produced multiple books, and each has received many reviews. Your company wants us to check out the sales data and see if we can extract any useful information from it. You wil analyze the book_reviews dataset to answer company's important questions.
+
+*Objective of the Analysis*
+
+Our main goal is to figure out **what book is the most profitable**. How will we judge what the "most profitable" book is though? Our dataset represents customer purchases. One way to define "most profitable" might be to just choose the book that's purchased the most. Another way to define it would be to see how much money each book generates overall.
+
+## Task One
+
+-   Import the dataset
+
+-   Use the `dim()` to find the number of rows and columns
+
+-   Use the `colnames()` to determine the names of the columns in the dataset and take a moment to reflect on what each represents
+
+-   Use a for loop to check column types using `typeof()` function
+
+-   check for unique values using the `unique()`
+
+-   Try yourself first, the press Click Me to see solution!
+
+<details>
+
+<summary>Click Me!</summary>
+
+<p>
+
+*Code for importing the dataset and checking dimensions!*
+
+```{r}
+#| message: false
+#| echo: true
+pacman::p_load(
+  readr,
+  dplyr,
+  magrittr
+)
+
+ds <- read_csv("book_reviews.csv")
+
+dim(ds)
+
+colnames(ds)
+```
+
+-   Printing data types using a for loop
+
+```{r}
+ for (i in colnames(ds)) {
+   print(typeof(ds[[i]]))
+   
+ }
+```
+
+-   Printing unique values for each data type
+
+```{r}
+for (i in colnames(ds)) {
+  print(unique(ds[[i]]))
+}
+```
+
+</p>
+
+</details>
+
+## Task Two
+
+-   Create a new dataset by removing all rows with `NA`
+-   Check the dimensions of the new cleaned dataset
+
+```{r}
+ds <- ds %>%
+  filter(!is.na(review))
+dim(ds)
+```
+
+## Task Three
+
+-   Labels in the state column are inconsistent "CA" and California
+-   Make all labels consistent using the mutate function
+
+```{r}
+ds <- ds %>%
+  mutate(state_clean = case_when(state %in% "CA" ~ "California",
+                                  state %in% "NY" ~ "New York",
+                                  state %in% "TX" ~ "Texas",
+                                  state %in% "FL" ~ "Florida",
+                                  TRUE ~ state))
+
+ds %>% pull(state_clean) %>% unique()
+```
+
+## Task Four
+
+a)  Using the `mutate()` function create a new column in the dataset called review_num. It should take the original review column and convert it into a numerical form. The column should be coded as following:
+
+-   The `case_when()` function might be useful here since we know how each of the reviews should be reclassified into numbers.
+    -   "Poor" should receive a numerical score of 1
+    -   "Fair" should receive a numerical score of 2
+    -   "Good" should receive a numerical score of 3
+    -   "Great" should receive a numerical score of 4
+    -   "Excellent" should receive a numerical score of 5
+
+b)  It would also be helpful to have another column that helps us decide if a score is "high" or not.
+
+-   For the sake of this exercise, let's decide that a score of 4 or higher qualifies as a "high" score.
+-   Create a new column in the dataset called is_high_review that denotes whether or not the review has a high score or not. In other words, it should be TRUE if review_num is 4 or higher, and FALSE otherwise.
+
+```{r}
+ds %<>%
+  mutate(
+    review_num = case_when(review %in% "Poor" ~ 1,
+                           review %in% "Fair" ~ 2,
+                           review %in% "Good" ~ 3,
+                           review %in% "Great" ~ 4,
+                           review %in% "Excellent" ~ 5),
+    is_high_review = case_when(
+                          review_num >= 4 ~ TRUE,
+                          TRUE ~ FALSE
+    )
+  )
+```
+
+## Task Five
+
+1.  Choose a metric that we will define "most profitable" book.
+
+-   Whichever way we choose, we should write down a few notes to ourself to justify our decision and make it clear which method we chose.
+-   One definition of profitable may use the price column, so we can see how much money a book generated. We may also prefer to count the number of books purchased since it could be interpreted as how popular the book is.
+
+2.  For each book, calculate the chosen metric that we chose to measure "most profitable" book from the data.
+3.  Investigate the results of our analysis and write out some notes about what books are the most profitable.
+
+### Solution
+
+-   Getting the most profitable book will require to calculate the total number of books in each state
+-   Then multiply the total number of books in that state by the price for a give book
+-   Then adding the number total sales for each book
+
+```{r}
+#| message: false
+sales <- ds %>%
+  group_by(state_clean,book) %>%
+  summarize(frequency=n(),
+            price=mean(price),
+            total_sale=frequency*price)
+```
+
+```{r}
+#| warning: false
+
+
+most_profitable <- sales %>%
+  group_by(book) %>%
+  summarize(total_sale=sum(total_sale)) %>%
+  arrange(desc(total_sale))
+
+
+max_sale = max(most_profitable$total_sale)
+
+knitr::kable(most_profitable)
+```
+
+-   `r paste0("The most profitable book is" , most_profitable$book[most_profitable$total_sale ==max_sale])`
+
+## Analysis Considerations
+
+Key Things To Consider in a Data Analysis Report
+
+1.  *Introduction*: What motivated our analysis? What kind of data do we have? What is the main question we're trying to answer?
+2.  *Findings*: What did we need to do to the data to do our analysis? What things are we calculating to answer our main question?
+3.  *Conclusion*: What is the answer to our main question? Was there anything that we feel limits our analysis? What should the reader do with our findings?

@@ -1,0 +1,49 @@
+project:
+  type: website
+  output-dir: docs
+
+website:
+ sidebar:
+   style: "docked"
+   search: true
+   background: light
+   contents:
+     - section: "Home"
+       contents:
+         - index.qmd
+      
+     - section: "Courses"
+       contents:
+         - courses/r_basics.qmd
+         - courses/sir_modelling.qmd
+         - courses/statistical_learning.qmd
+      
+     - section: "Projects"
+       contents:
+         - projects/case_studies.qmd
+         - projects/data_quest.qmd
+         - projects/epi_projects.qmd
+
+     - section: "Exercises"
+       contents:
+         - exercises/basic_exercises.qmd
+         - exercises/advanced_exercises.qmd
+         - exercises/modelling_exercises.qmd
+  
+ page-footer: 
+   left: "Copyright 2023, Castory Munishi" 
+   right: 
+     - icon: github
+       href: https://github.com/
+     - icon: twitter 
+       href: https://twitter.com/ 
+  
+format:
+  html:
+    css: styles.css
+    toc: true
+    
+freeze: auto
+
+
+

@@ -1,0 +1,28 @@
+/* css styles */
+
+
+h1,h2 {
+  color: #2E86C1;
+  text-align: center;
+}
+
+h3,h4 {
+  color: #1B4F72;
+  text-align: left;
+}
+
+tr.odd td {
+  background-color: #d3d3d3;
+  color: black;
+}
+
+tr.even td {
+  background-color: #ffffff;
+  color: black;
+}
+
+.blockquote {
+  color:#4527a0;
+}
+
+

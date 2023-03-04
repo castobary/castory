@@ -1,0 +1,98 @@
+---
+title: "Stratified and Cluster Sampling"
+author: "Castory Munishi"
+date: 11/05/2022
+execute: 
+  echo: true
+  warning: false
+format: revealjs
+editor: visual
+---
+
+
+## Challenge of Simple Random Sampling
+
++ SRS will not always result in a sample having all groups since its completely random
++ Sometimes we might want to analyze patterns for each possible group
++ In our example dataset we have five different positions.
++ F: Foward, G: Guard, C: Center, G/F: Guard/Foward, F/C: Foward/Center
+
+## SRS Missing a category
+
++ Using SRS we might result in a situation like
+
+![](images/s1m1_srs_down.svg)
+
+## Getting Group Representation
+
++ Group representation can be obtained by *stratified sampling*
++ The dataset is organized into different groups
++ The randomly sample from each group
++ Each individual stratified group known as a *stratum*
++ Multiple groups known as *strata*
+
+
+![](images/s1m1_stratified_sampling_v3.svg)
+
+
+## `sample_n()` function
+
++ Enables sampling rows.
++ Takes two arguments, the dataset and number of rows to be sampled
+
+```{r}
+pacman::p_load(
+  readr,
+  dplyr,
+  ggplot2
+)
+
+ds <- read_csv("datasets/wnba.csv")
+
+# getting ten rows
+ds_sampled <- sample_n(ds,size=10)
+```
+
+
+## Task 1
+
+Calculate the average age and the average number of games played from a random sample. 
+
+i. Designate set.seed(1) to make the results reproducible.
+ii. Sample 30 rows from the wnba dataframe. Save the results as thirty_samples.
+iii. Calculate the average age of this sample group. Assign the results to mean_age.
+iv. Calculate the average number of games played for this sample group. Assign the results to mean_games.
+
+
+## Solution 1
+
+```{r}
+set.seed(1)
+ds_30 <- sample_n(ds,size=30)
+mean_age <- mean(ds_30$Age, na.rm=T)
+mean_games <- mean(ds_30$Games_Played, na.rm = T)
+```
+
++ The mean age is `r mean_age`
++ The mean number of games `r mean_games`
+
+
+## Creating and Analyzing Strata with dplyr
+
++ When can use the `group_by()` function to create strata
++ We can then apply one or more functions for each strata
+
+
+## Getting Mean by Stratum
+
+```{r}
+set.seed(1)
+ds %>% 
+  # Split: stratify by player position
+  group_by(Pos) %>% 
+  # Apply: sample 10 observations for each player position stratum
+  sample_n(10) %>%
+  # Apply & combine: calculate average points scored for each stratum, combine results
+  summarize(mean_pts = mean(PTS))
+```
+

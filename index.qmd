@@ -1,0 +1,62 @@
+---
+title: "Castory Munishi"
+image: www/avatar.JPG
+
+about:
+  template: jolla
+  links:
+    - text: LinkedIn
+      url: "https://www.linkedin.com/in/castory-munishi/"
+    - text: Twitter
+      icon: twitter
+      url: "https://twitter.com/castobarym"
+    - text: GitHub
+      icon: github
+      url: "https://github.com/castobary"
+    - text: Email
+      url: "mailto:castobary@gmail.com"
+    - text: Blog
+      url: "blog.html"
+    - text: CV
+      url: "cv.pdf"
+comments: false
+---
+
+:::{.column-page}
+## Bio
+
+I’m a MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My research will develop essential health packages for patients with Non Communicable Diseases in Tanzania. In parallel I'm working to build an online pharmaceutical supply chain called Pharmlinks which has been recently bought by i+ plus solution. I am also working as a data analyst in four intensive health care projects in Tanzania. In  the past I have worked in over 40 impactful projects. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries. This is my personal website and blong where you will find information about me and the works that i have been doing. There are also learning materials and tutorials where i'm sharing what i have been learning for others to learn as well. You are welcome and enjoy the lessons.
+
+On this site I keep a list of [r courses](courses.qmd), [study projects](projects.qmd), 
+and [my CV](www/cv.pdf), as well as a [technical blog](blog.html).
+
+<p></p>
+
+## Education
+
+**Universitetet i Bergen**  
+Bergen, Norway
+
+MPhil. in Global Health | August 2022 - Present (Expected 2024)  
+
+**Muhimbili University of Health and Allied Sciences**  
+Dar es Salaam, Tanzania
+
+Bachelor of Pharmacy | October 2016 - September 2020
+
+## Selected Projects
+
+#### Publications
+
+**Assessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan.** Sangeda, RZ, Kibona, J, and Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. [https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/](doi:10.3389/fpubh.2020.00454)
+
+**Drug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania.** Efraim, J, Munishi, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. [https://doi.org/10.12688/F1000RESEARCH.110079.1](https://doi.org/10.12688/F1000RESEARCH.110079.1)
+
+
+#### R Packages
+
+**[unifir](https://github.com/mikemahoney218/unifir)** | A Unifying API for Working with Unity in R | 2022  
+**[terrainr](https://github.com/ropensci/terrainr)** | Retrieve Data from the USGS National Map and Transform it for 3D Landscape Visualizations | 2021  
+**[heddlr](https://github.com/mikemahoney218/heddlr)** | Functional Programming Concepts for R Markdown Documents | 2020
+
+:::

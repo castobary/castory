@@ -1,0 +1,225 @@
+---
+title: "The Map Function"
+author: "Castory Munishi"
+format: revealjs
+editor: visual
+---
+
+## Dataset in Use
+
+> Our dataset is a collection of test scores of four different students. Each student took five different tests for three subjects: writing, math and science. Over the course of this lesson, we'll perform different analytical tasks that will require us to vectorize different functions.
+
+## Importing the datasets
+
+```{r}
+#| message: false
+#| echo: true
+pacman::p_load(
+  readr,
+  dplyr,
+  magrittr,
+  stringr,
+  purrr
+)
+
+ds <- read_csv("datasets/scores.csv")
+
+head(ds,3)
+```
+
+## Challenge One
+
+-   Each of the student scores are written as strings can't be used in math
+-   Need to convert them to numbers to be useful in calculations
+-   Need to vectorize over multiple columns
+
+## Next Step
+
+-   Create a function called `format_score()` that:
+-   Takes in a single string as an input.
+-   Removes the % sign from the string.
+-   Converts the string into a number using the `as.numeric()` function. This useful function takes in a string and will convert it into a number if it resembles a number.
+-   Outputs that number (e.g. The string "74%" should be converted to the number 74.)
+-   Pass percent_string into the `format_score()`function and assign the output to the variable converted_string
+
+## Creating a Custom Function
+
+```{r}
+#| echo: true
+format_score <- function(score){
+  fmt_string <- str_replace(score, "%", "")
+  num <- as.numeric(fmt_string)
+  
+  return(num)
+}
+
+my_string <- "74%"
+format_score(my_string)
+```
+
+## Vectoring a function
+
+-   The diagram illustrates vectorization of a function called `add_one()`
+
+![](images/map-diagram.png)
+
+## Map Function
+
+-   `map()` is from purrr package
+-   It's used to vectorize functions
+-   It takes two arguments
+    -   A vector or a list
+    -   The function to be applied
+
+## Example
+
+```{r}
+#| echo: true
+
+# Input vector
+inputs <- 1:5
+
+# Function to vectorize
+add_one <- function(value) {
+  return(value + 1)
+}
+
+
+outputs <- map(inputs, add_one)
+typeof(outputs)
+
+outputs2 <- map_dbl(inputs, add_one)
+typeof(outputs2)
+```
+
+-   The output of `map()` is a list
+-   It can be modified `unlist()` function or using variants of it such as `map_dbl()`
+
+## Task
+
+-   Give the vector `input_scores <- c("83%", "29%", "76%")`
+-   Map the function `format_scores()`
+-   Assign the result to output_scores
+-   Take the third element and assign it to third_element
+
+```{r}
+#| echo: true
+input_scores <- c("83%", "29%", "76%")
+
+output_scores <- map(input_scores,format_score)
+
+third_element <- output_scores[[3]]
+```
+
+## Creating a New Column with `map()`
+
+-   use the `mutate()` function to directly create the new columns with the `map()`.
+
+-   What matters is that `map()` creates a list that has the same number of elements as the number of rows in the data.
+
+-   This output list will be used as the new column in the data!
+
+## Creating a new writing score column
+
+```{r}
+#| echo: true
+ds %<>%
+  mutate(new_writing_score=map(writing_score,format_score)) %>%
+  mutate(new_science_score=map(science_score,format_score))
+```
+
+## Two Input Variation of Map - `map2()`
+
+-   A relative of the `map()` function `map2()`
+-   Can work with two arguments
+
+![](images/map2-diagram.png)
+
+## `map2()` Example
+
+```{r}
+#| echo: true
+input_first <- 1:5
+input_second <- 6:10
+
+add_two_values <- function(x,y){
+  return(x+y)
+}
+
+outputs <- map2(input_first,input_second,add_two_values)
+```
+
+## Using `map2()`
+
+> In the student_scores dataset, we have another column called math_extra_credit. This column is a string, and it represents the amount of extra credit a student earned on a particular math test. Depending on how much extra credit is earned ("None," "Low," or "High"), the student can increase their math score. We need to account for this when we calculate the math score.
+
+## Task
+
+Create a new function called `add_extra_credit()`. It should take two inputs: the first one should be a number (representing a score) and the second one should be a string (representing an amount of extra credit)
+
+-   If the string is "None": Don't add any extra points to the number input.
+-   If the string is "Low": Add 1 extra point to the number input
+-   If the string is "High": Add 5 extra points to the number input
+
+## Solution
+
+```{r}
+#| echo: true
+
+input_score <- 50
+add_extra_credit <- function(score, note) {
+  if (note == "None") {
+      points_to_add <- 0
+  } else if (note == "Low") {
+      points_to_add <- 1
+  } else {
+      points_to_add <- 5
+  }
+    
+  return(score + points_to_add)
+}
+add_extra_credit(input_score,"None")
+
+add_extra_credit(input_score,"High")
+```
+
+## Task
+
+Using the `add_extra_credit()`Create a new column in the student_scores dataset called adjusted_math_score. This column should represent the math score that a student received on a test, accounting for the extra credit they got on the test.
+
+-   The new_math_score column contains the math score in number format.
+-   The math_extra_credit column contains the strings describing how much extra credit was earned.
+-   Make sure to use the `unlist()` function to convert the result from `map2()` into a vector.
+
+## Solution
+
+```{r}
+#| echo: true
+ds %<>%
+  mutate(math_score=map(math_score,format_score))%>%
+  mutate(adjusted_math_score=unlist(map2(math_score,math_extra_credit,add_extra_credit)))
+```
+
+## Working with Lists
+
+-   `map()` functions can work with lists
+
+```{r}
+#| echo: true
+input_list <- list(
+  c(1,2),
+  c(3,4),
+  c(5,6),
+  c(7,8),
+  c(9,10)
+)
+
+output <- map(input_list,sum)
+```
+
+## Above and Beyond
+
+-   The `pmap()` function
+-   A variant of `map()` function
+-   It can take multiple arguments
+-   p variable amount of inputs

@@ -1,0 +1,199 @@
+---
+title: "Analyzing Book Sales"
+author: "Castory Munishi"
+format:
+  html:
+    theme: united
+    code-fold: true
+    code-tools: true
+date: 10/25/2022
+editor: visual
+toc: true
+---
+
+## Introduction
+
+Like in [book reviews](../book_reviews/book_reviews.qmd) project, we are taking on the role of an analyst for a book company. The company has provided us more data on some of its 2019 book sales, and it wants us to extract some usable knowledge from it. It launched a new program encouraging customers to buy more books on July 1st, 2019, and it wants to know if this new program was successful at increasing sales and improving review quality. As the analyst, this will be your job to figure out for the guided project.
+
+## Preliminary checks
+
+-   Importing the dataset
+-   Checking the dimensions
+-   Reflecting on the column names
+
+```{r}
+#| message: false
+pacman::p_load(
+  readr,
+  dplyr,
+  stringr,
+  purrr,
+  magrittr,
+  lubridate
+)
+
+ds <- read_csv("sales2019.csv")
+
+dim(ds)
+colnames(ds)
+```
+
+-   Printing data types using a for loop
+
+```{r}
+ for (i in colnames(ds)) {
+   print(typeof(ds[[i]]))
+   
+ }
+```
+
+-   Counting missing values
+
+```{r}
+ds.na <- is.na(ds)
+summary(ds.na)
+```
+
+We found that there were two columns missing data. The first is the user_submitted_review column, which contains the review left by the customer. The second is total_purchased, which represents how many books were purchased by the customer.
+
+For this project, we're going to handle these two columns differently. The reason for this is due to the fact that we care a lot more about the total_purchased column, because it contains the actual information on book sales. We want to determine if the company's new program helped to improve sales. In order to keep as much information on sales as possible, we're going to take a different approach to handling missing data.
+
+## Task One
+
+1.  Remove all rows in the dataset that have an NA value for the user_submitted_review column.
+
+-   Use a combination of the `filter()` function and the `is.na()` function to remove these rows
+-   Record how many rows were removed, and make a note of this to yourself.
+
+2.  Using the remaining rows that have data, calculate the average number of books purchased on an order.
+    -   You can use the `mean()` function to calculate this value.
+3.  Fill all of the missing values in total_purchased with the average value you calculated in step 2. We can do this through the following:
+
+-   Use the `mutate()` function to create a new column based off of the total_purchased column.
+-   Use the `if_else()` function to detect if a row in total_purchased is NA or not.
+-   If the row is NA, then the correponding row in the new column should be the average from 2)
+-   If the row is not NA, then it should contain the same value as the corresponding row in total_purchased.
+-   The end result will be a column that is like total_purchased, but all of the missing values will be filled in!
+
+## Solution
+
+```{r}
+#| echo: true
+original <- nrow(ds)
+ds %<>%
+  filter(!is.na(user_submitted_review))
+new <- nrow(ds)
+```
+
+The number of rows removed is `r original-new`
+
+The average number of books purchased in an order is `r mean(ds$total_purchased, na.rm=T)`
+
+Filling the missing on total_purchased using the mean above
+
+```{r}
+ds %<>%
+  mutate(total_purchased=if_else(is.na(total_purchased),3.99,total_purchased))
+```
+
+## Task Two
+
+1.  Examine the unique sentences that are present in in user_submitted_review.
+
+-   Look at each of these reviews and see if you can detect specific words or phrases that help indicate if the review is positive or not.
+-   For example, a word like "good" or "great" can help indicate that a review is positive. A phrase like "not recommended" can help indicate that a review is not positive.
+
+2.  Create a function that takes in a sentence (think: a value from user_submitted_review) and returns a value indicating if the review is positive or not.
+
+-   We will leave it up to you to design your function, but it must perform this essential role.
+
+-   Recall that you can use the `str_detect()` function to check if a string contains a particular substring
+
+-   Combining the `str_detect()` function with a control flow function like case_when() would be a great way to approach this problem.
+
+-   Create a new column in the dataset that indicates whether or not the review in a given row is positive or not.
+
+Checking unique values for user_submitted_review
+
+```{r}
+#| echo: true
+unique(ds$user_submitted_review)
+```
+
+Grading reviews to positive and negative
+
+```{r}
+ds %<>%
+  mutate(
+    review_class= case_when(str_detect(user_submitted_review,"it was okay")~"Positive",
+                            str_detect(user_submitted_review,"Awesome!")~"Positive",
+                             str_detect(user_submitted_review,"Hated it")~"Negative",
+                            str_detect(user_submitted_review,"Never read a better book")~"Positive",
+                           str_detect(user_submitted_review,"OK")~"Positive",
+                           str_detect(user_submitted_review,"The author's other books were better")~"Negative",
+                            str_detect(user_submitted_review,"A lot of material was not needed")~"Negative",
+                            str_detect(user_submitted_review,"Would not recommend")~"Negative",
+                            str_detect(user_submitted_review,"I learned a lot")~"Positive",
+                            
+                            
+                            TRUE ~ user_submitted_review
+                            ))
+```
+
+
+## Task Three
+
+1. Perform the proper conversion of the date column, so that it actually represents a date and time. 
+
+2. Create a new grouping column using the `mutate()` function that will help distinguish between sales that happen before July 1, 2019 and sales that happen after this date.
+
+3. Create a summary table that compares the number of books purchased before July 1, 2019 to after.
+
+> After creating the table, judge whether or not the program was actually effective in terms of increasing the number of books sold.
+
+
+```{r}
+#| echo: true
+ds %<>%
+  mutate(date=mdy(date)) %>%
+  mutate(bef_jul=if_else(date < as.Date("2019-07-01"),"Before July","After July"))
+```
+
+```{r}
+sales <- ds %>%
+  group_by(bef_jul) %>%
+  summarise(count=n()) %>%
+  summarise(bef_jul,count,prop=count/sum(count)*100)
+knitr::kable(sales)
+```
+
+In data analysis, it's common to have several subgroups that you want to compare. In the last step, we just compared sales that were before and after July 1, 2019. It's possible that individual customers responded better to the program and bought more books in response to the program. Or, it could have been businesses that bought more books. In order to explore this sub-analysis, we also need to divide the sales before and after July 1, 2019 into sales that were for individuals versus businesses. 
+
+
+## Task Four
+
+
+1. Perform the same analysis that you did in the last step but add in the customer_type column to further subdivide the groups.
+2. Examine the results of the analysis and write about your observations. Does the program still seem to have an effect on increasing sales? Did it have a different effect for individuals versus businesses?
+
+```{r}
+sales <- ds %>%
+  group_by(customer_type,bef_jul) %>%
+  summarise(count=n()) %>%
+  summarise(customer_type,bef_jul,count,prop=count/sum(count)*100)
+knitr::kable(sales)
+```
+
+## Task Five
+
+ + Create another summary table that compares the number of positive reviews before and after July 1, 2019.
+
+     + Does it seem that review sentiment improved after the program was created? Or did it get worse?
+
+```{r}
+reviews <- ds %>%
+  group_by(bef_jul,review_class) %>%
+  summarise(count=n()) %>%
+  summarise(bef_jul,review_class,count,prop=count/sum(count)*100)
+knitr::kable(reviews)
+```
