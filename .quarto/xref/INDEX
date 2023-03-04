@@ -130,5 +130,8 @@
   },
   "courses/r_basics/vectorized_functions.qmd": {
     "vectorized_functions.html": "830ac72b"
+  },
+  "projects/case_studies/us_health_disparities/us_health_disparities_p.qmd": {
+    "us_health_disparities_p.html": "56222182"
   }
 }
