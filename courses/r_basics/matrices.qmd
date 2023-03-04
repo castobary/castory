@@ -1,7 +1,7 @@
 ---
 title: "Working with Matrices"
 author: "Castory Munishi"
-date: 03/04/2023
+date: 10/28/2020
 execute: 
   echo: true
   warning: false
@@ -317,7 +317,7 @@ complete_matrix
 + For example, we'll calculate the sum of the rankings for Harvard:
 
 ```{r code25}
-sum(ranks_matrix[,"harvard"])
+#sum(ranks_matrix[,"harvard"])
 ```
 
 

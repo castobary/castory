@@ -7,16 +7,28 @@ This page contains a compilation of Advanced R Modules.
 Key Modules
 
 [Module 01: Introduction to Programming in R](r_basics/Introduction.qmd)
+
 [Module 02: Vectors](r_basics/vectors.qmd)
+
 [Module 03: Matrices](r_basics/matrices.qmd)
+
 [Module 04: Lists](r_basics/lists.qmd)
+
 [Module 05: Dataframes](r_basics/dataframes.qmd)
+
 [Module 06: Control Structures](r_basics/control_structures.qmd)
+
 [Module 07: Vectorized Functions](r_basics/vectorized_functions.qmd)
+
 [Module 08: Custom Functions](r_basics/custom_functions.qmd)
+
 [Module 09: Functionals](r_basics/functionals.qmd)
+
 [Module 10: String Manipulation](r_basics/string_manipulation.qmd)
+
 [Module 11: Line Graphs](r_basics/line_graphs.qmd)
+
 [Module 12: Multiple Line Graph](r_basics/multi_line.qmd)
+
 [Module 13: Histogram & Box Plots](r_basics/hist_box.qmd)
 

@@ -97,5 +97,38 @@
   },
   "courses/r_basics/12 Multiple Line Graphs.rmd": {
     "12 Multiple Line Graphs.html": "bfe985af"
+  },
+  "courses/r_basics/control_structures.qmd": {
+    "control_structures.html": "2761b341"
+  },
+  "courses/r_basics/custom_functions.qmd": {
+    "custom_functions.html": "4a828b64"
+  },
+  "courses/r_basics/dataframes.qmd": {
+    "dataframes.html": "4c46ddec"
+  },
+  "courses/r_basics/multi_line.qmd": {
+    "multi_line.html": "1feb1a26"
+  },
+  "courses/r_basics/functionals.qmd": {
+    "functionals.html": "6d0c3210"
+  },
+  "courses/r_basics/hist_box.qmd": {
+    "hist_box.html": "5bd7d9b7"
+  },
+  "courses/r_basics/line_graphs.qmd": {
+    "line_graphs.html": "989e17f3"
+  },
+  "courses/r_basics/lists.qmd": {
+    "lists.html": "8be76663"
+  },
+  "courses/r_basics/matrices.qmd": {
+    "matrices.html": "f3d7a241"
+  },
+  "courses/r_basics/string_manipulation.qmd": {
+    "string_manipulation.html": "590bdef4"
+  },
+  "courses/r_basics/vectorized_functions.qmd": {
+    "vectorized_functions.html": "830ac72b"
   }
 }

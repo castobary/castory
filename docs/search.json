@@ -221,7 +221,7 @@
     "href": "courses/r_basics.html",
     "title": "R Basics",
     "section": "",
-    "text": "This page contains a compilation of Advanced R Modules.\nKey Modules\nModule 01: Introduction to Programming in R Module 02: Vectors Module 03: Matrices"
+    "text": "This page contains a compilation of Advanced R Modules.\nKey Modules\nModule 01: Introduction to Programming in R\nModule 02: Vectors\nModule 03: Matrices\nModule 04: Lists\nModule 05: Dataframes\nModule 06: Control Structures\nModule 07: Vectorized Functions\nModule 08: Custom Functions\nModule 09: Functionals\nModule 10: String Manipulation\nModule 11: Line Graphs\nModule 12: Multiple Line Graph\nModule 13: Histogram & Box Plots"
   },
   {
     "objectID": "courses/sir_modelling.html",
@@ -1285,7 +1285,7 @@
     "href": "courses/r_basics/vectors.html#practice-3",
     "title": "Working with Vectors",
     "section": "Practice 3",
-    "text": "Practice 3\nUse the class_names vector to assign names to elements of the final_scores vector.\nAnswer\n\nclass_names <- c(\"math\", \"chemistry\", \"writing\", \"art\",\n                  \"history\", \"music\", \"physical_education\")\n\nnames(final_scores) <- class_names"
+    "text": "Practice 3\nUse the class_names vector to assign names to elements of the final_scores vector.\n\nAnswer\n\nclass_names <- c(\"math\", \"chemistry\", \"writing\", \"art\",\n                  \"history\", \"music\", \"physical_education\")\n\nnames(final_scores) <- class_names"
   },
   {
     "objectID": "courses/r_basics/vectors.html#indexing-vectors-by-names",
@@ -1306,7 +1306,7 @@
     "href": "courses/r_basics/vectors.html#comparing-values-and-logical-data-types",
     "title": "Working with Vectors",
     "section": "4. Comparing Values And Logical Data Types",
-    "text": "4. Comparing Values And Logical Data Types\nwe can write code using comparison operators to compare values based on specific conditions, such as “greater than,” “less than,” or “equal to.”\nPractice 5\nWrite an expression using a comparison operator to answer the question:\n\nIs the average of liberal arts(writing and history) final grades greater than the average of fine arts(art and music) final grades?"
+    "text": "4. Comparing Values And Logical Data Types\nwe can write code using comparison operators to compare values based on specific conditions, such as “greater than,” “less than,” or “equal to.”\n\nPractice 5\nWrite an expression using a comparison operator to answer the question:\n\nIs the average of liberal arts(writing and history) final grades greater than the average of fine arts(art and music) final grades?"
   },
   {
     "objectID": "courses/r_basics/vectors.html#comparing-single-values-against-vectors",
@@ -1398,5 +1398,1699 @@
     "title": "Working with Vectors",
     "section": "10. Vectors - Closing",
     "text": "10. Vectors - Closing\n\nx <- 1:10\ny <- -3*x + 5\nplot(x, y, type = \"b\", pch = 17, \n     col = \"blue\", xlab = \"x\", ylab = \"y\")"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#data-frames",
+    "href": "courses/r_basics/dataframes.html#data-frames",
+    "title": "Working with Lists",
+    "section": "Data Frames",
+    "text": "Data Frames\n\nThe most common data structures involved in data analysis.\nLike lists, data frames can contain multiple data types.\nUnlike lists all elements of a data frame are vectors of equal length.\nThe read_csv() from readr package is used to import csv data\nstr() is used to display the internal structure of an R object\n\n\nlibrary(readr)\nrecent_grads <- read_csv(\"datasets/recent_grads.csv\")\n#str(recent_grads)"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#indexing-data-frames",
+    "href": "courses/r_basics/dataframes.html#indexing-data-frames",
+    "title": "Working with Lists",
+    "section": "Indexing Data Frames",
+    "text": "Indexing Data Frames\n\nWhen we want to return a specific column, row, or value from a data frame, we can index them.\nThe syntax for indexing data frames is very similar to that of matrices.\nLet’s say we want to return the column of the data frame containing Major.\nWe can perform this operation using several techniques."
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#indexing-by-position",
+    "href": "courses/r_basics/dataframes.html#indexing-by-position",
+    "title": "Working with Lists",
+    "section": "Indexing by Position",
+    "text": "Indexing by Position\n\n recent_grads[,3]\n\n# A tibble: 10 × 1\n   Major                         \n   <chr>                         \n 1 PETROLEUM ENGINEERING         \n 2 MINING AND MINERAL ENGINEERING\n 3 METULLARGY ENGINEERING        \n 4 NAVAL                         \n 5 CHEMICAL ENGINEERING          \n 6 NUCLEAR                       \n 7 ACTUARIAL ENGINEERING         \n 8 ASTRONOMY                     \n 9 MECHANICAL ENGINEERING        \n10 ELECTRICAL ENGINEERING"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#indexing-by-names",
+    "href": "courses/r_basics/dataframes.html#indexing-by-names",
+    "title": "Working with Lists",
+    "section": "Indexing by names",
+    "text": "Indexing by names\n\n recent_grads[,'Major']\n\n# A tibble: 10 × 1\n   Major                         \n   <chr>                         \n 1 PETROLEUM ENGINEERING         \n 2 MINING AND MINERAL ENGINEERING\n 3 METULLARGY ENGINEERING        \n 4 NAVAL                         \n 5 CHEMICAL ENGINEERING          \n 6 NUCLEAR                       \n 7 ACTUARIAL ENGINEERING         \n 8 ASTRONOMY                     \n 9 MECHANICAL ENGINEERING        \n10 ELECTRICAL ENGINEERING"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#using-multiple-columns",
+    "href": "courses/r_basics/dataframes.html#using-multiple-columns",
+    "title": "Working with Lists",
+    "section": "Using multiple columns",
+    "text": "Using multiple columns\n\nrecent_grads[,c('Major','Men','Women')]\n\n# A tibble: 10 × 3\n   Major                            Men Women\n   <chr>                          <dbl> <dbl>\n 1 PETROLEUM ENGINEERING           2057   282\n 2 MINING AND MINERAL ENGINEERING   679    77\n 3 METULLARGY ENGINEERING           725   131\n 4 NAVAL                           1123   135\n 5 CHEMICAL ENGINEERING           21239 11021\n 6 NUCLEAR                         2200   373\n 7 ACTUARIAL ENGINEERING           2110  1667\n 8 ASTRONOMY                        832   960\n 9 MECHANICAL ENGINEERING         80320 10907\n10 ELECTRICAL ENGINEERING         65511 16016"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#indexing-using-symbol",
+    "href": "courses/r_basics/dataframes.html#indexing-using-symbol",
+    "title": "Working with Lists",
+    "section": "Indexing using $ symbol",
+    "text": "Indexing using $ symbol\n\nrecent_grads$Total\n\n [1]  2339   756   856  1258 32260  2573  3777  1792 91227 81527"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#indexing-rows",
+    "href": "courses/r_basics/dataframes.html#indexing-rows",
+    "title": "Working with Lists",
+    "section": "Indexing Rows",
+    "text": "Indexing Rows\n\nLet’s say that instead of a certain column, we want to extract a row of a data frame.\nTo return the fifth row of the data frame, we could write\n\n\n recent_grads[5,]\n\n# A tibble: 1 × 18\n   Rank Major_…¹ Major Total   Men Women Major…² Sampl…³ Emplo…⁴ Full_…⁵ Part_…⁶\n  <dbl>    <dbl> <chr> <dbl> <dbl> <dbl> <chr>     <dbl>   <dbl>   <dbl>   <dbl>\n1     5     2405 CHEM… 32260 21239 11021 Engine…     289   25694   23170    5180\n# … with 7 more variables: Full_time_year_round <dbl>, Unemployed <dbl>,\n#   Unemployment_rate <dbl>, Median <dbl>, College_jobs <dbl>,\n#   Non_college_jobs <dbl>, Low_wage_jobs <dbl>, and abbreviated variable names\n#   ¹​Major_code, ²​Major_category, ³​Sample_size, ⁴​Employed, ⁵​Full_time,\n#   ⁶​Part_time"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#extracting-a-subset-of-values",
+    "href": "courses/r_basics/dataframes.html#extracting-a-subset-of-values",
+    "title": "Working with Lists",
+    "section": "Extracting a subset of values",
+    "text": "Extracting a subset of values\n\nAs with matrices, we can specify multiple elements to extract from a data frame.\nLet’s extract the first ten rows of the Major and Major_category column\n\n\nrecent_grads[c(1:10),c('Major','Major_category')]\n\n# A tibble: 10 × 2\n   Major                          Major_category  \n   <chr>                          <chr>           \n 1 PETROLEUM ENGINEERING          Engineering     \n 2 MINING AND MINERAL ENGINEERING Engineering     \n 3 METULLARGY ENGINEERING         Engineering     \n 4 NAVAL                          Engineering     \n 5 CHEMICAL ENGINEERING           Engineering     \n 6 NUCLEAR                        Engineering     \n 7 ACTUARIAL ENGINEERING          Business        \n 8 ASTRONOMY                      Physical Science\n 9 MECHANICAL ENGINEERING         Engineering     \n10 ELECTRICAL ENGINEERING         Engineering"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#extracting-rows-and-saving-into-a-dataframe",
+    "href": "courses/r_basics/dataframes.html#extracting-rows-and-saving-into-a-dataframe",
+    "title": "Working with Lists",
+    "section": "Extracting Rows and Saving into a dataframe",
+    "text": "Extracting Rows and Saving into a dataframe\n\nExtract the first, third, and fifth rows of the Unemployment_rate column and save the output in a variable named unemployment_subset.\n\n\nunemployement_subset <- recent_grads$Unemployment_rate[c(1,3,5)]\nunemployement_subset\n\n[1] 0.01838052 0.02409638 0.06109771"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#selecting-columns",
+    "href": "courses/r_basics/dataframes.html#selecting-columns",
+    "title": "Working with Lists",
+    "section": "Selecting Columns",
+    "text": "Selecting Columns\n\nOur goal is choosing a college major\nCriteria for choosing a college major\n1.You’re interested in the physical and life sciences.\n2.You’d like a decent salary. Recent graduates must have a median salary above 40,000 USD.\n3.You’d like to avoid male-dominated majors. More than 40 percent of graduates must be women.\nWe will use the variables in the recent_grads dataframe to make the decesion"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#using-dplyr-package-in-manipulating-data-frames",
+    "href": "courses/r_basics/dataframes.html#using-dplyr-package-in-manipulating-data-frames",
+    "title": "Working with Lists",
+    "section": "Using dplyr package in manipulating Data Frames",
+    "text": "Using dplyr package in manipulating Data Frames\n\nUse the dplyr function select() to create a new data frame with only columns containing the variables we want to keep for our analysis.\nUsing the select() function, we’ll specify the data frame we want to work with and the columns we want to select\n\n\nlibrary(dplyr)\nrecent_grads_select <- recent_grads %>%\n  select(Major, Total, Men, Women, Major_category)"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#output",
+    "href": "courses/r_basics/dataframes.html#output",
+    "title": "Working with Lists",
+    "section": "Output",
+    "text": "Output\n\nhead(recent_grads_select,5)\n\n# A tibble: 5 × 5\n  Major                          Total   Men Women Major_category\n  <chr>                          <dbl> <dbl> <dbl> <chr>         \n1 PETROLEUM ENGINEERING           2339  2057   282 Engineering   \n2 MINING AND MINERAL ENGINEERING   756   679    77 Engineering   \n3 METULLARGY ENGINEERING           856   725   131 Engineering   \n4 NAVAL                           1258  1123   135 Engineering   \n5 CHEMICAL ENGINEERING           32260 21239 11021 Engineering"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#the-pipe-operator",
+    "href": "courses/r_basics/dataframes.html#the-pipe-operator",
+    "title": "Working with Lists",
+    "section": "The Pipe Operator",
+    "text": "The Pipe Operator\n\nNotice the %>% symbol: This is called the “the pipe operator”\nIts purpose is to help you write code that’s easier to write, read, and understand.\nThe pipe lets you write code that chains series of operations together; in the case of the code above\nWe could read the code as, “take the recent_grads data frame and select the Major, Total, Men, Women, and Major_category columns.”"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#selecting-the-right-columns",
+    "href": "courses/r_basics/dataframes.html#selecting-the-right-columns",
+    "title": "Working with Lists",
+    "section": "Selecting the Right Columns",
+    "text": "Selecting the Right Columns\n\nCreate a new data frame, recent_grads_select, that contains only the following variables from recent_grads:\n\nMajor 2. Major_category 3.Total 4.Men 5.Women 6.Median 7.Unemployment_rate\n\n\n\nrecent_grads_select <- recent_grads %>%\n  select(Major,Major_category,Men,Women,Total,Median,Unemployment_rate)\n\n#recent_grads_select"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#creating-new-variables",
+    "href": "courses/r_basics/dataframes.html#creating-new-variables",
+    "title": "Working with Lists",
+    "section": "Creating New Variables",
+    "text": "Creating New Variables\nThe mutate() function\n\nWe can use the mutate function to create a new column based on information contained in existing columns.\nThe mutate function lets us specify the creation of a new column, as well as how the values contained in that new column are calculated:\nFor example adding men percent in the dataset\n\n\n# data_frame_2 <- data_frame_1 %>%\n#   mutate(Men_percent = (Men/Total)*100)\n\n\nWithin the mutate() function, we’ll specify a name for our new column and then use = to indicate how you want the values that fill it to be calculated."
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#calculating-women-percent-and-using-mutate",
+    "href": "courses/r_basics/dataframes.html#calculating-women-percent-and-using-mutate",
+    "title": "Working with Lists",
+    "section": "Calculating women percent and using mutate()",
+    "text": "Calculating women percent and using mutate()\n\nrecent_grads_select <- recent_grads_select %>%\n  mutate(Women_percent = round((Women/Total)*100,2))\n\nrecent_grads_select$Women_percent\n\n [1] 12.06 10.19 15.30 10.73 34.16 14.50 44.14 53.57 11.96 19.65"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#filtering-by-single-criteria",
+    "href": "courses/r_basics/dataframes.html#filtering-by-single-criteria",
+    "title": "Working with Lists",
+    "section": "Filtering by Single Criteria",
+    "text": "Filtering by Single Criteria\n\nGetting closer towards data that meets our criteria\nRemoving data that does not meet our criteria Women_percent >= 40%\nTo remove majors with percentages of women graduates below 40 percent, we’ll use another dplyr function: filter()\nWe can use filter() to specify conditions that values of a variable must meet"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#general-filter-code",
+    "href": "courses/r_basics/dataframes.html#general-filter-code",
+    "title": "Working with Lists",
+    "section": "General filter code",
+    "text": "General filter code\n\n# data_frame_2 <- data_frame_1 %>%\n#   filter(Men_percent < 70)\n\n# data_frame_2 <- data_frame_1 %>%\n#   filter(Major_category == \"Physical Science\")"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#practice-exercise",
+    "href": "courses/r_basics/dataframes.html#practice-exercise",
+    "title": "Working with Lists",
+    "section": "Practice Exercise",
+    "text": "Practice Exercise\n\nFilter the recent_grads_select data frame to create a new data frame called recent_grads_money that contains only data on majors where recent graduates’ median (the Median variable) salary is greater than 70,000 USD."
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#solution",
+    "href": "courses/r_basics/dataframes.html#solution",
+    "title": "Working with Lists",
+    "section": "Solution",
+    "text": "Solution\n\nrecent_grads_money <- recent_grads %>%\n  filter(Median > 70000)\nrecent_grads_money[15:18]\n\n# A tibble: 2 × 4\n  Median College_jobs Non_college_jobs Low_wage_jobs\n   <dbl>        <dbl>            <dbl>         <dbl>\n1  75000          350              257            50\n2  73000          456              176             0"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#filtering-by-multiple-conditions-meeting-at-least-one-criterion",
+    "href": "courses/r_basics/dataframes.html#filtering-by-multiple-conditions-meeting-at-least-one-criterion",
+    "title": "Working with Lists",
+    "section": "Filtering by Multiple Conditions: Meeting At Least One Criterion",
+    "text": "Filtering by Multiple Conditions: Meeting At Least One Criterion\n\nWhat if we wanted to create a new data frame containing college majors that met either of the following criteria:\n\nMajors in the Engineering catagory (Major_category == \"Engineering\")\nMajors with over 1,000 total graduates (Total > 1000)\n\n“Majors that are either in the engineering category or have over 1,000 graduates”\nArchieved by the or operator |"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#example-1",
+    "href": "courses/r_basics/dataframes.html#example-1",
+    "title": "Working with Lists",
+    "section": "Example 1",
+    "text": "Example 1\n\nDescribe what this code does\n\n\nrecent_grads_engineering1000 <- recent_grads %>%\n  filter(Major_category == \"Engineering\" | Total > 1000)\nrecent_grads_engineering1000[1:5,c(\"Major_category\",\"Total\")]\n\n# A tibble: 5 × 2\n  Major_category Total\n  <chr>          <dbl>\n1 Engineering     2339\n2 Engineering      756\n3 Engineering      856\n4 Engineering     1258\n5 Engineering    32260"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#example-2",
+    "href": "courses/r_basics/dataframes.html#example-2",
+    "title": "Working with Lists",
+    "section": "Example 2",
+    "text": "Example 2\n\nDescribe what the code below does\n\n\nrecent_grads_science <- recent_grads_select %>%\n  filter(Major_category == \"Engineering\" | Major_category == \"Physical Science\")\nrecent_grads_science[1:4, c(\"Major_category\",\"Total\")]\n\n# A tibble: 4 × 2\n  Major_category Total\n  <chr>          <dbl>\n1 Engineering     2339\n2 Engineering      756\n3 Engineering      856\n4 Engineering     1258"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#filtering-with-and",
+    "href": "courses/r_basics/dataframes.html#filtering-with-and",
+    "title": "Working with Lists",
+    "section": "Filtering with AND &",
+    "text": "Filtering with AND &\n\nBoth Criteria must be met\nTo use filter() to create a new data frame containing only engineering college majors with more than 1,000 total graduates, we’d write:\n\n\nrecent_grads_engineers1000 <- recent_grads %>%\n  filter(Major_category == \"Engineering\" & Total > 1000)\n\nrecent_grads_engineers1000[c(\"Major_category\",\"Total\")]\n\n# A tibble: 6 × 2\n  Major_category Total\n  <chr>          <dbl>\n1 Engineering     2339\n2 Engineering     1258\n3 Engineering    32260\n4 Engineering     2573\n5 Engineering    91227\n6 Engineering    81527"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#winding-up",
+    "href": "courses/r_basics/dataframes.html#winding-up",
+    "title": "Working with Lists",
+    "section": "Winding Up",
+    "text": "Winding Up\n\nLet’s create a new data frame containing only college majors that meet all three of our criteria for college majors.\nTo accomplish this, we’ll use filter() and the & operator to filter rows in the recent_grads_science data frame to retain only majors that have women as greater than 40 percent of total graduates and median salaries above 40,000 USD."
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#code-and-output",
+    "href": "courses/r_basics/dataframes.html#code-and-output",
+    "title": "Working with Lists",
+    "section": "Code and Output",
+    "text": "Code and Output\n\npotential_majors <- recent_grads_science %>%\n  filter(Women_percent > 40 & Median > 40000)\n\npotential_majors_selected <- recent_grads_science %>%\n  filter(Women_percent > 40 & Median > 40000) %>%\n  select(Major,Total,Major_category)\n\nprint(potential_majors_selected)\n\n# A tibble: 1 × 3\n  Major     Total Major_category  \n  <chr>     <dbl> <chr>           \n1 ASTRONOMY  1792 Physical Science"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#arranging-data-frames-by-variables",
+    "href": "courses/r_basics/dataframes.html#arranging-data-frames-by-variables",
+    "title": "Working with Lists",
+    "section": "Arranging Data Frames by Variables",
+    "text": "Arranging Data Frames by Variables\n\nTo arrange our data frame rows by TOTAL, we’ll use another function in the dplyr package: `arrange()`.\nThe arrange() function lets you specify a variable we want to use to re-order the rows of your data frame. Let’s say we want to arrange data_frame_1 by Total:\n\n\n# data_frame_2 <- data_frame_1 %>% \n#   arrange(Total)\n\n\nBy default, arrange() orders the rows of a data frame by the specified variable in ascending order, from lowest to highest.\nFor descending order use desc()\n\n\n# data_frame_2 <- data_frame_1 %>% \n#  arrange(desc(Total))"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#using-multiple-variables-to-arrange",
+    "href": "courses/r_basics/dataframes.html#using-multiple-variables-to-arrange",
+    "title": "Working with Lists",
+    "section": "Using multiple variables to arrange",
+    "text": "Using multiple variables to arrange\n\nWe can arrange data frames by multiple numeric variables as well. If we specify multiple variables,\nR will reorder rows of the data frame by each variable in order, moving from left to right.\nTo arrange data_frame_1 in order of ascending Total and descending Men_percent, we could write:\n\n\n# data_frame_2 <- data_frame_1 %>% \n#  arrange(Total, desc(Men_percent))"
+  },
+  {
+    "objectID": "courses/r_basics/dataframes.html#final-task",
+    "href": "courses/r_basics/dataframes.html#final-task",
+    "title": "Working with Lists",
+    "section": "Final Task",
+    "text": "Final Task\n\nCreate a new data frame, my_majors, containing the data in the potential_majors data frame arranged in order of increasing Unemployment_rate and decreasing Median (in that order).\n\n\n my_majors <- potential_majors %>% \n   arrange(Unemployment_rate, desc(Median))\nmy_majors[,1:6]\n\n# A tibble: 1 × 6\n  Major     Major_category     Men Women Total Median\n  <chr>     <chr>            <dbl> <dbl> <dbl>  <dbl>\n1 ASTRONOMY Physical Science   832   960  1792  62000"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html",
+    "href": "courses/r_basics/multi_line.html",
+    "title": "Multiple Line Graphs",
+    "section": "",
+    "text": "In the previous discussion, we have look on the general trend of life expectancy changes\nNow, we want to look into details on the life expectancy changes\nThis will help to answer questions like whether there are differences in life expectancy between men and women or for Americans of different races.\n\n\npacman::p_load(\n  readr,\n  dplyr,\n  ggplot2)\nlife_expec <- read_csv(\"datasets/life_expec.csv\")"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#manipulating-data-for-visualization",
+    "href": "courses/r_basics/multi_line.html#manipulating-data-for-visualization",
+    "title": "Multiple Line Graphs",
+    "section": "Manipulating Data for Visualization",
+    "text": "Manipulating Data for Visualization\n\nDue to a combination of biological and social factors, the life expectancy for men is often somewhat lower than it is for women.\nLet’s use the life_expec data to explore how life expectancies for men and women have changed over the past 100 years in the United States.\nAs we explore differences in life expectancy by sex, you will need to select a subset of the life_expec data that contains observations for the populations of U.S. men and women."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#task",
+    "href": "courses/r_basics/multi_line.html#task",
+    "title": "Multiple Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nCreate a new data frame, life_expec_sex, containing only rows for which the Sex variable has the value “Female” or “Male” and the Race variable has the value “All Races.”"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#solution",
+    "href": "courses/r_basics/multi_line.html#solution",
+    "title": "Multiple Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\n life_expec_sex <- life_expec %>%\n  filter( Race == \"All Races\" & Sex != \"Both Sexes\" )\nhead(life_expec_sex,5)\n\n# A tibble: 5 × 5\n   Year Race      Sex    Avg_Life_Expec Age_Adj_Death_Rate\n  <dbl> <chr>     <chr>           <dbl>              <dbl>\n1  2015 All Races Female           NA                 624.\n2  2014 All Races Female           81.3               617.\n3  2013 All Races Female           81.2               624.\n4  2012 All Races Female           81.2               625.\n5  2011 All Races Female           81.1               632."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#graphing-life-expectancies-for-men-and-women-multiple-panels",
+    "href": "courses/r_basics/multi_line.html#graphing-life-expectancies-for-men-and-women-multiple-panels",
+    "title": "Multiple Line Graphs",
+    "section": "Graphing Life Expectancies for Men and Women: Multiple Panels",
+    "text": "Graphing Life Expectancies for Men and Women: Multiple Panels\n\nThe new life_expec_sex data frame you created contains life expectancy data for men and women.\nOne way to compare the changes over time for the life expectancies of the two populations is to create a separate line graph for each.\nIf you create a line graph of the data using code similar to what you wrote in the previous mission\n\n\nplot1 <- ggplot(data = life_expec_sex) +\n  aes(x = Year, y = Avg_Life_Expec) +\n  geom_line()"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#plot-display",
+    "href": "courses/r_basics/multi_line.html#plot-display",
+    "title": "Multiple Line Graphs",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot1"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#explanations",
+    "href": "courses/r_basics/multi_line.html#explanations",
+    "title": "Multiple Line Graphs",
+    "section": "Explanations",
+    "text": "Explanations\n\nThe graph generated has two observations for each year: One for men and one for women.\nAll observations are connected by a line, making the line graph appear to depict year-to-year fluctuations in life expectancy instead of data for two separate populations:\nOne way to improve the clarity of this line graph is to plot life expectancy data for men and women on different axes using multiple graph panels\nYou can create line graphs on multiple, adjacent panels from the same data set by adding a new layer to your graph: facet_wrap().\nThe facet_wrap() function splits data into subplots based on values of a variable in your data set."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#code-facetting",
+    "href": "courses/r_basics/multi_line.html#code-facetting",
+    "title": "Multiple Line Graphs",
+    "section": "Code : Facetting",
+    "text": "Code : Facetting\n\nplot2 <- ggplot( data = life_expec_sex) +\n  aes(x = Year, y = Avg_Life_Expec) + \n  geom_line()+\n   facet_wrap(~Sex)"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#plot-display-1",
+    "href": "courses/r_basics/multi_line.html#plot-display-1",
+    "title": "Multiple Line Graphs",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot2"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#explanations-1",
+    "href": "courses/r_basics/multi_line.html#explanations-1",
+    "title": "Multiple Line Graphs",
+    "section": "Explanations",
+    "text": "Explanations\n\nBy default, adding a layer to your graph using facet_wrap(~Variable) creates two panels side by side, as shown in the graph previously.\nYou can specify alternative arrangements of the panels using the arguments ncol = or nrow = within facet_wrap().\nThe ncol and nrow arguments allow you to specify the number of rows or columns of panels in your visualization. If you wrote the following code:\n\n\n# ggplot(data = life_expec_sex) +\n#   aes(x = Year, y = Avg_Life_Expec) +\n#   geom_line() +\n#   facet_wrap(~Sex, ncol = 2)"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#nrow-and-ncol-in-facetting",
+    "href": "courses/r_basics/multi_line.html#nrow-and-ncol-in-facetting",
+    "title": "Multiple Line Graphs",
+    "section": "nrow and ncol in facetting",
+    "text": "nrow and ncol in facetting\n\nThe resulting graph would be identical to the one above, since the panels will be arranged in two columns.\nHowever, you could create a graph with panels stacked one on top of the other by specifying either ncol = 1 or nrow = 2."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#task-1",
+    "href": "courses/r_basics/multi_line.html#task-1",
+    "title": "Multiple Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nLet’s visualize U.S. women’s and men’s life expectancies on separate panels so you can compare how they have changed over time.\n\nUse the life_expec_sex data frame to create line graphs of men’s and women’s life expectancies over time."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#solution-1",
+    "href": "courses/r_basics/multi_line.html#solution-1",
+    "title": "Multiple Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\nplot3 <- ggplot( data = life_expec_sex) +\n  aes( x = Year , y = Avg_Life_Expec) +\n  geom_line()+\n   facet_wrap(~Sex, nrow = 2)"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#plot-display-2",
+    "href": "courses/r_basics/multi_line.html#plot-display-2",
+    "title": "Multiple Line Graphs",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot3"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#graphing-life-expectancies-of-men-and-women-on-the-same-axes",
+    "href": "courses/r_basics/multi_line.html#graphing-life-expectancies-of-men-and-women-on-the-same-axes",
+    "title": "Multiple Line Graphs",
+    "section": "Graphing Life expectancies of Men and Women on the Same Axes",
+    "text": "Graphing Life expectancies of Men and Women on the Same Axes\n\nFrom previous plot , it’s clear that women’s and men’s life expectancies have followed some similar patterns over the past century.\nFor example, both display a sharp dip around the time of the 1918 flu pandemic.\nIt’s still difficult to understand whether there are differences in men’s and women’s life expectancies though.\nThis visualization can be improved by plotting men’s and women’s life expectancy over time on the same axis instead of on two separate ones."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#plotting-on-the-same-axes",
+    "href": "courses/r_basics/multi_line.html#plotting-on-the-same-axes",
+    "title": "Multiple Line Graphs",
+    "section": "Plotting on The Same Axes",
+    "text": "Plotting on The Same Axes\n\nInstead of adding a layer to the graph to create two separate panels, you can specify that you want to plot multiple lines within the aes() layer\nSo far we have only introduced the axis arguments that can be used to define x and y variables on a two-dimensionl graph, the aes() layer can also be used to map additional variables to your graph using aesthetic properties like color, shape, and size.\nFor example, you can plot men’s and women’s life expectancies on the same set of axes and differentiate them by using different styles of lines:"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#the-code",
+    "href": "courses/r_basics/multi_line.html#the-code",
+    "title": "Multiple Line Graphs",
+    "section": "The Code",
+    "text": "The Code\n\nTo create a line graph with different values of the Sex variable shown using different styles of lines, you’d use the syntax lty = Sex. The argument lty stands for “line type”:\n\n\nplot4 <- ggplot(data = life_expec_sex) +\n  aes(x = Year, y = Avg_Life_Expec, lty = Sex) +\n  geom_line()"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#plot-display-3",
+    "href": "courses/r_basics/multi_line.html#plot-display-3",
+    "title": "Multiple Line Graphs",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot4"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#using-color-to-differentiate",
+    "href": "courses/r_basics/multi_line.html#using-color-to-differentiate",
+    "title": "Multiple Line Graphs",
+    "section": "Using color to differentiate",
+    "text": "Using color to differentiate\n\nColor can also be used distinguish between males and females\nDone by setting a color value in col aesthetic\nAs in the previous chart ggplotw will create an auto legend to show what each color represents"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#task-2",
+    "href": "courses/r_basics/multi_line.html#task-2",
+    "title": "Multiple Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nCreate a line graph with the change in men’s and women’s life expectancies over time represented by lines of different colors.\n\n\nplot5 <- ggplot(data = life_expec_sex) + \n  aes( x = Year , y= Avg_Life_Expec, color = Sex) + \n  geom_line()"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#output",
+    "href": "courses/r_basics/multi_line.html#output",
+    "title": "Multiple Line Graphs",
+    "section": "Output",
+    "text": "Output\n\nplot5"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#explanations-2",
+    "href": "courses/r_basics/multi_line.html#explanations-2",
+    "title": "Multiple Line Graphs",
+    "section": "Explanations",
+    "text": "Explanations\n\nAlthough life expectancies for U.S. men and women followed similar patterns over the past 100 years, in general, women have tended to live longer.\nRelatively recently, since about 1950, life expectancies for men and women have steadily and gradually increased.\nBefore 1950, though, life expectancies appear to have fluctuated quite a bit from year to year. Why might this be?"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#graphing-subset-of-data",
+    "href": "courses/r_basics/multi_line.html#graphing-subset-of-data",
+    "title": "Multiple Line Graphs",
+    "section": "Graphing Subset of Data",
+    "text": "Graphing Subset of Data\n\nWhen you want to hone in on an interesting subset of your data for further investigation, one way to do so is to set scale limits.\nChanging the scale limits changes the range of your axes so you can display only a portion of your data.\nFor example, let’s say you wanted to create a graph displaying only the 1918 dip in life expectancy due to influenza.\n\n\nplot6 <- ggplot(life_expec_sex) + \n         aes(x = Year, y = Avg_Life_Expec, color = Sex) +\n         geom_line() +\n         xlim(1915, 1920) +\n         ylim(35, 60)"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#output-1",
+    "href": "courses/r_basics/multi_line.html#output-1",
+    "title": "Multiple Line Graphs",
+    "section": "Output",
+    "text": "Output\n\nplot6"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#using-limits",
+    "href": "courses/r_basics/multi_line.html#using-limits",
+    "title": "Multiple Line Graphs",
+    "section": "Using limits",
+    "text": "Using limits\n\nIn the previous graph, the x-axis years range from 1915 to 1920, and the y-axis life expectancies range from 35 to 60 years old.\nWe have zoomed in on this portion of the graph by changing the scale limits.\nBy default, when you use ggplot() to greate a graph, all observations will be included.\nAdding xlim() and ylim() layers to the graph allows you to specify ranges to display only a subset of the data.\nLooking at the graph of life expectancies for the years 1915 to 1920 allows you to clearly visualize the devastating effect that the flu pandemic had on life expectancies."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#task-3",
+    "href": "courses/r_basics/multi_line.html#task-3",
+    "title": "Multiple Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nEarlier, we discussed the interesting differences in life expectancy fluctuations before and after 1950.\nLet’s create a graph focused on life expectancy data from before 1950.\nAdd a new layer to the line graph of men’s and women’s life expectancies to hone in on the years between 1900 and 1950."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#solution-2",
+    "href": "courses/r_basics/multi_line.html#solution-2",
+    "title": "Multiple Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\nplot7<- ggplot( data = life_expec_sex) +\n  aes( x = Year , y = Avg_Life_Expec, color = Sex ) +\n  geom_line() +\n  xlim(1900, 1950) + \n  ylim(35, 80) +\n  labs(title = \"Life Expectancies of US Males and Female 1900 - 1950\",\n       y = \"Average Life Expectacy (Years)\")"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#plot-display-4",
+    "href": "courses/r_basics/multi_line.html#plot-display-4",
+    "title": "Multiple Line Graphs",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot7"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#comments",
+    "href": "courses/r_basics/multi_line.html#comments",
+    "title": "Multiple Line Graphs",
+    "section": "Comments",
+    "text": "Comments\n\nThis visualization can allow you to take a closer look at the year-to-year variability in life expectancy during the first half of the twentieth century.\nWhat do you think could be some potential causes? Perhaps a greater impact of infectious diseases prior to medical advances such as vaccines for polio, measles, and influenza?\nThis could be an interesting topic to study, and demonstrates some of the types of questions that arise when you visualize data graphically instead of looking at it in tabular form."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#exploring-the-data-further",
+    "href": "courses/r_basics/multi_line.html#exploring-the-data-further",
+    "title": "Multiple Line Graphs",
+    "section": "Exploring the data further",
+    "text": "Exploring the data further\nThe differences in life expectancy between white and black americans\n\nTo do this, you will need to use a different subset of data from the life_expec data frame:\n1. Values of Sex that are either \"Male\" or \"Female\"\n2.  Values of Race that are either \"Black\" or \"White\"\nPut another way, you will want to exclude averaged data:\n\nValues of Sex that are “Both Sexes”\nValues of Race that are “All Races”"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#task-4",
+    "href": "courses/r_basics/multi_line.html#task-4",
+    "title": "Multiple Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nCreate a new data frame, life_expec_sex_race, that contains values of Sex that are either “Male” or “Female” and values of Race that are either “Black” or “White.”"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#solution-3",
+    "href": "courses/r_basics/multi_line.html#solution-3",
+    "title": "Multiple Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\nlife_expec_sex_race <- life_expec %>%\n  filter((Sex == \"Female\" | Sex == \"Male\") &\n           (Race == \"Black\" | Race == \"White\"))\n\n\nNotice there are four observations for each year: Black women, black men, white women, and white men. This means you have four lines to plot.\nWhat is the best way to present line graphs of these data?\nOne method is to plot four lines on a single set of axes."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#creating-the-plot",
+    "href": "courses/r_basics/multi_line.html#creating-the-plot",
+    "title": "Multiple Line Graphs",
+    "section": "Creating The Plot",
+    "text": "Creating The Plot\n\nTo create a line graph with a line for each combination of Sex and Race variable values, you can specify multiple aesthetic parameters within the aes() layer\nFor example, to create a graph in which lines representing life expectancies are\n\nDifferent colors for populations of different sexes\nDifferent line styles for populations of different race\n\n\n\nplot8 <- ggplot(life_expec_sex_race) + \n  aes(x = Year, y = Avg_Life_Expec, color = Sex, lty = Race) +\n  geom_line()"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#display-plot",
+    "href": "courses/r_basics/multi_line.html#display-plot",
+    "title": "Multiple Line Graphs",
+    "section": "Display Plot",
+    "text": "Display Plot\n\nplot8 +\n  theme_minimal()"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#custom-colors",
+    "href": "courses/r_basics/multi_line.html#custom-colors",
+    "title": "Multiple Line Graphs",
+    "section": "Custom colors",
+    "text": "Custom colors\n\nAs you’ve now seen is often the case with creating graphs with ggplot2, modifying line colors and types involves adding another layer to your graph.\nTo change the two colors you used in the graph above to represent men and women, you’d add a layer called scale_color_manual().\nLet’s change the colors representing men’s and women’s life expectancies to “magenta” and “orange”\n\n\nplot10 <- ggplot(life_expec_sex_race) + \n       aes(x = Year, y = Avg_Life_Expec, color = Sex, lty = Race) +\n       geom_line() +\n       scale_color_manual(values = c(\"magenta\", \"orange\")) + \n       theme_minimal()"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#display-plot-1",
+    "href": "courses/r_basics/multi_line.html#display-plot-1",
+    "title": "Multiple Line Graphs",
+    "section": "Display plot",
+    "text": "Display plot\n\nplot10"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#custom-lines",
+    "href": "courses/r_basics/multi_line.html#custom-lines",
+    "title": "Multiple Line Graphs",
+    "section": "Custom Lines",
+    "text": "Custom Lines\n\nTo change the line types representing black and white Americans’ life expectancies, you’ll need to add another layer: scale_linetype_manual().\nTo change the line types in the graph to “longdash” and “dotdash”, you would write\n\n\nplot11 <- ggplot(life_expec_sex_race) + \n  aes(x = Year, y = Avg_Life_Expec, color = Sex, lty = Race) +\n  geom_line() +\n  scale_color_manual(values = c(\"magenta\", \"orange\")) +\n  scale_linetype_manual(values = c(\"longdash\", \"dotdash\")) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#display-plot-2",
+    "href": "courses/r_basics/multi_line.html#display-plot-2",
+    "title": "Multiple Line Graphs",
+    "section": "Display Plot",
+    "text": "Display Plot\n\nplot11"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#task-5",
+    "href": "courses/r_basics/multi_line.html#task-5",
+    "title": "Multiple Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nUsing the life_expec_sex_race data frame, create a line graph to investigate differences in how life expectancies of the following populations of Americans changed between 1900 and 2014: Black women, Black men, White women, White men\nDifferentiate between the two sexes using the following colors: values=c(\"darkgreen\", \"darkorchid\"))\nDifferentiate between the two races using the following line types: values = c(1,4))\n\n\nplot12 <- ggplot(life_expec_sex_race) + \n  aes(x = Year, y = Avg_Life_Expec, color = Sex, lty = Race) +\n  geom_line() +\n  scale_color_manual(values = c(\"darkgreen\", \"darkorchid\")) +\n  scale_linetype_manual(values = c(1,4)) +\n  theme_minimal()"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#display-plot-3",
+    "href": "courses/r_basics/multi_line.html#display-plot-3",
+    "title": "Multiple Line Graphs",
+    "section": "Display Plot",
+    "text": "Display Plot\n\nplot12"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#stories-from-the-plot",
+    "href": "courses/r_basics/multi_line.html#stories-from-the-plot",
+    "title": "Multiple Line Graphs",
+    "section": "Stories from the plot",
+    "text": "Stories from the plot\n\nBreaking the data down further into populations of black and white Americans reveals that, within each population, the pattern of women living longer than men holds true.\nHowever, it’s clear from the graph that in general, white women live longer than black women, and white men live longer than black men.\nThis pattern is likely due to socioeconomic inequality in the U.S., which negatively impacts the lives of black Americans.\nIt is also interesting to note that while life expectancies for white women and men have generally not fluctuated much since about 1950\nLife expectancies for black women and men continue to fluctuate from year to year."
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#another-way-to-present---fascets",
+    "href": "courses/r_basics/multi_line.html#another-way-to-present---fascets",
+    "title": "Multiple Line Graphs",
+    "section": "Another way to Present - Fascets",
+    "text": "Another way to Present - Fascets\n\nplot13 <- ggplot(life_expec_sex_race) + \n  aes(x = Year, y = Avg_Life_Expec, color = Sex) +\n  geom_line() + \n  facet_wrap(~Race, ncol = 2)"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#display-plot-4",
+    "href": "courses/r_basics/multi_line.html#display-plot-4",
+    "title": "Multiple Line Graphs",
+    "section": "Display Plot",
+    "text": "Display Plot\n\nplot13"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#final-challenge",
+    "href": "courses/r_basics/multi_line.html#final-challenge",
+    "title": "Multiple Line Graphs",
+    "section": "Final Challenge",
+    "text": "Final Challenge\n\nCreate a line graph to visualize changes in the life expectancies of the following U.S. populations between 1900 and 2014: Black women Black men White women White men\nUse the following line types: values = c(1,4))\nDesign your graph so that it has a white background.\nGive your graph the title: “United States Life Expectancy: 100 Years of Change.”\nGive the y-axis the title: “Average Life Expectancy (Years)"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#solution-4",
+    "href": "courses/r_basics/multi_line.html#solution-4",
+    "title": "Multiple Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\nplot14 <- ggplot(data = life_expec_sex_race) + \n  aes(x = Year, y = Avg_Life_Expec, lty = Race) +\n  geom_line() + \n  scale_linetype_manual(values = c(1,4)) +\n  facet_wrap(~Sex, ncol = 2) + \n  labs(title = \"United States Life Expectancy: 100 Years of Change\", \n       y = \"Average Life Expectancy (Years)\") +\n  theme(panel.background = element_rect(fill = \"white\"))"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#plot-display-5",
+    "href": "courses/r_basics/multi_line.html#plot-display-5",
+    "title": "Multiple Line Graphs",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot14"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html",
+    "href": "courses/r_basics/hist_box.html",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "",
+    "text": "When Hollywood releases new movies, Metacritic, Fandango, Rotten Tomatoes, and IMDB use different systems to calculate ratings based on the reviews by movie critics and consumers.\nWhich of these sites should you consult when deciding whether to see a movie?\nUnderstanding how the different sites’ movie reviews compare to one another is a good start\nFandango has been suspected of releasing inflated ratings to increase ticket sales.\nAfter they found that some films that garnered poor ratings elsewhere were rated highly on Fandango, analysts from FiveThirtyEight investigated and published an article about bias in movie ratings."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#background-22",
+    "href": "courses/r_basics/hist_box.html#background-22",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Background 2/2",
+    "text": "Background 2/2\n\nTo conduct the investigation, the team compiled data for 147 films from 2015 with reviews from movie critics and consumers\nIn this mission, you’ll use this data and ggplot2 to visualize reviews from Metacritic, Fandango, Rotten Tomatoes, and IMDB to get a sense for differences in the way the four sites compute movie ratings.\n\n\npacman::p_load(\n  ggplot2,\n  dplyr,\n  readr\n)\nmovie_review <- read_csv(\"datasets/movie_reviews_2.csv\")\n#spec(movie_review)"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#fandago-ratings",
+    "href": "courses/r_basics/hist_box.html#fandago-ratings",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Fandago Ratings",
+    "text": "Fandago Ratings\n\nFandago_Ratings <- movie_review[,c(1,8)]\nkable(Fandago_Ratings[1:5,])\n\n\n\n \n  \n    FILM \n    Fandango_Ratingvalue \n  \n \n\n  \n    Avengers: Age of Ultron (2015) \n    4.5 \n  \n  \n    Cinderella (2015) \n    4.5 \n  \n  \n    Ant-Man (2015) \n    4.5 \n  \n  \n    Do You Believe? (2015) \n    4.5 \n  \n  \n    Hot Tub Time Machine 2 (2015) \n    3.0"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#rotten-tomato-ratings",
+    "href": "courses/r_basics/hist_box.html#rotten-tomato-ratings",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Rotten Tomato Ratings",
+    "text": "Rotten Tomato Ratings\n\nRotten_Tomato_Ratings <- movie_review[,c(1,10)]\nkable(Rotten_Tomato_Ratings[1:5,])\n\n\n\n \n  \n    FILM \n    RT_user_norm \n  \n \n\n  \n    Avengers: Age of Ultron (2015) \n    4.3 \n  \n  \n    Cinderella (2015) \n    4.0 \n  \n  \n    Ant-Man (2015) \n    4.5 \n  \n  \n    Do You Believe? (2015) \n    4.2 \n  \n  \n    Hot Tub Time Machine 2 (2015) \n    1.4"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#metacritic-ratings",
+    "href": "courses/r_basics/hist_box.html#metacritic-ratings",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Metacritic Ratings",
+    "text": "Metacritic Ratings\n\nMetacritic_Ratings <- movie_review[,c(1,12)]\nkable(Metacritic_Ratings[1:5,])\n\n\n\n \n  \n    FILM \n    Metacritic_user_nom \n  \n \n\n  \n    Avengers: Age of Ultron (2015) \n    3.55 \n  \n  \n    Cinderella (2015) \n    3.75 \n  \n  \n    Ant-Man (2015) \n    4.05 \n  \n  \n    Do You Believe? (2015) \n    2.35 \n  \n  \n    Hot Tub Time Machine 2 (2015) \n    1.70"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#imdb-ratings",
+    "href": "courses/r_basics/hist_box.html#imdb-ratings",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "IMDB Ratings",
+    "text": "IMDB Ratings\n\nIMDB_Ratings <- movie_review[,c(1,13)]\nkable(IMDB_Ratings[1:5,])\n\n\n\n \n  \n    FILM \n    IMDB_norm \n  \n \n\n  \n    Avengers: Age of Ultron (2015) \n    3.90 \n  \n  \n    Cinderella (2015) \n    3.55 \n  \n  \n    Ant-Man (2015) \n    3.90 \n  \n  \n    Do You Believe? (2015) \n    2.70 \n  \n  \n    Hot Tub Time Machine 2 (2015) \n    2.55"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#creating-a-new-variable-with-the-rating-site",
+    "href": "courses/r_basics/hist_box.html#creating-a-new-variable-with-the-rating-site",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Creating A new Variable with the rating Site",
+    "text": "Creating A new Variable with the rating Site\n\nRotten_tomatoes <- rep(x=\"Rotten Tomatoes\",times=146)\n\nRotten_Tomato_Ratings <- Rotten_Tomato_Ratings %>%\n  mutate(Rating_site = Rotten_tomatoes)\n\nIMDB <- \"IMDB\"\n\nIMDB_Ratings <- IMDB_Ratings %>%\n  mutate(Rating_site = IMDB)\n\nFandago <- \"Fandago\"\n\nFandago_Ratings <- Fandago_Ratings %>%\n  mutate(Rating_site = Fandago)\n\nMetacritic_Ratings <- Metacritic_Ratings %>%\n  mutate(Rating_site = \"Metacritic\")"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#renaming-to-create-a-similar-rating-column",
+    "href": "courses/r_basics/hist_box.html#renaming-to-create-a-similar-rating-column",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Renaming to create a similar rating column",
+    "text": "Renaming to create a similar rating column\n\nWe will combine the created datasets and hence we need to have common column names\n\n\nRotten_Tomato_Ratings <- Rotten_Tomato_Ratings %>%\n  rename(Rating = RT_user_norm)\n\nIMDB_Ratings <- IMDB_Ratings %>%\n  rename(Rating = IMDB_norm)\n\nFandago_Ratings <- Fandago_Ratings %>%\n  rename( Rating = Fandango_Ratingvalue)\n\nMetacritic_Ratings <- Metacritic_Ratings %>%\n  rename(Rating = Metacritic_user_nom )"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#combining-to-create-a-new-dataframe",
+    "href": "courses/r_basics/hist_box.html#combining-to-create-a-new-dataframe",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Combining to Create a new dataframe",
+    "text": "Combining to Create a new dataframe\n\nfull_join() will add the dataframes by including all rows in x or y.\n\n\nFirst_two <- full_join(Rotten_Tomato_Ratings,IMDB_Ratings,\n                       by = NULL , copy = FALSE )\n\nSecond_two <- full_join(Fandago_Ratings,Metacritic_Ratings,\n                        by = NULL , copy = FALSE)\n\n\nreviews <- full_join(First_two , Second_two ,\n                               by = NULL , copy = FALSE)"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#saving-a-dataframe-as-csv-file",
+    "href": "courses/r_basics/hist_box.html#saving-a-dataframe-as-csv-file",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Saving a dataframe as csv file",
+    "text": "Saving a dataframe as csv file\n\nA dataframe can be saved as a csv file as given in the code below using write.csv() function\n\n\n#write.csv(reviews, file = \"datasets/reviews.csv\")"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#comparing-averages-among-rating-sites",
+    "href": "courses/r_basics/hist_box.html#comparing-averages-among-rating-sites",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Comparing Averages Among Rating Sites",
+    "text": "Comparing Averages Among Rating Sites\n\nLet’s start by getting a sense for how reviews reported by the four sites compare.\nYou can approach this problem by calculating the average ratings for each rating site.\nTo do this, group the reviews data frame into one group for each value of Rating_Site and calculate the average of Rating for each group - “Split Apply Combine”"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#task",
+    "href": "courses/r_basics/hist_box.html#task",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Task",
+    "text": "Task\n\nCalculate the average rating for each review site\n1. Use `group_by()` to group the reviews data frame by Rating_Site.\n2. Use `summarize()` to calculate the average Rating for each Rating_Site"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#solution",
+    "href": "courses/r_basics/hist_box.html#solution",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Solution",
+    "text": "Solution\n\nreview_avgs <- reviews %>%\n  group_by(Rating_site) %>%\n  summarize(Average = round(mean(Rating),2))\nkable(review_avgs)\n\n\n\n \n  \n    Rating_site \n    Average \n  \n \n\n  \n    Fandago \n    3.85 \n  \n  \n    IMDB \n    3.37 \n  \n  \n    Metacritic \n    3.26 \n  \n  \n    Rotten Tomatoes \n    3.19"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#visualizing-differences-among-groups-using-bar-charts",
+    "href": "courses/r_basics/hist_box.html#visualizing-differences-among-groups-using-bar-charts",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Visualizing Differences Among Groups Using Bar Charts",
+    "text": "Visualizing Differences Among Groups Using Bar Charts\n\nBar charts represent grouped data summeries using bars with heights proportional to values of a summary variable such as the average.\nThe syntax is similar to that of line plots, ggplots are built layer by layer\nInstead geom_line(), geom_bar is used to generate bar plots\n\n\nplot1 <- ggplot(data = review_avgs) +\n  aes(x = Rating_site, y = Average) +\n  geom_bar(stat = \"identity\", width = 0.5) + \n  labs(title = \"Bar Plot of Average Ratings\",\n       y = \"Average Rating\", x = \"Rating Site\") +\n  theme_minimal()"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#plot-display",
+    "href": "courses/r_basics/hist_box.html#plot-display",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot1"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#stat-identity-role",
+    "href": "courses/r_basics/hist_box.html#stat-identity-role",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "stat = “identity” role",
+    "text": "stat = “identity” role\n\nIn plot 1 code, we specify stat = “identity” within the geom_bar() layer.\nThis is because, by default, using geom_bar() creates a bar graph where the height of the bars corresponds to the number of values in the specified y-variable.\nUsing stat = “identity” overrides the default behavior and creates bars equal to the value of the y-variable,the average."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#using-histograms-to-understand-distributions-12",
+    "href": "courses/r_basics/hist_box.html#using-histograms-to-understand-distributions-12",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Using Histograms to Understand Distributions 1/2",
+    "text": "Using Histograms to Understand Distributions 1/2\n\nAs you look at plot 1, you can clearly see that Fandango has a higher average movie rating than the other three sites.\nDoes this mean Fandango tends to give higher ratings?\nAs you consider that question, let’s think about what the bar chart does not show us.\nIt makes sense to wonder if Fandango’s average movie rating is higher than those of the other sites because it tends to give all movies good ratings, or because it gave some movies average ratings and a small number of movies excellent ratings.\nHowever, the bar graph does not provide this information."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#using-histograms-to-understand-distributions-22",
+    "href": "courses/r_basics/hist_box.html#using-histograms-to-understand-distributions-22",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Using Histograms to Understand Distributions 2/2",
+    "text": "Using Histograms to Understand Distributions 2/2\n\nThe average of a set of numbers does not tell us anyting about the spread of the numbers that were used to calculate the average.\nFor example, the values of these two variables both have an average of 5:\n\nVariable 1: 5 5 5 5 5 4 5 5 6 5\nVariable 2: 20 9 1 2 8 4 9 5 7\n\nHowever, while values of Variable 1 are distributed between 4 and 6, values of Variable 2 are distributed between 1 and 20.\nThe values of Variable 2 are much more spread out than those of Variable 1."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#histograms",
+    "href": "courses/r_basics/hist_box.html#histograms",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Histograms",
+    "text": "Histograms\n\nHistograms can address the weakness of barplots\nHistograms are used to understand characteristics of one variable rather than the relationship between two variables\nHistograms depict the frequency with which values of a variable occur, otherwise known as the distribution of the variable."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#histograms-x-and-y",
+    "href": "courses/r_basics/hist_box.html#histograms-x-and-y",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Histograms x and y",
+    "text": "Histograms x and y\n\nThe x axis is an aggregate of variables which are binned together to form class intervals\nOn the y-axis is a variable that is calculated automatically when you create the histogram: count.\nThe count variable represents the number of values of the x variable that fall into each of the categories on the x-axis.\n\n\n plot2 <- ggplot(data = reviews) + \n   aes(x = Rating) +\n   geom_histogram(binwidth = 1)"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#histogram-with-binwidth-of-1",
+    "href": "courses/r_basics/hist_box.html#histogram-with-binwidth-of-1",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Histogram with binwidth of 1",
+    "text": "Histogram with binwidth of 1\n\nplot2"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#histogram-with-10-bins",
+    "href": "courses/r_basics/hist_box.html#histogram-with-10-bins",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Histogram with 10 bins",
+    "text": "Histogram with 10 bins\n\n ggplot(data = reviews) + \n    aes(x = Rating) +\n    geom_histogram(bins = 10)"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#histogram-code",
+    "href": "courses/r_basics/hist_box.html#histogram-code",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Histogram Code",
+    "text": "Histogram Code\n\nWithin the aes() layer, you only need to specify the independent variable.\nThe geom_histogram() layer specifies creation of a histogram to represent the independent variable.\nWithin the geom_histogram() layer, you can use two different arguments to specify the number of categories for binning the independent variable.\n\n\nbinwidth = allows you to specify the size of the bins, and is useful for instances, such as this example, where you want categories to span specific intervals.\nbins = allows you to specify the number of bins, which can be useful to experiment with when deciding how much detail you want to use to display your data."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#task-1",
+    "href": "courses/r_basics/hist_box.html#task-1",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Task",
+    "text": "Task\n1.Create a histogram to show the distribution of all values of the Rating variable in the reviews data frame. 2. Specify 30 bins to categorize values of the independent variable\n\n plot3 <- ggplot(data = reviews) + \n   aes(x = Rating) +\n   geom_histogram(bins = 30)"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#solution-plot-display",
+    "href": "courses/r_basics/hist_box.html#solution-plot-display",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Solution : Plot Display",
+    "text": "Solution : Plot Display\n\nplot3"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#comparing-multiple-variables-faceted-plots",
+    "href": "courses/r_basics/hist_box.html#comparing-multiple-variables-faceted-plots",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Comparing Multiple Variables : Faceted plots",
+    "text": "Comparing Multiple Variables : Faceted plots\n\nFrom the histogram you created, you can see that increasing the number of bins produces a visualization of the data with greater detail:\nHistograms allow you to visualize the shape of a distribution — where values of the data are clustered.\nMost values of Rating are clustered between 3.5 and 4.5.\nThis histogram tells us about the distribution of all values of the Rating variable, but what we really want to investigate is how ratings for different rating sites differ.\nA faceted plot will do."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#task-2",
+    "href": "courses/r_basics/hist_box.html#task-2",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Task",
+    "text": "Task\n\nAdd a layer to the histogram you created on the last screen to create a faceted graph containing four histograms of the distribution of Rating for each site:\n\nRotten Tomatoes\nIMDB\nMetacritic\nFandango"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#solution-1-using-30-bins",
+    "href": "courses/r_basics/hist_box.html#solution-1-using-30-bins",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Solution 1: Using 30 bins",
+    "text": "Solution 1: Using 30 bins\n\nplot4 <- ggplot(data = reviews) + \n   aes(x = Rating) +\n   geom_histogram(bins = 30) +\n   facet_wrap(~Rating_site, nrow= 2)"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#plot-display-1",
+    "href": "courses/r_basics/hist_box.html#plot-display-1",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot4"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#solution-2-using-5-bins",
+    "href": "courses/r_basics/hist_box.html#solution-2-using-5-bins",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Solution 2 : Using 5 bins",
+    "text": "Solution 2 : Using 5 bins\n\nplot5 <- ggplot(data = reviews) + \n    aes(x = Rating) +\n    geom_histogram(bins = 5) +\n    facet_wrap(~Rating_site, nrow= 2)"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#plot-display-2",
+    "href": "courses/r_basics/hist_box.html#plot-display-2",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot5"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#explanations",
+    "href": "courses/r_basics/hist_box.html#explanations",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Explanations",
+    "text": "Explanations\n\nThe four histograms in your faceted plot show differences in the distributions for each rating site:\nThe distributions of Rating for Rotten Tomatoes and Metacritic indicate that those two sites are more likely to give movies poor ratings than Fandango or IMDB, which have most values of Rating clustered over 3.\nComparing these distributions suggests some sites give poor ratings more often than others.\nFor example, the difference between the distributions of Ratings for Fandango and Rotten Tomatoes is very clear\nHowever, Fandango and IMDB have distributions that look similar. Is there a better way to visualize differences between them?"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#comparing-distributions-using-aesthetics",
+    "href": "courses/r_basics/hist_box.html#comparing-distributions-using-aesthetics",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Comparing Distributions Using Aesthetics",
+    "text": "Comparing Distributions Using Aesthetics\n\nAs for line graphs, values associated with different variables can be distinguished by mapping them to different colors within the aes() layer:\n\n\nplot6 <- ggplot(data = reviews) + \n   aes(x = Rating, color = Rating_site) +\n   geom_histogram(bins = 30) +\n   theme_minimal()"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#plot-display-3",
+    "href": "courses/r_basics/hist_box.html#plot-display-3",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot6"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#using-fill",
+    "href": "courses/r_basics/hist_box.html#using-fill",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Using fill",
+    "text": "Using fill\n\nn plot6, the number of values of Rating for each value of Rating_Site are indicated by bars outlined by different colors.\nAnother option for using aesthetics to map values of Rating to different values of Rating_Site is to use the argument fill = instead of color =.\nInstead of outlines, fill = depicts bars filled in with different colors."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#task-3",
+    "href": "courses/r_basics/hist_box.html#task-3",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Task",
+    "text": "Task\n\nCreate a histogram depicting the distribution of Ratings for each site using bars filled with different colors."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#solution-1",
+    "href": "courses/r_basics/hist_box.html#solution-1",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Solution",
+    "text": "Solution\n\nplot7 <- ggplot(data = reviews) + \n   aes(x = Rating, fill= Rating_site) +\n   geom_histogram(bins = 30)"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#plot-display-4",
+    "href": "courses/r_basics/hist_box.html#plot-display-4",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot7"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#visualizing-averages-and-variations",
+    "href": "courses/r_basics/hist_box.html#visualizing-averages-and-variations",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Visualizing Averages And Variations",
+    "text": "Visualizing Averages And Variations\n\nBox plots are used to visualize the center of data and distribution\nLike bar graphs, box plots provide a summary of data by group.\nLike histograms, they provide information about how data are spread\nGroups are indicated on the x-axis since they are the independent variable.\nDependent variable is on the y-axis."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#creating-a-boxplot",
+    "href": "courses/r_basics/hist_box.html#creating-a-boxplot",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Creating a Boxplot",
+    "text": "Creating a Boxplot\n\nTo create a box plot using ggplot2, the syntax for creating the data layer and mapping data to x and y variables is familiar\n\nggplot(data = reviews) + aes(x = Rating_site, y = Rating)\n\nAdd a geom_boxplot() layer to specify creation of a box plot."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#task-4",
+    "href": "courses/r_basics/hist_box.html#task-4",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Task",
+    "text": "Task\n\nCreate a box plot to visualize summaries of values of the Rating variable for each value of Rating_Site."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#solution-2",
+    "href": "courses/r_basics/hist_box.html#solution-2",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Solution",
+    "text": "Solution\n\nggplot(data = reviews) +\n   aes(x = Rating_site, y = Rating) +\n   geom_boxplot()"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#anatomy-of-boxplot-13",
+    "href": "courses/r_basics/hist_box.html#anatomy-of-boxplot-13",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Anatomy of Boxplot 1/3",
+    "text": "Anatomy of Boxplot 1/3\n\nIn general, you can see that the box representing Fandango ratings is higher up on the y-axis than those for the other sites.\nYou can also see the Rotten Tomatoes ratings appear to be more spread out, which is consistent with what you saw when we plotted the data using histograms.\nWhile you’ve been able to glean some information from this box plot, let’s dig deeper into the individual components to fully understand all they can tell us about data.\nBox plots present what is known to statisticians as a five-number summary."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#anatomy-of-boxplot-23",
+    "href": "courses/r_basics/hist_box.html#anatomy-of-boxplot-23",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Anatomy of Boxplot 2/3",
+    "text": "Anatomy of Boxplot 2/3\n\nThe Five Number Summary\n\nThe largest value(Max): Represented by the top of the black line extending from the top of the box. These lines are also known as “whiskers”.\nThe third quartile (Q3): Represented by the top of the box. Seventy-five percent of the values are smaller than the third quartile.\n\n3.The median: Represented by the thick black line. The median is the value that falls in the middle of the data.\n4.The first quartile (Q1): Represented by the bottom of the box. Twenty-five percent of the values are smaller than the first quartile.\n5.The smallest value(Min): Represented by the bottom of the black line extending from the bottom of the box."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#anatomy-of-boxplot-33",
+    "href": "courses/r_basics/hist_box.html#anatomy-of-boxplot-33",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Anatomy of Boxplot 3/3",
+    "text": "Anatomy of Boxplot 3/3\n\nIntequartile Range\n\nThe white box, bounded by Q3 and Q1, is referred to as the Interquartile Range or IQR.\nThe IQR encompasses 50 percent of the data, and is calculated by subtracting Q1 from Q3."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#anatomy-of-boxplot-44---outliers",
+    "href": "courses/r_basics/hist_box.html#anatomy-of-boxplot-44---outliers",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Anatomy of Boxplot 4/4 - Outliers",
+    "text": "Anatomy of Boxplot 4/4 - Outliers\n\nIn the box plot you created, notice there are some points that fall below the bottom of the black lines that represent the smallest values.\nThese points are referred to as outliers because they are outside the range of what would be expected based on the rest of the data.\nWhen you make a box plot using ggplot2, data points that fall below Q1 − 1.5 IQR or above Q3 + 1.5 IQR are defined as outliers."
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#task-5",
+    "href": "courses/r_basics/hist_box.html#task-5",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Task",
+    "text": "Task\n\nIn the previous exercise, you created a box plot to visualize summaries of ratings for Fandango, IMDB, Metacritic, and Rotten Tomatoes.\nAdd layers to your plot so it fits the following specifications:\n\nWhite panel background The plot title: “Comparison of Movie Ratings”\n\n plot8 <- ggplot(data = reviews) +\n   aes(x = Rating_site, y = Rating) +\n   geom_boxplot() +\n   labs(title = \"Comparison of Movie Ratings\") +\n   theme(panel.background = element_rect(fill = \"white\"))"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#plot-display-5",
+    "href": "courses/r_basics/hist_box.html#plot-display-5",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Plot Display",
+    "text": "Plot Display\n\nplot8"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#findings",
+    "href": "courses/r_basics/hist_box.html#findings",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Findings",
+    "text": "Findings\n\nValues of Rating for Rotten Tomatoes are spread out, indicating they regularly give movies ratings that range from poor to excellent.\nThe range of values of Rating for Fandango and IMDB are both quite narrow. Fandango’s lowest reviews are around 2.5, whle outliers indicate that IMDB has some reviews that are between 2 and 2.4.\nFandango’s median for values of Rating is higher than the median of the other sites, indicating Fandango tends to give higher ratings.\n\nDoes the box plot you made support the idea that Fandango’s reviews are biased? Which site do you think would provide the most unbiased reviews?"
+  },
+  {
+    "objectID": "courses/r_basics/hist_box.html#deciding-on-a-visualization",
+    "href": "courses/r_basics/hist_box.html#deciding-on-a-visualization",
+    "title": "Histogram , Bar and Box Plots",
+    "section": "Deciding on A Visualization",
+    "text": "Deciding on A Visualization\n\nBar charts may be used for showing a quick summary of your data, such as averages or counts of the number of instances of a value that occur for a given variable.\nHistograms are useful for visualizing distributions of data when you want to know the shape of a distribution (in other words, where most values are clustered).\nBox plots provide an informative summary of the shape, spread, and center of your data."
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html",
+    "href": "courses/r_basics/matrices.html",
+    "title": "Working with Matrices",
+    "section": "",
+    "text": "Let’s say you’ve been accepted a number of top universities. To decide which to attend, you want to find a way to score them using data on education quality, influence, cost, and other factors.\nWe will use matrices to perform this analysis\nWhile vectors are one-dimensional, matrices are two-dimensional and consist of rows and columns in a rectangular layout.\nMatrices hold data of one type (such as numeric or logical).\nA matrix can contain as many rows and columns as needed"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#combining-vectors-to-matrices",
+    "href": "courses/r_basics/matrices.html#combining-vectors-to-matrices",
+    "title": "Working with Matrices",
+    "section": "2. Combining Vectors to Matrices",
+    "text": "2. Combining Vectors to Matrices\nBelow are vectors containing rankings for each university\n\nharvard <- c(1,1,1,1,3)\nstanford <- c(2,9,3,4,10)\nMIT <- c(3,3,2,2,1)\ncambridge <- c(4,2,6,13,48)\noxford <- c(5,7,12,9,15)\ncolumbia <- c(6,13,13,12,4)\n\nTo combine vectors into a matrix, we can use the function rbind()\n\nharv_stan <- rbind(harvard, stanford)"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#practice-1",
+    "href": "courses/r_basics/matrices.html#practice-1",
+    "title": "Working with Matrices",
+    "section": "Practice 1",
+    "text": "Practice 1\nWe have vectors containing ranking data for each university. Create a matrix, named uni_matrix, from these vectors using the rbind() function:\n\nharvard\nstanford\nMIT\ncambridge\noxford\ncolumbia\n\n\nuni_matrix <- rbind(harvard,stanford,MIT,cambridge,oxford,columbia)"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#naming-matrix-rows-and-columns",
+    "href": "courses/r_basics/matrices.html#naming-matrix-rows-and-columns",
+    "title": "Working with Matrices",
+    "section": "3. Naming Matrix Rows and Columns",
+    "text": "3. Naming Matrix Rows and Columns\n\nWhen we use the rbind() function to create a matrix from vectors with name attributes, the vector names are retained as row name attributes.\nHowever, our columns don’t have any name attributes associated with them.\nAdding names to rows or columns of a matrix is similar to naming elements of a vector.\nAttributes are not stored as data structures, you can not perform operations on them\nSince matrices have both rows and columns, there are separate functions for adding name attributes to each:\n- Rows: `rownames()`\n- Columns: `colnames()`"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#example-naming-havard_stan-matrix",
+    "href": "courses/r_basics/matrices.html#example-naming-havard_stan-matrix",
+    "title": "Working with Matrices",
+    "section": "Example : Naming havard_stan matrix",
+    "text": "Example : Naming havard_stan matrix\n\nharv_stan <- rbind(harvard, stanford)\n\ncolnames(harv_stan) <- c(\"world_rank\",\"quality_of_education\",\n                         \"influence\",\"broad_impact\",\"patents\")\nprint(harv_stan)\n\n         world_rank quality_of_education influence broad_impact patents\nharvard           1                    1         1            1       3\nstanford          2                    9         3            4      10\n\n\n\nPractice 2\n\nName the columns of uni_matrix using the categories vector."
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#finding-matrix-dimensions",
+    "href": "courses/r_basics/matrices.html#finding-matrix-dimensions",
+    "title": "Working with Matrices",
+    "section": "4. Finding Matrix Dimensions",
+    "text": "4. Finding Matrix Dimensions\n\nIn deciding which university to go, you need to know the tution fees\nThe following vector contains tuition fees for the universities\n\n\ntuition <- c(43280, 45000, 45016, 49350, 28450, 55161)\n\nwe need to add the tuition vector to uni_matrix as a column. First, we should make sure that the new vector is of the right dimensions before combining it with our matrix."
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#dimensions",
+    "href": "courses/r_basics/matrices.html#dimensions",
+    "title": "Working with Matrices",
+    "section": "Dimensions",
+    "text": "Dimensions\n\nThe number of rows and columns in a matrix\nthe function dim() returns dimensions\n\n\ndim(harv_stan)\n\n[1] 2 5\n\n\nIf we want to add the vector harv_stan_tuition as a new column to the harv_stan matrix, we’ll want the length of harv_stan_tuition to equal the number of rows in harv_stan\n\n# dim(harv_stan)[1] == length(harv_stan_tuition)"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#practice-3",
+    "href": "courses/r_basics/matrices.html#practice-3",
+    "title": "Working with Matrices",
+    "section": "Practice 3",
+    "text": "Practice 3\nWrite an expression to return TRUE if the number of rows in uni_matrix is equal to the length of tuition.\n\ntuition <- c(43280,45000,45016,49350,28450,55161)\ndim(uni_matrix)[1] == length(tuition)\n\n[1] TRUE"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#adding-columns-to-matrices",
+    "href": "courses/r_basics/matrices.html#adding-columns-to-matrices",
+    "title": "Working with Matrices",
+    "section": "Adding Columns to Matrices",
+    "text": "Adding Columns to Matrices\n\nNow that we have confirmed that the tuition vector is the same length as the number of rows in uni_matrix, we can add it to the matrix as a column.\nEarlier in this mission, we used the rbind() function to combine the university rankings vectors into a single matrix.\nThe rbind() functions combines vectors or matrices by row.\nTo add a vector to a matrix as a column or to join two matrices together by column, we’ll use the cbind() function. The cbind() function combines vectors or matrices by column.\nExample : Adding tution column\n\n\n#cbind(harv_stan, harv_stan_tuition)"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#practice-4",
+    "href": "courses/r_basics/matrices.html#practice-4",
+    "title": "Working with Matrices",
+    "section": "Practice 4",
+    "text": "Practice 4\n\nAdd the tuition vector as a new column to uni_matrix.\nSave the new matrix containing rankings and tuition for each university as complete_matrix.\n\n\ntuition <- c(43280, 45000, 45016, 49350, 28450, 55161)\ncomplete_matrix <- cbind(uni_matrix, tuition)"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#indexing-matrices-by-element",
+    "href": "courses/r_basics/matrices.html#indexing-matrices-by-element",
+    "title": "Working with Matrices",
+    "section": "Indexing Matrices By Element",
+    "text": "Indexing Matrices By Element\n\nMatrices can be indeced either :\n\nIndex to select specific values\nIndex to select rows or columns\n\nExample: To index harv_stan to extract Stanford’s patent ranking, we can index by row (2) and column (5) positions:\n\n\nharv_stan[2, 5]\n\n[1] 10\n\n\n\nNotice that, as with the output of the dim() function, row always comes before column for indexing operations.\nIndexing can also be done using names instead of positions\n\n\nharv_stan[\"stanford\", \"patents\"]\n\n[1] 10"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#indexing-multiple-elements",
+    "href": "courses/r_basics/matrices.html#indexing-multiple-elements",
+    "title": "Working with Matrices",
+    "section": "Indexing Multiple Elements",
+    "text": "Indexing Multiple Elements\n\nLet’s index to select broad_impact and patents for Harvard and Stanford - The two columns are next to each other:\n\n\nharv_stan[2, 4:5]\n\nbroad_impact      patents \n           4           10 \n\n\n\nWe can also index matrices to extract elements that aren’t next to each other.\nLet’s say we’re interested in extracting world_rank and influence for Harvard and Stanford:\n\n\nharv_stan[c(1,2), c(1,3)]\n\n         world_rank influence\nharvard           1         1\nstanford          2         3\n\n\n\nA similar operation can be done using column names"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#practice-5",
+    "href": "courses/r_basics/matrices.html#practice-5",
+    "title": "Working with Matrices",
+    "section": "Practice 5",
+    "text": "Practice 5\n\nIndex by name attributes to extract the following values from complete_matrix:\n+ Oxford's influence rank . Store the output as oxford_influence\n+ Cambridge's and Stanford's patents rank. Store the output as cam_stan_patents\n\n\ncomplete_matrix <- cbind(uni_matrix, tuition)\n#oxford_influence <- complete_matrix[\"oxford\", \"influence\"]\n#cam_stan_patents <- complete_matrix[c(\"cambridge\", \"stanford\"), \"patents\"]"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#subsetting-matrices-by-rows-and-columns",
+    "href": "courses/r_basics/matrices.html#subsetting-matrices-by-rows-and-columns",
+    "title": "Working with Matrices",
+    "section": "Subsetting Matrices by Rows and Columns",
+    "text": "Subsetting Matrices by Rows and Columns\n\nAn entire row or column can be extracted of which can be a single or multiple extraction\nFor example, let’s index harv_stan to extract all the rankings for Harvard:\n\n\nharv_stan[\"harvard\",]\n\n          world_rank quality_of_education            influence \n                   1                    1                    1 \n        broad_impact              patents \n                   1                    3 \n\n\n\nIf we want to select the quality of education rankings for each university in our matrix,\n\n\nharv_stan[,\"quality_of_education\"]\n\n harvard stanford \n       1        9"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#indexing-multiple-rows-and-columns",
+    "href": "courses/r_basics/matrices.html#indexing-multiple-rows-and-columns",
+    "title": "Working with Matrices",
+    "section": "Indexing Multiple rows and columns",
+    "text": "Indexing Multiple rows and columns\n\nTo select quality_of_education, influence, and broad_impact rankings for all universities, we would index by those columns:\n\n\nharv_stan[,c(\"quality_of_education\", \"influence\", \"broad_impact\")]\n\n         quality_of_education influence broad_impact\nharvard                     1         1            1\nstanford                    9         3            4\n\n\n\nNote that, since we selected columns, c(“quality_of_education”, “influence”, “broad_impact”) comes after the comma.\nIf we were indexing to select multiple rows, they would come before the comma."
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#practice-6",
+    "href": "courses/r_basics/matrices.html#practice-6",
+    "title": "Working with Matrices",
+    "section": "Practice 6",
+    "text": "Practice 6\n\nIndex complete_matrix to extract the following:\n\nOxford’s rankings. Store the output as oxford_rank\nInfluence ranks for all universities. Store the output as influence\nAll of Harvard’s and MIT’s rankings.Store the output as harv_mit_rank\nInfluence and patents rankings for all universities.Store the output as influence_patents\n\n\n\n#oxford_rank <- complete_matrix[\"oxford\",]\n#influence <- complete_matrix[,\"influence\"]\n#harv_mit_rank <- complete_matrix[c(\"harvard\", \"MIT\"),]\n#influence_patents <- complete_matrix[,c(\"influence\", \"patents\")]"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#ranking-universities",
+    "href": "courses/r_basics/matrices.html#ranking-universities",
+    "title": "Working with Matrices",
+    "section": "Ranking Universities",
+    "text": "Ranking Universities\n\nNow that we’ve learned to combine vectors into matrices and to extract elements, let’s return to our initial goal: Analyzing the university ranking data to decide on a university to attend.\nTo answer this question, let’s develop a score for each university that is an aggregate of the rankings and tuition information available in complete_matrix.\nWe’ll rank the universities for each category we have data for: world_rank, quality_of_education, influence, broad_impact, patents, and tuition.\nThen, we can calculate a score for each university from the sum of its rankings.\n\n\ncomplete_matrix\n\n                        tuition\nharvard   1  1  1  1  3   43280\nstanford  2  9  3  4 10   45000\nMIT       3  3  2  2  1   45016\ncambridge 4  2  6 13 48   49350\noxford    5  7 12  9 15   28450\ncolumbia  6 13 13 12  4   55161"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#ranking-ii",
+    "href": "courses/r_basics/matrices.html#ranking-ii",
+    "title": "Working with Matrices",
+    "section": "Ranking II",
+    "text": "Ranking II\n\nWe’ll use the rank() function, along with an expression that indexes the matrix, to specify the category we want to rank the universities by.\nThe rank() function returns a vector of numeric values. For example, to rank universities by quality_of_education, we’d write:\n\n\n#rank(complete_matrix[,\"quality_of_education\"])"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#practice-7",
+    "href": "courses/r_basics/matrices.html#practice-7",
+    "title": "Working with Matrices",
+    "section": "Practice 7",
+    "text": "Practice 7\n\nUse rank() to rank the universities for each of the following categories:\n\nworld_rank , quality_of_education , influence , broad_impact , patents, tuition\n\nSave the ranking vectors generated for each category with the following names:\n\nworld_rank_rank\nquality_of_education_rank\ninfluence_rank\nbroad_impact_rank\npatents_rank\ntuition_rank\n\n\n\n#world_rank_rank <- rank(complete_matrix[,\"world_rank\"])\n#quality_of_education_rank <- rank(complete_matrix[,\"quality_of_education\"])\n#influence_rank <- rank(complete_matrix[,\"influence\"])\n#broad_impact_rank <- rank(complete_matrix[,\"broad_impact\"])\n#patents_rank <- rank(complete_matrix[,\"patents\"])\n#tuition_rank <- rank(complete_matrix[,\"tuition\"])"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#scoring-and-ranking-universities",
+    "href": "courses/r_basics/matrices.html#scoring-and-ranking-universities",
+    "title": "Working with Matrices",
+    "section": "Scoring and Ranking Universities",
+    "text": "Scoring and Ranking Universities\n\nNow that we’ve ranked the six universities by each category, let’s combine the vectors containing the ranks into a single matrix (ranks_matrix) using rbind():\n\n\n#ranks_matrix <- rbind(world_rank_rank, quality_of_education_rank, influence_rank, broad_impact_rank, patents_rank, tuition_rank)\n\n\nNote that because we used rbind(), we combined the vectors by rows. The new matrix contains the vectors for each category stacked one on top of the other. Each university’s rankings are in a different column.\nTo calculate an aggregate score for each university, let’s calculate the sum of its rankings in every category. We’ll use indexing to specify the university column we want to calculate a score for using sum().\nFor example, we’ll calculate the sum of the rankings for Harvard:\n\n\n#sum(ranks_matrix[,\"harvard\"])"
+  },
+  {
+    "objectID": "courses/r_basics/matrices.html#practice-8",
+    "href": "courses/r_basics/matrices.html#practice-8",
+    "title": "Working with Matrices",
+    "section": "Practice 8",
+    "text": "Practice 8\nCalculate the sums of each university’s rankings in ranks_matrix:\n+ harvard\n+ stanford\n+ MIT\n+ cambridge\n+ oxford\n+ columbia\n\n#sum(ranks_matrix[,\"harvard\"])\n#sum(ranks_matrix[,\"stanford\"])\n#sum(ranks_matrix[,\"MIT\"])\n#sum(ranks_matrix[,\"cambridge\"])\n#sum(ranks_matrix[,\"oxford\"])\n#sum(ranks_matrix[,\"columbia\"])"
+  },
+  {
+    "objectID": "courses/r_basics/string_manipulation.html",
+    "href": "courses/r_basics/string_manipulation.html",
+    "title": "String Manipulation",
+    "section": "",
+    "text": "This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document."
+  },
+  {
+    "objectID": "courses/r_basics/string_manipulation.html#slide-with-bullets",
+    "href": "courses/r_basics/string_manipulation.html#slide-with-bullets",
+    "title": "String Manipulation",
+    "section": "Slide with Bullets",
+    "text": "Slide with Bullets\n\nBullet 1\nBullet 2\nBullet 3"
+  },
+  {
+    "objectID": "courses/r_basics/string_manipulation.html#slide-with-r-output",
+    "href": "courses/r_basics/string_manipulation.html#slide-with-r-output",
+    "title": "String Manipulation",
+    "section": "Slide with R Output",
+    "text": "Slide with R Output\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00"
+  },
+  {
+    "objectID": "courses/r_basics/string_manipulation.html#slide-with-plot",
+    "href": "courses/r_basics/string_manipulation.html#slide-with-plot",
+    "title": "String Manipulation",
+    "section": "Slide with Plot",
+    "text": "Slide with Plot"
+  },
+  {
+    "objectID": "courses/r_basics/vectorized_functions.html",
+    "href": "courses/r_basics/vectorized_functions.html",
+    "title": "Working with Vectorized Functions",
+    "section": "",
+    "text": "In R, many built-in functions contain for-loops.\nThis makes it possible to call a function instead of directly using a for-loop\nFunctions take an input, perform an operation, and return an output.\nMany R functions are vectorized, meaning you can use them to operate on all elements of a vector quickly"
+  },
+  {
+    "objectID": "courses/r_basics/vectorized_functions.html#how-does-vectorization-makes-code-faster",
+    "href": "courses/r_basics/vectorized_functions.html#how-does-vectorization-makes-code-faster",
+    "title": "Working with Vectorized Functions",
+    "section": "How does vectorization makes code faster",
+    "text": "How does vectorization makes code faster\n\nIf you apply a function to each element of the vector repeatedly, R has to interpret the input of the function and pass it to the compiled code for each element\nIf you apply the function to the entire vector, R only needs to interpret the input and pass it to the compiled code once.\nTherefore, the vectorized solution is faster, and the code is usually easier to understand."
+  },
+  {
+    "objectID": "courses/r_basics/vectorized_functions.html#comparison-of-vectorized-and-non-vectorized-method",
+    "href": "courses/r_basics/vectorized_functions.html#comparison-of-vectorized-and-non-vectorized-method",
+    "title": "Working with Vectorized Functions",
+    "section": "Comparison of vectorized and non vectorized method",
+    "text": "Comparison of vectorized and non vectorized method\n\nLet’s calculate the sum of all the numbers from zero to 100,000,000 using non-vectorized and vectorized methods and compare the amount of time it takes the R interpreter to run the code for each.\nWe will measure the running time of the code using the function system.time(), which outputs the time elapsed (in seconds) while the function is executed."
+  },
+  {
+    "objectID": "courses/r_basics/vectorized_functions.html#calculating-using-a-non-vectorized-method-for-loop",
+    "href": "courses/r_basics/vectorized_functions.html#calculating-using-a-non-vectorized-method-for-loop",
+    "title": "Working with Vectorized Functions",
+    "section": "Calculating using a non vectorized method (for loop)",
+    "text": "Calculating using a non vectorized method (for loop)\n\n\n   user  system elapsed \n   0.05    0.00    0.08 \n\n\n[1] 500000500000"
+  },
+  {
+    "objectID": "courses/r_basics/vectorized_functions.html#performing-the-calculating-using-a-function-vectorized-method",
+    "href": "courses/r_basics/vectorized_functions.html#performing-the-calculating-using-a-function-vectorized-method",
+    "title": "Working with Vectorized Functions",
+    "section": "Performing the calculating using a function (vectorized method)",
+    "text": "Performing the calculating using a function (vectorized method)\n\n\n   user  system elapsed \n      0       0       0 \n\n\n[1] 500000500000\n\n\n\nUsing the sum() function is substantially faster than using the for-loop."
+  },
+  {
+    "objectID": "courses/r_basics/vectorized_functions.html#a-vectorized-function-for-if-else-statement",
+    "href": "courses/r_basics/vectorized_functions.html#a-vectorized-function-for-if-else-statement",
+    "title": "Working with Vectorized Functions",
+    "section": "A vectorized function for if-else statement",
+    "text": "A vectorized function for if-else statement\n\nThe if_else() function is part of the dplyr package and requires the following input:\n1.A vector or multiple vectors\n2.A condition\n3.An action to perform if the condition is true\n4.An action to perform if the condition is false"
+  },
+  {
+    "objectID": "courses/r_basics/vectorized_functions.html#code-and-it-replacement",
+    "href": "courses/r_basics/vectorized_functions.html#code-and-it-replacement",
+    "title": "Working with Vectorized Functions",
+    "section": "Code and it replacement",
+    "text": "Code and it replacement\n\n\n\n\nVectorized uses if_else()\n\n\n\n [1] \"home team won\"         \"home team won\"         \"home team did not win\"\n [4] \"home team won\"         \"home team won\"         \"home team won\"        \n [7] \"home team did not win\" \"home team did not win\" \"home team won\"        \n[10] \"home team won\"         \"home team won\"         \"home team did not win\"\n[13] \"home team won\"         \"home team did not win\" \"home team won\"        \n[16] \"home team did not win\" \"home team did not win\" \"home team did not win\"\n[19] \"home team did not win\" \"home team did not win\" \"home team won\"        \n[22] \"home team did not win\" \"home team won\"         \"home team did not win\"\n[25] \"home team did not win\" \"home team did not win\" \"home team won\"        \n[28] \"home team won\"         \"home team did not win\" \"home team did not win\"\n[31] \"home team won\"         \"home team did not win\" \"home team did not win\"\n[34] \"home team did not win\" \"home team did not win\" \"home team won\"        \n[37] \"home team did not win\" \"home team won\"         \"home team did not win\"\n[40] \"home team did not win\" \"home team did not win\" \"home team did not win\"\n[43] \"home team did not win\" \"home team won\"         \"home team did not win\"\n[46] \"home team won\"         \"home team did not win\" \"home team did not win\"\n[49] \"home team did not win\" \"home team won\"         \"home team won\"        \n[52] \"home team did not win\" \"home team won\"         \"home team won\"        \n[55] \"home team won\"         \"home team won\"         \"home team won\"        \n[58] \"home team did not win\" \"home team did not win\" \"home team won\"        \n[61] \"home team did not win\" \"home team did not win\" \"home team did not win\"\n[64] \"home team won\""
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html",
+    "href": "courses/r_basics/line_graphs.html",
+    "title": "Creating Line Graphs",
+    "section": "",
+    "text": "In the next couple of discussions we will examine data visualization in details\nWe will be working to identify patterns in our datasets\nThree important key issues :\n\n\nExplore the principles of data visualization.\nLearn to write R code to visualize trends in data in different ways.\nBuild intuition around when different types of visualizations will help you understand your data."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#ggplot2",
+    "href": "courses/r_basics/line_graphs.html#ggplot2",
+    "title": "Creating Line Graphs",
+    "section": "ggplot2",
+    "text": "ggplot2\n\nWe will learn the most important tidyverse package : ggplot2\nThe ggplot2 package is so popular among R users because of its consistent syntax and the efficiency with which you can use it to create high-quality visualizations."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#the-data-and-mission-objective",
+    "href": "courses/r_basics/line_graphs.html#the-data-and-mission-objective",
+    "title": "Creating Line Graphs",
+    "section": "The Data and Mission Objective",
+    "text": "The Data and Mission Objective\n\nIn this mission, you’ll create line graphs to visualize and understand changes in United States life expectancies over time.\nThe National Center for Health Statistics has been tracking United States mortality trends since 1900.\nThey’ve compiled data on United States citizen life expectancy by race and sex.\n\n\npacman::p_load(readr)\nlife_expec <- read_csv(\"datasets/life_expec.csv\")\n#str(life_expec)"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#the-data-description",
+    "href": "courses/r_basics/line_graphs.html#the-data-description",
+    "title": "Creating Line Graphs",
+    "section": "The data description",
+    "text": "The data description\n\nEach column in the data frame contains a variable pertaining to the population of individuals born each year. Here’s an explanation of each variable:\n1.Year: The year of birth.\n2.Race: The races represented in the measured population.\n3.Sex: The sex of the measured population.\n4.Avg_Life_Expec: The average life expectancy, in years, at birth of people born in a given year.\n5.Age_Adj_Death_Rate: The age adjusted death rate of people born in a given year.\nThe age adjusted death rate is a metric that adjusts death rate for populations’ age distributions to make population comparisons fair."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#data-collection",
+    "href": "courses/r_basics/line_graphs.html#data-collection",
+    "title": "Creating Line Graphs",
+    "section": "Data Collection",
+    "text": "Data Collection\n\nSince collection of these data began in 1900, we have over 100 years of data that we can use to study changes in average U.S. life expectancy over time.\nYou may suspect that, as health care has improved, people are living longer than they did earlier in the 20th century.\nAs you scroll through the data frame, you’ll see that, indeed, life expectancy has generally increased and death rate has decreased over time."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#summary-of-our-data",
+    "href": "courses/r_basics/line_graphs.html#summary-of-our-data",
+    "title": "Creating Line Graphs",
+    "section": "Summary of Our Data",
+    "text": "Summary of Our Data\n\nlife_expec$Race <- factor(life_expec$Race)\nlife_expec$Sex <- factor(life_expec$Sex)\nsummary(life_expec)\n\n      Year             Race             Sex      Avg_Life_Expec \n Min.   :1900   All Races:348   Both Sexes:348   Min.   :29.10  \n 1st Qu.:1929   Black    :348   Female    :348   1st Qu.:56.60  \n Median :1958   White    :348   Male      :348   Median :66.60  \n Mean   :1958                                    Mean   :64.12  \n 3rd Qu.:1986                                    3rd Qu.:73.60  \n Max.   :2015                                    Max.   :81.40  \n                                                 NA's   :9      \n Age_Adj_Death_Rate\n Min.   : 616.7    \n 1st Qu.:1040.2    \n Median :1541.4    \n Mean   :1614.1    \n 3rd Qu.:2073.0    \n Max.   :3845.7"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#observing-patterns",
+    "href": "courses/r_basics/line_graphs.html#observing-patterns",
+    "title": "Creating Line Graphs",
+    "section": "Observing Patterns",
+    "text": "Observing Patterns\n\nWhile scanning a data frame may give you some sense of general patterns, creating a visualization of the data allows for a more detailed analysis, such as envisioning when historical events led to temporarily decreased life expectancy.\nExploring data visually is usually one of the first steps data scientists take when working with new data."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#using-plots-to-explore-patterns-in-data",
+    "href": "courses/r_basics/line_graphs.html#using-plots-to-explore-patterns-in-data",
+    "title": "Creating Line Graphs",
+    "section": "Using Plots to Explore Patterns in Data",
+    "text": "Using Plots to Explore Patterns in Data\n\nPlots are visual representations that use graphics like dots, lines, and bars to help you look for patterns in data.\nA plot has variables like x and y\nThere are many types of plots you can use to visualize data\nSelecting the appropriate plot for your data, and the questions you want to use it to answer, is an important skill that you’ll hone over time."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#changes-in-life-expectancy-over-time.",
+    "href": "courses/r_basics/line_graphs.html#changes-in-life-expectancy-over-time.",
+    "title": "Creating Line Graphs",
+    "section": "Changes in life expectancy over time.",
+    "text": "Changes in life expectancy over time.\n\nPut another way, we are interested in the relationship between life expectancy (the variable Avg_Life_Expec) and time (the variable Year).\nFor this task, we’ll use a line chart, which is a type of plot especially useful for visualizing changes over time.\nA line chart displays information as a series of data points connected by a line:\nLine graphs are useful for depicting data that are continuous, meaning the data can have any value.\nAverage life expectancy, as measured in years, is an example of continuous data."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#data-visualization-and-grammer-of-graphics",
+    "href": "courses/r_basics/line_graphs.html#data-visualization-and-grammer-of-graphics",
+    "title": "Creating Line Graphs",
+    "section": "Data Visualization and Grammer of Graphics",
+    "text": "Data Visualization and Grammer of Graphics\n\nlibrary(ggplot2)\n\n\nThe gg in ggplot2 stands for “Grammar of Graphics”,\nRefers to a system for data visualization first described by Leland Wilkinson.\nHadley Wickham, chief data scientist at RStudio, used the principles of the Grammar of Graphics to develop ggplot2 to allow systematic, consistent, time-efficient creation of data visualizations."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#step-by-step",
+    "href": "courses/r_basics/line_graphs.html#step-by-step",
+    "title": "Creating Line Graphs",
+    "section": "Step by Step",
+    "text": "Step by Step\n\nA learning dataset\n\n\nx <- c(1,4,3,5,6)\ny <- c(6,3,5,1,2)\n\n\nTo begin making a plot, use the ggplot() function and specify the data frame you’ll be visualizing data from:\n\nggplot( data = data_frame)\n\nThis step creates a coordinate system that you can add layers to.\nStore your dataframes as variables\nThe graphic you’ll see at this stage is an empty plot."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#task",
+    "href": "courses/r_basics/line_graphs.html#task",
+    "title": "Creating Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nUse the ggplot() function to create the first layer of your plot using the life_expec data frame."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#solution",
+    "href": "courses/r_basics/line_graphs.html#solution",
+    "title": "Creating Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\nggplot( data = life_expec)"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#mapping-values-to-axes",
+    "href": "courses/r_basics/line_graphs.html#mapping-values-to-axes",
+    "title": "Creating Line Graphs",
+    "section": "Mapping Values to Axes",
+    "text": "Mapping Values to Axes\n\nAt this point, your graph isn’t much to look at.\nYou’ve created an empty graph for your data that you will now add layers to.\nThe first layer you’ll add is one to map your data points to scales and a coordinate system, which generates axes.\nTo define the variables you want to map to your graph, you’ll add a layer using aes(), which is short for “aesthetics”, to your graph\n\nggplot(data = data_frame) + aes(x = variable_1, y = variable_2)"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#axes",
+    "href": "courses/r_basics/line_graphs.html#axes",
+    "title": "Creating Line Graphs",
+    "section": "Axes",
+    "text": "Axes\n\nWhen graphing two-dimensional data,which is in most of the analysis, ggplot2 by default uses the Cartesian coordinate system. This means that your graphs have two axes:\n\nVertical Axis\nHorizontal Axis"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#which-axis",
+    "href": "courses/r_basics/line_graphs.html#which-axis",
+    "title": "Creating Line Graphs",
+    "section": "Which Axis?",
+    "text": "Which Axis?\n\nHow do you know which axis to use for which variable?\nThe answer to this question is informed by what you think the relationship between two variables is:\n\nThe variable that changes depending on the other variable is called the dependent variable. We assign this variable to the vertical axis (y-axis)\nThe variable that changes independent of the other variable is called the independent variable. We assign this variable to the horizontal axis (x-axis)\n\nIn our dataset, the Avg_Life_Expec changes as time progresses, and so we would consider it to be the dependent variable. The Year variable represents time, and is the independent variable:"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#task-1",
+    "href": "courses/r_basics/line_graphs.html#task-1",
+    "title": "Creating Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nLet’s add a layer to your graph to map the Avg_Life_Expec and Year variables to a coordinate system.\nAdd an aes() layer to your graph specifying Avg_Life_Expec as the dependent variable and Year as the independent variable"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#solution-1",
+    "href": "courses/r_basics/line_graphs.html#solution-1",
+    "title": "Creating Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\n ggplot( data = life_expec) +\n   aes( x = Year , y = Avg_Life_Expec)"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#adding-geometric-objects-to-visualize-data-points",
+    "href": "courses/r_basics/line_graphs.html#adding-geometric-objects-to-visualize-data-points",
+    "title": "Creating Line Graphs",
+    "section": "Adding Geometric Objects To Visualize Data Points",
+    "text": "Adding Geometric Objects To Visualize Data Points\n\nNow, your chart has a coordinate system and axes:\nWith this foundation in place, the next step is to add geometric symbols to the graph to represent data points.\nTo add a line representing the relationship between the Year and Avg_Life_Expec variables to your graph, you’ll add a geom_line() layer to your graph:\n\n\n#  ggplot(data = data_frame) +\n#    aes(x = variable_1, y = variable_2) +\n#    geom_line()\n\n\nNotice how we add each new layer to the graph using a + at the end of the preceding line of code."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#task-2",
+    "href": "courses/r_basics/line_graphs.html#task-2",
+    "title": "Creating Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nLet’s add a layer to your graph to allow you to visualize the data.\nAdd a layer to your graph to illustrate the relationship between Year and Avg_Life_Expec."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#solution-2",
+    "href": "courses/r_basics/line_graphs.html#solution-2",
+    "title": "Creating Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\nggplot( data = life_expec) +\n    aes( x = Year , y = Avg_Life_Expec) +\n    geom_line()"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#selecting-data-for-visualizion",
+    "href": "courses/r_basics/line_graphs.html#selecting-data-for-visualizion",
+    "title": "Creating Line Graphs",
+    "section": "Selecting Data for Visualizion",
+    "text": "Selecting Data for Visualizion\n\nYou have now produced a graph with the relationship between Year and Avg_Life_Expec represented by a line:\nHowever, the graph you’ve created appears to have multiple data points for Avg_Life_Expec for each instance of Year.\nLet’s take a look at a single year from the life_expec data frame to see what’s going on:"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#code",
+    "href": "courses/r_basics/line_graphs.html#code",
+    "title": "Creating Line Graphs",
+    "section": "Code",
+    "text": "Code\n\nlibrary(dplyr)\n\nlife_expec %>%\n    filter( Year == 2000 )\n\n# A tibble: 9 × 5\n   Year Race      Sex        Avg_Life_Expec Age_Adj_Death_Rate\n  <dbl> <fct>     <fct>               <dbl>              <dbl>\n1  2000 All Races Both Sexes           76.8               869 \n2  2000 All Races Female               79.7               731.\n3  2000 All Races Male                 74.3              1054.\n4  2000 Black     Both Sexes           71.8              1121.\n5  2000 Black     Female               75.1               928.\n6  2000 Black     Male                 68.2              1404.\n7  2000 White     Both Sexes           77.3               850.\n8  2000 White     Female               79.9               715.\n9  2000 White     Male                 74.7              1029."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#explanations",
+    "href": "courses/r_basics/line_graphs.html#explanations",
+    "title": "Creating Line Graphs",
+    "section": "Explanations",
+    "text": "Explanations\n\nThis is because, for each year, average life expectancies for multiple populations (by sex and race) are included in the data set.\nTo get a sense for the change over time of life expectancy for the entire U.S. population, let’s use data for all races and both sexes to create the line graph.(filtering)"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#task-3",
+    "href": "courses/r_basics/line_graphs.html#task-3",
+    "title": "Creating Line Graphs",
+    "section": "TASK",
+    "text": "TASK\n\nLet’s create a new line graph containing only average life expectancy data for the entire U.S. population.\n1.Create a new data frame, life_expec_filter, containing only rows for which the Race variable has the value “All Races” and the Sex variable has the value “Both Sexes”. 2.Create a line graph that displays the relationship between Avg_Life_Expec and Year."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#solution-3",
+    "href": "courses/r_basics/line_graphs.html#solution-3",
+    "title": "Creating Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\nlife_expec_filter <- life_expec %>%\n    filter( Race == \"All Races\" & Sex == \"Both Sexes\")\n  \nplot1 <- ggplot( data = life_expec_filter) + \n aes(x = Year , y = Avg_Life_Expec) + \n geom_line()"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#the-plot",
+    "href": "courses/r_basics/line_graphs.html#the-plot",
+    "title": "Creating Line Graphs",
+    "section": "The plot",
+    "text": "The plot"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#explanations-1",
+    "href": "courses/r_basics/line_graphs.html#explanations-1",
+    "title": "Creating Line Graphs",
+    "section": "Explanations",
+    "text": "Explanations\n\nThis visualization of the relationship between Avg_Life_Expec and Year allows for the quick detection of some interesting patterns:\n1.Generally, average life expectancy of the U.S. population has been increasing over time.\n2.Before the 1950s, life expectancy fluctuated substantially from year to year.\n3.In the 1920s, life expectancy dropped dramatically, and then increased once again.\nDo you have any knowledge of world and U.S. history that may explain some of these patterns?"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#adding-axis-title-and-changing-axis-labels",
+    "href": "courses/r_basics/line_graphs.html#adding-axis-title-and-changing-axis-labels",
+    "title": "Creating Line Graphs",
+    "section": "Adding Axis Title and Changing Axis Labels",
+    "text": "Adding Axis Title and Changing Axis Labels\n\nA graph should be able to stand out alone\nA title will help to tell what is the plot about\nAxis labels will which data is being represented\nThe labs() is used for titles and axis labels\nBe descriptive\nThe syntax\n\n\n# ggplot(data = data_frame) +\n#   aes(x = variable_1, y = variable_2) +\n#   geom_line() +\n#   labs(title = \"Title of Graph\", x = \"new x label\",\n#        y = \"new y label\")"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#task-4",
+    "href": "courses/r_basics/line_graphs.html#task-4",
+    "title": "Creating Line Graphs",
+    "section": "Task",
+    "text": "Task\n\n1.Give your graph the descriptive title that communicates the goal of the visualization: “United States Life Expectancy: 100 Years of Change”\n\nGive the y-axis this label: “Average Life Expectancy (Years)”"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#solution-4",
+    "href": "courses/r_basics/line_graphs.html#solution-4",
+    "title": "Creating Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\nplot2 <- ggplot( data = life_expec_filter) +\naes( x = Year , y = Avg_Life_Expec) +\n  geom_line() +\n  labs ( title = \"United States Life Expectacy : 100 Years of Change\",\n         y = \"Average Life Expectacy(Years)\" )"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#the-labelled-plot",
+    "href": "courses/r_basics/line_graphs.html#the-labelled-plot",
+    "title": "Creating Line Graphs",
+    "section": "The labelled plot",
+    "text": "The labelled plot"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#refining-graph-aesthetics",
+    "href": "courses/r_basics/line_graphs.html#refining-graph-aesthetics",
+    "title": "Creating Line Graphs",
+    "section": "Refining Graph Aesthetics",
+    "text": "Refining Graph Aesthetics\n\nTime to make your plot stand out\nMaking modifications such as background color\nTo modify non-data ggplot2 graph components, including background color, you can add a layer to your graph using theme().\nWithin the theme() layer, you’ll use the argument: panel.background = element_rect(\"background_color\")\n\n+To specify the color of the background rectangle (which is what “rect” stands for)."
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#the-syntax",
+    "href": "courses/r_basics/line_graphs.html#the-syntax",
+    "title": "Creating Line Graphs",
+    "section": "The syntax",
+    "text": "The syntax\n\n# ggplot(data = data_frame) +\n#   aes(x = variable_1, y = variable_2) +\n#   geom_line() +\n#   labs(title = \"Title of Graph\", x = \"new x label\", y = \"new y label\") + \n#   theme(panel.background = element_rect(fill = \"background_color\"))"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#task-5",
+    "href": "courses/r_basics/line_graphs.html#task-5",
+    "title": "Creating Line Graphs",
+    "section": "Task",
+    "text": "Task\n\nLet’s change the background of your line graph to make it less distracting\n1 . Change the background color of your line graph to white"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#solution-5",
+    "href": "courses/r_basics/line_graphs.html#solution-5",
+    "title": "Creating Line Graphs",
+    "section": "Solution",
+    "text": "Solution\n\nplot2 +\n   theme(panel.background = element_rect(fill = \"white\"))"
+  },
+  {
+    "objectID": "courses/r_basics/line_graphs.html#using-line-graph-to-understand-the-data",
+    "href": "courses/r_basics/line_graphs.html#using-line-graph-to-understand-the-data",
+    "title": "Creating Line Graphs",
+    "section": "Using Line Graph to Understand the Data",
+    "text": "Using Line Graph to Understand the Data\n\nFirst, we can see that, generally, the average U.S. life expectancy has increased over time.\nHowever, notice the sharp drop in life expectancy around the year 1920, from about 55 to under 40 years. What could have cause this?\nA bit of research reveals that, in 1918, there was a deadly influenza epidemic that affected the U.S. population, this could explain the rapid decrease in average life expectancy.\nIt’s also interesting to observe that average life expectancy fluctuated between 1900 and 1950 before becoming more stable from year to year after about 1950.\n**Do you have any ideas about possible causes?**"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html",
+    "href": "courses/r_basics/control_structures.html",
+    "title": "Control Structures",
+    "section": "",
+    "text": "pacman::p_load(readr)\nscores <- read_csv(\"datasets/scores.csv\")\nkable(scores[1:4,c(\"home_country\",\"home_goals\",\"away_country\",\n             \"away_goals\",\"win_country\")])\n\n\n\n \n  \n    home_country \n    home_goals \n    away_country \n    away_goals \n    win_country \n  \n \n\n  \n    Brazil \n    3 \n    Croatia \n    1 \n    Brazil \n  \n  \n    Mexico \n    1 \n    Cameroon \n    0 \n    Mexico \n  \n  \n    Spain \n    1 \n    Netherlands \n    5 \n    Netherlands \n  \n  \n    Chile \n    3 \n    Australia \n    1 \n    Chile \n  \n\n\n\n\n\n\nOur goal is to add a new variable to the data frame that provides information about whether the home team won each match."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#steps-in-the-analysis",
+    "href": "courses/r_basics/control_structures.html#steps-in-the-analysis",
+    "title": "Control Structures",
+    "section": "Steps in The analysis",
+    "text": "Steps in The analysis\n\nWe will start by working with just two rows of the dataframe as practice and we will follow these steps:\n\n\nAnalyze the data to determine whether the home team won each match.\nCreate a vector containing either “home team won” or “home team did not win” for each row based on the analysis.\nAdd this vector to the data frame as a new column"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#which-team-won",
+    "href": "courses/r_basics/control_structures.html#which-team-won",
+    "title": "Control Structures",
+    "section": "Which team won?",
+    "text": "Which team won?\n\nSubset the first two rows of the df to a tibble named scores_two\n\n\nscores_two <- scores[1:2,]\n\n\nIn the first row, the value in the home_goals column equals 3 and the value in away_goals column equals 1, so we can determine that the home team won and the same can be done for the second row.\nCreate a string vector containing home team won and add it to scores_two, then subset the first five rows of scores"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#code",
+    "href": "courses/r_basics/control_structures.html#code",
+    "title": "Control Structures",
+    "section": "Code",
+    "text": "Code\n\nlibrary(dplyr)\nhome_team_won <- c(\"Home Team Won\",\"Home Team Won\")\nscores_two <- scores_two %>%\n  mutate(home_team_won = home_team_won )\nscores_five <- scores[1:5,c(\"home_country\",\"home_goals\",\"away_country\",\n                            \"away_goals\",\"win_country\")]\nkable(scores_five)\n\n\n\n \n  \n    home_country \n    home_goals \n    away_country \n    away_goals \n    win_country \n  \n \n\n  \n    Brazil \n    3 \n    Croatia \n    1 \n    Brazil \n  \n  \n    Mexico \n    1 \n    Cameroon \n    0 \n    Mexico \n  \n  \n    Spain \n    1 \n    Netherlands \n    5 \n    Netherlands \n  \n  \n    Chile \n    3 \n    Australia \n    1 \n    Chile \n  \n  \n    Colombia \n    3 \n    Greece \n    0 \n    Colombia"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#another-vector",
+    "href": "courses/r_basics/control_structures.html#another-vector",
+    "title": "Control Structures",
+    "section": "Another Vector",
+    "text": "Another Vector\n\nCreate a new vector called home_team_won that contains either “home team won” or “home team did not win” for each match in scores_five (in order).\n\n\nhome_team_won <- c(\"home team won\",\"home team won\",\n                   \"home team did not win\",\n                   \"home team won\",\"home team won\")"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#adding-the-new-vector",
+    "href": "courses/r_basics/control_structures.html#adding-the-new-vector",
+    "title": "Control Structures",
+    "section": "Adding the new Vector",
+    "text": "Adding the new Vector\n\nUse the mutate() function to add the home_team_won vector to the scores_five data frame. Name the column home_team_won.\n\n\nscores_five <- scores_five %>%\n  mutate(home_team_won = home_team_won)"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#selection-writing-conditional-statements",
+    "href": "courses/r_basics/control_structures.html#selection-writing-conditional-statements",
+    "title": "Control Structures",
+    "section": "Selection : Writing Conditional Statements",
+    "text": "Selection : Writing Conditional Statements\n\nWill return a given value if the condition is satisfied\nFor our case looking at whether the home team won or not is when home goals > away goals is true.\nThis is done by using if statement\nLet’s write an if statement to return “home team won” if home_goals > away_goals during the first match.\n\n\nif (scores$home_goals[1]>scores$away_goals[1]){\n   print(\"home team won\")\n}\n\n[1] \"home team won\""
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#if-else-statement",
+    "href": "courses/r_basics/control_structures.html#if-else-statement",
+    "title": "Control Structures",
+    "section": "if else statement",
+    "text": "if else statement\n\nWhat about when the home team loses, though?\nIn the example given, if the away team scored more goals than the home team, nothing would be returned.\nTo return “home team did not win” if the home team did not score more goals than the away team, you can add a type of conditional statement called an else statement to your code.\n\n\nif (scores$home_goals[1]>scores$away_goals[1]){\n   print(\"home team won\")\n}else{\n   print(\"home team did not win\")\n}\n\n[1] \"home team won\""
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#task",
+    "href": "courses/r_basics/control_structures.html#task",
+    "title": "Control Structures",
+    "section": "Task",
+    "text": "Task\n\nWrite an if-else statement to return:\n\n1.”home team won” if the number of goals scored by the home team is greater than the number of goals scored by the away team 2. “home team did not win” if the condition specified above is not met"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#solution",
+    "href": "courses/r_basics/control_structures.html#solution",
+    "title": "Control Structures",
+    "section": "Solution",
+    "text": "Solution\n\nif(scores$home_goals[3]>scores$away_goals[3]){\n   print(\"home team won\")\n}else{\n   print('home team did not win')\n}\n\n[1] \"home team did not win\""
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#repetition-for-loops",
+    "href": "courses/r_basics/control_structures.html#repetition-for-loops",
+    "title": "Control Structures",
+    "section": "Repetition : For-Loops",
+    "text": "Repetition : For-Loops\n\nThe previous method of writing code is repititive\nGenerally, in programming, it’s best to minimize repetition in your code as much as possible.\nIf you find yourself copying and pasting blocks of code several times, it’s time to seek a better solution.\n    **Use for loops**"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#example",
+    "href": "courses/r_basics/control_structures.html#example",
+    "title": "Control Structures",
+    "section": "Example",
+    "text": "Example\n\nLet’s write a for-loop to print every number in a sequence of numbers from one to 5.\n\n\nfor( i in 1:5){\n  print(i)\n}\n\n[1] 1\n[1] 2\n[1] 3\n[1] 4\n[1] 5\n\n\n\nThe index variable i represents an element of a sequence. You can read the code above as, “For every element in the sequence of the numbers one to 5, print the element”."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#using-variable-names",
+    "href": "courses/r_basics/control_structures.html#using-variable-names",
+    "title": "Control Structures",
+    "section": "Using Variable Names",
+    "text": "Using Variable Names\n\nYou can use any variable name you want instead of i for the index\nShould consider using a name that describes what the variable actually represents to make complex code more readable.\nNext, let’s write a for-loop to print the date of the first five matches in in the World Cup scores data frame:\n\n\nfor( d in scores$match_date[1:5]){\n    print(d)\n}\n\n[1] \"12 June\"\n[1] \"13 June\"\n[1] \"13 June\"\n[1] \"13 June\"\n[1] \"14 June\""
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#task-1",
+    "href": "courses/r_basics/control_structures.html#task-1",
+    "title": "Control Structures",
+    "section": "Task",
+    "text": "Task\n\nWrite a for-loop to print each element in the column home_country of the scores data frame."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#solution-1",
+    "href": "courses/r_basics/control_structures.html#solution-1",
+    "title": "Control Structures",
+    "section": "Solution",
+    "text": "Solution\n\n# for ( h in scores$home_country){\n#  print(h)\n# }"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#looping-over-raws-of-a-data-frame",
+    "href": "courses/r_basics/control_structures.html#looping-over-raws-of-a-data-frame",
+    "title": "Control Structures",
+    "section": "Looping Over raws of a data frame",
+    "text": "Looping Over raws of a data frame\n\nWhen you write a for-loop, the elements you specify can be values, vectors, lists, or other data structures.\nSince you are working with a data frame (scores), let’s write a for-loop to execute an operation on elements that are rows of the data frame\nWhen you write a for-loop, the elements you specify can be values, vectors, lists, or other data structures."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#our-for-loop",
+    "href": "courses/r_basics/control_structures.html#our-for-loop",
+    "title": "Control Structures",
+    "section": "Our For Loop",
+    "text": "Our For Loop\n\nThe for-loop will calculate the total number of goals (away_goals + home_goals) for each match\nIn the scores data frame, each match has its own row. Since you want to perform the addition operation for each row of the data frame,\nthe first part of the for-loop will consist of defining i as an element of the sequence of numbers from one to the number of rows in the data frame.\nHere’s how you’ll specify the sequence: for ( i in 1:nrow(scores))\n“for each element in the sequence one to 64”\nIn programming, it’s good practice to refer to data objects instead of including numbers in your code."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#the-loop",
+    "href": "courses/r_basics/control_structures.html#the-loop",
+    "title": "Control Structures",
+    "section": "The Loop",
+    "text": "The Loop\n\n# for ( i in 1:nrow(scores)){\n#  print(scores$home_goals[i] + scores$away_goals[i])\n#}"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#task-2",
+    "href": "courses/r_basics/control_structures.html#task-2",
+    "title": "Control Structures",
+    "section": "Task",
+    "text": "Task\nWrite a for-loop to subtract away_goals from home_goals for each match in scores."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#solution-2",
+    "href": "courses/r_basics/control_structures.html#solution-2",
+    "title": "Control Structures",
+    "section": "Solution",
+    "text": "Solution\n\n# for (i in 1:nrow(scores)){\n#  print(scores$home_goals[i] - scores$away_goals[i])\n# }"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#nested-control-structures-12",
+    "href": "courses/r_basics/control_structures.html#nested-control-structures-12",
+    "title": "Control Structures",
+    "section": "Nested Control Structures 1/2",
+    "text": "Nested Control Structures 1/2\n\nControl structures are powerful tools, and can do even more when combined together.\nFor example, the actions repeated by a for-loop don’t need to be sequential code — they could be conditional statements.\nThis pattern of executing one or more control structures inside another one is called nesting.\nObjective : Originally, we wanted to create a new variable that provides information about whether the home team won or lost each match."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#code-1",
+    "href": "courses/r_basics/control_structures.html#code-1",
+    "title": "Control Structures",
+    "section": "Code",
+    "text": "Code\n\nfor (i in 1:nrow(scores)){\n  if(scores$home_goals[i] > scores$away_goals[i]){\n    print(\"home team won\")\n  }else{\n    print('home team did not win')\n  }\n}\n\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team won\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team did not win\"\n[1] \"home team won\""
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#nested-control-structures-22",
+    "href": "courses/r_basics/control_structures.html#nested-control-structures-22",
+    "title": "Control Structures",
+    "section": "Nested Control Structures 2/2",
+    "text": "Nested Control Structures 2/2\n\nNested control structures are very powerful, but can be tricky to get used to and can make finding errors in your code harder.\nThe workflow in the previous examples is a good way to avoid problems when writing nested control structures:\nStart by writing the inner operation and make sure it works correctly, and then wrap the outer operation around it.\nNext, you’ll learn to store the output of a loop in a variable. Let’s write a for-loop that outputs logical data, TRUE and FALSE, that would make a useful variable."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#task-3",
+    "href": "courses/r_basics/control_structures.html#task-3",
+    "title": "Control Structures",
+    "section": "Task",
+    "text": "Task\n\nWrite a for-loop that, for each row in the scores data frame, prints TRUE if home_goals is greater than away_goals and FALSE if not\n\n\nfor ( i in 1:nrow(scores)){\n  if(scores$home_goals[i] > scores$away_goals[i]){\n    print(TRUE)\n  }else{\n    print(FALSE)\n  }\n}\n\n[1] TRUE\n[1] TRUE\n[1] FALSE\n[1] TRUE\n[1] TRUE\n[1] TRUE\n[1] FALSE\n[1] FALSE\n[1] TRUE\n[1] TRUE\n[1] TRUE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] TRUE\n[1] TRUE\n[1] FALSE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] TRUE\n[1] TRUE\n[1] FALSE\n[1] TRUE\n[1] TRUE\n[1] TRUE\n[1] TRUE\n[1] TRUE\n[1] FALSE\n[1] FALSE\n[1] TRUE\n[1] FALSE\n[1] FALSE\n[1] FALSE\n[1] TRUE"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#storing-for-loop-output-in-objects",
+    "href": "courses/r_basics/control_structures.html#storing-for-loop-output-in-objects",
+    "title": "Control Structures",
+    "section": "Storing For-loop Output in Objects",
+    "text": "Storing For-loop Output in Objects\n\nWe have just been printing the output of a for loop you’ll want to use the output of a for-loop instead of just printing it.\ncalculating total scores\n\n\nfor ( i in 1:nrow(scores)){\n   print(scores$home_goals[i] + scores$away_goals[i])\n}\n\n[1] 4\n[1] 1\n[1] 6\n[1] 4\n[1] 3\n[1] 3\n[1] 4\n[1] 3\n[1] 3\n[1] 3\n[1] 3\n[1] 0\n[1] 4\n[1] 3\n[1] 3\n[1] 2\n[1] 0\n[1] 4\n[1] 2\n[1] 5\n[1] 3\n[1] 0\n[1] 3\n[1] 1\n[1] 7\n[1] 3\n[1] 1\n[1] 1\n[1] 4\n[1] 4\n[1] 1\n[1] 6\n[1] 5\n[1] 4\n[1] 3\n[1] 2\n[1] 5\n[1] 3\n[1] 1\n[1] 0\n[1] 3\n[1] 0\n[1] 5\n[1] 4\n[1] 1\n[1] 3\n[1] 1\n[1] 2\n[1] 2\n[1] 2\n[1] 3\n[1] 2\n[1] 2\n[1] 3\n[1] 1\n[1] 3\n[1] 3\n[1] 1\n[1] 0\n[1] 1\n[1] 8\n[1] 0\n[1] 3\n[1] 1"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#you-need-a-empty-vector",
+    "href": "courses/r_basics/control_structures.html#you-need-a-empty-vector",
+    "title": "Control Structures",
+    "section": "You need a empty vector",
+    "text": "You need a empty vector\n\nTo modify the for-loop to store the total goals scored in each match in a vector instead of printing it, you’ll need to first create an empty vector to add values to:\nThen, you’ll write the for-loop to include the following code to add new elements to the vector:\n\n\ntotal_goals <- c()\n# total_goals <- c(total_goals,\"new element\")"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#new-elements",
+    "href": "courses/r_basics/control_structures.html#new-elements",
+    "title": "Control Structures",
+    "section": "New elements",
+    "text": "New elements\n\nThe new elements you’ll add to the vector are the sums of home_goals and total_goals for each match.\n\n\nfor ( i in 1:nrow(scores)){\n  total_goals <- c(total_goals,scores$home_goals[i] + scores$away_goals[i])\n}\ntotal_goals[1:5]\n\n[1] 4 1 6 4 3\n\nlength(total_goals)\n\n[1] 64"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#winning",
+    "href": "courses/r_basics/control_structures.html#winning",
+    "title": "Control Structures",
+    "section": "Winning",
+    "text": "Winning\nLet’s create a new, empty vector, home_team_won, to store the logical output of the for-loop\n#single line code\n\nIn place of the print() functions in the for-loop, you can include code to store output in home_team_won:\n\nhome_team_won <- c(home_team_won, TRUE) home_team_won <- c(home_team_won, FALSE)"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#task-4",
+    "href": "courses/r_basics/control_structures.html#task-4",
+    "title": "Control Structures",
+    "section": "Task",
+    "text": "Task\n\nWrite a for-loop that, for each row in the scores data frame, outputs TRUE if home_goals is greater than away_goals and FALSE if not.\nStore the output in a vector called home_team_won."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#solution-3",
+    "href": "courses/r_basics/control_structures.html#solution-3",
+    "title": "Control Structures",
+    "section": "Solution",
+    "text": "Solution\n\nfor ( i in 1:nrow(scores)){\n  if(scores$home_goals[i] > scores$away_goals[i]){\n    home_team_won <- c(home_team_won,TRUE)\n  }else{\n    home_team_won <- c(home_team_won,FALSE)\n  }\n}\nhome_team_won[1:5]\n\n[1]  TRUE  TRUE FALSE  TRUE  TRUE"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#adding-to-the-dataset",
+    "href": "courses/r_basics/control_structures.html#adding-to-the-dataset",
+    "title": "Control Structures",
+    "section": "Adding to the dataset",
+    "text": "Adding to the dataset\n\nYou’ve now created a new variable, home_team_won, that provides information about whether the home team won each match in the data set.\nYou can use this new information to begin exploring whether teams playing in the 2014 World Cup experienced a home advanage.\n\n\nscores <- scores %>%\n  mutate (home_team_won = home_team_won)"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#handling-more-than-two-cases",
+    "href": "courses/r_basics/control_structures.html#handling-more-than-two-cases",
+    "title": "Control Structures",
+    "section": "Handling more than two cases",
+    "text": "Handling more than two cases\n\nIt would be more informative to have a variable containing three outcomes for the home team:\n\nWon home_goals > away_goals\nLost home_goals < away_goals\nTied home_goals = away_goals\n\nInstead of writing code to specify two possible outcomes, in this case, you’ll need to specify three. else if"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#else-if",
+    "href": "courses/r_basics/control_structures.html#else-if",
+    "title": "Control Structures",
+    "section": "Else if",
+    "text": "Else if\n\nif (scores$home_goals[1] > scores$away_goals[1]){\n  print(\"win\")\n}else if(scores$home_goals[1] < scores$away_goals[1]){\n  print('lose')\n}else if(scores$home_goals[1] < scores$away_goals[1]){\n  print(\"tied\")\n}\n\n[1] \"win\""
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#default-action",
+    "href": "courses/r_basics/control_structures.html#default-action",
+    "title": "Control Structures",
+    "section": "Default Action",
+    "text": "Default Action\n\nYou can chain together as many else if statements in your code as needed.\nIn the scores data set, there are only three possible match outcomes. #\nHowever, if you needed to specify a default action to perform if none of the prior conditions are met,you can include an else statement in your code.\n\n\nif (scores$home_goals[1] > scores$away_goals[1]){\n  print(\"win\")\n}else if(scores$home_goals[1] < scores$away_goals[1]){\n  print('lose')\n}else if(scores$home_goals[1] < scores$away_goals[1]){\n  print(\"tied\")\n}else{\n  print(\"no action\")\n}\n\n[1] \"win\""
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#example-third-match",
+    "href": "courses/r_basics/control_structures.html#example-third-match",
+    "title": "Control Structures",
+    "section": "Example : Third Match",
+    "text": "Example : Third Match\n\nWhat does this code do?\n\n\nif (scores$home_goals[3] > scores$away_goals[3]){\n  print(\"win\")\n}else if(scores$home_goals[3] < scores$away_goals[3]){\n  print('lose')\n}else if(scores$home_goals[3] == scores$away_goals[3]){\n  print(\"tied\")\n}\n\n[1] \"lose\""
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#more-than-two-cases-writing-a-for-loop",
+    "href": "courses/r_basics/control_structures.html#more-than-two-cases-writing-a-for-loop",
+    "title": "Control Structures",
+    "section": "More than Two Cases : Writing a for loop",
+    "text": "More than Two Cases : Writing a for loop\n\nCreate a new vector, home_team_result, that contains “win”, “lose”, or “tie” for the home team for each match in scores.\nOverwrite the scores data frame with a new scores data frame containing the home_team_result variable."
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#the-code",
+    "href": "courses/r_basics/control_structures.html#the-code",
+    "title": "Control Structures",
+    "section": "The code",
+    "text": "The code\n\nhome_team_result <- c()\nfor(i in 1:nrow(scores)){\n  if(scores$home_goals[i] > scores$away_goals[i]){\n    home_team_result <- c(home_team_result,\"win\")\n  }else if(scores$home_goals[i] < scores$away_goals[i]){\n   home_team_result <- c(home_team_result,\"lose\")\n  }else if(scores$home_goals[i] == scores$away_goals[i]){\n   home_team_result <- c(home_team_result,\"tied\")\n  }\n}\nscores <- scores %>%\n  mutate( home_team_result = home_team_result)"
+  },
+  {
+    "objectID": "courses/r_basics/control_structures.html#remarks",
+    "href": "courses/r_basics/control_structures.html#remarks",
+    "title": "Control Structures",
+    "section": "Remarks",
+    "text": "Remarks\n\nIf-else statements and for-loops are programming tools common to practically all programming languages\nIt’s important to understand how they work and when to use them.\nR is characterized by some special features superior to for-loops when it comes to repeating the same operation on multiple elements"
+  },
+  {
+    "objectID": "courses/r_basics/custom_functions.html",
+    "href": "courses/r_basics/custom_functions.html",
+    "title": "Writing Custom Functions",
+    "section": "",
+    "text": "This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document."
+  },
+  {
+    "objectID": "courses/r_basics/custom_functions.html#slide-with-bullets",
+    "href": "courses/r_basics/custom_functions.html#slide-with-bullets",
+    "title": "Writing Custom Functions",
+    "section": "Slide with Bullets",
+    "text": "Slide with Bullets\n\nBullet 1\nBullet 2\nBullet 3"
+  },
+  {
+    "objectID": "courses/r_basics/custom_functions.html#slide-with-r-output",
+    "href": "courses/r_basics/custom_functions.html#slide-with-r-output",
+    "title": "Writing Custom Functions",
+    "section": "Slide with R Output",
+    "text": "Slide with R Output\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00"
+  },
+  {
+    "objectID": "courses/r_basics/custom_functions.html#slide-with-plot",
+    "href": "courses/r_basics/custom_functions.html#slide-with-plot",
+    "title": "Writing Custom Functions",
+    "section": "Slide with Plot",
+    "text": "Slide with Plot"
+  },
+  {
+    "objectID": "courses/r_basics/functionals.html",
+    "href": "courses/r_basics/functionals.html",
+    "title": "Working with Functionals",
+    "section": "",
+    "text": "This is an R Markdown presentation. Markdown is a simple formatting syntax for authoring HTML, PDF, and MS Word documents. For more details on using R Markdown see http://rmarkdown.rstudio.com.\nWhen you click the Knit button a document will be generated that includes both content as well as the output of any embedded R code chunks within the document."
+  },
+  {
+    "objectID": "courses/r_basics/functionals.html#slide-with-bullets",
+    "href": "courses/r_basics/functionals.html#slide-with-bullets",
+    "title": "Working with Functionals",
+    "section": "Slide with Bullets",
+    "text": "Slide with Bullets\n\nBullet 1\nBullet 2\nBullet 3"
+  },
+  {
+    "objectID": "courses/r_basics/functionals.html#slide-with-r-output",
+    "href": "courses/r_basics/functionals.html#slide-with-r-output",
+    "title": "Working with Functionals",
+    "section": "Slide with R Output",
+    "text": "Slide with R Output\n\nsummary(cars)\n\n     speed           dist       \n Min.   : 4.0   Min.   :  2.00  \n 1st Qu.:12.0   1st Qu.: 26.00  \n Median :15.0   Median : 36.00  \n Mean   :15.4   Mean   : 42.98  \n 3rd Qu.:19.0   3rd Qu.: 56.00  \n Max.   :25.0   Max.   :120.00"
+  },
+  {
+    "objectID": "courses/r_basics/functionals.html#slide-with-plot",
+    "href": "courses/r_basics/functionals.html#slide-with-plot",
+    "title": "Working with Functionals",
+    "section": "Slide with Plot",
+    "text": "Slide with Plot"
+  },
+  {
+    "objectID": "courses/r_basics/multi_line.html#creating-multiple-line-graphs",
+    "href": "courses/r_basics/multi_line.html#creating-multiple-line-graphs",
+    "title": "Multiple Line Graphs",
+    "section": "Creating Multiple Line Graphs",
+    "text": "Creating Multiple Line Graphs\nVisualizing Data for Multiple Populations\n\nIn the previous discussion, we have look on the general trend of life expectancy changes\nNow, we want to look into details on the life expectancy changes\nThis will help to answer questions like whether there are differences in life expectancy between men and women or for Americans of different races.\n\n\npacman::p_load(\n  readr,\n  dplyr,\n  ggplot2)\nlife_expec <- read_csv(\"datasets/life_expec.csv\")"
+  },
+  {
+    "objectID": "courses/r_basics/vectors.html",
+    "href": "courses/r_basics/vectors.html",
+    "title": "Working with Vectors",
+    "section": "",
+    "text": "In the last mission the grades for each subject were found and stored in variables as follows;\n\nmath <- 88 \nchemistry <- 87.66667\nwriting <-  86\nart <- 91.33333\nhistory <- 84\nmusic <- 91\nphysical_education <- 89.33333\n\nfinal_scores <- c(math, chemistry, writing, art,\n                  history, music, physical_education)\n\nWe can index vectors to select a subset of the elements they contain. Within a vector, every element has a position. R is a 1-indexed programming language, which means that the first element in a vector is assigned a position of one."
   }
 ]

@@ -1,6 +1,10 @@
 ---
 title: "Introduction to Programming in R"
 author: "Castory Munishi"
+date: 10/27/2020
+execute: 
+  echo: true
+  warning: false
 format: revealjs
 editor: visual
 ---

@@ -1,0 +1,1063 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Castory Munishi">
+<meta name="dcterms.date" content="2023-10-21">
+
+<title>Working with Lists</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Working with Lists</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Home</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Castory Munishi</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Courses</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/r_basics.html" class="sidebar-item-text sidebar-link">R Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/r_advanced.html" class="sidebar-item-text sidebar-link">R Advanced</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/sir_modelling.html" class="sidebar-item-text sidebar-link">SIR Modelling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/statistical_learning.html" class="sidebar-item-text sidebar-link">Statistical Learning</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Projects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/case_studies.html" class="sidebar-item-text sidebar-link">Case Studies</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/data_quest.html" class="sidebar-item-text sidebar-link">Data Quest Projects</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/epi_projects.html" class="sidebar-item-text sidebar-link">Epidemiology Projects</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exercises</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercises/basic_exercises.html" class="sidebar-item-text sidebar-link">Basics Exercises</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercises/advanced_exercises.html" class="sidebar-item-text sidebar-link">Advanced Exercises</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercises/modelling_exercises.html" class="sidebar-item-text sidebar-link">Modelling Exercises</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Blog</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../blog/blog.html" class="sidebar-item-text sidebar-link">Blog Posts</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#lists" id="toc-lists" class="nav-link active" data-scroll-target="#lists">Lists</a></li>
+  <li><a href="#using-lists" id="toc-using-lists" class="nav-link" data-scroll-target="#using-lists">Using Lists</a></li>
+  <li><a href="#creating-lists" id="toc-creating-lists" class="nav-link" data-scroll-target="#creating-lists">Creating lists</a></li>
+  <li><a href="#entering-data-into-a-list-12" id="toc-entering-data-into-a-list-12" class="nav-link" data-scroll-target="#entering-data-into-a-list-12">Entering Data into a List 1/2</a></li>
+  <li><a href="#entering-data-into-a-list-22" id="toc-entering-data-into-a-list-22" class="nav-link" data-scroll-target="#entering-data-into-a-list-22">Entering Data into a List 2/2</a></li>
+  <li><a href="#object-naming-in-list" id="toc-object-naming-in-list" class="nav-link" data-scroll-target="#object-naming-in-list">Object Naming in List</a></li>
+  <li><a href="#assigning-names-to-lists-12" id="toc-assigning-names-to-lists-12" class="nav-link" data-scroll-target="#assigning-names-to-lists-12">Assigning Names to Lists 1/2</a></li>
+  <li><a href="#output" id="toc-output" class="nav-link" data-scroll-target="#output">Output</a></li>
+  <li><a href="#assigning-names-to-lists-22" id="toc-assigning-names-to-lists-22" class="nav-link" data-scroll-target="#assigning-names-to-lists-22">Assigning Names to Lists 2/2</a></li>
+  <li><a href="#code" id="toc-code" class="nav-link" data-scroll-target="#code">Code</a></li>
+  <li><a href="#indexing-a-list-15" id="toc-indexing-a-list-15" class="nav-link" data-scroll-target="#indexing-a-list-15">Indexing a List 1/5</a></li>
+  <li><a href="#indexing-a-list-25" id="toc-indexing-a-list-25" class="nav-link" data-scroll-target="#indexing-a-list-25">Indexing a list 2/5</a></li>
+  <li><a href="#indexing-a-list-35" id="toc-indexing-a-list-35" class="nav-link" data-scroll-target="#indexing-a-list-35">Indexing a list 3/5</a></li>
+  <li><a href="#indexing-a-list-45" id="toc-indexing-a-list-45" class="nav-link" data-scroll-target="#indexing-a-list-45">Indexing a list 4/5</a></li>
+  <li><a href="#indexing-a-list-55---using-names" id="toc-indexing-a-list-55---using-names" class="nav-link" data-scroll-target="#indexing-a-list-55---using-names">Indexing a list 5/5 - Using names</a></li>
+  <li><a href="#practice-indexing" id="toc-practice-indexing" class="nav-link" data-scroll-target="#practice-indexing">Practice Indexing</a></li>
+  <li><a href="#modifying-list-elements-13" id="toc-modifying-list-elements-13" class="nav-link" data-scroll-target="#modifying-list-elements-13">Modifying List Elements 1/3</a></li>
+  <li><a href="#output-1" id="toc-output-1" class="nav-link" data-scroll-target="#output-1">Output</a></li>
+  <li><a href="#replacing-values" id="toc-replacing-values" class="nav-link" data-scroll-target="#replacing-values">Replacing Values</a></li>
+  <li><a href="#modifying-list-elements-23" id="toc-modifying-list-elements-23" class="nav-link" data-scroll-target="#modifying-list-elements-23">Modifying List Elements 2/3</a></li>
+  <li><a href="#code-and-output" id="toc-code-and-output" class="nav-link" data-scroll-target="#code-and-output">Code and Output</a></li>
+  <li><a href="#adding-elements-to-lists" id="toc-adding-elements-to-lists" class="nav-link" data-scroll-target="#adding-elements-to-lists">Adding Elements to Lists</a>
+  <ul class="collapse">
+  <li><a href="#preparing-the-object-to-be-added" id="toc-preparing-the-object-to-be-added" class="nav-link" data-scroll-target="#preparing-the-object-to-be-added">Preparing the object to be added</a></li>
+  </ul></li>
+  <li><a href="#adding-elements-to-lists-1" id="toc-adding-elements-to-lists-1" class="nav-link" data-scroll-target="#adding-elements-to-lists-1">Adding Elements to Lists</a>
+  <ul class="collapse">
+  <li><a href="#adding-the-object" id="toc-adding-the-object" class="nav-link" data-scroll-target="#adding-the-object">Adding the Object</a></li>
+  </ul></li>
+  <li><a href="#output-2" id="toc-output-2" class="nav-link" data-scroll-target="#output-2">Output</a></li>
+  <li><a href="#adding-elements-to-lists-2" id="toc-adding-elements-to-lists-2" class="nav-link" data-scroll-target="#adding-elements-to-lists-2">Adding Elements to Lists</a></li>
+  <li><a href="#output-3" id="toc-output-3" class="nav-link" data-scroll-target="#output-3">Output</a></li>
+  <li><a href="#combining-lists-12" id="toc-combining-lists-12" class="nav-link" data-scroll-target="#combining-lists-12">Combining Lists 1/2</a></li>
+  <li><a href="#combining-lists-22" id="toc-combining-lists-22" class="nav-link" data-scroll-target="#combining-lists-22">Combining Lists 2/2</a></li>
+  <li><a href="#output-4" id="toc-output-4" class="nav-link" data-scroll-target="#output-4">Output</a></li>
+  <li><a href="#final-assignment" id="toc-final-assignment" class="nav-link" data-scroll-target="#final-assignment">Final Assignment</a></li>
+  <li><a href="#code-1" id="toc-code-1" class="nav-link" data-scroll-target="#code-1">Code</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Working with Lists</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Castory Munishi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 21, 2023</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="lists" class="level2">
+<h2 class="anchored" data-anchor-id="lists">Lists</h2>
+<ul>
+<li><p>Lists can contain multiple types of objects.</p></li>
+<li><p>The objects may consist of different data structures, including single data elements, vectors, and matrices.</p></li>
+</ul>
+</section>
+<section id="using-lists" class="level2">
+<h2 class="anchored" data-anchor-id="using-lists">Using Lists</h2>
+<ul>
+<li><p>Why would we want to create lists of objects in R?</p></li>
+<li><p>Storing objects in lists allows us to make use of some very powerful R features.</p></li>
+<li><p>Allows performing the same operation on each object in your list hence avoiding repetitively typing the same function.</p></li>
+<li><p>Lists store information that is used to compose complex structures like plots. e.g ggplot objects</p></li>
+</ul>
+</section>
+<section id="creating-lists" class="level2">
+<h2 class="anchored" data-anchor-id="creating-lists">Creating lists</h2>
+<ul>
+<li>Lists are created by using a simple function <code>list()</code></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>uni_clubs <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">'ballroom dancing'</span>,<span class="st">'rugby'</span>,<span class="st">'bird watching'</span>,<span class="st">'pottery'</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>uni_clubs</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "ballroom dancing"
+
+[[2]]
+[1] "rugby"
+
+[[3]]
+[1] "bird watching"
+
+[[4]]
+[1] "pottery"</code></pre>
+</div>
+</div>
+</section>
+<section id="entering-data-into-a-list-12" class="level2">
+<h2 class="anchored" data-anchor-id="entering-data-into-a-list-12">Entering Data into a List 1/2</h2>
+<ul>
+<li><p>Data for chess club as an example</p></li>
+<li><p>The data is entered into a vector as shown :</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>club_title <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'chess club'</span>)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>club_description <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Meets two nights a week for members to play chess. Snacks are provided.'</span>)</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>club_dues <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">50</span>,<span class="dv">20</span>,<span class="dv">15</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>meeting_days <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'Monday'</span>,<span class="st">'Wednesday'</span>)</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>meeting_times <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'6:00pm'</span>,<span class="st">'8:00 pm'</span>)</span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>club_meetings <span class="ot">&lt;-</span> <span class="fu">rbind</span>(meeting_days, meeting_times)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="entering-data-into-a-list-22" class="level2">
+<h2 class="anchored" data-anchor-id="entering-data-into-a-list-22">Entering Data into a List 2/2</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>chess_club <span class="ot">&lt;-</span> <span class="fu">list</span>(club_title,club_description,club_dues,club_meetings)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>chess_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+[1] "chess club"
+
+[[2]]
+[1] "Meets two nights a week for members to play chess. Snacks are provided."
+
+[[3]]
+[1] 50 20 15
+
+[[4]]
+              [,1]     [,2]       
+meeting_days  "Monday" "Wednesday"
+meeting_times "6:00pm" "8:00 pm"  </code></pre>
+</div>
+</div>
+</section>
+<section id="object-naming-in-list" class="level2">
+<h2 class="anchored" data-anchor-id="object-naming-in-list">Object Naming in List</h2>
+<ul>
+<li>To specify names for list objects within the <code>list()</code> function, you can use <code>=</code>.</li>
+<li>For example, let’s create a list containing data you’ve gathered about the rugby club:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>rugby_club <span class="ot">&lt;-</span> <span class="fu">list</span> (<span class="at">club_title=</span><span class="fu">c</span>(<span class="st">'Rugby Club'</span>),</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>                    <span class="at">club_description=</span><span class="fu">c</span>(<span class="st">'Plays matches against clubs from local universities'</span>),</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>                    <span class="at">club_dues=</span><span class="fu">c</span>(<span class="dv">100</span>,<span class="dv">50</span>))</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>rugby_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "Rugby Club"
+
+$club_description
+[1] "Plays matches against clubs from local universities"
+
+$club_dues
+[1] 100  50</code></pre>
+</div>
+</div>
+</section>
+<section id="assigning-names-to-lists-12" class="level2">
+<h2 class="anchored" data-anchor-id="assigning-names-to-lists-12">Assigning Names to Lists 1/2</h2>
+<ul>
+<li>Assigning names to list objects is similar to assigning names to vector elements:</li>
+<li>We’ll use the <code>names()</code> accessor function.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>ballroom_dancing <span class="ot">&lt;-</span> <span class="fu">list</span> (<span class="fu">c</span>(<span class="st">'Ballroom Dancing Club'</span>),</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>                          <span class="fu">c</span>(<span class="st">'Practices waltz, salsa, and tango dancing for competitions with local university dance teams'</span>)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>,<span class="fu">c</span>(<span class="dv">150</span>))</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(ballroom_dancing) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'club_title'</span>,<span class="st">'club_description'</span>,<span class="st">'club_dues'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="output" class="level2">
+<h2 class="anchored" data-anchor-id="output">Output</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>ballroom_dancing</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "Ballroom Dancing Club"
+
+$club_description
+[1] "Practices waltz, salsa, and tango dancing for competitions with local university dance teams"
+
+$club_dues
+[1] 150</code></pre>
+</div>
+</div>
+</section>
+<section id="assigning-names-to-lists-22" class="level2">
+<h2 class="anchored" data-anchor-id="assigning-names-to-lists-22">Assigning Names to Lists 2/2</h2>
+<ul>
+<li><p>Like vectors, if you call the <code>names()</code> function in a list without assigned names, the function will return NULL.</p></li>
+<li><p>Let’s assign names to objects of the chess_club list that we created earlier.</p></li>
+<li><p>We have created a vector, chess_club_names, of names for the objects of the chess_club list.</p></li>
+<li><p>Use the <code>names()</code> function to assign the names as attributes to elements of the chess_club list.</p></li>
+</ul>
+</section>
+<section id="code" class="level2">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>chess_club_names <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'club_title'</span>,<span class="st">'club_description'</span>,</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>                      <span class="st">'club_dues'</span>,<span class="st">'club_meetings'</span>)</span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(chess_club) <span class="ot">&lt;-</span> chess_club_names</span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>chess_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "chess club"
+
+$club_description
+[1] "Meets two nights a week for members to play chess. Snacks are provided."
+
+$club_dues
+[1] 50 20 15
+
+$club_meetings
+              [,1]     [,2]       
+meeting_days  "Monday" "Wednesday"
+meeting_times "6:00pm" "8:00 pm"  </code></pre>
+</div>
+</div>
+</section>
+<section id="indexing-a-list-15" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-a-list-15">Indexing a List 1/5</h2>
+<ul>
+<li>use two different indexing operations on lists:</li>
+</ul>
+<ol type="1">
+<li>Single brackets to return a list of selected elements <code>([])</code></li>
+<li>Double brackets to return a single element <code>([[]])</code></li>
+</ol>
+<ul>
+<li>Example : Extracting the second element in Rugby Club</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>rugby_club[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_description
+[1] "Plays matches against clubs from local universities"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(rugby_club[<span class="dv">2</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "list"</code></pre>
+</div>
+</div>
+</section>
+<section id="indexing-a-list-25" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-a-list-25">Indexing a list 2/5</h2>
+<ul>
+<li>Let’s try performing this operation using double brackets:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>rugby_club[[<span class="dv">2</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Plays matches against clubs from local universities"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">typeof</span>(rugby_club[[<span class="dv">2</span>]])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "character"</code></pre>
+</div>
+</div>
+</section>
+<section id="indexing-a-list-35" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-a-list-35">Indexing a list 3/5</h2>
+<ul>
+<li><p>Like in vectors multiple elements can be extracted using <code>c()</code></p></li>
+<li><p>Let’s use single brackets to extract the first and third objects in the rugby_club list:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>rugby_club[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "Rugby Club"
+
+$club_dues
+[1] 100  50</code></pre>
+</div>
+</div>
+</section>
+<section id="indexing-a-list-45" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-a-list-45">Indexing a list 4/5</h2>
+<ul>
+<li>What happens if we use double brackets to index rugby_club?</li>
+<li>Now, the output consists of the first element in the third object of the list:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>rugby_club[[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+</div>
+</section>
+<section id="indexing-a-list-55---using-names" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-a-list-55---using-names">Indexing a list 5/5 - Using names</h2>
+<ul>
+<li>When objects in a list have names associated with them, you can use them for indexing.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>rugby_club<span class="sc">$</span>club_description</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Plays matches against clubs from local universities"</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>rugby_club<span class="sc">$</span>club_dues[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>rugby_club[[<span class="dv">3</span>]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 100  50</code></pre>
+</div>
+</div>
+</section>
+<section id="practice-indexing" class="level2">
+<h2 class="anchored" data-anchor-id="practice-indexing">Practice Indexing</h2>
+<ul>
+<li>Write code to give the second element in chess club</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>chess_club[[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">2</span>)]]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 20</code></pre>
+</div>
+</div>
+</section>
+<section id="modifying-list-elements-13" class="level2">
+<h2 class="anchored" data-anchor-id="modifying-list-elements-13">Modifying List Elements 1/3</h2>
+<ul>
+<li><p>Addition to extracting elements, we can also index lists to change specific list components.</p></li>
+<li><p>For example, let’s say you spoke with a new friend who is a member of the rugby club.</p></li>
+<li><p>She tells you that the club dues paid by members at the start of the fall and spring semesters have increased by 10 USD each.</p></li>
+<li><p>As a result, you’d like to change the values of club_dues you have stored in your rugby_club list.</p></li>
+<li><p>To replace the old values with new values</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>rugby_club<span class="sc">$</span>club_dues <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">110</span>,<span class="dv">60</span>,<span class="dv">70</span>,<span class="dv">90</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="output-1" class="level2">
+<h2 class="anchored" data-anchor-id="output-1">Output</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>rugby_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "Rugby Club"
+
+$club_description
+[1] "Plays matches against clubs from local universities"
+
+$club_dues
+[1] 110  60  70  90</code></pre>
+</div>
+</div>
+</section>
+<section id="replacing-values" class="level2">
+<h2 class="anchored" data-anchor-id="replacing-values">Replacing Values</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>rugby_club[[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">1</span>)]] <span class="ot">&lt;-</span> <span class="dv">80</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>rugby_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "Rugby Club"
+
+$club_description
+[1] "Plays matches against clubs from local universities"
+
+$club_dues
+[1] 80 60 70 90</code></pre>
+</div>
+</div>
+</section>
+<section id="modifying-list-elements-23" class="level2">
+<h2 class="anchored" data-anchor-id="modifying-list-elements-23">Modifying List Elements 2/3</h2>
+<ul>
+<li><p>Let’s modify the chess_club list to reflect new information your research has turned up.</p></li>
+<li><p>Currently, chess club members pay dues during the fall semester (50 USD), spring semester (20 USD)</p></li>
+<li><p>During summer (15 USD) if they are staying on campus. Since few students stay on campus and snack costs are low, the club captain is reducing summer club dues to 5 USD.</p></li>
+</ul>
+</section>
+<section id="code-and-output" class="level2">
+<h2 class="anchored" data-anchor-id="code-and-output">Code and Output</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>chess_club[[<span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>)]] <span class="ot">&lt;-</span> <span class="dv">5</span></span>
+<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>chess_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "chess club"
+
+$club_description
+[1] "Meets two nights a week for members to play chess. Snacks are provided."
+
+$club_dues
+[1] 50 20  5
+
+$club_meetings
+              [,1]     [,2]       
+meeting_days  "Monday" "Wednesday"
+meeting_times "6:00pm" "8:00 pm"  </code></pre>
+</div>
+</div>
+</section>
+<section id="adding-elements-to-lists" class="level2">
+<h2 class="anchored" data-anchor-id="adding-elements-to-lists">Adding Elements to Lists</h2>
+<section id="preparing-the-object-to-be-added" class="level3">
+<h3 class="anchored" data-anchor-id="preparing-the-object-to-be-added">Preparing the object to be added</h3>
+<ul>
+<li>Adding members of different years to the matrix</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>fall <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">2</span>)</span>
+<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>spring <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">11</span>,<span class="dv">14</span>,<span class="dv">3</span>)</span>
+<span id="cb40-3"><a href="#cb40-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-4"><a href="#cb40-4" aria-hidden="true" tabindex="-1"></a>member_year_rugby <span class="ot">&lt;-</span> <span class="fu">rbind</span>(spring, fall)</span>
+<span id="cb40-5"><a href="#cb40-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-6"><a href="#cb40-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-7"><a href="#cb40-7" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(member_year_rugby) <span class="ot">&lt;-</span><span class="fu">c</span>(<span class="st">'first_yr'</span>,<span class="st">'second_yr'</span>,</span>
+<span id="cb40-8"><a href="#cb40-8" aria-hidden="true" tabindex="-1"></a>                                 <span class="st">'third_yr'</span>,<span class="st">'fourth_yr'</span>)</span>
+<span id="cb40-9"><a href="#cb40-9" aria-hidden="true" tabindex="-1"></a>member_year_rugby</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       first_yr second_yr third_yr fourth_yr
+spring        6        11       14         3
+fall          8        12       13         2</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(member_year_rugby[,<span class="st">'first_yr'</span>])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 7</code></pre>
+</div>
+</div>
+</section>
+</section>
+<section id="adding-elements-to-lists-1" class="level2">
+<h2 class="anchored" data-anchor-id="adding-elements-to-lists-1">Adding Elements to Lists</h2>
+<section id="adding-the-object" class="level3">
+<h3 class="anchored" data-anchor-id="adding-the-object">Adding the Object</h3>
+<ul>
+<li><p>Let’s add member_years_chess as a fourth object of the list.</p></li>
+<li><p>To add an element to a list, we can specify the position we want the new element to occupy using double brackets:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>rugby_club[[<span class="st">"Member Year"</span>]] <span class="ot">&lt;-</span> member_year_rugby</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+</section>
+<section id="output-2" class="level2">
+<h2 class="anchored" data-anchor-id="output-2">Output</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>rugby_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "Rugby Club"
+
+$club_description
+[1] "Plays matches against clubs from local universities"
+
+$club_dues
+[1] 80 60 70 90
+
+$`Member Year`
+       first_yr second_yr third_yr fourth_yr
+spring        6        11       14         3
+fall          8        12       13         2</code></pre>
+</div>
+</div>
+</section>
+<section id="adding-elements-to-lists-2" class="level2">
+<h2 class="anchored" data-anchor-id="adding-elements-to-lists-2">Adding Elements to Lists</h2>
+<ul>
+<li><p>We’ve researched chess club membership and found the following numbers of first-year members that joined during the spring and fall semesters last year:</p></li>
+<li><p>Fall Semester: 12 Spring Semester: 15</p></li>
+<li><p>Let’s add this information to to our chess_club list.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>first_years <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">12</span>,<span class="dv">15</span>)</span>
+<span id="cb47-2"><a href="#cb47-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(first_years) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">'spring'</span>,<span class="st">'fall'</span>)</span>
+<span id="cb47-3"><a href="#cb47-3" aria-hidden="true" tabindex="-1"></a>first_years</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>spring   fall 
+    12     15 </code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>chess_club[[<span class="st">"first_years"</span>]] <span class="ot">&lt;-</span> first_years</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="output-3" class="level2">
+<h2 class="anchored" data-anchor-id="output-3">Output</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a>chess_club</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "chess club"
+
+$club_description
+[1] "Meets two nights a week for members to play chess. Snacks are provided."
+
+$club_dues
+[1] 50 20  5
+
+$club_meetings
+              [,1]     [,2]       
+meeting_days  "Monday" "Wednesday"
+meeting_times "6:00pm" "8:00 pm"  
+
+$first_years
+spring   fall 
+    12     15 </code></pre>
+</div>
+</div>
+</section>
+<section id="combining-lists-12" class="level2">
+<h2 class="anchored" data-anchor-id="combining-lists-12">Combining Lists 1/2</h2>
+<ul>
+<li>Syntax for combining multiple lists is similar to that for combining vectors.</li>
+<li>To combine the rugby_club and ballroom_dancing lists into a new list called uni_club_data,</li>
+<li>we can use the <code>c()</code> function:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a>uni_club_data <span class="ot">&lt;-</span> <span class="fu">c</span>(rugby_club,ballroom_dancing)</span>
+<span id="cb52-2"><a href="#cb52-2" aria-hidden="true" tabindex="-1"></a>uni_club_data</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$club_title
+[1] "Rugby Club"
+
+$club_description
+[1] "Plays matches against clubs from local universities"
+
+$club_dues
+[1] 80 60 70 90
+
+$`Member Year`
+       first_yr second_yr third_yr fourth_yr
+spring        6        11       14         3
+fall          8        12       13         2
+
+$club_title
+[1] "Ballroom Dancing Club"
+
+$club_description
+[1] "Practices waltz, salsa, and tango dancing for competitions with local university dance teams"
+
+$club_dues
+[1] 150</code></pre>
+</div>
+</div>
+</section>
+<section id="combining-lists-22" class="level2">
+<h2 class="anchored" data-anchor-id="combining-lists-22">Combining Lists 2/2</h2>
+<ul>
+<li><p>Combining lists using <code>c()</code> attaches lists to one another, end-to-end, to create a single list.We can use it to combine as many lists as we need to</p></li>
+<li><p>The uni_club_data list is confusing because some of the elements, like club_description, have the same name.</p></li>
+<li><p>We need a way to combine lists that preserves the organization of each list.</p></li>
+<li><p>Recall that lists can contain any type of data object, including other lists.</p></li>
+<li><p>Instead of combining elements of the three lists into a single list as you did using <code>c()</code>, you can use <code>list()</code> to create a new list of lists.</p></li>
+<li><p>Let’s create a list of lists, uni_club_list, to illustrate how this works.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>uni_club_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="at">rugby_club =</span>rugby_club,</span>
+<span id="cb54-2"><a href="#cb54-2" aria-hidden="true" tabindex="-1"></a>                      <span class="at">ballroom_dancing =</span> ballroom_dancing)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="output-4" class="level2">
+<h2 class="anchored" data-anchor-id="output-4">Output</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>uni_club_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$rugby_club
+$rugby_club$club_title
+[1] "Rugby Club"
+
+$rugby_club$club_description
+[1] "Plays matches against clubs from local universities"
+
+$rugby_club$club_dues
+[1] 80 60 70 90
+
+$rugby_club$`Member Year`
+       first_yr second_yr third_yr fourth_yr
+spring        6        11       14         3
+fall          8        12       13         2
+
+
+$ballroom_dancing
+$ballroom_dancing$club_title
+[1] "Ballroom Dancing Club"
+
+$ballroom_dancing$club_description
+[1] "Practices waltz, salsa, and tango dancing for competitions with local university dance teams"
+
+$ballroom_dancing$club_dues
+[1] 150</code></pre>
+</div>
+</div>
+</section>
+<section id="final-assignment" class="level2">
+<h2 class="anchored" data-anchor-id="final-assignment">Final Assignment</h2>
+<ul>
+<li><p>Create a new list, uni_clubs, that contains the following lists:</p>
+<ul>
+<li>rugby_club</li>
+<li>ballroom_dancing</li>
+<li>chess_club</li>
+</ul></li>
+<li><p>Instead of combining the list objects into a single list, create a list of lists by using the <code>list()</code> function.</p></li>
+<li><p>Write your code so that each list within uni_clubs is named. Keep the original list names.</p></li>
+</ul>
+</section>
+<section id="code-1" class="level2">
+<h2 class="anchored" data-anchor-id="code-1">Code</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>uni_clubs <span class="ot">&lt;-</span><span class="fu">list</span>( <span class="at">rugby_club =</span>rugby_club, </span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ballroom_dancing =</span> ballroom_dancing, </span>
+<span id="cb57-3"><a href="#cb57-3" aria-hidden="true" tabindex="-1"></a>                  <span class="at">chess_club =</span> chess_club)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Castory Munishi</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

@@ -23,7 +23,7 @@ editor: visual
 
 ```{r code1, message=FALSE, warning=FALSE, paged.print=TRUE}
 library(readr)
-recent_grads <- read_csv("data/recent_grads.csv")
+recent_grads <- read_csv("datasets/recent_grads.csv")
 #str(recent_grads)
 ```
 

@@ -1,9 +1,14 @@
 ---
 title: "Histogram , Bar and Box Plots"
 author: "Castory Munishi"
-date: "10/28/2020"
-output: ioslides_presentation
+date: 10/27/2020
+execute: 
+  echo: true
+  warning: false
+format: revealjs
+editor: visual
 ---
+
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
@@ -132,7 +137,7 @@ reviews <- full_join(First_two , Second_two ,
 + A dataframe can be saved as a csv file as given in the code below using `write.csv()` function
 
 ```{r code9}
-write.csv(reviews, file = "data/reviews.csv")
+#write.csv(reviews, file = "datasets/reviews.csv")
 ```
 
 ## Comparing Averages Among Rating Sites

@@ -1,7 +1,7 @@
 ---
 title: "Working with Vectors"
 author: "Castory Munishi"
-date: 03/04/2023
+date: 10/28/2020
 execute: 
   echo: true
   warning: false

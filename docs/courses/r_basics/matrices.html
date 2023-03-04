@@ -1,0 +1,852 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.313">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Castory Munishi">
+<meta name="dcterms.date" content="2020-10-28">
+
+<title>Working with Matrices</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<script src="../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../styles.css">
+</head>
+
+<body class="nav-sidebar docked">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Working with Matrices</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Home</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../index.html" class="sidebar-item-text sidebar-link">Castory Munishi</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Courses</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/r_basics.html" class="sidebar-item-text sidebar-link">R Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/r_advanced.html" class="sidebar-item-text sidebar-link">R Advanced</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/sir_modelling.html" class="sidebar-item-text sidebar-link">SIR Modelling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../courses/statistical_learning.html" class="sidebar-item-text sidebar-link">Statistical Learning</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Projects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/case_studies.html" class="sidebar-item-text sidebar-link">Case Studies</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/data_quest.html" class="sidebar-item-text sidebar-link">Data Quest Projects</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../projects/epi_projects.html" class="sidebar-item-text sidebar-link">Epidemiology Projects</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exercises</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercises/basic_exercises.html" class="sidebar-item-text sidebar-link">Basics Exercises</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercises/advanced_exercises.html" class="sidebar-item-text sidebar-link">Advanced Exercises</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../exercises/modelling_exercises.html" class="sidebar-item-text sidebar-link">Modelling Exercises</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Blog</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../blog/blog.html" class="sidebar-item-text sidebar-link">Blog Posts</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#matrices-two-dimensional-data-structures" id="toc-matrices-two-dimensional-data-structures" class="nav-link active" data-scroll-target="#matrices-two-dimensional-data-structures">1. Matrices : Two Dimensional Data Structures</a></li>
+  <li><a href="#combining-vectors-to-matrices" id="toc-combining-vectors-to-matrices" class="nav-link" data-scroll-target="#combining-vectors-to-matrices">2. Combining Vectors to Matrices</a></li>
+  <li><a href="#practice-1" id="toc-practice-1" class="nav-link" data-scroll-target="#practice-1">Practice 1</a></li>
+  <li><a href="#naming-matrix-rows-and-columns" id="toc-naming-matrix-rows-and-columns" class="nav-link" data-scroll-target="#naming-matrix-rows-and-columns">3. Naming Matrix Rows and Columns</a></li>
+  <li><a href="#example-naming-havard_stan-matrix" id="toc-example-naming-havard_stan-matrix" class="nav-link" data-scroll-target="#example-naming-havard_stan-matrix">Example : Naming havard_stan matrix</a>
+  <ul class="collapse">
+  <li><a href="#practice-2" id="toc-practice-2" class="nav-link" data-scroll-target="#practice-2">Practice 2</a></li>
+  </ul></li>
+  <li><a href="#finding-matrix-dimensions" id="toc-finding-matrix-dimensions" class="nav-link" data-scroll-target="#finding-matrix-dimensions">4. Finding Matrix Dimensions</a></li>
+  <li><a href="#dimensions" id="toc-dimensions" class="nav-link" data-scroll-target="#dimensions">Dimensions</a></li>
+  <li><a href="#practice-3" id="toc-practice-3" class="nav-link" data-scroll-target="#practice-3">Practice 3</a></li>
+  <li><a href="#adding-columns-to-matrices" id="toc-adding-columns-to-matrices" class="nav-link" data-scroll-target="#adding-columns-to-matrices">Adding Columns to Matrices</a></li>
+  <li><a href="#practice-4" id="toc-practice-4" class="nav-link" data-scroll-target="#practice-4">Practice 4</a></li>
+  <li><a href="#indexing-matrices-by-element" id="toc-indexing-matrices-by-element" class="nav-link" data-scroll-target="#indexing-matrices-by-element">Indexing Matrices By Element</a></li>
+  <li><a href="#indexing-multiple-elements" id="toc-indexing-multiple-elements" class="nav-link" data-scroll-target="#indexing-multiple-elements">Indexing Multiple Elements</a></li>
+  <li><a href="#practice-5" id="toc-practice-5" class="nav-link" data-scroll-target="#practice-5">Practice 5</a></li>
+  <li><a href="#subsetting-matrices-by-rows-and-columns" id="toc-subsetting-matrices-by-rows-and-columns" class="nav-link" data-scroll-target="#subsetting-matrices-by-rows-and-columns">Subsetting Matrices by Rows and Columns</a></li>
+  <li><a href="#indexing-multiple-rows-and-columns" id="toc-indexing-multiple-rows-and-columns" class="nav-link" data-scroll-target="#indexing-multiple-rows-and-columns">Indexing Multiple rows and columns</a></li>
+  <li><a href="#practice-6" id="toc-practice-6" class="nav-link" data-scroll-target="#practice-6">Practice 6</a></li>
+  <li><a href="#ranking-universities" id="toc-ranking-universities" class="nav-link" data-scroll-target="#ranking-universities">Ranking Universities</a></li>
+  <li><a href="#ranking-ii" id="toc-ranking-ii" class="nav-link" data-scroll-target="#ranking-ii">Ranking II</a></li>
+  <li><a href="#practice-7" id="toc-practice-7" class="nav-link" data-scroll-target="#practice-7">Practice 7</a></li>
+  <li><a href="#scoring-and-ranking-universities" id="toc-scoring-and-ranking-universities" class="nav-link" data-scroll-target="#scoring-and-ranking-universities">Scoring and Ranking Universities</a></li>
+  <li><a href="#practice-8" id="toc-practice-8" class="nav-link" data-scroll-target="#practice-8">Practice 8</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title d-none d-lg-block">Working with Matrices</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Castory Munishi </p>
+          </div>
+  </div>
+    
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">October 28, 2020</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+
+</header>
+
+<section id="matrices-two-dimensional-data-structures" class="level2">
+<h2 class="anchored" data-anchor-id="matrices-two-dimensional-data-structures">1. Matrices : Two Dimensional Data Structures</h2>
+<p>Let’s say you’ve been accepted a number of top universities. To decide which to attend, you want to find a way to score them using data on education quality, influence, cost, and other factors.</p>
+<p>We will use matrices to perform this analysis</p>
+<p>While vectors are one-dimensional, matrices are two-dimensional and consist of rows and columns in a rectangular layout.</p>
+<p>Matrices hold data of one type (such as numeric or logical).</p>
+<p>A matrix can contain as many rows and columns as needed</p>
+</section>
+<section id="combining-vectors-to-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="combining-vectors-to-matrices">2. Combining Vectors to Matrices</h2>
+<p>Below are vectors containing rankings for each university</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>harvard <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">3</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>stanford <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">2</span>,<span class="dv">9</span>,<span class="dv">3</span>,<span class="dv">4</span>,<span class="dv">10</span>)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>MIT <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">2</span>,<span class="dv">1</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>cambridge <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">6</span>,<span class="dv">13</span>,<span class="dv">48</span>)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>oxford <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">12</span>,<span class="dv">9</span>,<span class="dv">15</span>)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>columbia <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">13</span>,<span class="dv">13</span>,<span class="dv">12</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>To combine vectors into a matrix, we can use the function <code>rbind()</code></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>harv_stan <span class="ot">&lt;-</span> <span class="fu">rbind</span>(harvard, stanford)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="practice-1" class="level2">
+<h2 class="anchored" data-anchor-id="practice-1">Practice 1</h2>
+<p>We have vectors containing ranking data for each university. Create a matrix, named uni_matrix, from these vectors using the <code>rbind()</code> function:</p>
+<ul>
+<li>harvard</li>
+<li>stanford</li>
+<li>MIT</li>
+<li>cambridge</li>
+<li>oxford</li>
+<li>columbia</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>uni_matrix <span class="ot">&lt;-</span> <span class="fu">rbind</span>(harvard,stanford,MIT,cambridge,oxford,columbia)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="naming-matrix-rows-and-columns" class="level2">
+<h2 class="anchored" data-anchor-id="naming-matrix-rows-and-columns">3. Naming Matrix Rows and Columns</h2>
+<ul>
+<li><p>When we use the <code>rbind()</code> function to create a matrix from vectors with name attributes, the vector names are retained as row name attributes.</p></li>
+<li><p>However, our columns don’t have any name attributes associated with them.</p></li>
+<li><p>Adding names to rows or columns of a matrix is similar to naming elements of a vector.</p></li>
+<li><p>Attributes are not stored as data structures, you can not perform operations on them</p></li>
+<li><p>Since matrices have both rows and columns, there are separate functions for adding name attributes to each:</p>
+<pre><code>- Rows: `rownames()`
+- Columns: `colnames()`</code></pre></li>
+</ul>
+</section>
+<section id="example-naming-havard_stan-matrix" class="level2">
+<h2 class="anchored" data-anchor-id="example-naming-havard_stan-matrix">Example : Naming havard_stan matrix</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>harv_stan <span class="ot">&lt;-</span> <span class="fu">rbind</span>(harvard, stanford)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(harv_stan) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"world_rank"</span>,<span class="st">"quality_of_education"</span>,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>                         <span class="st">"influence"</span>,<span class="st">"broad_impact"</span>,<span class="st">"patents"</span>)</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(harv_stan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         world_rank quality_of_education influence broad_impact patents
+harvard           1                    1         1            1       3
+stanford          2                    9         3            4      10</code></pre>
+</div>
+</div>
+<section id="practice-2" class="level3">
+<h3 class="anchored" data-anchor-id="practice-2">Practice 2</h3>
+<ul>
+<li>Name the columns of uni_matrix using the categories vector.</li>
+</ul>
+</section>
+</section>
+<section id="finding-matrix-dimensions" class="level2">
+<h2 class="anchored" data-anchor-id="finding-matrix-dimensions">4. Finding Matrix Dimensions</h2>
+<ul>
+<li><p>In deciding which university to go, you need to know the tution fees</p></li>
+<li><p>The following vector contains tuition fees for the universities</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>tuition <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">43280</span>, <span class="dv">45000</span>, <span class="dv">45016</span>, <span class="dv">49350</span>, <span class="dv">28450</span>, <span class="dv">55161</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>we need to add the tuition vector to uni_matrix as a column. First, we should make sure that the new vector is of the right dimensions before combining it with our matrix.</p>
+</section>
+<section id="dimensions" class="level2">
+<h2 class="anchored" data-anchor-id="dimensions">Dimensions</h2>
+<ul>
+<li>The number of rows and columns in a matrix</li>
+<li>the function <code>dim()</code> returns dimensions</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(harv_stan)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 2 5</code></pre>
+</div>
+</div>
+<p>If we want to add the vector harv_stan_tuition as a new column to the harv_stan matrix, we’ll want the length of harv_stan_tuition to equal the number of rows in harv_stan</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dim(harv_stan)[1] == length(harv_stan_tuition)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="practice-3" class="level2">
+<h2 class="anchored" data-anchor-id="practice-3">Practice 3</h2>
+<p>Write an expression to return TRUE if the number of rows in uni_matrix is equal to the length of tuition.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>tuition <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">43280</span>,<span class="dv">45000</span>,<span class="dv">45016</span>,<span class="dv">49350</span>,<span class="dv">28450</span>,<span class="dv">55161</span>)</span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(uni_matrix)[<span class="dv">1</span>] <span class="sc">==</span> <span class="fu">length</span>(tuition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] TRUE</code></pre>
+</div>
+</div>
+</section>
+<section id="adding-columns-to-matrices" class="level2">
+<h2 class="anchored" data-anchor-id="adding-columns-to-matrices">Adding Columns to Matrices</h2>
+<ul>
+<li><p>Now that we have confirmed that the tuition vector is the same length as the number of rows in uni_matrix, we can add it to the matrix as a column.</p></li>
+<li><p>Earlier in this mission, we used the <code>rbind()</code> function to combine the university rankings vectors into a single matrix.</p></li>
+<li><p>The <code>rbind()</code> functions combines vectors or matrices by row.</p></li>
+<li><p>To add a vector to a matrix as a column or to join two matrices together by column, we’ll use the <code>cbind()</code> function. The <code>cbind()</code> function combines vectors or matrices by column.</p></li>
+<li><p>Example : Adding tution column</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co">#cbind(harv_stan, harv_stan_tuition)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="practice-4" class="level2">
+<h2 class="anchored" data-anchor-id="practice-4">Practice 4</h2>
+<ul>
+<li>Add the tuition vector as a new column to uni_matrix.</li>
+<li>Save the new matrix containing rankings and tuition for each university as complete_matrix.</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tuition <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">43280</span>, <span class="dv">45000</span>, <span class="dv">45016</span>, <span class="dv">49350</span>, <span class="dv">28450</span>, <span class="dv">55161</span>)</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>complete_matrix <span class="ot">&lt;-</span> <span class="fu">cbind</span>(uni_matrix, tuition)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="indexing-matrices-by-element" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-matrices-by-element">Indexing Matrices By Element</h2>
+<ul>
+<li><p>Matrices can be indeced either :</p>
+<ul>
+<li>Index to select specific values</li>
+<li>Index to select rows or columns</li>
+</ul></li>
+<li><p>Example: To index harv_stan to extract Stanford’s patent ranking, we can index by <code>row (2)</code> and <code>column (5)</code> positions:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>harv_stan[<span class="dv">2</span>, <span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<ul>
+<li><p>Notice that, as with the output of the <code>dim()</code> function, row always comes before column for indexing operations.</p></li>
+<li><p>Indexing can also be done using names instead of positions</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>harv_stan[<span class="st">"stanford"</span>, <span class="st">"patents"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+</section>
+<section id="indexing-multiple-elements" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-multiple-elements">Indexing Multiple Elements</h2>
+<ul>
+<li>Let’s index to select broad_impact and patents for Harvard and Stanford - The two columns are next to each other:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>harv_stan[<span class="dv">2</span>, <span class="dv">4</span><span class="sc">:</span><span class="dv">5</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>broad_impact      patents 
+           4           10 </code></pre>
+</div>
+</div>
+<ul>
+<li>We can also index matrices to extract elements that aren’t next to each other.</li>
+<li>Let’s say we’re interested in extracting world_rank and influence for Harvard and Stanford:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>harv_stan[<span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>), <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         world_rank influence
+harvard           1         1
+stanford          2         3</code></pre>
+</div>
+</div>
+<ul>
+<li>A similar operation can be done using column names</li>
+</ul>
+</section>
+<section id="practice-5" class="level2">
+<h2 class="anchored" data-anchor-id="practice-5">Practice 5</h2>
+<ul>
+<li><p>Index by name attributes to extract the following values from complete_matrix:</p>
+<pre><code>+ Oxford's influence rank . Store the output as oxford_influence
++ Cambridge's and Stanford's patents rank. Store the output as cam_stan_patents</code></pre></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>complete_matrix <span class="ot">&lt;-</span> <span class="fu">cbind</span>(uni_matrix, tuition)</span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a><span class="co">#oxford_influence &lt;- complete_matrix["oxford", "influence"]</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="co">#cam_stan_patents &lt;- complete_matrix[c("cambridge", "stanford"), "patents"]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="subsetting-matrices-by-rows-and-columns" class="level2">
+<h2 class="anchored" data-anchor-id="subsetting-matrices-by-rows-and-columns">Subsetting Matrices by Rows and Columns</h2>
+<ul>
+<li><p>An entire row or column can be extracted of which can be a single or multiple extraction</p></li>
+<li><p>For example, let’s index harv_stan to extract all the rankings for Harvard:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>harv_stan[<span class="st">"harvard"</span>,]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          world_rank quality_of_education            influence 
+                   1                    1                    1 
+        broad_impact              patents 
+                   1                    3 </code></pre>
+</div>
+</div>
+<ul>
+<li>If we want to select the quality of education rankings for each university in our matrix,</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>harv_stan[,<span class="st">"quality_of_education"</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> harvard stanford 
+       1        9 </code></pre>
+</div>
+</div>
+</section>
+<section id="indexing-multiple-rows-and-columns" class="level2">
+<h2 class="anchored" data-anchor-id="indexing-multiple-rows-and-columns">Indexing Multiple rows and columns</h2>
+<ul>
+<li>To select quality_of_education, influence, and broad_impact rankings for all universities, we would index by those columns:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>harv_stan[,<span class="fu">c</span>(<span class="st">"quality_of_education"</span>, <span class="st">"influence"</span>, <span class="st">"broad_impact"</span>)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>         quality_of_education influence broad_impact
+harvard                     1         1            1
+stanford                    9         3            4</code></pre>
+</div>
+</div>
+<ul>
+<li><p>Note that, since we selected columns, c(“quality_of_education”, “influence”, “broad_impact”) comes after the comma.</p></li>
+<li><p>If we were indexing to select multiple rows, they would come before the comma.</p></li>
+</ul>
+</section>
+<section id="practice-6" class="level2">
+<h2 class="anchored" data-anchor-id="practice-6">Practice 6</h2>
+<ul>
+<li><p>Index complete_matrix to extract the following:</p>
+<ul>
+<li>Oxford’s rankings. Store the output as oxford_rank</li>
+<li>Influence ranks for all universities. Store the output as influence</li>
+<li>All of Harvard’s and MIT’s rankings.Store the output as harv_mit_rank</li>
+<li>Influence and patents rankings for all universities.Store the output as influence_patents</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="co">#oxford_rank &lt;- complete_matrix["oxford",]</span></span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="co">#influence &lt;- complete_matrix[,"influence"]</span></span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a><span class="co">#harv_mit_rank &lt;- complete_matrix[c("harvard", "MIT"),]</span></span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a><span class="co">#influence_patents &lt;- complete_matrix[,c("influence", "patents")]</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="ranking-universities" class="level2">
+<h2 class="anchored" data-anchor-id="ranking-universities">Ranking Universities</h2>
+<ul>
+<li><p>Now that we’ve learned to combine vectors into matrices and to extract elements, let’s return to our initial goal: Analyzing the university ranking data to decide on a university to attend.</p></li>
+<li><p>To answer this question, let’s develop a score for each university that is an aggregate of the rankings and tuition information available in complete_matrix.</p></li>
+<li><p>We’ll rank the universities for each category we have data for: world_rank, quality_of_education, influence, broad_impact, patents, and tuition.</p></li>
+<li><p>Then, we can calculate a score for each university from the sum of its rankings.</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>complete_matrix</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                        tuition
+harvard   1  1  1  1  3   43280
+stanford  2  9  3  4 10   45000
+MIT       3  3  2  2  1   45016
+cambridge 4  2  6 13 48   49350
+oxford    5  7 12  9 15   28450
+columbia  6 13 13 12  4   55161</code></pre>
+</div>
+</div>
+</section>
+<section id="ranking-ii" class="level2">
+<h2 class="anchored" data-anchor-id="ranking-ii">Ranking II</h2>
+<ul>
+<li><p>We’ll use the <code>rank() f</code>unction, along with an expression that indexes the matrix, to specify the category we want to rank the universities by.</p></li>
+<li><p>The <code>rank()</code> function returns a vector of numeric values. For example, to rank universities by quality_of_education, we’d write:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="co">#rank(complete_matrix[,"quality_of_education"])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="practice-7" class="level2">
+<h2 class="anchored" data-anchor-id="practice-7">Practice 7</h2>
+<ul>
+<li><p>Use rank() to rank the universities for each of the following categories:</p>
+<ul>
+<li>world_rank , quality_of_education , influence , broad_impact , patents, tuition</li>
+</ul></li>
+<li><p>Save the ranking vectors generated for each category with the following names:</p>
+<ul>
+<li>world_rank_rank</li>
+<li>quality_of_education_rank</li>
+<li>influence_rank</li>
+<li>broad_impact_rank</li>
+<li>patents_rank</li>
+<li>tuition_rank</li>
+</ul></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co">#world_rank_rank &lt;- rank(complete_matrix[,"world_rank"])</span></span>
+<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="co">#quality_of_education_rank &lt;- rank(complete_matrix[,"quality_of_education"])</span></span>
+<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a><span class="co">#influence_rank &lt;- rank(complete_matrix[,"influence"])</span></span>
+<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a><span class="co">#broad_impact_rank &lt;- rank(complete_matrix[,"broad_impact"])</span></span>
+<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a><span class="co">#patents_rank &lt;- rank(complete_matrix[,"patents"])</span></span>
+<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a><span class="co">#tuition_rank &lt;- rank(complete_matrix[,"tuition"])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="scoring-and-ranking-universities" class="level2">
+<h2 class="anchored" data-anchor-id="scoring-and-ranking-universities">Scoring and Ranking Universities</h2>
+<ul>
+<li>Now that we’ve ranked the six universities by each category, let’s combine the vectors containing the ranks into a single matrix (ranks_matrix) using <code>rbind()</code>:</li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">#ranks_matrix &lt;- rbind(world_rank_rank, quality_of_education_rank, influence_rank, broad_impact_rank, patents_rank, tuition_rank)</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<ul>
+<li><p>Note that because we used <code>rbind()</code>, we combined the vectors by rows. The new matrix contains the vectors for each category stacked one on top of the other. Each university’s rankings are in a different column.</p></li>
+<li><p>To calculate an aggregate score for each university, let’s calculate the sum of its rankings in every category. We’ll use indexing to specify the university column we want to calculate a score for using <code>sum()</code>.</p></li>
+<li><p>For example, we’ll calculate the sum of the rankings for Harvard:</p></li>
+</ul>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(ranks_matrix[,"harvard"])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</section>
+<section id="practice-8" class="level2">
+<h2 class="anchored" data-anchor-id="practice-8">Practice 8</h2>
+<p>Calculate the sums of each university’s rankings in ranks_matrix:</p>
+<pre><code>+ harvard
++ stanford
++ MIT
++ cambridge
++ oxford
++ columbia</code></pre>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(ranks_matrix[,"harvard"])</span></span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(ranks_matrix[,"stanford"])</span></span>
+<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(ranks_matrix[,"MIT"])</span></span>
+<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(ranks_matrix[,"cambridge"])</span></span>
+<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(ranks_matrix[,"oxford"])</span></span>
+<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a><span class="co">#sum(ranks_matrix[,"columbia"])</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+
+
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Castory Munishi</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>
