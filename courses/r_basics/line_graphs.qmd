@@ -35,7 +35,7 @@ knitr::opts_chunk$set(echo = TRUE)
 + They've compiled data on United States citizen life expectancy by race and sex.
 
 ```{r code1, message=FALSE, warning=FALSE}
-library(readr)
+pacman::p_load(readr)
 life_expec <- read_csv("datasets/life_expec.csv")
 #str(life_expec)
 ```

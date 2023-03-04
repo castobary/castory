@@ -21,7 +21,10 @@ knitr::opts_chunk$set(echo = TRUE)
 + This will help to answer questions like  whether there are differences in life expectancy between men and women or for Americans of different races.
 
 ```{r code1, message=FALSE, warning=FALSE}
-library(readr)
+pacman::p_load(
+  readr,
+  dplyr,
+  ggplot2)
 life_expec <- read_csv("datasets/life_expec.csv")
 ```
 
@@ -42,7 +45,7 @@ life_expec <- read_csv("datasets/life_expec.csv")
 ## Solution
 
 ```{r code2, message=FALSE, warning=FALSE}
-library(dplyr)
+
  life_expec_sex <- life_expec %>%
   filter( Race == "All Races" & Sex != "Both Sexes" )
 head(life_expec_sex,5)
@@ -57,7 +60,7 @@ head(life_expec_sex,5)
 + If you create a line graph of the data using code similar to what you wrote in the previous mission
 
 ```{r code3, warning=FALSE}
-library(ggplot2)
+
 plot1 <- ggplot(data = life_expec_sex) +
   aes(x = Year, y = Avg_Life_Expec) +
   geom_line()

@@ -7,7 +7,7 @@ output: ioslides_presentation
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
-library(kableExtra)
+pacman::p_load(kableExtra)
 ```
 
 ## Background 1/2
@@ -30,9 +30,12 @@ library(kableExtra)
 + In this mission, you'll use this data and ggplot2 to visualize reviews from Metacritic, Fandango, Rotten Tomatoes, and IMDB to get a sense for differences in the way the four sites compute movie ratings.
 
 ```{r code1, message=FALSE, warning=FALSE}
-library("ggplot2")
-library("dplyr")
-library("readr")
+
+pacman::p_load(
+  ggplot2,
+  dplyr,
+  readr
+)
 movie_review <- read_csv("datasets/movie_reviews_2.csv")
 #spec(movie_review)
 ```
