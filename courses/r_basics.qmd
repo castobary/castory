@@ -7,5 +7,6 @@ This page contains a compilation of Advanced R Modules.
 Key Modules
 
 [Module 01: Introduction to Programming in R](r_basics/Introduction.qmd)
+[Module 02: Vectors](r_basics/vectors.qmd)
 
 

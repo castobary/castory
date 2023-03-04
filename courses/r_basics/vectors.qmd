@@ -1,7 +1,12 @@
 ---
-title: "Working With Vectors"
-output:
-  ioslides_presentation: default
+title: "Working with Vectors"
+author: "Castory Munishi"
+date: 03/04/2023
+execute: 
+  echo: true
+  warning: false
+format: revealjs
+editor: visual
 ---
 
 ```{r setup, include=FALSE}
