@@ -30,7 +30,7 @@ comments: false
 
 I’m an MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My masters research thesis is focused on Insurance data analysis and costing studies for NCD's Tanzania. I am also working as a data analyst in four intensive health care projects in Tanzania.  I also work with AppliedEpi Organization contributing to teaching R to public health practioners and scientists worldwide. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries. 
 
-On this site I keep a list of [r courses](courses.qmd), [study projects](projects.qmd), 
+On this site I keep a list of [r courses](courses/courses.qmd), [study projects](projects/projects.qmd), 
 and [my CV](www/cv.pdf), as well as a [technical blog](blog/blog.qmd).
 
 <p></p>

@@ -61,5 +61,14 @@
   },
   "blog/blog.qmd": {
     "blog.html": "5a63aa16"
+  },
+  "courses/courses.qmd": {
+    "courses.html": "37b7820e"
+  },
+  "exercises/exercises.qmd": {
+    "exercises.html": "227be52e"
+  },
+  "projects/projects.qmd": {
+    "projects.html": "1531d431"
   }
 }
