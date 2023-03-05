@@ -26,7 +26,7 @@ comments: false
 
 ## Bio
 
-I’m an MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My masters research thesis is focused on Insurance data analysis and costing studies for NCD's Tanzania. I am also working as a data analyst in four intensive health care projects in Tanzania.  I also work with AppliedEpi Organization contributing to teaching R to public health practioners and scientists worldwide. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries. 
+I am an ambitious MPhil Global Health candidate at the University of Bergen with a passion for applying data science to transform global health outcomes. My Masters focuses on epidemiology, health economics and priority setting equips me with the skills to tackle complex health challenges in resource-limited settings. I analyze insurance data and costs associated with non-communicable diseases in Tanzania for my research thesis. I also work as a data analyst for multiple health care projects and programs. I contribute to teaching R programming to epidemiologists, public health practitioners and scientists worldwide through the AppliedEpi Organization. Driven by my passion for data science, I believe it has the power to change the world and I'm excited to continue exploring how it can improve health outcomes in developing countries.
 
 On this site I keep a list of [r courses](courses/courses.qmd), [study projects](projects/projects.qmd), 
 [my CV](www/cv.pdf), and articles on technology and health in the [blog section](blog/blog.qmd).
@@ -48,9 +48,9 @@ Bachelor of Pharmacy | October 2016 - September 2020
 ## Areas of Interest & Consultancy
 
 1. Health Data Science | Modelling
-2. Global Health       | Digital Health
-3. Health Economics    | Priority Setting
-4. Pharmacy Practice   | Supply Chain
+2. Global Health &nbsp;&nbsp;&nbsp;| Digital Health
+3. Health Economics &nbsp;&nbsp;&nbsp;| Priority Setting
+4. Pharmacy Practice &nbsp;&nbsp;&nbsp;| Supply Chain
 
 ## Selected Manuscripts
 
