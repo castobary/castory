@@ -221,7 +221,7 @@
     "href": "courses/r_basics.html",
     "title": "R Basics",
     "section": "",
-    "text": "This page contains a compilation of Advanced R Modules.\nKey Modules\nModule 01: Introduction to Programming in R\nModule 02: Vectors\nModule 03: Matrices\nModule 04: Lists\nModule 05: Dataframes\nModule 06: Control Structures\nModule 07: Vectorized Functions\nModule 08: Custom Functions\nModule 09: Functionals\nModule 10: String Manipulation\nModule 11: Line Graphs\nModule 12: Multiple Line Graph\nModule 13: Histogram & Box Plots"
+    "text": "This page contains a compilation of Basic R Modules. The best way to learn is to use the slides while working actively on R studio on the examples provided by the slides. The slides contains guided exercises after introduction of a concept. R is a coding language. The best way to learn a coding language is by doing. So pick a module a get started right away.\nKey Modules\n\n\nTopic 01: Introduction to Programming in R\nTopic 02: Vectors\nTopic 03: Matrices\nTopic 04: Lists\nTopic 05: Dataframes\n\n\nTopic 06: Control Structures\nTopic 07: Vectorized Functions\nTopic 08: Custom Functions\nTopic 09: Functionals\nTopic 10: String Manipulation\n\n\nTopic 11: Line Graphs\nTopic 12: Multiple Line Graph\nTopic 13: Histogram & Box Plots"
   },
   {
     "objectID": "courses/sir_modelling.html",
@@ -3470,5 +3470,12 @@
     "title": "Creating Line Graphs",
     "section": "Introduction to Data Visualization",
     "text": "Introduction to Data Visualization\n\nIn the next couple of discussions we will examine data visualization in details\nWe will be working to identify patterns in our datasets\nThree important key issues :\n\n\nExplore the principles of data visualization.\nLearn to write R code to visualize trends in data in different ways.\nBuild intuition around when different types of visualizations will help you understand your data."
+  },
+  {
+    "objectID": "index.html#selected-works",
+    "href": "index.html#selected-works",
+    "title": "Castory Munishi",
+    "section": "Selected Works",
+    "text": "Selected Works\n\nApps\nHuruApp | Information on Substance Use Rehabilitation and Recovery | 2021\n\n\nPublications\nAssessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan. Sangeda, RZ, Kibona, J, Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/\nDrug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania. Efraim, J, Munishi,CM, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. https://doi.org/10.12688/F1000RESEARCH.110079.1"
   }
 ]
