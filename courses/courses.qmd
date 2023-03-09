@@ -2,6 +2,12 @@
 title: "Courses"
 ---
 
-Coming soon..............
+This website contains a set of four courses. Start an option based on your skills and start learning right away.
 
-Working hard to develop this section
+[1. R Basics Courses](r_basics.qmd)
+
+[2. R Advanced Course](r_advanced.qmd)
+
+[3. SIR Modelling Using R](sir_modelling.qmd)
+
+[4. Statistical Learning Using R](statistical_learning.qmd)
