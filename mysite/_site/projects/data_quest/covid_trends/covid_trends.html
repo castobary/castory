@@ -1,0 +1,1854 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.1.251">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Castory Munishi">
+<meta name="dcterms.date" content="2022-09-24">
+
+<title>Investigating COVID-19 Trends</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="../../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../../">
+<script src="../../../site_libs/quarto-html/quarto.js"></script>
+<script src="../../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<link href="../../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../../../styles.css">
+</head>
+
+<body class="nav-sidebar docked fullcontent">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title">Investigating COVID-19 Trends</h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation docked overflow-auto">
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Home</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../index.html" class="sidebar-item-text sidebar-link">Castory Munishi</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Courses</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../courses/r_basics.html" class="sidebar-item-text sidebar-link">R Basics</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../courses/sir_modelling.html" class="sidebar-item-text sidebar-link">SIR Modelling</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../courses/statistical_learning.html" class="sidebar-item-text sidebar-link">Statistical Learning</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Projects</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/case_studies.html" class="sidebar-item-text sidebar-link">Case Studies</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/data_quest.html" class="sidebar-item-text sidebar-link">Data Quest Projects</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../projects/epi_projects.html" class="sidebar-item-text sidebar-link">Epidemiology Projects</a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Exercises</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../exercises/basic_exercises.html" class="sidebar-item-text sidebar-link">Basics Exercises</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../exercises/advanced_exercises.html" class="sidebar-item-text sidebar-link">Advanced Exercises</a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../../exercises/modelling_exercises.html" class="sidebar-item-text sidebar-link">Modelling Exercises</a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<div class="quarto-about-jolla">
+  <img src="../../../www/avatar.JPG" class="about-image
+  round " style="height: 15em; width: 15em;">
+ <header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<div class="quarto-title-block"><div><h1 class="title d-none d-lg-block">Investigating COVID-19 Trends</h1><button type="button" class="btn code-tools-button dropdown-toggle" id="quarto-code-tools-menu" data-bs-toggle="dropdown" aria-expanded="false"><i class="bi"></i> Code</button><ul class="dropdown-menu dropdown-menu-end" aria-labelelledby="quarto-code-tools-menu"><li><a id="quarto-show-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Show All Code</a></li><li><a id="quarto-hide-all-code" class="dropdown-item" href="javascript:void(0)" role="button">Hide All Code</a></li><li><hr class="dropdown-divider"></li><li><a id="quarto-view-source" class="dropdown-item" href="javascript:void(0)" role="button">View Source</a></li></ul></div></div>
+</div>
+<div class="quarto-title-meta">
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Castory Munishi </p>
+          </div>
+  </div>
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">September 24, 2022</p>
+    </div>
+  </div>
+  </div>
+</header><main class="content" id="quarto-document-content">
+<section id="introduction" class="level2">
+<h2 data-anchor-id="introduction">Introduction</h2>
+<p>A pneumonia of unknown cause detected in Wuhan, China was first internationally reported from China on 31 December 2019. Today we know this virus as Coronavirus. COVID-19 which stands for COronaVIrus Disease is the disease caused by this virus. Since then, the world has been engaged in the fight against this pandemic. Several measures have therefore been taken to “flatten the curve”. We have consequently experienced social distancing and many people have passed away as well.</p>
+<p>In the solidarity to face this unprecedented global crisis, several organizations did not hesitate to share several datasets allowing the conduction of several kinds of analysis in order to understand this pandemic.</p>
+<p>Our analysis tries to provide an answer to this question: Which countries have had the highest number of positive cases against the number of tests?</p>
+<section id="information-about-the-dataset" class="level3">
+<h3 data-anchor-id="information-about-the-dataset">Information about the dataset</h3>
+<p>The dataset of our study contains daily &amp; cumulative number of COVID-19 tests conducted, number of positive, hospitalized, recovered &amp; death cases reported by country. In details here are the columns in the dataset:</p>
+<ul>
+<li><em>Date</em>: Date</li>
+<li><em>Continent_Name</em>: Continent names</li>
+<li><em>Two_Letter_Country_Code</em>: Country codes</li>
+<li><em>Country_Region</em>: Country names</li>
+<li><em>Province_State</em>: States/province names; value is All States when state/provincial level data is not available</li>
+<li><em>positive</em>: Cumulative number of positive cases reported.</li>
+<li><em>active</em>: Number of active cases on that <strong>day</strong>.</li>
+<li><em>hospitalized</em>: Cumulative number of hospitalized cases reported.</li>
+<li><em>hospitalizedCurr</em>: Number of actively hospitalized cases on that <strong>day</strong>.</li>
+<li><em>recovered</em>: Cumulative number of recovered cases reported.</li>
+<li><em>death</em>: Cumulative number of deaths reported.</li>
+<li><em>total_tested</em>: Cumulative number of tests conducted.</li>
+<li><em>daily_tested</em>: Number of tests conducted on the <strong>day</strong>; if daily data is unavailable, daily tested is averaged across number of days in between.</li>
+<li><em>daily_positive</em>: Number of positive cases reported on the <strong>day</strong>; if daily data is unavailable, daily positive is averaged across number of days in.</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># loading packages and loading the dataset</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  tidyverse,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  magrittr)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"covid19.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+</section>
+<section id="task-one" class="level2">
+<h2 data-anchor-id="task-one">Task One</h2>
+<ul>
+<li><p>Determine the dimension of the dataframe, covid_df by using the function <code>dim()</code></p></li>
+<li><p>Determine the column names of covid_df using the colnames() function.</p>
+<ul>
+<li>Store the result in the variable named vector_cols.</li>
+<li>Display the content of this variable.</li>
+<li>What data structure the vector_cols variable represents?</li>
+</ul></li>
+<li><p>Display the first few rows of the covid_df dataset using the function head()</p></li>
+<li><p>Display the summary of the covid_df dataset using the function glimpse() from the tibble package.</p>
+<ul>
+<li>Why is the glimpse() function useful when exploring a new dataset?</li>
+</ul></li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># dataframe dimensions</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10903    14</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># column names</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>vector_cols <span class="ot">&lt;-</span> <span class="fu">colnames</span>(ds)</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>vector_cols</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] "Date"                    "Continent_Name"         
+ [3] "Two_Letter_Country_Code" "Country_Region"         
+ [5] "Province_State"          "positive"               
+ [7] "hospitalized"            "recovered"              
+ [9] "death"                   "total_tested"           
+[11] "active"                  "hospitalizedCurr"       
+[13] "daily_tested"            "daily_positive"         </code></pre>
+</div>
+</div>
+<p>Displaying first ten six rows</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(ds,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 8%">
+<col style="width: 13%">
+<col style="width: 8%">
+<col style="width: 8%">
+<col style="width: 4%">
+<col style="width: 7%">
+<col style="width: 5%">
+<col style="width: 3%">
+<col style="width: 7%">
+<col style="width: 3%">
+<col style="width: 9%">
+<col style="width: 7%">
+<col style="width: 8%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Date</th>
+<th style="text-align: left;">Continent_Name</th>
+<th style="text-align: left;">Two_Letter_Country_Code</th>
+<th style="text-align: left;">Country_Region</th>
+<th style="text-align: left;">Province_State</th>
+<th style="text-align: right;">positive</th>
+<th style="text-align: right;">hospitalized</th>
+<th style="text-align: right;">recovered</th>
+<th style="text-align: right;">death</th>
+<th style="text-align: right;">total_tested</th>
+<th style="text-align: right;">active</th>
+<th style="text-align: right;">hospitalizedCurr</th>
+<th style="text-align: right;">daily_tested</th>
+<th style="text-align: right;">daily_positive</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">2020-01-20</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: left;">KR</td>
+<td style="text-align: left;">South Korea</td>
+<td style="text-align: left;">All States</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">4</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2020-01-22</td>
+<td style="text-align: left;">North America</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">All States</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2020-01-22</td>
+<td style="text-align: left;">North America</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Washington</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2020-01-23</td>
+<td style="text-align: left;">North America</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">All States</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">2020-01-23</td>
+<td style="text-align: left;">North America</td>
+<td style="text-align: left;">US</td>
+<td style="text-align: left;">United States</td>
+<td style="text-align: left;">Washington</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">2020-01-24</td>
+<td style="text-align: left;">Asia</td>
+<td style="text-align: left;">KR</td>
+<td style="text-align: left;">South Korea</td>
+<td style="text-align: left;">All States</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">5</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>The dataset structure</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ds)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>Rows: 10,903
+Columns: 14
+$ Date                    &lt;date&gt; 2020-01-20, 2020-01-22, 2020-01-22, 2020-01-2…
+$ Continent_Name          &lt;chr&gt; "Asia", "North America", "North America", "Nor…
+$ Two_Letter_Country_Code &lt;chr&gt; "KR", "US", "US", "US", "US", "KR", "US", "US"…
+$ Country_Region          &lt;chr&gt; "South Korea", "United States", "United States…
+$ Province_State          &lt;chr&gt; "All States", "All States", "Washington", "All…
+$ positive                &lt;dbl&gt; 1, 1, 1, 1, 1, 2, 1, 1, 4, 0, 3, 0, 0, 0, 0, 1…
+$ hospitalized            &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ recovered               &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ death                   &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ total_tested            &lt;dbl&gt; 4, 1, 1, 1, 1, 27, 1, 1, 0, 0, 0, 0, 0, 0, 0, …
+$ active                  &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ hospitalizedCurr        &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ daily_tested            &lt;dbl&gt; 0, 0, 0, 0, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…
+$ daily_positive          &lt;dbl&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0…</code></pre>
+</div>
+</div>
+<p>Since Province_state contains multiple levels of data, extract only the country-level data in order to not bias our analyses. To do so, we filter the data to keep only the data related to “All States”. “All States” represents the value of the column Province_State to specify that the COVID-19 data is only available at the country level. Feel free at the end of the project to come back to this step and do different kind of filtering, e.g., focus only on a country.</p>
+</section>
+<section id="task-two" class="level2">
+<h2 data-anchor-id="task-two">Task Two</h2>
+<ul>
+<li>Filter the rows related to “All States” from the Province_State column and remove the Province_State column from covid_df dataframe.
+<ul>
+<li>Store the result in df</li>
+</ul></li>
+<li>Why can we remove the Province_State column without losing information from our dataset?</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> ds <span class="sc">%&gt;%</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Province_State <span class="sc">%in%</span> <span class="st">"All States"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Province_State)</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 3781   13</code></pre>
+</div>
+</div>
+<p>Revisiting the description of the dataset columns above (not on the days), we can notice that there are columns that provide daily information and others that provide cumulative information.</p>
+<p>We should manage those cases (columns with cumulative and daily information) separately because we cannot work with both together. Actually, our analysis would be biased if we made the mistake of comparing a column containing cumulative data and another one containing only one-day data. This is another example of a situation that we want to know from the beginning of the project in order to better analyze our dataset.</p>
+</section>
+<section id="task-three" class="level2">
+<h2 data-anchor-id="task-three">Task Three</h2>
+<ul>
+<li>Select the following column, related to the daily measures, from the covid_df_all_states: Date, Country_Region, active, hospitalizedCurr, daily_tested, daily_positive.
+<ul>
+<li>Store the result in covid_df_all_states_daily.</li>
+</ul></li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>covid_df_all_states_daily <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date, Country_Region, active, hospitalizedCurr, daily_tested, daily_positive)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Our goal here is to extract the top ten cases countries data. Acting like a data scientist, at this step, these are the questions we are asking ourselves.</p>
+<ul>
+<li>How can we get the overall number of COVID-19 tested, positive, active and hospitalized cases by country since we currently have daily data?</li>
+<li>How do we then extract the top ten?</li>
+</ul>
+</section>
+<section id="task-four" class="level2">
+<h2 data-anchor-id="task-four">Task Four</h2>
+<ul>
+<li><p>Write code to summarize the covid_df_all_states_daily dataframe by computing the sum of the number of tested, positive, active and hospitalized cases grouped by the Country_Region column.</p>
+<ul>
+<li><p>Use the function <code>group_by()</code> to group rows by Country_Region column.</p></li>
+<li><p>Combine the function <code>summarize()</code> and the function <code>sum()</code> to compute the sum for each column.</p>
+<ul>
+<li>Assign the sum of daily_tested to the column name tested.</li>
+<li>Assign the sum of daily_positive to the column name positive.</li>
+<li>Assign the sum of active to the column name active.</li>
+<li>Assign the sum of hospitalizedCurr to the column name hospitalized.</li>
+<li>Arrange the tested column in descending order using the function <code>arrange()</code>.</li>
+</ul></li>
+</ul></li>
+<li><p>Store the result in the variable covid_df_all_states_daily_sum.</p></li>
+<li><p>Display this dataframe.</p></li>
+<li><p>Extract the top ten rows from the covid_df_all_states_daily_sum dataframe using the command head(covid_df_all_states_daily_sum, 10)</p></li>
+<li><p>Store the result in the variable named covid_top_10.</p></li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>covid_df_all_states_daily_sum <span class="ot">&lt;-</span> covid_df_all_states_daily <span class="sc">%&gt;%</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Country_Region) <span class="sc">%&gt;%</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">tested=</span><span class="fu">sum</span>(daily_tested),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">positive=</span><span class="fu">sum</span>(daily_positive),</span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">active=</span><span class="fu">sum</span>(active),</span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a>            <span class="at">hospitalized=</span><span class="fu">sum</span>(hospitalizedCurr)) <span class="sc">%&gt;%</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tested))</span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>covid_top_10 <span class="ot">&lt;-</span> <span class="fu">head</span>(covid_df_all_states_daily_sum, <span class="dv">10</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(covid_top_10)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Country_Region</th>
+<th style="text-align: right;">tested</th>
+<th style="text-align: right;">positive</th>
+<th style="text-align: right;">active</th>
+<th style="text-align: right;">hospitalized</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">17282363</td>
+<td style="text-align: right;">1877179</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Russia</td>
+<td style="text-align: right;">10542266</td>
+<td style="text-align: right;">406368</td>
+<td style="text-align: right;">6924890</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Italy</td>
+<td style="text-align: right;">4091291</td>
+<td style="text-align: right;">251710</td>
+<td style="text-align: right;">6202214</td>
+<td style="text-align: right;">1699003</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">India</td>
+<td style="text-align: right;">3692851</td>
+<td style="text-align: right;">60959</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Turkey</td>
+<td style="text-align: right;">2031192</td>
+<td style="text-align: right;">163941</td>
+<td style="text-align: right;">2980960</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Canada</td>
+<td style="text-align: right;">1654779</td>
+<td style="text-align: right;">90873</td>
+<td style="text-align: right;">56454</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: right;">1473672</td>
+<td style="text-align: right;">166909</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Australia</td>
+<td style="text-align: right;">1252900</td>
+<td style="text-align: right;">7200</td>
+<td style="text-align: right;">134586</td>
+<td style="text-align: right;">6655</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Peru</td>
+<td style="text-align: right;">976790</td>
+<td style="text-align: right;">59497</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Poland</td>
+<td style="text-align: right;">928256</td>
+<td style="text-align: right;">23987</td>
+<td style="text-align: right;">538203</td>
+<td style="text-align: right;">0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+<section id="task-five" class="level2">
+<h2 data-anchor-id="task-five">Task Five</h2>
+<ul>
+<li><p>Create the following vectors from the <code>covid_top_10</code> dataframe.</p></li>
+<li><p>Create the countries vector that contains the <code>Country_Region</code> column values. We can use <code>covid_top_10$Country_Region</code> to extract this column from the <code>covid_top_10</code> dataframe.</p></li>
+<li><p>Create the <code>tested_cases</code> vector that contains the tested column values.</p></li>
+<li><p>Create the <code>positive_cases</code> vector that contains the positive column values.</p></li>
+<li><p>Create the <code>active_cases</code> vector that contains the active column values.</p></li>
+<li><p>Create the <code>hospitalized_cases</code> vector that contains the hospitalized column values.</p></li>
+<li><p>Write code to name the previous vectors: <code>tested_cases</code>, <code>positive_cases</code>, <code>active_cases</code>, and <code>hospitalized_cases</code> with the country names’ vector countries using the function <code>names()</code>.</p></li>
+</ul>
+<p>Identify the top three positive against tested cases.</p>
+<ul>
+<li>Divide the vector <code>positive_cases</code> by the vector tested_cases using the operator /.</li>
+<li>Identify the top three ratio. You can do this operation manually by looking at the result of the division.</li>
+<li>Store the result as the named vector, <code>positive_tested_top_3</code>, where each country name is associated with its ratio.</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>countries <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Country_Region)</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>tested_cases <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(tested)</span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>positive_cases <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(positive)</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>active_cases <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(active)</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>hospitalized_cases <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(hospitalized)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Naming the vectors</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(positive_cases) <span class="ot">&lt;-</span> countries</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tested_cases) <span class="ot">&lt;-</span> countries</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(active_cases) <span class="ot">&lt;-</span> countries</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(hospitalized_cases) <span class="ot">&lt;-</span> countries</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>positive_cases</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> United States         Russia          Italy          India         Turkey 
+       1877179         406368         251710          60959         163941 
+        Canada United Kingdom      Australia           Peru         Poland 
+         90873         166909           7200          59497          23987 </code></pre>
+</div>
+</div>
+<p>Identifying top three active</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>ratio <span class="ot">&lt;-</span> positive_cases<span class="sc">/</span>tested_cases</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ratio)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>    Min.  1st Qu.   Median     Mean  3rd Qu.     Max. 
+0.005747 0.029017 0.057913 0.056658 0.075915 0.113261 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>positive_tested_top3 <span class="ot">&lt;-</span> ratio [ratio <span class="sc">&gt;</span> <span class="fu">quantile</span>(ratio,<span class="fl">0.75</span>)]</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>positive_tested_top3</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> United States         Turkey United Kingdom 
+    0.10861819     0.08071172     0.11326062 </code></pre>
+</div>
+</div>
+<p>Creating a matrix containing top three countries</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>top_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"Turkey"</span>, <span class="st">"United Kingdom"</span>)</span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>covid_mat <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fu">round</span>(positive_cases<span class="sc">/</span>tested_cases,<span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb20-5"><a href="#cb20-5" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(Country_Region <span class="sc">%in%</span> top_3) </span>
+<span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(covid_mat, <span class="at">caption =</span> <span class="st">"Top Three Countries with High Testing Rate"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<caption>Top Three Countries with High Testing Rate</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Country_Region</th>
+<th style="text-align: right;">tested</th>
+<th style="text-align: right;">positive</th>
+<th style="text-align: right;">active</th>
+<th style="text-align: right;">hospitalized</th>
+<th style="text-align: right;">ratio</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">United States</td>
+<td style="text-align: right;">17282363</td>
+<td style="text-align: right;">1877179</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.11</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Turkey</td>
+<td style="text-align: right;">2031192</td>
+<td style="text-align: right;">163941</td>
+<td style="text-align: right;">2980960</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.08</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">United Kingdom</td>
+<td style="text-align: right;">1473672</td>
+<td style="text-align: right;">166909</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0</td>
+<td style="text-align: right;">0.11</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Our goal is to put all our answers and datasets together. Since a list can contain several types of objects, we are able to store all the data of our project together. This allows us to have a global view from a single variable and the ability to export our results for other uses.</p>
+<p>On the previous steps we answered the following questions:</p>
+<ol type="1">
+<li><p>Which countries have had the highest number of deaths due to COVID-19?</p></li>
+<li><p>Which countries have had the highest number of positive cases against the number of tests?</p></li>
+</ol>
+<p>Our answers are stored in the variables positive_tested_top_3.</p>
+<p>To do so, we created several data structures such as:</p>
+<ul>
+<li>Dataframes: covid_df, covid_df_all_states, covid_df_all_states_daily, and covid_top_10.</li>
+<li>Matrix: covid_mat.</li>
+<li>Vectors: vector_cols and countries.</li>
+</ul>
+<p>Let’s create a list to store all our work in the same variable.</p>
+</section>
+<section id="task-six" class="level2">
+<h2 data-anchor-id="task-six">Task Six</h2>
+<p>Create a character variable named question that contains our question.</p>
+<ul>
+<li>question &lt;- “Which countries have had the highest number of positive cases against the number of tests?”</li>
+</ul>
+<p>Create a named vector that contains our answer with the following command:</p>
+<ul>
+<li>answer &lt;- c(“Positive tested cases” = positive_tested_top_3).</li>
+</ul>
+<p>Create a list that contains the data structures mentioned above.</p>
+<ul>
+<li>Create a list that contains the dataframes.</li>
+<li>Create a list that contains the matrices.</li>
+<li>Create a list that contains the vectors.</li>
+<li>Create a named list that contains the three previous lists associated with the data structure names.</li>
+<li>Store the result in data_structure_list.</li>
+</ul>
+<p>Create a list that contains the following lists: question, answer, and data_structure_list.</p>
+<ul>
+<li>Store the result in covid_analysis_list.</li>
+<li>Display the second element of this list.</li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>question <span class="ot">&lt;-</span> <span class="st">"Which countries have had the highest number of positive cases against the number of tests?"</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>answer <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Positive tested cases"</span> <span class="ot">=</span> positive_tested_top3)</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>dataframes <span class="ot">&lt;-</span> <span class="fu">list</span>( df, covid_df_all_states_daily,covid_df_all_states_daily_sum,covid_top_10)</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>matrix <span class="ot">&lt;-</span> <span class="fu">list</span>(covid_mat)</span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>vectors <span class="ot">&lt;-</span> <span class="fu">list</span>(vector_cols,countries)</span>
+<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a>data_structure_list<span class="ot">&lt;-</span> <span class="fu">list</span>(dataframes,matrix,vectors)</span>
+<span id="cb21-11"><a href="#cb21-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-12"><a href="#cb21-12" aria-hidden="true" tabindex="-1"></a>covid_analysis_list <span class="ot">&lt;-</span> <span class="fu">list</span>(question, answer, data_structure_list)</span>
+<span id="cb21-13"><a href="#cb21-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-14"><a href="#cb21-14" aria-hidden="true" tabindex="-1"></a>covid_analysis_list[<span class="dv">2</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>[[1]]
+ Positive tested cases.United States         Positive tested cases.Turkey 
+                          0.10861819                           0.08071172 
+Positive tested cases.United Kingdom 
+                          0.11326062 </code></pre>
+</div>
+</div>
+</section>
+<section id="task-seven" class="level2">
+<h2 data-anchor-id="task-seven">Task Seven</h2>
+<p>Our goal is to answer this question: Which countries have had the highest number of deaths due to COVID-19?.</p>
+<p>To answer this question, we can use visualization, which allows exploring all the data at once in order to have a global view of the data that is needed to answer the question.</p>
+<p>We will visualize the maximum number of deaths per country to identify the top three affected countries. We will use the dataset with the cumulative information, <code>covid_df_all_states_cumulative</code></p>
+<p>Select the following columns, related to the cumulative measures, from the covid_df_all_states dataframe: <code>Date</code>, <code>Continent_Name</code>, <code>Two_Letter_Country_Code</code>, <code>positive</code>, <code>hospitalized</code>, <code>recovered</code>, <code>death</code>, and <code>total_tested</code>.</p>
+<p>Store the result in <code>covid_df_all_states_cumulative</code>.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>covid_df_all_states_cumulative <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date,Continent_Name,Two_Letter_Country_Code,positive, hospitalized,recovered, death, total_tested)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Write code to summarize the <code>covid_df_all_states_cumulative</code> dataframe by computing the maximum of the death column grouped by <code>Continent_Name</code> and <code>Two_Letter_Country_Code</code> columns.</p>
+<ul>
+<li>Use the function <code>group_by()</code> to group row by Continent_Name and Two_Letter_Country_Code columns.</li>
+<li>Combine the function <code>summarize()</code> and the function <code>max()</code> to compute the maximum for each group.</li>
+<li>Filter the maximum value greater than 0 (<code>filter(max &gt; 0)</code>).</li>
+<li>Store the result in the variable covid_df_all_states_cumulative_max.</li>
+<li>Display this dataframe.</li>
+</ul>
+<p>Use the <code>qplot()</code> function of the ggplot2 package to visualize the maximum death for each country.</p>
+<ul>
+<li>The x-axis parameter x receives the column named Two_Letter_Country_Code.</li>
+<li>The y-axis parameter y receives the maximum death column computed in the previous question.<br>
+</li>
+<li>The color parameter receives the column named Continent_Name.</li>
+<li>The data parameter data receives the dataframe covid_df_all_states_cumulative_max.</li>
+</ul>
+<p>By examining the plot, identify the top three affected countries</p>
+<p>Store your findings as a character vector named death_top_3.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>covid_df_all_states_cumulative_max <span class="ot">&lt;-</span> covid_df_all_states_cumulative <span class="sc">%&gt;%</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Continent_Name, Two_Letter_Country_Code) <span class="sc">%&gt;%</span></span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">maximum=</span><span class="fu">max</span>(death)) <span class="sc">%&gt;%</span></span>
+<span id="cb24-4"><a href="#cb24-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(maximum <span class="sc">&gt;</span> <span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>`summarise()` has grouped output by 'Continent_Name'. You can override using
+the `.groups` argument.</code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">x =</span> Two_Letter_Country_Code,</span>
+<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> maximum,</span>
+<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> Continent_Name,</span>
+<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> covid_df_all_states_cumulative_max) <span class="sc">+</span></span>
+<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: `qplot()` was deprecated in ggplot2 3.4.0.</code></pre>
+</div>
+<div class="cell-output-display">
+<p><img src="covid_trends_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid" width="672"></p>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>death_top_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Belgium"</span>,<span class="st">"United Kingdom"</span>,<span class="st">"Italy"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="task-eight" class="level2">
+<h2 data-anchor-id="task-eight">Task Eight</h2>
+<p>Create a matrix combining the ranking for every measurement in the matrix covid_top_10.</p>
+<ul>
+<li>Compute the ranking for the tested_cases column, using the function <code>rank()</code>, by indexing this column with its name “tested_cases”. Store the result in the vector tested_cases_rank.</li>
+<li>Compute the ranking for the positive_cases column, using the function <code>rank()</code>, by indexing this column with its name “positive_cases”. Store the result in the vector positive_cases_rank.</li>
+<li>Compute the ranking for the active_cases column, using the function <code>rank()</code>, by indexing this column with its name “active_cases”. Store the result in the vector active_cases_rank.</li>
+<li>Compute the ranking for the hospitalized_cases column, using the function <code>rank()</code>, by indexing this column with its name “hospitalized_cases”. Store the result in the vector hospitalized_cases_rank.</li>
+</ul>
+<p>Use the function <code>rbind()</code> to combine these rankings vectors. Store the result in the matrix covid_mat_rank.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">331002651</span>, <span class="dv">145934462</span>, <span class="dv">60461826</span>, <span class="dv">1380004385</span>, <span class="dv">84339067</span>, </span>
+<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>         <span class="dv">37742154</span>, <span class="dv">67886011</span>, <span class="dv">25499884</span>, <span class="dv">32971854</span>, <span class="dv">37846611</span>)</span>
+<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>co_top_10 <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tested,positive,active,hospitalized) <span class="sc">%&gt;%</span></span>
+<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() </span>
+<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>co_top_10 <span class="ot">&lt;-</span> (co_top_10 <span class="sc">*</span> <span class="dv">100</span>)<span class="sc">/</span>pop </span>
+<span id="cb29-9"><a href="#cb29-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-10"><a href="#cb29-10" aria-hidden="true" tabindex="-1"></a>co_top_10 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(co_top_10)</span>
+<span id="cb29-11"><a href="#cb29-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-12"><a href="#cb29-12" aria-hidden="true" tabindex="-1"></a>tested_cases_rank <span class="ot">&lt;-</span> co_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb29-13"><a href="#cb29-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(tested) <span class="sc">%&gt;%</span></span>
+<span id="cb29-14"><a href="#cb29-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank</span>()</span>
+<span id="cb29-15"><a href="#cb29-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-16"><a href="#cb29-16" aria-hidden="true" tabindex="-1"></a>positive_cases_rank <span class="ot">&lt;-</span> co_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb29-17"><a href="#cb29-17" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(positive) <span class="sc">%&gt;%</span></span>
+<span id="cb29-18"><a href="#cb29-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank</span>()</span>
+<span id="cb29-19"><a href="#cb29-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-20"><a href="#cb29-20" aria-hidden="true" tabindex="-1"></a>active_cases_rank <span class="ot">&lt;-</span> co_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb29-21"><a href="#cb29-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(active) <span class="sc">%&gt;%</span></span>
+<span id="cb29-22"><a href="#cb29-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank</span>()</span>
+<span id="cb29-23"><a href="#cb29-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-24"><a href="#cb29-24" aria-hidden="true" tabindex="-1"></a>hospitalized_cases_rank <span class="ot">&lt;-</span> co_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb29-25"><a href="#cb29-25" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(hospitalized) <span class="sc">%&gt;%</span></span>
+<span id="cb29-26"><a href="#cb29-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank</span>()</span>
+<span id="cb29-27"><a href="#cb29-27" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-28"><a href="#cb29-28" aria-hidden="true" tabindex="-1"></a>covid_mat_rank <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tested_cases_rank,positive_cases_rank,</span>
+<span id="cb29-29"><a href="#cb29-29" aria-hidden="true" tabindex="-1"></a>                        active_cases_rank,hospitalized_cases_rank)</span>
+<span id="cb29-30"><a href="#cb29-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-31"><a href="#cb29-31" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(covid_mat_rank) <span class="ot">&lt;-</span> countries</span>
+<span id="cb29-32"><a href="#cb29-32" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb29-33"><a href="#cb29-33" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(covid_mat_rank)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output-display">
+<table class="table table-sm table-striped">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 12%">
+<col style="width: 6%">
+<col style="width: 5%">
+<col style="width: 5%">
+<col style="width: 6%">
+<col style="width: 6%">
+<col style="width: 13%">
+<col style="width: 9%">
+<col style="width: 4%">
+<col style="width: 6%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: right;">United States</th>
+<th style="text-align: right;">Russia</th>
+<th style="text-align: right;">Italy</th>
+<th style="text-align: right;">India</th>
+<th style="text-align: right;">Turkey</th>
+<th style="text-align: right;">Canada</th>
+<th style="text-align: right;">United Kingdom</th>
+<th style="text-align: right;">Australia</th>
+<th style="text-align: right;">Peru</th>
+<th style="text-align: right;">Poland</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">tested_cases_rank</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">3.0</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">2.0</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">positive_cases_rank</td>
+<td style="text-align: right;">10.0</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">1.0</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">6.0</td>
+<td style="text-align: right;">7.0</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">4.0</td>
+<td style="text-align: right;">3.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">active_cases_rank</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">9.0</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">8.0</td>
+<td style="text-align: right;">5.0</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">6</td>
+<td style="text-align: right;">2.5</td>
+<td style="text-align: right;">7.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">hospitalized_cases_rank</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">10</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">4.5</td>
+<td style="text-align: right;">4.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<p>Our goal is to answer these questions:</p>
+<ul>
+<li><p>Which countries have made the best effort in terms of the number of tests conducted related to their population?</p></li>
+<li><p>Which countries were ultimately the most and least affected related to their population</p></li>
+<li><p>Compute the aggregated rankings by summing the rows of the covid_mat_rank matrix.</p>
+<ul>
+<li>Compute the sum of the remaining rows using the colSums() function.</li>
+</ul></li>
+</ul>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>covid_mat_rank <span class="sc">%&lt;&gt;%</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colSums</span>()</span>
+<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>covid_mat_rank</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code> United States         Russia          Italy          India         Turkey 
+          25.0           31.5           38.0            9.0           20.5 
+        Canada United Kingdom      Australia           Peru         Poland 
+          21.5           16.0           24.0           16.0           18.5 </code></pre>
+</div>
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>best_effort_tested_cased_top_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Russia"</span>,<span class="st">"Italy"</span>,<span class="st">"United States"</span>)</span>
+<span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb32-3"><a href="#cb32-3" aria-hidden="true" tabindex="-1"></a>most_affected_country <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Italy"</span>)</span>
+<span id="cb32-4"><a href="#cb32-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb32-5"><a href="#cb32-5" aria-hidden="true" tabindex="-1"></a>least_affected_country <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Poland"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+</section>
+<section id="questions-addressed" class="level2">
+<h2 data-anchor-id="questions-addressed">Questions Addressed</h2>
+<ol type="1">
+<li><p>Which countries have had the highest number of deaths due to COVID-19?</p></li>
+<li><p>Which countries have had the highest number of positive cases against the number of tests?</p></li>
+<li><p>Which countries have made the best effort in terms of the number of COVID-19 tests conducted related to their population?</p></li>
+<li><p>Which countries were ultimately the most and least affected related to their population?</p></li>
+</ol>
+<blockquote class="blockquote">
+<p>Create a questions list having the above questions.</p>
+</blockquote>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>question_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"Which countries have had the highest number of deaths due to COVID-19?"</span>,</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Which countries have had the highest number of positive cases against the number of tests?"</span>,</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a><span class="st">"Which countries have made the best effort in terms of the number of COVID-19 tests conducted related to their population?"</span>,</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a><span class="st">"Which countries were ultimately the most and least affected related to their population?"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+</div>
+<p>Create a list that contains our answers with the following association:</p>
+<ul>
+<li><p><code>"Death" = death_top_3</code>,</p></li>
+<li><p><code>"Positive tested cases" = positive_tested_top_3,</code></p></li>
+<li><p><code>"The best effort in test related to the population" = best_effort_tested_cased_top_3</code>,</p></li>
+<li><p><code>"The most affected country related to its population" = most_affected_country,</code></p></li>
+<li><p><code>"The least affected country related to its population" = least_affected_country</code></p></li>
+<li><p>Store the result in <code>answer_list</code></p></li>
+</ul>
+<p>Display this list.</p>
+<div class="cell">
+<details>
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>answer_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"Death"</span> <span class="ot">=</span> death_top_3,</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a><span class="st">"Positive tested cases"</span> <span class="ot">=</span> positive_tested_top3,</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="st">"The best effort in test related to the population"</span> <span class="ot">=</span> best_effort_tested_cased_top_3,</span>
+<span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a><span class="st">"The most affected country related to its population"</span> <span class="ot">=</span> most_affected_country,</span>
+<span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="st">"The least affected country related to its population"</span> <span class="ot">=</span> least_affected_country)</span>
+<span id="cb34-6"><a href="#cb34-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb34-7"><a href="#cb34-7" aria-hidden="true" tabindex="-1"></a>answer_list</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+<div class="cell-output cell-output-stdout">
+<pre><code>$Death
+[1] "Belgium"        "United Kingdom" "Italy"         
+$`Positive tested cases`
+ United States         Turkey United Kingdom 
+    0.10861819     0.08071172     0.11326062 
+$`The best effort in test related to the population`
+[1] "Russia"        "Italy"         "United States"
+$`The most affected country related to its population`
+[1] "Italy"
+$`The least affected country related to its population`
+[1] "Poland"</code></pre>
+</div>
+</div>
+
+
+<!-- -->
+</section>
+</main> 
+  <hr class="about-sep">
+   <div class="about-links">
+  <a href="https://www.linkedin.com/in/castory-munishi/" class="about-link">
+     <span class="about-link-text">LinkedIn</span>
+  </a>
+  <a href="https://twitter.com/castobarym" class="about-link">
+    <i class="bi bi-twitter"></i>
+     <span class="about-link-text">Twitter</span>
+  </a>
+  <a href="https://github.com/castobary" class="about-link">
+    <i class="bi bi-github"></i>
+     <span class="about-link-text">GitHub</span>
+  </a>
+  <a href="mailto:castobary@gmail.com" class="about-link">
+     <span class="about-link-text">Email</span>
+  </a>
+  <a href="/blog.html" class="about-link">
+     <span class="about-link-text">Blog</span>
+  </a>
+  <a href="/cv.pdf" class="about-link">
+     <span class="about-link-text">CV</span>
+  </a>
+</div>
+</div>
+ <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    setTimeout(function() {
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  const viewSource = window.document.getElementById('quarto-view-source') ||
+                     window.document.getElementById('quarto-code-tools-source');
+  if (viewSource) {
+    const sourceUrl = viewSource.getAttribute("data-quarto-source-url");
+    viewSource.addEventListener("click", function(e) {
+      if (sourceUrl) {
+        // rstudio viewer pane
+        if (/\bcapabilities=\b/.test(window.location)) {
+          window.open(sourceUrl);
+        } else {
+          window.location.href = sourceUrl;
+        }
+      } else {
+        const modal = new bootstrap.Modal(document.getElementById('quarto-embedded-source-code-modal'));
+        modal.show();
+      }
+      return false;
+    });
+  }
+  function toggleCodeHandler(show) {
+    return function(e) {
+      const detailsSrc = window.document.querySelectorAll(".cell > details > .sourceCode");
+      for (let i=0; i<detailsSrc.length; i++) {
+        const details = detailsSrc[i].parentElement;
+        if (show) {
+          details.open = true;
+        } else {
+          details.removeAttribute("open");
+        }
+      }
+      const cellCodeDivs = window.document.querySelectorAll(".cell > .sourceCode");
+      const fromCls = show ? "hidden" : "unhidden";
+      const toCls = show ? "unhidden" : "hidden";
+      for (let i=0; i<cellCodeDivs.length; i++) {
+        const codeDiv = cellCodeDivs[i];
+        if (codeDiv.classList.contains(fromCls)) {
+          codeDiv.classList.remove(fromCls);
+          codeDiv.classList.add(toCls);
+        } 
+      }
+      return false;
+    }
+  }
+  const hideAllCode = window.document.getElementById("quarto-hide-all-code");
+  if (hideAllCode) {
+    hideAllCode.addEventListener("click", toggleCodeHandler(false));
+  }
+  const showAllCode = window.document.getElementById("quarto-show-all-code");
+  if (showAllCode) {
+    showAllCode.addEventListener("click", toggleCodeHandler(true));
+  }
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const cites = ref.parentNode.getAttribute('data-cites').split(' ');
+    tippyHover(ref, function() {
+      var popup = window.document.createElement('div');
+      cites.forEach(function(cite) {
+        var citeDiv = window.document.createElement('div');
+        citeDiv.classList.add('hanging-indent');
+        citeDiv.classList.add('csl-entry');
+        var biblioDiv = window.document.getElementById('ref-' + cite);
+        if (biblioDiv) {
+          citeDiv.innerHTML = biblioDiv.innerHTML;
+        }
+        popup.appendChild(citeDiv);
+      });
+      return popup.innerHTML;
+    });
+  }
+});
+</script><div class="modal fade" id="quarto-embedded-source-code-modal" tabindex="-1" aria-labelledby="quarto-embedded-source-code-modal-label" aria-hidden="true"><div class="modal-dialog modal-dialog-scrollable"><div class="modal-content"><div class="modal-header"><h5 class="modal-title" id="quarto-embedded-source-code-modal-label">Source Code</h5><button class="btn-close" data-bs-dismiss="modal"></button></div><div class="modal-body"><div class="">
+<div class="sourceCode" id="cb36" data-shortcodes="false"><pre class="sourceCode markdown code-with-copy"><code class="sourceCode markdown"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="an">title:</span><span class="co"> "Investigating COVID-19 Trends"</span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="an">author:</span><span class="co"> "Castory Munishi"</span></span>
+<span id="cb36-4"><a href="#cb36-4" aria-hidden="true" tabindex="-1"></a><span class="an">format:</span></span>
+<span id="cb36-5"><a href="#cb36-5" aria-hidden="true" tabindex="-1"></a><span class="co">  html:</span></span>
+<span id="cb36-6"><a href="#cb36-6" aria-hidden="true" tabindex="-1"></a><span class="co">    theme: united</span></span>
+<span id="cb36-7"><a href="#cb36-7" aria-hidden="true" tabindex="-1"></a><span class="co">    code-fold: true</span></span>
+<span id="cb36-8"><a href="#cb36-8" aria-hidden="true" tabindex="-1"></a><span class="co">    code-tools: true</span></span>
+<span id="cb36-9"><a href="#cb36-9" aria-hidden="true" tabindex="-1"></a><span class="an">date:</span><span class="co"> 09/24/2022</span></span>
+<span id="cb36-10"><a href="#cb36-10" aria-hidden="true" tabindex="-1"></a><span class="an">editor:</span><span class="co"> visual</span></span>
+<span id="cb36-11"><a href="#cb36-11" aria-hidden="true" tabindex="-1"></a><span class="an">toc:</span><span class="co"> true</span></span>
+<span id="cb36-12"><a href="#cb36-12" aria-hidden="true" tabindex="-1"></a><span class="co">---</span></span>
+<span id="cb36-13"><a href="#cb36-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-14"><a href="#cb36-14" aria-hidden="true" tabindex="-1"></a><span class="fu">## Introduction</span></span>
+<span id="cb36-15"><a href="#cb36-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-16"><a href="#cb36-16" aria-hidden="true" tabindex="-1"></a>A pneumonia of unknown cause detected in Wuhan, China was first internationally reported from China on 31 December 2019. Today we know this virus as Coronavirus. COVID-19 which stands for COronaVIrus Disease is the disease caused by this virus. Since then, the world has been engaged in the fight against this pandemic. Several measures have therefore been taken to "flatten the curve". We have consequently experienced social distancing and many people have passed away as well.</span>
+<span id="cb36-17"><a href="#cb36-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-18"><a href="#cb36-18" aria-hidden="true" tabindex="-1"></a>In the solidarity to face this unprecedented global crisis, several organizations did not hesitate to share several datasets allowing the conduction of several kinds of analysis in order to understand this pandemic.</span>
+<span id="cb36-19"><a href="#cb36-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-20"><a href="#cb36-20" aria-hidden="true" tabindex="-1"></a>Our analysis tries to provide an answer to this question: Which countries have had the highest number of positive cases against the number of tests?</span>
+<span id="cb36-21"><a href="#cb36-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-22"><a href="#cb36-22" aria-hidden="true" tabindex="-1"></a><span class="fu">### Information about the dataset</span></span>
+<span id="cb36-23"><a href="#cb36-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-24"><a href="#cb36-24" aria-hidden="true" tabindex="-1"></a>The dataset of our study contains daily &amp; cumulative number of COVID-19 tests conducted, number of positive, hospitalized, recovered &amp; death cases reported by country. In details here are the columns in the dataset:</span>
+<span id="cb36-25"><a href="#cb36-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-26"><a href="#cb36-26" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*Date*: Date</span>
+<span id="cb36-27"><a href="#cb36-27" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*Continent_Name*: Continent names</span>
+<span id="cb36-28"><a href="#cb36-28" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*Two_Letter_Country_Code*: Country codes</span>
+<span id="cb36-29"><a href="#cb36-29" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*Country_Region*: Country names</span>
+<span id="cb36-30"><a href="#cb36-30" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*Province_State*: States/province names; value is All States when state/provincial level data is not available</span>
+<span id="cb36-31"><a href="#cb36-31" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*positive*: Cumulative number of positive cases reported.</span>
+<span id="cb36-32"><a href="#cb36-32" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*active*: Number of active cases on that **day**.</span>
+<span id="cb36-33"><a href="#cb36-33" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*hospitalized*: Cumulative number of hospitalized cases reported.</span>
+<span id="cb36-34"><a href="#cb36-34" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*hospitalizedCurr*: Number of actively hospitalized cases on that **day**.</span>
+<span id="cb36-35"><a href="#cb36-35" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*recovered*: Cumulative number of recovered cases reported.</span>
+<span id="cb36-36"><a href="#cb36-36" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*death*: Cumulative number of deaths reported.</span>
+<span id="cb36-37"><a href="#cb36-37" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*total_tested*: Cumulative number of tests conducted.</span>
+<span id="cb36-38"><a href="#cb36-38" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*daily_tested*: Number of tests conducted on the **day**; if daily data is unavailable, daily tested is averaged across number of days in between.</span>
+<span id="cb36-39"><a href="#cb36-39" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>*daily_positive*: Number of positive cases reported on the **day**; if daily data is unavailable, daily positive is averaged across number of days in.</span>
+<span id="cb36-40"><a href="#cb36-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-43"><a href="#cb36-43" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-44"><a href="#cb36-44" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-45"><a href="#cb36-45" aria-hidden="true" tabindex="-1"></a><span class="co">#| message: false</span></span>
+<span id="cb36-46"><a href="#cb36-46" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-47"><a href="#cb36-47" aria-hidden="true" tabindex="-1"></a><span class="co"># loading packages and loading the dataset</span></span>
+<span id="cb36-48"><a href="#cb36-48" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb36-49"><a href="#cb36-49" aria-hidden="true" tabindex="-1"></a>  tidyverse,</span>
+<span id="cb36-50"><a href="#cb36-50" aria-hidden="true" tabindex="-1"></a>  magrittr)</span>
+<span id="cb36-51"><a href="#cb36-51" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-52"><a href="#cb36-52" aria-hidden="true" tabindex="-1"></a>ds <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"covid19.csv"</span>)</span>
+<span id="cb36-53"><a href="#cb36-53" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-54"><a href="#cb36-54" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-55"><a href="#cb36-55" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task One</span></span>
+<span id="cb36-56"><a href="#cb36-56" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-57"><a href="#cb36-57" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Determine the dimension of the dataframe, covid_df by using the function <span class="in">`dim()`</span></span>
+<span id="cb36-58"><a href="#cb36-58" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-59"><a href="#cb36-59" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Determine the column names of covid_df using the colnames() function.</span>
+<span id="cb36-60"><a href="#cb36-60" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-61"><a href="#cb36-61" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Store the result in the variable named vector_cols.</span>
+<span id="cb36-62"><a href="#cb36-62" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Display the content of this variable.</span>
+<span id="cb36-63"><a href="#cb36-63" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>What data structure the vector_cols variable represents?</span>
+<span id="cb36-64"><a href="#cb36-64" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-65"><a href="#cb36-65" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Display the first few rows of the covid_df dataset using the function head()</span>
+<span id="cb36-66"><a href="#cb36-66" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-67"><a href="#cb36-67" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Display the summary of the covid_df dataset using the function glimpse() from the tibble package.</span>
+<span id="cb36-68"><a href="#cb36-68" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-69"><a href="#cb36-69" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Why is the glimpse() function useful when exploring a new dataset?</span>
+<span id="cb36-70"><a href="#cb36-70" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-73"><a href="#cb36-73" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-74"><a href="#cb36-74" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-75"><a href="#cb36-75" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-76"><a href="#cb36-76" aria-hidden="true" tabindex="-1"></a><span class="co"># dataframe dimensions</span></span>
+<span id="cb36-77"><a href="#cb36-77" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(ds)</span>
+<span id="cb36-78"><a href="#cb36-78" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-79"><a href="#cb36-79" aria-hidden="true" tabindex="-1"></a><span class="co"># column names</span></span>
+<span id="cb36-80"><a href="#cb36-80" aria-hidden="true" tabindex="-1"></a>vector_cols <span class="ot">&lt;-</span> <span class="fu">colnames</span>(ds)</span>
+<span id="cb36-81"><a href="#cb36-81" aria-hidden="true" tabindex="-1"></a>vector_cols</span>
+<span id="cb36-82"><a href="#cb36-82" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-83"><a href="#cb36-83" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-84"><a href="#cb36-84" aria-hidden="true" tabindex="-1"></a>Displaying first ten six rows</span>
+<span id="cb36-85"><a href="#cb36-85" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-88"><a href="#cb36-88" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-89"><a href="#cb36-89" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-90"><a href="#cb36-90" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-91"><a href="#cb36-91" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(<span class="fu">head</span>(ds,<span class="dv">6</span>))</span>
+<span id="cb36-92"><a href="#cb36-92" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-93"><a href="#cb36-93" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-94"><a href="#cb36-94" aria-hidden="true" tabindex="-1"></a>The dataset structure</span>
+<span id="cb36-95"><a href="#cb36-95" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-98"><a href="#cb36-98" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-99"><a href="#cb36-99" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-100"><a href="#cb36-100" aria-hidden="true" tabindex="-1"></a><span class="co">#| output: true</span></span>
+<span id="cb36-101"><a href="#cb36-101" aria-hidden="true" tabindex="-1"></a><span class="fu">glimpse</span>(ds)</span>
+<span id="cb36-102"><a href="#cb36-102" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-103"><a href="#cb36-103" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-104"><a href="#cb36-104" aria-hidden="true" tabindex="-1"></a>Since Province_state contains multiple levels of data, extract only the country-level data in order to not bias our analyses. To do so, we filter the data to keep only the data related to "All States". "All States" represents the value of the column Province_State to specify that the COVID-19 data is only available at the country level. Feel free at the end of the project to come back to this step and do different kind of filtering, e.g., focus only on a country.</span>
+<span id="cb36-105"><a href="#cb36-105" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-106"><a href="#cb36-106" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task Two</span></span>
+<span id="cb36-107"><a href="#cb36-107" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-108"><a href="#cb36-108" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Filter the rows related to "All States" from the Province_State column and remove the Province_State column from covid_df dataframe.</span>
+<span id="cb36-109"><a href="#cb36-109" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Store the result in df</span>
+<span id="cb36-110"><a href="#cb36-110" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Why can we remove the Province_State column without losing information from our dataset?</span>
+<span id="cb36-111"><a href="#cb36-111" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-114"><a href="#cb36-114" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-115"><a href="#cb36-115" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-116"><a href="#cb36-116" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-117"><a href="#cb36-117" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> ds <span class="sc">%&gt;%</span></span>
+<span id="cb36-118"><a href="#cb36-118" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(Province_State <span class="sc">%in%</span> <span class="st">"All States"</span>) <span class="sc">%&gt;%</span></span>
+<span id="cb36-119"><a href="#cb36-119" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>Province_State)</span>
+<span id="cb36-120"><a href="#cb36-120" aria-hidden="true" tabindex="-1"></a><span class="fu">dim</span>(df)</span>
+<span id="cb36-121"><a href="#cb36-121" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-122"><a href="#cb36-122" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-123"><a href="#cb36-123" aria-hidden="true" tabindex="-1"></a>Revisiting the description of the dataset columns above (not on the days), we can notice that there are columns that provide daily information and others that provide cumulative information.</span>
+<span id="cb36-124"><a href="#cb36-124" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-125"><a href="#cb36-125" aria-hidden="true" tabindex="-1"></a>We should manage those cases (columns with cumulative and daily information) separately because we cannot work with both together. Actually, our analysis would be biased if we made the mistake of comparing a column containing cumulative data and another one containing only one-day data. This is another example of a situation that we want to know from the beginning of the project in order to better analyze our dataset.</span>
+<span id="cb36-126"><a href="#cb36-126" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-127"><a href="#cb36-127" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task Three</span></span>
+<span id="cb36-128"><a href="#cb36-128" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-129"><a href="#cb36-129" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Select the following column, related to the daily measures, from the covid_df_all_states: Date, Country_Region, active, hospitalizedCurr, daily_tested, daily_positive.</span>
+<span id="cb36-130"><a href="#cb36-130" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Store the result in covid_df_all_states_daily.</span>
+<span id="cb36-131"><a href="#cb36-131" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-134"><a href="#cb36-134" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-135"><a href="#cb36-135" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-136"><a href="#cb36-136" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-137"><a href="#cb36-137" aria-hidden="true" tabindex="-1"></a>covid_df_all_states_daily <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb36-138"><a href="#cb36-138" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date, Country_Region, active, hospitalizedCurr, daily_tested, daily_positive)</span>
+<span id="cb36-139"><a href="#cb36-139" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-140"><a href="#cb36-140" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-141"><a href="#cb36-141" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-142"><a href="#cb36-142" aria-hidden="true" tabindex="-1"></a>Our goal here is to extract the top ten cases countries data. Acting like a data scientist, at this step, these are the questions we are asking ourselves.</span>
+<span id="cb36-143"><a href="#cb36-143" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-144"><a href="#cb36-144" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How can we get the overall number of COVID-19 tested, positive, active and hospitalized cases by country since we currently have daily data?</span>
+<span id="cb36-145"><a href="#cb36-145" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>How do we then extract the top ten?</span>
+<span id="cb36-146"><a href="#cb36-146" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-147"><a href="#cb36-147" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task Four</span></span>
+<span id="cb36-148"><a href="#cb36-148" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-149"><a href="#cb36-149" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Write code to summarize the covid_df_all_states_daily dataframe by computing the sum of the number of tested, positive, active and hospitalized cases grouped by the Country_Region column.</span>
+<span id="cb36-150"><a href="#cb36-150" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-151"><a href="#cb36-151" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Use the function <span class="in">`group_by()`</span> to group rows by Country_Region column.</span>
+<span id="cb36-152"><a href="#cb36-152" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-153"><a href="#cb36-153" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Combine the function <span class="in">`summarize()`</span> and the function <span class="in">`sum()`</span> to compute the sum for each column.</span>
+<span id="cb36-154"><a href="#cb36-154" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-155"><a href="#cb36-155" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Assign the sum of daily_tested to the column name tested.</span>
+<span id="cb36-156"><a href="#cb36-156" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Assign the sum of daily_positive to the column name positive.</span>
+<span id="cb36-157"><a href="#cb36-157" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Assign the sum of active to the column name active.</span>
+<span id="cb36-158"><a href="#cb36-158" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Assign the sum of hospitalizedCurr to the column name hospitalized.</span>
+<span id="cb36-159"><a href="#cb36-159" aria-hidden="true" tabindex="-1"></a><span class="ss">        -   </span>Arrange the tested column in descending order using the function <span class="in">`arrange()`</span>.</span>
+<span id="cb36-160"><a href="#cb36-160" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-161"><a href="#cb36-161" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Store the result in the variable covid_df_all_states_daily_sum.</span>
+<span id="cb36-162"><a href="#cb36-162" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-163"><a href="#cb36-163" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Display this dataframe.</span>
+<span id="cb36-164"><a href="#cb36-164" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-165"><a href="#cb36-165" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Extract the top ten rows from the covid_df_all_states_daily_sum dataframe using the command head(covid_df_all_states_daily_sum, 10)</span>
+<span id="cb36-166"><a href="#cb36-166" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-167"><a href="#cb36-167" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Store the result in the variable named covid_top_10.</span>
+<span id="cb36-168"><a href="#cb36-168" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-171"><a href="#cb36-171" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-172"><a href="#cb36-172" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-173"><a href="#cb36-173" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-174"><a href="#cb36-174" aria-hidden="true" tabindex="-1"></a>covid_df_all_states_daily_sum <span class="ot">&lt;-</span> covid_df_all_states_daily <span class="sc">%&gt;%</span></span>
+<span id="cb36-175"><a href="#cb36-175" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Country_Region) <span class="sc">%&gt;%</span></span>
+<span id="cb36-176"><a href="#cb36-176" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">tested=</span><span class="fu">sum</span>(daily_tested),</span>
+<span id="cb36-177"><a href="#cb36-177" aria-hidden="true" tabindex="-1"></a>            <span class="at">positive=</span><span class="fu">sum</span>(daily_positive),</span>
+<span id="cb36-178"><a href="#cb36-178" aria-hidden="true" tabindex="-1"></a>            <span class="at">active=</span><span class="fu">sum</span>(active),</span>
+<span id="cb36-179"><a href="#cb36-179" aria-hidden="true" tabindex="-1"></a>            <span class="at">hospitalized=</span><span class="fu">sum</span>(hospitalizedCurr)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-180"><a href="#cb36-180" aria-hidden="true" tabindex="-1"></a>  <span class="fu">arrange</span>(<span class="fu">desc</span>(tested))</span>
+<span id="cb36-181"><a href="#cb36-181" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-182"><a href="#cb36-182" aria-hidden="true" tabindex="-1"></a>covid_top_10 <span class="ot">&lt;-</span> <span class="fu">head</span>(covid_df_all_states_daily_sum, <span class="dv">10</span>)</span>
+<span id="cb36-183"><a href="#cb36-183" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-184"><a href="#cb36-184" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(covid_top_10)</span>
+<span id="cb36-185"><a href="#cb36-185" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-186"><a href="#cb36-186" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-187"><a href="#cb36-187" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task Five</span></span>
+<span id="cb36-188"><a href="#cb36-188" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-189"><a href="#cb36-189" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create the following vectors from the <span class="in">`covid_top_10`</span> dataframe.</span>
+<span id="cb36-190"><a href="#cb36-190" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-191"><a href="#cb36-191" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create the countries vector that contains the <span class="in">`Country_Region`</span> column values. We can use <span class="in">`covid_top_10$Country_Region`</span> to extract this column from the <span class="in">`covid_top_10`</span> dataframe.</span>
+<span id="cb36-192"><a href="#cb36-192" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-193"><a href="#cb36-193" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create the <span class="in">`tested_cases`</span> vector that contains the tested column values.</span>
+<span id="cb36-194"><a href="#cb36-194" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-195"><a href="#cb36-195" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create the <span class="in">`positive_cases`</span> vector that contains the positive column values.</span>
+<span id="cb36-196"><a href="#cb36-196" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-197"><a href="#cb36-197" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create the <span class="in">`active_cases`</span> vector that contains the active column values.</span>
+<span id="cb36-198"><a href="#cb36-198" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-199"><a href="#cb36-199" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create the <span class="in">`hospitalized_cases`</span> vector that contains the hospitalized column values.</span>
+<span id="cb36-200"><a href="#cb36-200" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-201"><a href="#cb36-201" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Write code to name the previous vectors: <span class="in">`tested_cases`</span>, <span class="in">`positive_cases`</span>, <span class="in">`active_cases`</span>, and <span class="in">`hospitalized_cases`</span> with the country names' vector countries using the function <span class="in">`names()`</span>.</span>
+<span id="cb36-202"><a href="#cb36-202" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-203"><a href="#cb36-203" aria-hidden="true" tabindex="-1"></a>Identify the top three positive against tested cases.</span>
+<span id="cb36-204"><a href="#cb36-204" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-205"><a href="#cb36-205" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Divide the vector <span class="in">`positive_cases`</span> by the vector tested_cases using the operator /.</span>
+<span id="cb36-206"><a href="#cb36-206" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Identify the top three ratio. You can do this operation manually by looking at the result of the division.</span>
+<span id="cb36-207"><a href="#cb36-207" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Store the result as the named vector, <span class="in">`positive_tested_top_3`</span>, where each country name is associated with its ratio.</span>
+<span id="cb36-208"><a href="#cb36-208" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-211"><a href="#cb36-211" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-212"><a href="#cb36-212" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-213"><a href="#cb36-213" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-214"><a href="#cb36-214" aria-hidden="true" tabindex="-1"></a>countries <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-215"><a href="#cb36-215" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(Country_Region)</span>
+<span id="cb36-216"><a href="#cb36-216" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-217"><a href="#cb36-217" aria-hidden="true" tabindex="-1"></a>tested_cases <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-218"><a href="#cb36-218" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(tested)</span>
+<span id="cb36-219"><a href="#cb36-219" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-220"><a href="#cb36-220" aria-hidden="true" tabindex="-1"></a>positive_cases <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-221"><a href="#cb36-221" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(positive)</span>
+<span id="cb36-222"><a href="#cb36-222" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-223"><a href="#cb36-223" aria-hidden="true" tabindex="-1"></a>active_cases <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-224"><a href="#cb36-224" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(active)</span>
+<span id="cb36-225"><a href="#cb36-225" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-226"><a href="#cb36-226" aria-hidden="true" tabindex="-1"></a>hospitalized_cases <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-227"><a href="#cb36-227" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(hospitalized)</span>
+<span id="cb36-228"><a href="#cb36-228" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-229"><a href="#cb36-229" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-230"><a href="#cb36-230" aria-hidden="true" tabindex="-1"></a>Naming the vectors</span>
+<span id="cb36-231"><a href="#cb36-231" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-234"><a href="#cb36-234" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-235"><a href="#cb36-235" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(positive_cases) <span class="ot">&lt;-</span> countries</span>
+<span id="cb36-236"><a href="#cb36-236" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(tested_cases) <span class="ot">&lt;-</span> countries</span>
+<span id="cb36-237"><a href="#cb36-237" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(active_cases) <span class="ot">&lt;-</span> countries</span>
+<span id="cb36-238"><a href="#cb36-238" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(hospitalized_cases) <span class="ot">&lt;-</span> countries</span>
+<span id="cb36-239"><a href="#cb36-239" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-240"><a href="#cb36-240" aria-hidden="true" tabindex="-1"></a><span class="co"># Example</span></span>
+<span id="cb36-241"><a href="#cb36-241" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-242"><a href="#cb36-242" aria-hidden="true" tabindex="-1"></a>positive_cases</span>
+<span id="cb36-243"><a href="#cb36-243" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-244"><a href="#cb36-244" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-245"><a href="#cb36-245" aria-hidden="true" tabindex="-1"></a>Identifying top three active</span>
+<span id="cb36-246"><a href="#cb36-246" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-249"><a href="#cb36-249" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-250"><a href="#cb36-250" aria-hidden="true" tabindex="-1"></a>ratio <span class="ot">&lt;-</span> positive_cases<span class="sc">/</span>tested_cases</span>
+<span id="cb36-251"><a href="#cb36-251" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-252"><a href="#cb36-252" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(ratio)</span>
+<span id="cb36-253"><a href="#cb36-253" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-254"><a href="#cb36-254" aria-hidden="true" tabindex="-1"></a>positive_tested_top3 <span class="ot">&lt;-</span> ratio [ratio <span class="sc">&gt;</span> <span class="fu">quantile</span>(ratio,<span class="fl">0.75</span>)]</span>
+<span id="cb36-255"><a href="#cb36-255" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-256"><a href="#cb36-256" aria-hidden="true" tabindex="-1"></a>positive_tested_top3</span>
+<span id="cb36-257"><a href="#cb36-257" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-258"><a href="#cb36-258" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-259"><a href="#cb36-259" aria-hidden="true" tabindex="-1"></a>Creating a matrix containing top three countries</span>
+<span id="cb36-260"><a href="#cb36-260" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-263"><a href="#cb36-263" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-264"><a href="#cb36-264" aria-hidden="true" tabindex="-1"></a>top_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"United States"</span>, <span class="st">"Turkey"</span>, <span class="st">"United Kingdom"</span>)</span>
+<span id="cb36-265"><a href="#cb36-265" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-266"><a href="#cb36-266" aria-hidden="true" tabindex="-1"></a>covid_mat <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-267"><a href="#cb36-267" aria-hidden="true" tabindex="-1"></a>   <span class="fu">mutate</span>(<span class="at">ratio =</span> <span class="fu">round</span>(positive_cases<span class="sc">/</span>tested_cases,<span class="dv">2</span>)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-268"><a href="#cb36-268" aria-hidden="true" tabindex="-1"></a>   <span class="fu">filter</span>(Country_Region <span class="sc">%in%</span> top_3) </span>
+<span id="cb36-269"><a href="#cb36-269" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb36-270"><a href="#cb36-270" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(covid_mat, <span class="at">caption =</span> <span class="st">"Top Three Countries with High Testing Rate"</span>)</span>
+<span id="cb36-271"><a href="#cb36-271" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-272"><a href="#cb36-272" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-273"><a href="#cb36-273" aria-hidden="true" tabindex="-1"></a>Our goal is to put all our answers and datasets together. Since a list can contain several types of objects, we are able to store all the data of our project together. This allows us to have a global view from a single variable and the ability to export our results for other uses.</span>
+<span id="cb36-274"><a href="#cb36-274" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-275"><a href="#cb36-275" aria-hidden="true" tabindex="-1"></a>On the previous steps we answered the following questions:</span>
+<span id="cb36-276"><a href="#cb36-276" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-277"><a href="#cb36-277" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Which countries have had the highest number of deaths due to COVID-19?</span>
+<span id="cb36-278"><a href="#cb36-278" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-279"><a href="#cb36-279" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Which countries have had the highest number of positive cases against the number of tests?</span>
+<span id="cb36-280"><a href="#cb36-280" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-281"><a href="#cb36-281" aria-hidden="true" tabindex="-1"></a>Our answers are stored in the variables positive_tested_top_3.</span>
+<span id="cb36-282"><a href="#cb36-282" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-283"><a href="#cb36-283" aria-hidden="true" tabindex="-1"></a>To do so, we created several data structures such as:</span>
+<span id="cb36-284"><a href="#cb36-284" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-285"><a href="#cb36-285" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Dataframes: covid_df, covid_df_all_states, covid_df_all_states_daily, and covid_top_10.</span>
+<span id="cb36-286"><a href="#cb36-286" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Matrix: covid_mat.</span>
+<span id="cb36-287"><a href="#cb36-287" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Vectors: vector_cols and countries.</span>
+<span id="cb36-288"><a href="#cb36-288" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-289"><a href="#cb36-289" aria-hidden="true" tabindex="-1"></a>Let's create a list to store all our work in the same variable.</span>
+<span id="cb36-290"><a href="#cb36-290" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-291"><a href="#cb36-291" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task Six</span></span>
+<span id="cb36-292"><a href="#cb36-292" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-293"><a href="#cb36-293" aria-hidden="true" tabindex="-1"></a>Create a character variable named question that contains our question.</span>
+<span id="cb36-294"><a href="#cb36-294" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-295"><a href="#cb36-295" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>question <span class="sc">\&lt;</span>- "Which countries have had the highest number of positive cases against the number of tests?"</span>
+<span id="cb36-296"><a href="#cb36-296" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-297"><a href="#cb36-297" aria-hidden="true" tabindex="-1"></a>Create a named vector that contains our answer with the following command:</span>
+<span id="cb36-298"><a href="#cb36-298" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-299"><a href="#cb36-299" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>answer <span class="sc">\&lt;</span>- c("Positive tested cases" = positive_tested_top_3).</span>
+<span id="cb36-300"><a href="#cb36-300" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-301"><a href="#cb36-301" aria-hidden="true" tabindex="-1"></a>Create a list that contains the data structures mentioned above.</span>
+<span id="cb36-302"><a href="#cb36-302" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-303"><a href="#cb36-303" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create a list that contains the dataframes.</span>
+<span id="cb36-304"><a href="#cb36-304" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create a list that contains the matrices.</span>
+<span id="cb36-305"><a href="#cb36-305" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create a list that contains the vectors.</span>
+<span id="cb36-306"><a href="#cb36-306" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Create a named list that contains the three previous lists associated with the data structure names.</span>
+<span id="cb36-307"><a href="#cb36-307" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Store the result in data_structure_list.</span>
+<span id="cb36-308"><a href="#cb36-308" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-309"><a href="#cb36-309" aria-hidden="true" tabindex="-1"></a>Create a list that contains the following lists: question, answer, and data_structure_list.</span>
+<span id="cb36-310"><a href="#cb36-310" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-311"><a href="#cb36-311" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Store the result in covid_analysis_list.</span>
+<span id="cb36-312"><a href="#cb36-312" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Display the second element of this list.</span>
+<span id="cb36-313"><a href="#cb36-313" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-316"><a href="#cb36-316" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-317"><a href="#cb36-317" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-318"><a href="#cb36-318" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-319"><a href="#cb36-319" aria-hidden="true" tabindex="-1"></a>question <span class="ot">&lt;-</span> <span class="st">"Which countries have had the highest number of positive cases against the number of tests?"</span></span>
+<span id="cb36-320"><a href="#cb36-320" aria-hidden="true" tabindex="-1"></a>answer <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Positive tested cases"</span> <span class="ot">=</span> positive_tested_top3)</span>
+<span id="cb36-321"><a href="#cb36-321" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-322"><a href="#cb36-322" aria-hidden="true" tabindex="-1"></a>dataframes <span class="ot">&lt;-</span> <span class="fu">list</span>( df, covid_df_all_states_daily,covid_df_all_states_daily_sum,covid_top_10)</span>
+<span id="cb36-323"><a href="#cb36-323" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-324"><a href="#cb36-324" aria-hidden="true" tabindex="-1"></a>matrix <span class="ot">&lt;-</span> <span class="fu">list</span>(covid_mat)</span>
+<span id="cb36-325"><a href="#cb36-325" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-326"><a href="#cb36-326" aria-hidden="true" tabindex="-1"></a>vectors <span class="ot">&lt;-</span> <span class="fu">list</span>(vector_cols,countries)</span>
+<span id="cb36-327"><a href="#cb36-327" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-328"><a href="#cb36-328" aria-hidden="true" tabindex="-1"></a>data_structure_list<span class="ot">&lt;-</span> <span class="fu">list</span>(dataframes,matrix,vectors)</span>
+<span id="cb36-329"><a href="#cb36-329" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-330"><a href="#cb36-330" aria-hidden="true" tabindex="-1"></a>covid_analysis_list <span class="ot">&lt;-</span> <span class="fu">list</span>(question, answer, data_structure_list)</span>
+<span id="cb36-331"><a href="#cb36-331" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-332"><a href="#cb36-332" aria-hidden="true" tabindex="-1"></a>covid_analysis_list[<span class="dv">2</span>]</span>
+<span id="cb36-333"><a href="#cb36-333" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-334"><a href="#cb36-334" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-335"><a href="#cb36-335" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task Seven</span></span>
+<span id="cb36-336"><a href="#cb36-336" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-337"><a href="#cb36-337" aria-hidden="true" tabindex="-1"></a>Our goal is to answer this question: Which countries have had the highest number of deaths due to COVID-19?.</span>
+<span id="cb36-338"><a href="#cb36-338" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-339"><a href="#cb36-339" aria-hidden="true" tabindex="-1"></a>To answer this question, we can use visualization, which allows exploring all the data at once in order to have a global view of the data that is needed to answer the question.</span>
+<span id="cb36-340"><a href="#cb36-340" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-341"><a href="#cb36-341" aria-hidden="true" tabindex="-1"></a>We will visualize the maximum number of deaths per country to identify the top three affected countries. We will use the dataset with the cumulative information, <span class="in">`covid_df_all_states_cumulative`</span></span>
+<span id="cb36-342"><a href="#cb36-342" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-343"><a href="#cb36-343" aria-hidden="true" tabindex="-1"></a>Select the following columns, related to the cumulative measures, from the covid_df_all_states dataframe: <span class="in">`Date`</span>, <span class="in">`Continent_Name`</span>, <span class="in">`Two_Letter_Country_Code`</span>, <span class="in">`positive`</span>, <span class="in">`hospitalized`</span>, <span class="in">`recovered`</span>, <span class="in">`death`</span>, and <span class="in">`total_tested`</span>.</span>
+<span id="cb36-344"><a href="#cb36-344" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-345"><a href="#cb36-345" aria-hidden="true" tabindex="-1"></a>Store the result in <span class="in">`covid_df_all_states_cumulative`</span>.</span>
+<span id="cb36-346"><a href="#cb36-346" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-349"><a href="#cb36-349" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-350"><a href="#cb36-350" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-351"><a href="#cb36-351" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-352"><a href="#cb36-352" aria-hidden="true" tabindex="-1"></a>covid_df_all_states_cumulative <span class="ot">&lt;-</span> df <span class="sc">%&gt;%</span></span>
+<span id="cb36-353"><a href="#cb36-353" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(Date,Continent_Name,Two_Letter_Country_Code,positive, hospitalized,recovered, death, total_tested)</span>
+<span id="cb36-354"><a href="#cb36-354" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-355"><a href="#cb36-355" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-356"><a href="#cb36-356" aria-hidden="true" tabindex="-1"></a>Write code to summarize the <span class="in">`covid_df_all_states_cumulative`</span> dataframe by computing the maximum of the death column grouped by <span class="in">`Continent_Name`</span> and <span class="in">`Two_Letter_Country_Code`</span> columns.</span>
+<span id="cb36-357"><a href="#cb36-357" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-358"><a href="#cb36-358" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Use the function <span class="in">`group_by()`</span> to group row by Continent_Name and Two_Letter_Country_Code columns.</span>
+<span id="cb36-359"><a href="#cb36-359" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Combine the function <span class="in">`summarize()`</span> and the function <span class="in">`max()`</span> to compute the maximum for each group.</span>
+<span id="cb36-360"><a href="#cb36-360" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Filter the maximum value greater than 0 (<span class="in">`filter(max &gt; 0)`</span>).</span>
+<span id="cb36-361"><a href="#cb36-361" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Store the result in the variable covid_df_all_states_cumulative_max.</span>
+<span id="cb36-362"><a href="#cb36-362" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Display this dataframe.</span>
+<span id="cb36-363"><a href="#cb36-363" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-364"><a href="#cb36-364" aria-hidden="true" tabindex="-1"></a>Use the <span class="in">`qplot()`</span> function of the ggplot2 package to visualize the maximum death for each country.</span>
+<span id="cb36-365"><a href="#cb36-365" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-366"><a href="#cb36-366" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The x-axis parameter x receives the column named Two_Letter_Country_Code.</span>
+<span id="cb36-367"><a href="#cb36-367" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The y-axis parameter y receives the maximum death column computed in the previous question.\</span>
+<span id="cb36-368"><a href="#cb36-368" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The color parameter receives the column named Continent_Name.</span>
+<span id="cb36-369"><a href="#cb36-369" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>The data parameter data receives the dataframe covid_df_all_states_cumulative_max.</span>
+<span id="cb36-370"><a href="#cb36-370" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-371"><a href="#cb36-371" aria-hidden="true" tabindex="-1"></a>By examining the plot, identify the top three affected countries</span>
+<span id="cb36-372"><a href="#cb36-372" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-373"><a href="#cb36-373" aria-hidden="true" tabindex="-1"></a>Store your findings as a character vector named death_top_3.</span>
+<span id="cb36-374"><a href="#cb36-374" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-377"><a href="#cb36-377" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-378"><a href="#cb36-378" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-379"><a href="#cb36-379" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-380"><a href="#cb36-380" aria-hidden="true" tabindex="-1"></a>covid_df_all_states_cumulative_max <span class="ot">&lt;-</span> covid_df_all_states_cumulative <span class="sc">%&gt;%</span></span>
+<span id="cb36-381"><a href="#cb36-381" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(Continent_Name, Two_Letter_Country_Code) <span class="sc">%&gt;%</span></span>
+<span id="cb36-382"><a href="#cb36-382" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(<span class="at">maximum=</span><span class="fu">max</span>(death)) <span class="sc">%&gt;%</span></span>
+<span id="cb36-383"><a href="#cb36-383" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(maximum <span class="sc">&gt;</span> <span class="dv">0</span>)</span>
+<span id="cb36-384"><a href="#cb36-384" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-385"><a href="#cb36-385" aria-hidden="true" tabindex="-1"></a><span class="fu">qplot</span>(<span class="at">x =</span> Two_Letter_Country_Code,</span>
+<span id="cb36-386"><a href="#cb36-386" aria-hidden="true" tabindex="-1"></a>      <span class="at">y =</span> maximum,</span>
+<span id="cb36-387"><a href="#cb36-387" aria-hidden="true" tabindex="-1"></a>      <span class="at">color =</span> Continent_Name,</span>
+<span id="cb36-388"><a href="#cb36-388" aria-hidden="true" tabindex="-1"></a>      <span class="at">data =</span> covid_df_all_states_cumulative_max) <span class="sc">+</span></span>
+<span id="cb36-389"><a href="#cb36-389" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_classic</span>()</span>
+<span id="cb36-390"><a href="#cb36-390" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-391"><a href="#cb36-391" aria-hidden="true" tabindex="-1"></a>death_top_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Belgium"</span>,<span class="st">"United Kingdom"</span>,<span class="st">"Italy"</span>)</span>
+<span id="cb36-392"><a href="#cb36-392" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-393"><a href="#cb36-393" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-394"><a href="#cb36-394" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-395"><a href="#cb36-395" aria-hidden="true" tabindex="-1"></a><span class="fu">## Task Eight</span></span>
+<span id="cb36-396"><a href="#cb36-396" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-397"><a href="#cb36-397" aria-hidden="true" tabindex="-1"></a>Create a matrix combining the ranking for every measurement in the matrix covid_top_10.</span>
+<span id="cb36-398"><a href="#cb36-398" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-399"><a href="#cb36-399" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Compute the ranking for the tested_cases column, using the function <span class="in">`rank()`</span>, by indexing this column with its name "tested_cases". Store the result in the vector tested_cases_rank.</span>
+<span id="cb36-400"><a href="#cb36-400" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Compute the ranking for the positive_cases column, using the function <span class="in">`rank()`</span>, by indexing this column with its name "positive_cases". Store the result in the vector positive_cases_rank.</span>
+<span id="cb36-401"><a href="#cb36-401" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Compute the ranking for the active_cases column, using the function <span class="in">`rank()`</span>, by indexing this column with its name "active_cases". Store the result in the vector active_cases_rank.</span>
+<span id="cb36-402"><a href="#cb36-402" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Compute the ranking for the hospitalized_cases column, using the function <span class="in">`rank()`</span>, by indexing this column with its name "hospitalized_cases". Store the result in the vector hospitalized_cases_rank.</span>
+<span id="cb36-403"><a href="#cb36-403" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-404"><a href="#cb36-404" aria-hidden="true" tabindex="-1"></a>Use the function <span class="in">`rbind()`</span> to combine these rankings vectors. Store the result in the matrix covid_mat_rank.</span>
+<span id="cb36-405"><a href="#cb36-405" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-408"><a href="#cb36-408" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-409"><a href="#cb36-409" aria-hidden="true" tabindex="-1"></a>pop <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">331002651</span>, <span class="dv">145934462</span>, <span class="dv">60461826</span>, <span class="dv">1380004385</span>, <span class="dv">84339067</span>, </span>
+<span id="cb36-410"><a href="#cb36-410" aria-hidden="true" tabindex="-1"></a>         <span class="dv">37742154</span>, <span class="dv">67886011</span>, <span class="dv">25499884</span>, <span class="dv">32971854</span>, <span class="dv">37846611</span>)</span>
+<span id="cb36-411"><a href="#cb36-411" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-412"><a href="#cb36-412" aria-hidden="true" tabindex="-1"></a>co_top_10 <span class="ot">&lt;-</span> covid_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-413"><a href="#cb36-413" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(tested,positive,active,hospitalized) <span class="sc">%&gt;%</span></span>
+<span id="cb36-414"><a href="#cb36-414" aria-hidden="true" tabindex="-1"></a>  <span class="fu">as.matrix</span>() </span>
+<span id="cb36-415"><a href="#cb36-415" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-416"><a href="#cb36-416" aria-hidden="true" tabindex="-1"></a>co_top_10 <span class="ot">&lt;-</span> (co_top_10 <span class="sc">*</span> <span class="dv">100</span>)<span class="sc">/</span>pop </span>
+<span id="cb36-417"><a href="#cb36-417" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-418"><a href="#cb36-418" aria-hidden="true" tabindex="-1"></a>co_top_10 <span class="ot">&lt;-</span> <span class="fu">as_tibble</span>(co_top_10)</span>
+<span id="cb36-419"><a href="#cb36-419" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-420"><a href="#cb36-420" aria-hidden="true" tabindex="-1"></a>tested_cases_rank <span class="ot">&lt;-</span> co_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-421"><a href="#cb36-421" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(tested) <span class="sc">%&gt;%</span></span>
+<span id="cb36-422"><a href="#cb36-422" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank</span>()</span>
+<span id="cb36-423"><a href="#cb36-423" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-424"><a href="#cb36-424" aria-hidden="true" tabindex="-1"></a>positive_cases_rank <span class="ot">&lt;-</span> co_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-425"><a href="#cb36-425" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(positive) <span class="sc">%&gt;%</span></span>
+<span id="cb36-426"><a href="#cb36-426" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank</span>()</span>
+<span id="cb36-427"><a href="#cb36-427" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-428"><a href="#cb36-428" aria-hidden="true" tabindex="-1"></a>active_cases_rank <span class="ot">&lt;-</span> co_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-429"><a href="#cb36-429" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(active) <span class="sc">%&gt;%</span></span>
+<span id="cb36-430"><a href="#cb36-430" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank</span>()</span>
+<span id="cb36-431"><a href="#cb36-431" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-432"><a href="#cb36-432" aria-hidden="true" tabindex="-1"></a>hospitalized_cases_rank <span class="ot">&lt;-</span> co_top_10 <span class="sc">%&gt;%</span></span>
+<span id="cb36-433"><a href="#cb36-433" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(hospitalized) <span class="sc">%&gt;%</span></span>
+<span id="cb36-434"><a href="#cb36-434" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rank</span>()</span>
+<span id="cb36-435"><a href="#cb36-435" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-436"><a href="#cb36-436" aria-hidden="true" tabindex="-1"></a>covid_mat_rank <span class="ot">&lt;-</span> <span class="fu">rbind</span>(tested_cases_rank,positive_cases_rank,</span>
+<span id="cb36-437"><a href="#cb36-437" aria-hidden="true" tabindex="-1"></a>                        active_cases_rank,hospitalized_cases_rank)</span>
+<span id="cb36-438"><a href="#cb36-438" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-439"><a href="#cb36-439" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(covid_mat_rank) <span class="ot">&lt;-</span> countries</span>
+<span id="cb36-440"><a href="#cb36-440" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-441"><a href="#cb36-441" aria-hidden="true" tabindex="-1"></a>knitr<span class="sc">::</span><span class="fu">kable</span>(covid_mat_rank)</span>
+<span id="cb36-442"><a href="#cb36-442" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-443"><a href="#cb36-443" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-444"><a href="#cb36-444" aria-hidden="true" tabindex="-1"></a>Our goal is to answer these questions:</span>
+<span id="cb36-445"><a href="#cb36-445" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-446"><a href="#cb36-446" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Which countries have made the best effort in terms of the number of tests conducted related to their population?</span>
+<span id="cb36-447"><a href="#cb36-447" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-448"><a href="#cb36-448" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Which countries were ultimately the most and least affected related to their population</span>
+<span id="cb36-449"><a href="#cb36-449" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-450"><a href="#cb36-450" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Compute the aggregated rankings by summing the rows of the covid_mat_rank matrix.</span>
+<span id="cb36-451"><a href="#cb36-451" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-452"><a href="#cb36-452" aria-hidden="true" tabindex="-1"></a><span class="ss">    -   </span>Compute the sum of the remaining rows using the colSums() function.</span>
+<span id="cb36-453"><a href="#cb36-453" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-456"><a href="#cb36-456" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-457"><a href="#cb36-457" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-458"><a href="#cb36-458" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-459"><a href="#cb36-459" aria-hidden="true" tabindex="-1"></a>covid_mat_rank <span class="sc">%&lt;&gt;%</span></span>
+<span id="cb36-460"><a href="#cb36-460" aria-hidden="true" tabindex="-1"></a>  <span class="fu">colSums</span>()</span>
+<span id="cb36-461"><a href="#cb36-461" aria-hidden="true" tabindex="-1"></a>covid_mat_rank</span>
+<span id="cb36-462"><a href="#cb36-462" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-463"><a href="#cb36-463" aria-hidden="true" tabindex="-1"></a>best_effort_tested_cased_top_3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Russia"</span>,<span class="st">"Italy"</span>,<span class="st">"United States"</span>)</span>
+<span id="cb36-464"><a href="#cb36-464" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb36-465"><a href="#cb36-465" aria-hidden="true" tabindex="-1"></a>most_affected_country <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Italy"</span>)</span>
+<span id="cb36-466"><a href="#cb36-466" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-467"><a href="#cb36-467" aria-hidden="true" tabindex="-1"></a>least_affected_country <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"Poland"</span>)</span>
+<span id="cb36-468"><a href="#cb36-468" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-469"><a href="#cb36-469" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-470"><a href="#cb36-470" aria-hidden="true" tabindex="-1"></a><span class="fu">## Questions Addressed</span></span>
+<span id="cb36-471"><a href="#cb36-471" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-472"><a href="#cb36-472" aria-hidden="true" tabindex="-1"></a><span class="ss">1.  </span>Which countries have had the highest number of deaths due to COVID-19?</span>
+<span id="cb36-473"><a href="#cb36-473" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-474"><a href="#cb36-474" aria-hidden="true" tabindex="-1"></a><span class="ss">2.  </span>Which countries have had the highest number of positive cases against the number of tests?</span>
+<span id="cb36-475"><a href="#cb36-475" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-476"><a href="#cb36-476" aria-hidden="true" tabindex="-1"></a><span class="ss">3.  </span>Which countries have made the best effort in terms of the number of COVID-19 tests conducted related to their population?</span>
+<span id="cb36-477"><a href="#cb36-477" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-478"><a href="#cb36-478" aria-hidden="true" tabindex="-1"></a><span class="ss">4.  </span>Which countries were ultimately the most and least affected related to their population?</span>
+<span id="cb36-479"><a href="#cb36-479" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-480"><a href="#cb36-480" aria-hidden="true" tabindex="-1"></a><span class="at">&gt; Create a questions list having the above questions.</span></span>
+<span id="cb36-481"><a href="#cb36-481" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-484"><a href="#cb36-484" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-485"><a href="#cb36-485" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-486"><a href="#cb36-486" aria-hidden="true" tabindex="-1"></a>question_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"Which countries have had the highest number of deaths due to COVID-19?"</span>,</span>
+<span id="cb36-487"><a href="#cb36-487" aria-hidden="true" tabindex="-1"></a><span class="st">"Which countries have had the highest number of positive cases against the number of tests?"</span>,</span>
+<span id="cb36-488"><a href="#cb36-488" aria-hidden="true" tabindex="-1"></a><span class="st">"Which countries have made the best effort in terms of the number of COVID-19 tests conducted related to their population?"</span>,</span>
+<span id="cb36-489"><a href="#cb36-489" aria-hidden="true" tabindex="-1"></a><span class="st">"Which countries were ultimately the most and least affected related to their population?"</span>)</span>
+<span id="cb36-490"><a href="#cb36-490" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-491"><a href="#cb36-491" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+<span id="cb36-492"><a href="#cb36-492" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-493"><a href="#cb36-493" aria-hidden="true" tabindex="-1"></a>Create a list that contains our answers with the following association:</span>
+<span id="cb36-494"><a href="#cb36-494" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-495"><a href="#cb36-495" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`"Death" = death_top_3`</span>,</span>
+<span id="cb36-496"><a href="#cb36-496" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-497"><a href="#cb36-497" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`"Positive tested cases" = positive_tested_top_3,`</span></span>
+<span id="cb36-498"><a href="#cb36-498" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-499"><a href="#cb36-499" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`"The best effort in test related to the population" = best_effort_tested_cased_top_3`</span>,</span>
+<span id="cb36-500"><a href="#cb36-500" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-501"><a href="#cb36-501" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`"The most affected country related to its population" = most_affected_country,`</span></span>
+<span id="cb36-502"><a href="#cb36-502" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-503"><a href="#cb36-503" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span><span class="in">`"The least affected country related to its population" = least_affected_country`</span></span>
+<span id="cb36-504"><a href="#cb36-504" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-505"><a href="#cb36-505" aria-hidden="true" tabindex="-1"></a><span class="ss">-   </span>Store the result in <span class="in">`answer_list`</span></span>
+<span id="cb36-506"><a href="#cb36-506" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-507"><a href="#cb36-507" aria-hidden="true" tabindex="-1"></a>Display this list.</span>
+<span id="cb36-508"><a href="#cb36-508" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-511"><a href="#cb36-511" aria-hidden="true" tabindex="-1"></a><span class="in">```{r}</span></span>
+<span id="cb36-512"><a href="#cb36-512" aria-hidden="true" tabindex="-1"></a><span class="co">#| echo: true</span></span>
+<span id="cb36-513"><a href="#cb36-513" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-514"><a href="#cb36-514" aria-hidden="true" tabindex="-1"></a>answer_list <span class="ot">&lt;-</span> <span class="fu">list</span>(<span class="st">"Death"</span> <span class="ot">=</span> death_top_3,</span>
+<span id="cb36-515"><a href="#cb36-515" aria-hidden="true" tabindex="-1"></a><span class="st">"Positive tested cases"</span> <span class="ot">=</span> positive_tested_top3,</span>
+<span id="cb36-516"><a href="#cb36-516" aria-hidden="true" tabindex="-1"></a><span class="st">"The best effort in test related to the population"</span> <span class="ot">=</span> best_effort_tested_cased_top_3,</span>
+<span id="cb36-517"><a href="#cb36-517" aria-hidden="true" tabindex="-1"></a><span class="st">"The most affected country related to its population"</span> <span class="ot">=</span> most_affected_country,</span>
+<span id="cb36-518"><a href="#cb36-518" aria-hidden="true" tabindex="-1"></a><span class="st">"The least affected country related to its population"</span> <span class="ot">=</span> least_affected_country)</span>
+<span id="cb36-519"><a href="#cb36-519" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb36-520"><a href="#cb36-520" aria-hidden="true" tabindex="-1"></a>answer_list</span>
+<span id="cb36-521"><a href="#cb36-521" aria-hidden="true" tabindex="-1"></a><span class="in">```</span></span>
+</code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div></div></div></div></div>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Copyright 2023, Castory Munishi</div>   
+    <div class="nav-footer-right">
+      <ul class="footer-items list-unstyled">
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/">
+      <i class="bi bi-github" role="img">
+</i> 
+    </a>
+  </li>  
+    <li class="nav-item compact">
+    <a class="nav-link" href="https://twitter.com/">
+      <i class="bi bi-twitter" role="img">
+</i> 
+    </a>
+  </li>  
+</ul>
+    </div>
+  </div>
+</footer>
+
+
+
+</body></html>

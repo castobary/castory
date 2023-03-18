@@ -1,6 +1,6 @@
 ---
 title: "Investigating COVID-19 Trends"
-author: "Castory Munishi"
+author: "Kili Analytics"
 format:
   html:
     theme: united

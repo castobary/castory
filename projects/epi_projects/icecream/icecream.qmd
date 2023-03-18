@@ -1,0 +1,232 @@
+---
+title: "Case Control Study"
+subtitle: "Icecream and Typhoid Fever"
+author: "Kili Analytics"
+format:
+  html:
+    theme: united
+    code-fold: true
+    code-tools: true
+date: 03/18/2023
+editor: visual
+toc: true
+---
+
+
+## Introduction
+
+The dataset comes from a case control study matched for age.
+
++ The __cases__ were all 0-40 year olds with culture proven typhoid fever detected from a defined community through active surveillance Controls: within 48 hours of diagnosis of a case. 
+
++ The __controls__ were _AGE_MATCHED CONTROLS PER CASE_ who had not had typhoid fever up to that time, selected randomly from the same neighborhood Exposure and other characteristics measured by administering a questionnaire and making observations at home.
+
++ __Exposure__: eating ice cream in the 3-week period prior to date of onset of fever in the case.
+
+## Task 1 : Data Cleaning
+
+The data is currently coded with no variable labels, write a cleaning pipe chain to recode th variables as appropiate.
+
+```{r}
+pacman::p_load(
+             rio,       # data import and export
+             here,      # for file paths
+             forcats,   # for working with vectors
+             flextable, # for creating flextables
+             gtsummary, # for creating beatiful tables
+             survival,  # for conditional logistic regression
+             tidyverse)  # for data manipulation
+
+icecream <- import("icecream_typhoid.dta")
+```
+
+```{r}
+# a function for recoding binary variables
+
+binary_recode <- function(x){
+  x <- dplyr::if_else(x == 1, "Yes", "No")
+  forcats::fct_relevel(x, "No", "Yes")
+}
+
+binary <- c("icecream", "meal_out", "use_soap", "tap_water")
+
+```
+
+```{r}
+
+ic_clean <- icecream %>%
+  # recode binary columns to yes and no
+  mutate(across(.cols = all_of(binary),
+                ~binary_recode(.x))) %>%
+  mutate(age_cat = ifelse(age_cat == 1, "0-5", "6-39"),
+         age_cat = fct_relevel(age_cat,"0-5","6-39")) %>%
+  mutate(sex = ifelse(sex == 0, "Male", "Female"),
+         sex = fct_relevel(sex, "Male", "Female")) %>%
+  mutate(se_status = ifelse(se_status == 0, "Not Poor", "Poor"),
+         se_status = fct_relevel(se_status, "Not Poor", "Poor")) %>%
+  mutate(typhoid = ifelse(typhoid == 0, "Control",
+                          "Case"),
+         typhoid = fct_relevel(typhoid, "Control",
+                               "Case")) %>%
+  mutate(case_no = as.numeric(case_no))
+  
+```
+
+## Task 2: Descriptive Statistics
+
++ Generate a table of summary statistics for the socio-demographic and outcome variables
+
+```{r}
+ic_clean %>%
+  select(age_cat, sex,se_status ,all_of(binary),age, typhoid) %>%
+  tbl_summary(
+    by = typhoid,
+    label = list(
+      age_cat   ~ "Age Category",
+      sex       ~ "Sex",
+      se_status ~ "Socio-economic Status",
+      icecream  ~ "Used Icecream (Yes)",
+      meal_out  ~ "Had a Meal out (Yes)",
+      use_soap  ~ "Used Soap (Yes)",
+      tap_water ~ "Used Tapwater (Yes)",
+      age       ~ "Participant Age (Years)"
+    ),
+    digits = everything() ~ c(0,1)) %>%
+  add_p() %>%
+  add_overall() %>% 
+  bold_labels() %>%
+  as_flex_table()
+
+```
+
++ Table 1 shows that there were 89 cases and 178 control controls in this study. The study was matched by 2 controls per case. For both cases and controls majority of the participants were in the age group 6 - 39, 68.5% and 71.9% respectively. For both majority of were males. Most of the cases 73% were poor. 
+
+## Task 3: Inferential Statistics
+
+1. Run BIVARIATE UNCONDITIONAL LOGISTIC REGRESSION with icecream as independent variable and typhoid as dependent variable using the function "logit".
+
++ Interpret the results and discuss why this analysis is not valid.
+
+```{r}
+model1 <- glm(typhoid ~ icecream, data = ic_clean ,family = binomial(link = 'logit'))
+
+model1 %>%
+  tbl_regression(
+    exponentiate = TRUE,
+    label = list(
+      icecream ~ "Had Icecream"
+    )) %>%
+  as_flex_table()
+
+```
+
+ 
+> Taking icecream has 2.2 the odds of getting typhoid 
+as those who do not take icecream. The analysis is not valid because this is individually matched case control study and hence the appropriate regression method is `conditional logistic regression` 
+
+2. Run BIVARIATE CONDITIONAL LOGISTIC REGRESSION with typhoid as dependent variable and icecream, then sex and then se_status as independent variables using the function "clogit".  Use the variable !case_no) to identify pairs of cases and controls. 
+
++ `as.numeric()` is used to convert the outcome variable into a numeric from a factor variable. The `clogit()` uses `coxph()` and `surv()` under the hood which when an outcome variable like typhoid is coded as factor `surv()` assumes there are multiple endpoints (the multi-state models mentioned in the error), so it needs an id label for each row to know which outcomes to assign to which participants, but changing the outcome to numeric will not need to any errors and thus give the expected output.
+
+```{r}
+model2 <- clogit(as.numeric(typhoid) ~ icecream + strata(case_no),
+                 data = ic_clean)
+
+model2 %>%
+  tbl_regression(
+    exponentiate = TRUE,
+    label = list(
+      icecream ~ "Had Icecream"
+    )) %>%
+  as_flex_table()
+
+```
+
+> Taking icecream has 2.94 times higher odds of getting typhoid
+
+```{r}
+model3 <- clogit(as.numeric(typhoid) ~ sex + strata(case_no), 
+                 data = ic_clean)
+
+model3 %>%
+  tbl_regression(
+    exponentiate = TRUE,
+    label = list(
+       sex ~ "Sex"
+    )) %>%
+  as_flex_table()
+
+```
+
+> Females have 2.34 higher odds of getting typhoid as compared to males
+
+```{r}
+model4 <- clogit(as.numeric(typhoid) ~ se_status + strata(case_no), 
+                 data = ic_clean)
+
+model4 %>%
+  tbl_regression(
+    exponentiate = TRUE,
+    label = list(
+       se_status ~ "Socio-economic Status"
+    )) %>%
+  as_flex_table()
+
+```
+
+> People with low socio-economic status have 6.18 times the odds of having typhoid.
+
+
+3. Run MULTIVARIABLE CONDITIONAL LOGISTIC REGRESSION with typhoid as dependent variable and
+icecream, sex, se_status, meal_out, use_soap and tap_water as independent variables.
+
+```{r}
+model5 <- clogit(as.numeric(typhoid) ~ icecream + sex + se_status + meal_out + use_soap + tap_water + strata(case_no),
+                 data = ic_clean)
+
+model5 <- model5 %>%
+  tbl_regression(
+    exponentiate = TRUE,
+    label = list(
+       icecream ~ "Had Icecream",
+       se_status ~ "Socio-economic Status",
+       sex ~ "Sex",
+       meal_out ~ "Had a Meal Out",
+       use_soap ~ "Used Soap",
+       tap_water ~ "Used tapwater"
+    )) %>%
+  bold_p() %>%
+  bold_labels() %>%
+  add_n()
+  
+model5 %>%
+   as_flex_table()
+
+```
+
+> The analysis shows that having a being poor increases the odds of getting typhoid, as poor participants had `15.9 95% CI (5.28 - 47.9)` times the odds of getting typhoid as those those who are not poor. Also, taking icecream increased the risk of getting typhoid as participants who had icecream had `11.2 95% CI (3.31 - 38.2)` times the odds of getting typhoid as compared to those who did not take icecream.
+
+Make a forest plot to show the results
+
+```{r}
+model_tidy <- model5$model_obj %>% #To access the underlying data of the gtsummary object
+  broom::tidy(exponentiate = TRUE, conf.int = TRUE) 
+
+```
+
+
+```{r}
+model_tidy %>%
+  ggplot(aes(x = estimate,             #This is our central estimate of the variable
+             y = term,                 #This is the name of our variable
+             xmin = conf.low,          #The minimum of our 95% confidence interval
+             xmax = conf.high)) +         #The maximum of our 95% confidence interval
+  geom_point(color = "#6655CC") +                       #Plot a point at y
+  geom_errorbar(width = 0.1, color = "#6655CC") +                    #Plot our errorbars at xmin and xmax
+  geom_vline(xintercept = 1, linetype = "dashed", color = "#6655CC") + # adding in a dashed line
+  theme_classic() + #customising the output
+  labs(x = "Odds Ratio",
+       y = "Variable",
+       title = "Odds ratio estimates") # clean up the labels
+
+```

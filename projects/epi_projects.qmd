@@ -5,3 +5,5 @@ title: "Epidemiology Projects"
 Sample of Epidemiology Data Analysis
 
 [1. Analysis COVID-19 Trends](epi_projects/covid_trends/covid_trends.qmd)
+
+[2. Analysis of Typhoid Case Control Study](epi_projects/icecream/icecream.qmd)
