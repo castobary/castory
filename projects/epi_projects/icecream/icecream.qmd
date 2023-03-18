@@ -40,6 +40,8 @@ pacman::p_load(
 icecream <- import("icecream_typhoid.dta")
 ```
 
+Creating custom functions
+
 ```{r}
 # a function for recoding binary variables
 
@@ -52,6 +54,7 @@ binary <- c("icecream", "meal_out", "use_soap", "tap_water")
 
 ```
 
+The cleaning pipe chain
 ```{r}
 
 ic_clean <- icecream %>%
