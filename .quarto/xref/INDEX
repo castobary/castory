@@ -142,5 +142,8 @@
   },
   "projects/epi_projects/icecream/icecream.qmd": {
     "icecream.html": "aaf5432b"
+  },
+  "courses/stats_learn/intro.qmd": {
+    "intro.html": "a57b4db3"
   }
 }

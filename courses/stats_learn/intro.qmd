@@ -1,0 +1,105 @@
+---
+title: "Introduction to Statistical Learning"
+author: "Kili Analytics"
+date: "04/11/2023"
+execute: 
+  echo: true
+  warning: false
+format: revealjs
+editor: visual
+---
+## An Overview of Statistical Learning
+
+*Statistical learning* refers to a vast set of tools for understanding data. These tools can be classified as supervised or unsupervised. 
+
++ *supervised statistical learning* involves **building a statistical model for predicting**, or estimating, an output based on one or more inputs.
+   
+    + Problems of this nature occur in fields as diverse as business, medicine, astrophysics, and public policy. 
+    
++ *unsupervised statistical learning*, there are inputs but no supervising output; nevertheless we can learn relationships and structure from such data.
+
+## Applications of Statistical Learning
+
+-   Election Prediction Example: Fivethirty Eight
+-   Identify Risk factors for Prostate Cancer
+-   Predict whether someone will have a heart attack based on demographic, diet and clinical measurements
+-   Customize an spam email detection system
+-   Identify numbers in handwritten zip code
+-   Classify cancerous tissue
+-   Establish the relationship between salary and demographic variables
+
+## Supervised Learning
+
+-   Outcome measurement Y (also called dependent variable, response, target).
+-   Vector of p predictor measurements X (also called inputs, regressors, covariates, features, independent variables).
+-   In the **regression problem**, Y is quantitative (e.g price, blood pressure).
+-   In the **classication problem**, Y takes values in a finite, unordered set (survived/died, digit 0-9, cancer class of tissue sample).
+-   We have training data `(x1; y1); : : : ; (xN; yN)`. These are observations (examples, instances) of these measurements.
+
+## Objectives of Supervised Learning
+
+On the basis of the training data we would like to: 
+
+1. Accurately predict unseen test cases. 
+
+2. Understand which inputs affect the outcome, and how. 
+
+3. Assess the quality of our predictions and inferences.
+
+## Philosophy of Supervised Learning
+
++ Understand the ideas behind the various techniques, in order to know how and when to use them. 
+
++ Understand the simpler methods first, in order to grasp the more sophisticated ones.
+
++ Accurately assess the performance of a method, to know how well or how badly it is working \[simpler methods often perform as well as fancier ones!\].
+
++ Statistical learning is a fundamental ingredient in the training of a modern **data scientist**.
+
+## Unsupervised Learning
+
+-   No outcome variable, just a set of predictors (features) measured on a set of samples. No Y?
+
+-   Objective is more fuzzy \| find groups of samples that behave similarly, find features that behave similarly, find linear combinations of features with the most variation.
+
+-   Difficult to know how well your are doing.
+
+-   Different from supervised learning, but can be useful as a pre-processing step for supervised learning.
+
+-   You work with unlabelled data
+
+-   Hard and costly to label data!
+
+## Statistical Learning Vs Machine Learning
+
+-   Machine learning arose as a subfield of Artificial Intelligence.
+
+-   Statistical learning arose as a subfield of Statistics.
+
+-   There is much overlap \| both fields focus on supervised and unsupervised problems:
+
+    -   Machine learning has a greater emphasis on large scale applications and prediction accuracy.
+    -   Statistical learning emphasizes models and their interpretability, and precision and uncertainty.
+
+-   But the distinction has become more and more blurred, and there is a great deal of *"cross-fertilization"*.
+
+-   Machine learning has the upper hand in Marketing!
+
+## Brief History of Statistical Learning - 1
+
++ Beginning of 19th century, **least squares** method developed, successfully applied in astronomy
+
++ 1936 **linear discriminant analysis** for predicting quantitive values, stock market increases and decreases
+
++ 1940s **logistic regression** proposed as an alternative to linear regression
+
+## Brief History of Statistical Learning - 2
+
++ 1970s **generalized linear model** was developed to describe entire class of statistical learning methods inclusing linear and logistic regression
+
++ 1980s **classification and regression** trees were developed, followed shortly by 
+**generalized additive models**
+
++ **Neural networks** gained popularity in the 1980's and support vector machines arose in the 1990s.
+
+

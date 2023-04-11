@@ -2,6 +2,6 @@
 title: "Statistical Learning"
 ---
 
-Coming soon..............
+This page contains a compilation basic foundations and principles of statistical learning as explained in the book **An Introduction to Statistical Learning with Applications in R** by Gareth James et al.
 
-Working hard to develop this section
+[Topic 01: Introduction to Statistical Learning](stats_learn/intro.qmd)

@@ -217,7 +217,7 @@ model_tidy <- model5$model_obj %>% #To access the underlying data of the gtsumma
 
 ```
 
-
++ Code for creating the plot
 ```{r}
 model_tidy %>%
   ggplot(aes(x = estimate,             #This is our central estimate of the variable
