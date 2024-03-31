@@ -4,7 +4,11 @@
     "href": "index.html",
     "title": "Castory Munishi",
     "section": "",
-    "text": "I am an ambitious MPhil Global Health candidate at the University of Bergen with a passion for applying data science to transform global health outcomes. My Masters focuses on epidemiology, health economics and priority setting equips me with the skills to tackle complex health challenges in resource-limited settings. I analyze insurance data and costs associated with non-communicable diseases in Tanzania for my research thesis. I also work as a data analyst for multiple health care projects and programs. I contribute to teaching R programming to epidemiologists, public health practitioners and scientists worldwide through the AppliedEpi Organization. Driven by my passion for data science, I believe it has the power to change the world and I’m excited to continue exploring how it can improve health outcomes in developing countries.\nOn this site I keep a list of r courses, study projects, my CV, and articles on technology and health in the blog section."
+    "text": "I am an ambitious MPhil Global Health candidate at the University of Bergen with a passion for applying data science to transform global health outcomes. My Masters focuses on epidemiology, health economics and priority setting equips me with the skills to tackle complex health challenges in resource-limited settings. I analyze insurance data and costs associated with non-communicable diseases in Tanzania for my research thesis. I also work as a data analyst for multiple health care projects and programs. I contribute to teaching R programming to epidemiologists, public health practitioners and scientists worldwide through the AppliedEpi Organization. Driven by my passion for data science, I believe it has the power to change the world and I’m excited to continue exploring how it can improve health outcomes in developing countries.\nOn this site I keep a list of r courses, study projects, my CV, and articles on technology and health in the blog section.",
+    "crumbs": [
+      "Home",
+      "Castory Munishi"
+    ]
   },
   {
     "objectID": "courses/r_basics/map_function.html",
@@ -221,7 +225,11 @@
     "href": "courses/r_basics.html",
     "title": "R Basics",
     "section": "",
-    "text": "This page contains a compilation of Basic R Modules. The best way to learn is to use the slides while working actively on R studio on the examples provided by the slides. The slides contains guided exercises after introduction of a concept. R is a coding language. The best way to learn a coding language is by doing. So pick a module a get started right away.\nKey Modules\n\n\nTopic 01: Introduction to Programming in R\nTopic 02: Vectors\nTopic 03: Matrices\nTopic 04: Lists\nTopic 05: Dataframes\n\n\nTopic 06: Control Structures\nTopic 07: Vectorized Functions\nTopic 08: Custom Functions\nTopic 09: Functionals\nTopic 10: String Manipulation\n\n\nTopic 11: Line Graphs\nTopic 12: Multiple Line Graph\nTopic 13: Histogram & Box Plots"
+    "text": "This page contains a compilation of Basic R Modules. The best way to learn is to use the slides while working actively on R studio on the examples provided by the slides. The slides contains guided exercises after introduction of a concept. R is a coding language. The best way to learn a coding language is by doing. So pick a module a get started right away.\nKey Modules\n\n\nTopic 01: Introduction to Programming in R\nTopic 02: Vectors\nTopic 03: Matrices\nTopic 04: Lists\nTopic 05: Dataframes\n\n\nTopic 06: Control Structures\nTopic 07: Vectorized Functions\nTopic 08: Custom Functions\nTopic 09: Functionals\nTopic 10: String Manipulation\n\n\nTopic 11: Line Graphs\nTopic 12: Multiple Line Graph\nTopic 13: Histogram & Box Plots",
+    "crumbs": [
+      "Courses",
+      "R Basics"
+    ]
   },
   {
     "objectID": "courses/sir_modelling.html",
@@ -536,21 +544,33 @@
     "href": "index.html#education",
     "title": "Castory Munishi",
     "section": "Education",
-    "text": "Education\nUniversitetet i Bergen\nBergen, Norway\nMPhil. in Global Health | August 2022 - Present (Expected 2024)\nMuhimbili University of Health and Allied Sciences\nDar es Salaam, Tanzania\nBachelor of Pharmacy | October 2016 - September 2020"
+    "text": "Education\nUniversitetet i Bergen\nBergen, Norway\nMPhil. in Global Health | August 2022 - Present (Expected 2024)\nMuhimbili University of Health and Allied Sciences\nDar es Salaam, Tanzania\nBachelor of Pharmacy | October 2016 - September 2020",
+    "crumbs": [
+      "Home",
+      "Castory Munishi"
+    ]
   },
   {
     "objectID": "index.html#bio",
     "href": "index.html#bio",
-    "title": "",
-    "section": "Bio",
-    "text": "Bio\nI’m an MPhil candidate at University of Bergen, Norway,doing a masters in Global Health with focus on health economics and priority setting. I am also doing extra courses in health data science. My masters research thesis is focused on Insurance data analysis and costing studies for NCD’s Tanzania. In parallel I’m working to build an online pharmaceutical supply chain called Pharmlinks. I am also working as a data analyst in four intensive health care projects in Tanzania. In the past I have worked in over 40 impactful projects. I also work with AppliedEpi Organization contributing to teaching R to public health practioners and scientists worldwide. I am passionate about data science and I strongly believe data science will be used to improve health outcomes especially in developing countries. This is my personal website and blong where you will find information about me and the works that i have been doing. There are also learning materials and tutorials where i’m sharing what i have been learning for others to learn as well. You are welcome and enjoy the lessons. Feel free to contact me.\nOn this site I keep a list of r courses, study projects, and my CV, as well as a technical blog."
+    "title": "Castory Munishi",
+    "section": "",
+    "text": "I am an ambitious MPhil Global Health candidate at the University of Bergen with a passion for applying data science to transform global health outcomes. My Masters focuses on epidemiology, health economics and priority setting equips me with the skills to tackle complex health challenges in resource-limited settings. I analyze insurance data and costs associated with non-communicable diseases in Tanzania for my research thesis. I also work as a data analyst for multiple health care projects and programs. I contribute to teaching R programming to epidemiologists, public health practitioners and scientists worldwide through the AppliedEpi Organization. Driven by my passion for data science, I believe it has the power to change the world and I’m excited to continue exploring how it can improve health outcomes in developing countries.\nOn this site I keep a list of r courses, study projects, my CV, and articles on technology and health in the blog section.",
+    "crumbs": [
+      "Home",
+      "Castory Munishi"
+    ]
   },
   {
     "objectID": "index.html#areas-of-interest-consultancy",
     "href": "index.html#areas-of-interest-consultancy",
     "title": "Castory Munishi",
     "section": "Areas of Interest & Consultancy",
-    "text": "Areas of Interest & Consultancy\n\nHealth Data Science | Modelling\nGlobal Health    | Digital Health\nHealth Economics    | Priority Setting\nPharmacy Practice    | Supply Chain"
+    "text": "Areas of Interest & Consultancy\n\nHealth Data Science | Modelling\nGlobal Health    | Digital Health\nHealth Economics    | Priority Setting\nPharmacy Practice    | Supply Chain",
+    "crumbs": [
+      "Home",
+      "Castory Munishi"
+    ]
   },
   {
     "objectID": "index.html#selected-manuscripts",
@@ -1033,7 +1053,7 @@
     "href": "courses/r_advanced/map_function.html#importing-the-datasets",
     "title": "The Map Function",
     "section": "Importing the datasets",
-    "text": "Importing the datasets\n\npacman::p_load(\n  readr,\n  dplyr,\n  magrittr,\n  stringr,\n  purrr\n)\n\nds <- read_csv(\"datasets/scores.csv\")\n\nhead(ds,3)\n\n# A tibble: 3 × 6\n  names   assignment_number writing_score math_score science_score math_extra_…¹\n  <chr>               <dbl> <chr>         <chr>      <chr>         <chr>        \n1 Michael                 1 56%           50%        79%           High         \n2 Michael                 2 84%           59%        72%           None         \n3 Michael                 3 64%           84%        78%           Low          \n# … with abbreviated variable name ¹​math_extra_credit"
+    "text": "Importing the datasets\n\npacman::p_load(\n  readr,\n  dplyr,\n  magrittr,\n  stringr,\n  purrr\n)\n\nds &lt;- read_csv(\"datasets/scores.csv\")\n\nhead(ds,3)\n\n# A tibble: 3 × 6\n  names   assignment_number writing_score math_score science_score\n  &lt;chr&gt;               &lt;dbl&gt; &lt;chr&gt;         &lt;chr&gt;      &lt;chr&gt;        \n1 Michael                 1 56%           50%        79%          \n2 Michael                 2 84%           59%        72%          \n3 Michael                 3 64%           84%        78%          \n# ℹ 1 more variable: math_extra_credit &lt;chr&gt;"
   },
   {
     "objectID": "courses/r_advanced/map_function.html#challenge-one",
@@ -1054,7 +1074,7 @@
     "href": "courses/r_advanced/map_function.html#creating-a-custom-function",
     "title": "The Map Function",
     "section": "Creating a Custom Function",
-    "text": "Creating a Custom Function\n\nformat_score <- function(score){\n  fmt_string <- str_replace(score, \"%\", \"\")\n  num <- as.numeric(fmt_string)\n  \n  return(num)\n}\n\nmy_string <- \"74%\"\nformat_score(my_string)\n\n[1] 74"
+    "text": "Creating a Custom Function\n\nformat_score &lt;- function(score){\n  fmt_string &lt;- str_replace(score, \"%\", \"\")\n  num &lt;- as.numeric(fmt_string)\n  \n  return(num)\n}\n\nmy_string &lt;- \"74%\"\nformat_score(my_string)\n\n[1] 74"
   },
   {
     "objectID": "courses/r_advanced/map_function.html#vectoring-a-function",
@@ -1075,14 +1095,14 @@
     "href": "courses/r_advanced/map_function.html#example",
     "title": "The Map Function",
     "section": "Example",
-    "text": "Example\n\n# Input vector\ninputs <- 1:5\n\n# Function to vectorize\nadd_one <- function(value) {\n  return(value + 1)\n}\n\n\noutputs <- map(inputs, add_one)\ntypeof(outputs)\n\n[1] \"list\"\n\noutputs2 <- map_dbl(inputs, add_one)\ntypeof(outputs2)\n\n[1] \"double\"\n\n\n\nThe output of map() is a list\nIt can be modified unlist() function or using variants of it such as map_dbl()"
+    "text": "Example\n\n# Input vector\ninputs &lt;- 1:5\n\n# Function to vectorize\nadd_one &lt;- function(value) {\n  return(value + 1)\n}\n\n\noutputs &lt;- map(inputs, add_one)\ntypeof(outputs)\n\n[1] \"list\"\n\noutputs2 &lt;- map_dbl(inputs, add_one)\ntypeof(outputs2)\n\n[1] \"double\"\n\n\n\nThe output of map() is a list\nIt can be modified unlist() function or using variants of it such as map_dbl()"
   },
   {
     "objectID": "courses/r_advanced/map_function.html#task",
     "href": "courses/r_advanced/map_function.html#task",
     "title": "The Map Function",
     "section": "Task",
-    "text": "Task\n\nGive the vector input_scores <- c(\"83%\", \"29%\", \"76%\")\nMap the function format_scores()\nAssign the result to output_scores\nTake the third element and assign it to third_element\n\n\ninput_scores <- c(\"83%\", \"29%\", \"76%\")\n\noutput_scores <- map(input_scores,format_score)\n\nthird_element <- output_scores[[3]]"
+    "text": "Task\n\nGive the vector input_scores &lt;- c(\"83%\", \"29%\", \"76%\")\nMap the function format_scores()\nAssign the result to output_scores\nTake the third element and assign it to third_element\n\n\ninput_scores &lt;- c(\"83%\", \"29%\", \"76%\")\n\noutput_scores &lt;- map(input_scores,format_score)\n\nthird_element &lt;- output_scores[[3]]"
   },
   {
     "objectID": "courses/r_advanced/map_function.html#creating-a-new-column-with-map",
@@ -1096,7 +1116,7 @@
     "href": "courses/r_advanced/map_function.html#creating-a-new-writing-score-column",
     "title": "The Map Function",
     "section": "Creating a new writing score column",
-    "text": "Creating a new writing score column\n\nds %<>%\n  mutate(new_writing_score=map(writing_score,format_score)) %>%\n  mutate(new_science_score=map(science_score,format_score))"
+    "text": "Creating a new writing score column\n\nds %&lt;&gt;%\n  mutate(new_writing_score=map(writing_score,format_score)) %&gt;%\n  mutate(new_science_score=map(science_score,format_score))"
   },
   {
     "objectID": "courses/r_advanced/map_function.html#two-input-variation-of-map---map2",
@@ -1110,7 +1130,7 @@
     "href": "courses/r_advanced/map_function.html#map2-example",
     "title": "The Map Function",
     "section": "map2() Example",
-    "text": "map2() Example\n\ninput_first <- 1:5\ninput_second <- 6:10\n\nadd_two_values <- function(x,y){\n  return(x+y)\n}\n\noutputs <- map2(input_first,input_second,add_two_values)"
+    "text": "map2() Example\n\ninput_first &lt;- 1:5\ninput_second &lt;- 6:10\n\nadd_two_values &lt;- function(x,y){\n  return(x+y)\n}\n\noutputs &lt;- map2(input_first,input_second,add_two_values)"
   },
   {
     "objectID": "courses/r_advanced/map_function.html#using-map2",
@@ -1131,7 +1151,7 @@
     "href": "courses/r_advanced/map_function.html#solution",
     "title": "The Map Function",
     "section": "Solution",
-    "text": "Solution\n\ninput_score <- 50\nadd_extra_credit <- function(score, note) {\n  if (note == \"None\") {\n      points_to_add <- 0\n  } else if (note == \"Low\") {\n      points_to_add <- 1\n  } else {\n      points_to_add <- 5\n  }\n    \n  return(score + points_to_add)\n}\nadd_extra_credit(input_score,\"None\")\n\n[1] 50\n\nadd_extra_credit(input_score,\"High\")\n\n[1] 55"
+    "text": "Solution\n\ninput_score &lt;- 50\nadd_extra_credit &lt;- function(score, note) {\n  if (note == \"None\") {\n      points_to_add &lt;- 0\n  } else if (note == \"Low\") {\n      points_to_add &lt;- 1\n  } else {\n      points_to_add &lt;- 5\n  }\n    \n  return(score + points_to_add)\n}\nadd_extra_credit(input_score,\"None\")\n\n[1] 50\n\nadd_extra_credit(input_score,\"High\")\n\n[1] 55"
   },
   {
     "objectID": "courses/r_advanced/map_function.html#task-2",
@@ -1145,14 +1165,14 @@
     "href": "courses/r_advanced/map_function.html#solution-1",
     "title": "The Map Function",
     "section": "Solution",
-    "text": "Solution\n\nds %<>%\n  mutate(math_score=map(math_score,format_score))%>%\n  mutate(adjusted_math_score=unlist(map2(math_score,math_extra_credit,add_extra_credit)))"
+    "text": "Solution\n\nds %&lt;&gt;%\n  mutate(math_score=map(math_score,format_score))%&gt;%\n  mutate(adjusted_math_score=unlist(map2(math_score,math_extra_credit,add_extra_credit)))"
   },
   {
     "objectID": "courses/r_advanced/map_function.html#working-with-lists",
     "href": "courses/r_advanced/map_function.html#working-with-lists",
     "title": "The Map Function",
     "section": "Working with Lists",
-    "text": "Working with Lists\n\nmap() functions can work with lists\n\n\ninput_list <- list(\n  c(1,2),\n  c(3,4),\n  c(5,6),\n  c(7,8),\n  c(9,10)\n)\n\noutput <- map(input_list,sum)"
+    "text": "Working with Lists\n\nmap() functions can work with lists\n\n\ninput_list &lt;- list(\n  c(1,2),\n  c(3,4),\n  c(5,6),\n  c(7,8),\n  c(9,10)\n)\n\noutput &lt;- map(input_list,sum)"
   },
   {
     "objectID": "courses/r_advanced/map_function.html#above-and-beyond",
@@ -1236,7 +1256,11 @@
     "href": "courses/r_advanced.html",
     "title": "R Advanced",
     "section": "",
-    "text": "This page contains a compilation of Advanced R Modules.\nAdvanced R Topics to take your skills to the next level\n01. Map Functions"
+    "text": "This page contains a compilation of Advanced R Modules.\nAdvanced R Topics to take your skills to the next level\n01. Map Functions",
+    "crumbs": [
+      "Courses",
+      "R Advanced"
+    ]
   },
   {
     "objectID": "courses/r_basics/vectors.html#indexing-vectors-by-position",
@@ -3476,7 +3500,11 @@
     "href": "index.html#selected-works",
     "title": "Castory Munishi",
     "section": "Selected Works",
-    "text": "Selected Works\n\nApps\nHuruApp | Information on Substance Use Rehabilitation and Recovery | 2021\n\n\nPublications\nAssessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan. Sangeda, RZ, Kibona, J, Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/\nDrug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania. Efraim, J, Munishi,CM, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. https://doi.org/10.12688/F1000RESEARCH.110079.1"
+    "text": "Selected Works\n\nApps\nHuruApp | Information on Substance Use Rehabilitation and Recovery | 2021\n\n\nPublications\nAssessment of Implementation of Antimicrobial Resistance Surveillance and Antimicrobial Stewardship Programs in Tanzanian Health Facilities a Year After Launch of the National Action Plan. Sangeda, RZ, Kibona, J, Munishi, CM, Arabi, F, Manyanga,VP, Mwambete, KD, Horumpende, PG. 2020. Frontiers in Public Health 8: 454. https://www.ncbi.nlm.nih.gov/pmc/articles/PMC7481440/\nDrug utilization pattern and adverse drug reactions of chemotherapy in pediatric patients at Muhimbili National Hospital, Tanzania. Efraim, J, Munishi,CM, J, Magige, A, Msuya, K, Marealle, AI, Kilonzi, M, Mlyuka,H, Mikomangwa,W, Mallya,B, Aswile, W, Zimbwe, KB , Mutagonda, RF 2022. F1000Research. https://doi.org/10.12688/F1000RESEARCH.110079.1",
+    "crumbs": [
+      "Home",
+      "Castory Munishi"
+    ]
   },
   {
     "objectID": "projects/case_studies/us_health_disparities/us_health_disparities_sol.html",
@@ -3596,5 +3624,12 @@
     "title": "Introduction to Statistical Learning",
     "section": "Brief History of Statistical Learning - 2",
     "text": "Brief History of Statistical Learning - 2\n\n1970s generalized linear model was developed to describe entire class of statistical learning methods inclusing linear and logistic regression\n1980s classification and regression trees were developed, followed shortly by generalized additive models\nNeural networks gained popularity in the 1980’s and support vector machines arose in the 1990s."
+  },
+  {
+    "objectID": "courses/r_advanced/map_function.html#dataset-in-use",
+    "href": "courses/r_advanced/map_function.html#dataset-in-use",
+    "title": "The Map Function",
+    "section": "Dataset in Use",
+    "text": "Dataset in Use\n\nOur dataset is a collection of test scores of four different students. Each student took five different tests for three subjects: writing, math and science. Over the course of this lesson, we’ll perform different analytical tasks that will require us to vectorize different functions."
   }
 ]
